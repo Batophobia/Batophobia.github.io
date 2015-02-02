@@ -19,16 +19,21 @@
     <![endif]-->
    <div class="everything">
     <div id="leftBar" class="leftBar">
-		<button id="spawn" class="button" onclick="enemy.spawn();">Spawn</button>
+		<div id="buttons" class="buttons">
+			<div id="store" class="store"></div>
+			<button id="spawn" class="button" onclick="enemy.spawn();">Spawn</button>
+			<button id="renew" class="button" onclick="main.renew();">Renew</button>
+			<button id="clear" class="button" onclick="main.clear();">Clear Save</button>
+		</div>
     </div>
 	
     <div id='rightBar' class='rightBar'>
-		<div id="coin" class="coin"></div>
-		<div id="maxLevel" class="maxLevel"></div>
 		<div id="towers" class="towers"></div>
 	</div>
 	
 	<div id="mainBar" class="mainBar">
+		<div id="coin" class="coin"></div>
+		<div id="maxLevel" class="maxLevel">Level: 1</div>
 		<canvas id="map" class="map" height="560px" width="560px"></canvas>
 	</div>
 	

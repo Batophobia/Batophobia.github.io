@@ -3,6 +3,7 @@ var main = {
 		this.load();
 		map.init();
 		items.init();
+		enemy.init();
 		towers.init();
 		store.init();
 		
@@ -19,15 +20,19 @@ var main = {
 		
 		if(elapsedTime>this.delay){
 			for(var i=0;i<Math.floor(elapsedTime/this.delay);i++){
+				items.tick();
 				store.tick();
 				enemy.tick();
 				towers.tick();
+				map.tick();
 				
 				this.updateDisplay();
 				this.save();
 				this.counter++;
 			}
 		}else{
+			items.tick();
+			map.tick();
 			store.tick();
 			enemy.tick();
 			towers.tick();
@@ -44,11 +49,14 @@ var main = {
 	},
 	
 	save : function(){
-		var data = {'map':[],'towers':{}};
-		for(var group in towers.list){
-			data['towers'][group] = towers.list[group];
-		}
+		var data = {'map':[],'towers':{},'items':{},'enemy':{}};
+		data['enemy'].list = enemy.list;
+		data['enemy'].maxLevel = enemy.maxLevel;
+		data['enemy'].tilNextLvl = enemy.tilNextLvl;
+		
+		data['towers'] = towers.list;
 		data['map'] = map.waypoints;
+		data['items'] = items.coins;
 		localStorage["save"] = JSON.stringify(data);
 	},
 	
@@ -56,16 +64,27 @@ var main = {
 		if('save' in localStorage){
 			var data = JSON.parse(localStorage['save']);
 		}else{
-			items.addCoins(100);
+			items.addCoins(1);
 			return;
 		}
-		map.waypoints=data['map'];
+		enemy.list=data['enemy'].list;
+		enemy.maxLevel=data['enemy'].maxLevel;
+		enemy.tilNextLvl=data['enemy'].tilNextLvl;
 		
-		//for(var group in towers.list){
-		//	if(group in data['towers']){
-		//		towers.list[group].level=data.towers[group];
-		//	}
-		//}
+		map.waypoints=data['map'];
+		towers.list=data['towers'];
+		items.coins=data['items'];
+	},
+	
+	renew: function(){
+		map.waypoints=[];
+		towers.list={};
+		enemy.list={};
+	},
+	
+	clear: function(){
+		localStorage.clear();
+		location.reload();
 	},
 	
 	alrt: function(input){

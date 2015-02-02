@@ -88,6 +88,14 @@ button:disabled {
 		position: relative;
 		top: 20px;
 		left: 20px;
+	} .coin{
+		position: absolute;
+		top: 1px;
+		left: 1px;
+	} .maxLevel{
+		position: absolute;
+		bottom: 1px;
+		left: 1px;
 	}
 #alerts {
 	background: #222222;

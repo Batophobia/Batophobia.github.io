@@ -14,6 +14,7 @@ var map = {
 			for(i=0;i<this.waypoints.length;i++)
 				this.drawWaypoint(this.waypoints[i]);
 		}
+		map.ctxMap.closePath();
 	},
 	
 	getMousePos: function(evt) {
@@ -32,7 +33,7 @@ var map = {
 			4. Close off at the top
 		*/
 		
-		var numSubs=Math.floor(Math.random() * 3) + 4;
+		var numSubs=6;
 		var numRows=Math.floor(56/numSubs);
 		var numBlocks=numSubs*55;
 		var prevPoint={ x:1, y:55 };
@@ -64,13 +65,12 @@ var map = {
 			prevPoint.y = nxtPoint.y;
 		}
 		nxtPoint.x=55;
-		nxtPoint.y=0;
+		nxtPoint.y=1;
 		
 		this.waypoints[this.waypoints.length]={
 			x: nxtPoint.x,
 			y: nxtPoint.y
 		};
-		//this.drawLine(prevPoint,nxtPoint);
 	},
 	
 	drawWaypoint: function(point){
@@ -81,6 +81,20 @@ var map = {
 		this.ctxMap.moveTo(p1.x*10,p1.y*10);
 		this.ctxMap.lineTo(p2.x*10,p2.y*10);
 		this.ctxMap.stroke();
+	},
+	
+	tick: function(){
+		this.ctxMap.clearRect (0, 0, this.canMap.width, this.canMap.height);
+		
+		this.ctxMap.strokeStyle = "#339933";
+		for(i=0;i<this.waypoints.length;i++)
+			this.drawWaypoint(this.waypoints[i]);
+		this.ctxMap.closePath();
+		
+		for(var i=0;i<Object.size(towers.list);i++){
+			map.ctxMap.fillStyle='rgb('+towers.list[i].clr+')';
+			map.ctxMap.fillRect(towers.list[i].pos.x-4,towers.list[i].pos.y-4,8,8);
+		}
 	},
 	
 	drawGrid: function(){
