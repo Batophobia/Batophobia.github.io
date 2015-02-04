@@ -4,6 +4,7 @@ var enemy = {
 		this.maxLevel=1;
 		for(i=tempLvl;i>1;i--)
 			this.levelUp();
+		$("#progPercent").width(100*(this.tilNextLvl/(5*this.maxLevel))+"%")
 	},
 	
 	unit:{
@@ -23,7 +24,7 @@ var enemy = {
 	list:{},
 	
 	tick:function(){
-		this.cntSpawn-=(251-250/Math.ceil(this.maxLevel/10));
+		this.cntSpawn-=Math.ceil(this.maxLevel/3);
 		if(this.cntSpawn<=0){
 			this.cntSpawn=250;
 			this.spawn();
@@ -51,12 +52,13 @@ var enemy = {
 		this.maxLevel++;
 		this.tilNextLvl=5*this.maxLevel;
 		$("#maxLevel").text("Level: "+this.maxLevel);
+		this.maxGuys+=5;
 		
 		this.unit.lvl++;
 		this.unit.hp+=5*this.unit.lvl;
 		this.unit.att++;
 		this.unit.def=Math.floor(this.unit.lvl/3);
-		this.unit.spd=Math.floor(this.unit.lvl/5)+1;
+		this.unit.spd=1+(this.unit.lvl/5);
 		
 		switch(this.unit.lvl%12){
 			case 1:
@@ -104,7 +106,7 @@ var enemy = {
 			this.levelUp();
 		}
 		
-		items.addCoins(this.list[baddie].lvl);
+		items.addCoins(this.list[baddie].lvl*2);
 		
 		for(i=parseInt(baddie);i<Object.size(this.list)-1;i++){
 			this.list[i].hp  = this.list[i+1].hp;
@@ -119,6 +121,8 @@ var enemy = {
 		}
 		this.list[Object.size(this.list)-1]=null;
 		delete this.list[Object.size(this.list)-1];
+		
+		$("#progPercent").width(100*(this.tilNextLvl/(5*this.maxLevel))+"%")
 	},
 	
 	spawn:function(){

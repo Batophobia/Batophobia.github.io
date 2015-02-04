@@ -1,10 +1,10 @@
 var items = {
 	init: function(){
-		if(this.coins>0){
-			$(".coin").text("$"+this.coins);
-		}
+		$(".coin").text("$"+this.coins);
+		$(".scrap").text("Scrap:"+this.scrap);
 	},
 	coins: 0,
+	scrap: 0,
 	maxDelay: 100,
 	cntDelay: 0,
 	
@@ -13,7 +13,7 @@ var items = {
 		
 		if(this.cntDelay>=this.maxDelay){
 			this.cntDelay=0;
-			this.addCoins(1);
+			this.addCoins(1+this.scrap);
 		}
 	},
 	

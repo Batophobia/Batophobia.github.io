@@ -21,24 +21,29 @@
     <div id="leftBar" class="leftBar">
 		<div id="buttons" class="buttons">
 			<div id="store" class="store"></div>
-			<button id="spawn" class="button" onclick="enemy.spawn();">Spawn</button>
-			<button id="renew" class="button" onclick="main.renew();">Renew</button>
-			<button id="clear" class="button" onclick="main.clear();">Clear Save</button>
+			<div id="spcBtns" class="spcBtns">
+				<button id="spawn" class="button" onclick="enemy.spawn();">Spawn</button>
+				<button id="renew" class="button" onclick="main.renew();">Ascend</button>
+				<button id="clear" class="button" onclick="main.clear();">Clear Save</button>
+			</div>
 		</div>
     </div>
 	
     <div id='rightBar' class='rightBar'>
 		<div id="towers" class="towers"></div>
+		<div class="version">version 1.0</div>
 	</div>
 	
 	<div id="mainBar" class="mainBar">
 		<div id="coin" class="coin"></div>
+		<div id="scrap" class="scrap"></div>
 		<div id="maxLevel" class="maxLevel">Level: 1</div>
+		<div id="progBar" class="progBar"><div id="progPercent" class="progPercent"></div></div>
 		<canvas id="map" class="map" height="560px" width="560px"></canvas>
 	</div>
 	
     <div id='alerts'></div>
-	
+	<div id="twrInfo" class="twrInfo">Tower Stats</div>
    </div>
    
 	<script>
@@ -46,7 +51,5 @@
 			main.init();
 		});
 	</script>
-	
-	<div class="version">version 1.0.0</div>
   </body>
 </html>

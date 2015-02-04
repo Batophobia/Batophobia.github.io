@@ -26,7 +26,6 @@ var main = {
 				towers.tick();
 				map.tick();
 				
-				this.updateDisplay();
 				this.save();
 				this.counter++;
 			}
@@ -37,26 +36,23 @@ var main = {
 			enemy.tick();
 			towers.tick();
 			
-			this.updateDisplay();
 			this.save();
 			this.counter++;
 		}
 		main.lastTick = new Date();
 	},
 	
-	updateDisplay: function(){
-		
-	},
-	
 	save : function(){
-		var data = {'map':[],'towers':{},'items':{},'enemy':{}};
+		var data = {'map':[],'towers':{},'items':{},'enemy':{},'store':{}};
 		data['enemy'].list = enemy.list;
 		data['enemy'].maxLevel = enemy.maxLevel;
 		data['enemy'].tilNextLvl = enemy.tilNextLvl;
 		
 		data['towers'] = towers.list;
 		data['map'] = map.waypoints;
-		data['items'] = items.coins;
+		data['items'].coins = items.coins;
+		data['items'].scrap = items.scrap;
+		data['store'] = store.items;
 		localStorage["save"] = JSON.stringify(data);
 	},
 	
@@ -73,13 +69,25 @@ var main = {
 		
 		map.waypoints=data['map'];
 		towers.list=data['towers'];
-		items.coins=data['items'];
+		items.coins=data['items'].coins;
+		items.scrap=data['items'].scrap;
+		store.items=data['store'];
 	},
 	
 	renew: function(){
+		items.scrap+=Math.floor(enemy.maxLevel/12);
+		items.coins=5*items.scrap;
+		
 		map.waypoints=[];
 		towers.list={};
 		enemy.list={};
+		enemy.maxLevel=1;
+		enemy.tilNextLvl=5;
+		enemy.maxGuys=20;
+		enemy.cntSpawn=250;
+		
+		this.save();
+		location.reload();
 	},
 	
 	clear: function(){
