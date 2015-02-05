@@ -6,6 +6,7 @@ var main = {
 		enemy.init();
 		towers.init();
 		store.init();
+		ments.init();
 		
 		timerID=setInterval("main.tick();",this.delay);
 	},
@@ -21,10 +22,10 @@ var main = {
 		if(elapsedTime>this.delay){
 			for(var i=0;i<Math.floor(elapsedTime/this.delay);i++){
 				items.tick();
-				store.tick();
+				map.tick();
 				enemy.tick();
 				towers.tick();
-				map.tick();
+				ments.tick();
 				
 				this.save();
 				this.counter++;
@@ -32,9 +33,9 @@ var main = {
 		}else{
 			items.tick();
 			map.tick();
-			store.tick();
 			enemy.tick();
 			towers.tick();
+			ments.tick();
 			
 			this.save();
 			this.counter++;
@@ -43,7 +44,7 @@ var main = {
 	},
 	
 	save : function(){
-		var data = {'map':[],'towers':{},'items':{},'enemy':{},'store':{}};
+		var data = {'map':[],'towers':{},'items':{},'enemy':{},'store':{},'ments':{}};
 		data['enemy'].list = enemy.list;
 		data['enemy'].maxLevel = enemy.maxLevel;
 		data['enemy'].tilNextLvl = enemy.tilNextLvl;
@@ -53,6 +54,12 @@ var main = {
 		data['items'].coins = items.coins;
 		data['items'].scrap = items.scrap;
 		data['store'] = store.items;
+		
+		for(var itm in ments.list)
+			data['ments'][itm] = ments.list[itm].unlk;
+		
+		data['ments'].stats = ments.stats;
+		
 		localStorage["save"] = JSON.stringify(data);
 	},
 	
@@ -72,9 +79,30 @@ var main = {
 		items.coins=data['items'].coins;
 		items.scrap=data['items'].scrap;
 		store.items=data['store'];
+		
+		for(var itm in ments.list)
+			ments.list[itm].unlk=data['ments'][itm];
+		ments.stats=data['ments'].stats;
+		
+		if(ments.stats.ascensions==1)
+			ments.award(68);
+		else if(ments.stats.ascensions==100)
+			ments.award(99);
+		else if(ments.stats.ascensions==1000)
+			ments.award(100);
+		
+		if(items.scrap>=5)
+			ments.award(69);
+		else if(items.scrap>=20)
+			ments.award(70);
+		else if(items.scrap>=50)
+			ments.award(71);
+		else if(items.scrap>=100)
+			ments.award(72);
 	},
 	
 	renew: function(){
+		ments.stats.ascensions++;
 		items.scrap+=Math.floor(enemy.maxLevel/12);
 		items.coins=5*items.scrap;
 		

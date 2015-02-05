@@ -27,7 +27,7 @@ var enemy = {
 		this.cntSpawn-=Math.ceil(this.maxLevel/3);
 		if(this.cntSpawn<=0){
 			this.cntSpawn=250;
-			this.spawn();
+			this.spawn('auto');
 		}
 		for(var enmy in this.list){
 			var dude=this.list[enmy];
@@ -53,6 +53,25 @@ var enemy = {
 		this.tilNextLvl=5*this.maxLevel;
 		$("#maxLevel").text("Level: "+this.maxLevel);
 		this.maxGuys+=5;
+		
+		if(this.maxLevel>ments.stats.highestLvl)
+			ments.stats.highestLvl=this.maxLevel;
+		
+		if(this.maxLevel>=12)
+			$("#renew").show();
+		if(this.maxLevel>=6 && store.items["44"].lvl<1)
+			store.stock(44);
+		
+		if(this.maxLevel==15)
+			ments.award(84);
+		else if(this.maxLevel==30)
+			ments.award(85);
+		else if(this.maxLevel==50)
+			ments.award(86);
+		else if(this.maxLevel==100)
+			ments.award(87);
+		else if(this.maxLevel==999)
+			ments.award(88);
 		
 		this.unit.lvl++;
 		this.unit.hp+=5*this.unit.lvl;
@@ -121,11 +140,29 @@ var enemy = {
 		}
 		this.list[Object.size(this.list)-1]=null;
 		delete this.list[Object.size(this.list)-1];
+		ments.stats.guysKilled++;
+		
+		if(ments.stats.guysKilled==1)
+			ments.award(89);
+		if(ments.stats.guysKilled==50)
+			ments.award(90);
+		if(ments.stats.guysKilled==200)
+			ments.award(91);
+		if(ments.stats.guysKilled==1000)
+			ments.award(92);
+		if(ments.stats.guysKilled==5000)
+			ments.award(93);
+		if(ments.stats.guysKilled==10000)
+			ments.award(94);
+		if(ments.stats.guysKilled==100000)
+			ments.award(95);
+		if(ments.stats.guysKilled==1000000)
+			ments.award(96);
 		
 		$("#progPercent").width(100*(this.tilNextLvl/(5*this.maxLevel))+"%")
 	},
 	
-	spawn:function(){
+	spawn:function(from){
 		if(Object.size(this.list)<this.maxGuys){
 			this.list[Object.size(this.list)]={
 				hp  : enemy.unit.hp,
@@ -137,6 +174,12 @@ var enemy = {
 				pos : { x:.1, y:55 },
 				nxtWaypoint:0
 			};
+			
+			if(from=='btn'){
+				ments.stats.manualSpawns++;
+				if(ments.stats.manualSpawns==1000)
+					ments.award(67);
+			}
 		}
 	},
 	

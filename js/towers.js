@@ -116,17 +116,108 @@ var towers = {
 			if(towers.list[defense].id==towers.selected)
 				numType++;
 		}
-		if(numType%5==0){
+		if(Math.floor(numType/5) > store.items[towers.selected*4].lvl){
 			store.stock(towers.selected*4);
 		}
-		if(numType%6==0){
-			store.stock((towers.selected+1)*4);
+		if(Math.floor(numType/6) > store.items[(towers.selected*4)+1].lvl){
+			store.stock((towers.selected*4)+1);
 		}
-		if(numType%7==0){
-			store.stock((towers.selected+2)*4);
+		if(Math.floor(numType/7) > store.items[(towers.selected*4)+2].lvl){
+			store.stock((towers.selected*4)+2);
 		}
-		if(numType%8==0){
-			store.stock((towers.selected+3)*4);
+		if(Math.floor(numType/8) > store.items[(towers.selected*4)+3].lvl){
+			store.stock((towers.selected*4)+3);
+		}
+		
+		switch(parseInt(towers.selected)){
+			case 0:
+				ments.award(1);
+				if(numType==5)       {ments.award(2);}
+				else if(numType==10) {ments.award(3);}
+				else if(numType==25) {ments.award(4);}
+				else if(numType==50) {ments.award(5);}
+				else if(numType==100){ments.award(6);}
+				break;
+			case 1:
+				ments.award(7);
+				if(numType==5)       {ments.award(8);}
+				else if(numType==10) {ments.award(9);}
+				else if(numType==25) {ments.award(10);}
+				else if(numType==50) {ments.award(11);}
+				else if(numType==100){ments.award(12);}
+				break;
+			case 2:
+				ments.award(13);
+				if(numType==5)       {ments.award(14);}
+				else if(numType==10) {ments.award(15);}
+				else if(numType==25) {ments.award(16);}
+				else if(numType==50) {ments.award(17);}
+				else if(numType==100){ments.award(18);}
+				break;
+			case 3:
+				ments.award(19);
+				if(numType==5)       {ments.award(20);}
+				else if(numType==10) {ments.award(21);}
+				else if(numType==25) {ments.award(22);}
+				else if(numType==50) {ments.award(23);}
+				else if(numType==100){ments.award(24);}
+				break;
+			case 4:
+				ments.award(25);
+				if(numType==5)       {ments.award(26);}
+				else if(numType==10) {ments.award(27);}
+				else if(numType==25) {ments.award(28);}
+				else if(numType==50) {ments.award(29);}
+				else if(numType==100){ments.award(30);}
+				break;
+			case 5:
+				ments.award(31);
+				if(numType==5)       {ments.award(32);}
+				else if(numType==10) {ments.award(33);}
+				else if(numType==25) {ments.award(34);}
+				else if(numType==50) {ments.award(35);}
+				else if(numType==100){ments.award(36);}
+				break;
+			case 6:
+				ments.award(37);
+				if(numType==5)       {ments.award(38);}
+				else if(numType==10) {ments.award(39);}
+				else if(numType==25) {ments.award(40);}
+				else if(numType==50) {ments.award(41);}
+				else if(numType==100){ments.award(42);}
+				break;
+			case 7:
+				ments.award(43);
+				if(numType==5)       {ments.award(44);}
+				else if(numType==10) {ments.award(45);}
+				else if(numType==25) {ments.award(46);}
+				else if(numType==50) {ments.award(47);}
+				else if(numType==100){ments.award(48);}
+				break;
+			case 8:
+				ments.award(49);
+				if(numType==5)       {ments.award(50);}
+				else if(numType==10) {ments.award(51);}
+				else if(numType==25) {ments.award(52);}
+				else if(numType==50) {ments.award(53);}
+				else if(numType==100){ments.award(54);}
+				break;
+			case 9:
+				ments.award(55);
+				if(numType==5)       {ments.award(56);}
+				else if(numType==10) {ments.award(57);}
+				else if(numType==25) {ments.award(58);}
+				else if(numType==50) {ments.award(59);}
+				else if(numType==100){ments.award(60);}
+				break;
+			case 10:
+				ments.award(61);
+				if(numType==5)       {ments.award(62);}
+				else if(numType==10) {ments.award(63);}
+				else if(numType==25) {ments.award(64);}
+				else if(numType==50) {ments.award(65);}
+				else if(numType==100){ments.award(66);}
+				break;
 		}
 		
 		$("#tower_"+towers.selected).removeClass("sel");

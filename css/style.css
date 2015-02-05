@@ -52,6 +52,9 @@ button:disabled {
 	width: 80px;
 	padding: 3px;
 }
+#renew, #spawn{
+	display:none;
+}
 .leftBar:empty {
 	display:none;
 }
@@ -68,6 +71,13 @@ button:disabled {
 		position: absolute;
 		left: 1px;
 		bottom: 1px;
+	} .storeStock{
+		font-size: 12px;
+		padding-left:2px;
+		padding-right:2px;
+	} .storeStock button{
+		font-size: 11px;
+		float: right;
 	}
 .rightBar:empty {
 	display:none;
@@ -82,13 +92,20 @@ button:disabled {
 	-webkit-user-select: none;
 	-ms-user-select: none;
 	overflow: auto;
-}	.tower{
+}	.menuBtns{
+		position: absolute;
+		bottom: 15px;
+		right: 1px;
+	} .tower{
 		width: 90px;
 		margin: 5px;
 		text-align: right;
 	}	.sel{
 			background-color: #666666;
 		}
+	#awards{
+		display: none;
+	}
 .mainBar {
 	width: 600px;
 	height: 600px;
@@ -127,11 +144,31 @@ button:disabled {
 			height: 100%;
 			background-color: #669966;
 		}
+.achievements{
+	display: none;
+	background: #222222;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 750px;
+	height: 500px;
+}	.achievements td{
+		font-size: 11px;
+		border: 1px solid #CCCCCC;
+		width: 75px;
+		height: 50px;
+		margin: 5px;
+		vertical-align: top;
+	} #gameStats{
+		caption-side: bottom;
+		font-size: 11px;
+		background: #222222;
+	}
 #alerts {
 	background: #222222;
 	position: absolute;
-	top: 15px;
-	left: 15px;
+	bottom: 5px;
+	left: 250px;
 	padding: 5px;
 	width: 300px;
 }	#alerts .alert {

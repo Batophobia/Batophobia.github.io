@@ -43,14 +43,26 @@ var store = {
 		40:{name:"Nuke_Power"			,lvl:0	,forTwr:10	,inStock:false	,cst:750000},
 		41:{name:"Nuke_Range"			,lvl:0	,forTwr:10	,inStock:false	,cst:1500000},
 		42:{name:"Nuke_Rate"			,lvl:0	,forTwr:10	,inStock:false	,cst:1551200},
-		43:{name:"Nuke_Level"			,lvl:0	,forTwr:10	,inStock:false	,cst:12000000}
+		43:{name:"Nuke_Level"			,lvl:0	,forTwr:10	,inStock:false	,cst:12000000},
+		44:{name:"Manual Spawner"		,lvl:0	,forTwr:-1	,inStock:false	,cst:300}
 	},
 	
 	init : function(){
 		for(var itm in this.items){
 			if(this.items[itm].inStock){
 				var itmName=this.items[itm].name;
-				$("#store").append("<div id='store_"+itm+"' class='storeStock'>"+itmName.split("_")[0]+" "+itmName.split("_")[1]+"+: $"+this.items[itm].cst+"<br/><button onclick='store.buy("+itm+");'>Buy</button></div>");
+				if(itm<44)
+					$("#store").append("<div id='store_"+itm+"' class='storeStock'>"+itmName.split("_")[0]+"<br/>"+itmName.split("_")[1]+"+:<br/>$"+this.items[itm].cst+"<br/><button onclick='store.buy("+itm+");'>Buy</button></div>");
+				else
+					$("#store").append("<div id='store_"+itm+"' class='storeStock'>"+itmName+": $"+this.items[itm].cst+"<br/><button onclick='store.buy("+itm+");'>Buy</button></div>");
+			}
+			if(this.items[itm].lvl>0){
+				var temp=this.items[itm].lvl;
+				this.items[itm].lvl=0;
+				for(var i=temp;i>0;i--){
+					items.coins+=this.items[itm].cst;
+					this.buy(itm)
+				}
 			}
 		}
 	},
@@ -61,44 +73,72 @@ var store = {
 		
 		this.items[itm].inStock=true;
 		var itmName=this.items[itm].name;
-		$("#store").append("<div id='store_"+itm+"' class='storeStock'>"+itmName.split("_")[0]+" "+itmName.split("_")[1]+"+: $"+this.items[itm].cst+"<br/><button onclick='store.buy("+itm+");'>Buy</button></div>");
-	},
-	
-	tick: function(){
-		
+		if(itm<44)
+			$("#store").append("<div id='store_"+itm+"' class='storeStock'>"+itmName.split("_")[0]+"<br/>"+itmName.split("_")[1]+"+:<br/>$"+this.items[itm].cst+"<br/><button onclick='store.buy("+itm+");'>Buy</button></div>");
+		else
+			$("#store").append("<div id='store_"+itm+"' class='storeStock'>"+itmName+": $"+this.items[itm].cst+"<br/><button onclick='store.buy("+itm+");'>Buy</button></div>");
 	},
 	
 	buy: function(itm){
+		itm=parseInt(itm);
+		
 		if(items.coins<this.items[itm].cst)
 			return false;
 		
+		items.coins-=this.items[itm].cst;
 		this.items[itm].lvl++;
-		this.items[itm].cst+=Math.ceil(this.items[itm].cst*.25);
-		var itmType=this.items[itm].name[1];
+		$(".coin").text("$"+items.coins);
 		
-		if(itmType=="Power"){
-			towers.types[this.items[itm].forTwr].att++;
-		}else if(itmType=="Range"){
-			towers.types[this.items[itm].forTwr].rng++;
-		}else if(itmType=="Rate"){
-			towers.types[this.items[itm].forTwr].spd++;
-		}else if(itmType=="Level"){
-			towers.types[this.items[itm].forTwr].lvl++;
-			towers.types[this.items[itm].forTwr].rng+=towers.types[this.items[itm].forTwr].lvl;
-			towers.types[this.items[itm].forTwr].spd+=towers.types[this.items[itm].forTwr].lvl;
-			towers.types[this.items[itm].forTwr].att+=towers.types[this.items[itm].forTwr].lvl;
+		if(itm==43)
+			ments.award(73);
+		
+		if(itm<44){
+			this.items[itm].cst+=Math.ceil(this.items[itm].cst*.25);
+			var itmType=this.items[itm].name.split("_")[1];
+			
+			if(itmType=="Power"){
+				towers.types[this.items[itm].forTwr].att++;
+			}else if(itmType=="Range"){
+				towers.types[this.items[itm].forTwr].rng++;
+			}else if(itmType=="Rate"){
+				towers.types[this.items[itm].forTwr].spd++;
+			}else if(itmType=="Level"){
+				towers.types[this.items[itm].forTwr].lvl++;
+				towers.types[this.items[itm].forTwr].rng+=towers.types[this.items[itm].forTwr].lvl;
+				towers.types[this.items[itm].forTwr].spd+=towers.types[this.items[itm].forTwr].lvl;
+				towers.types[this.items[itm].forTwr].att+=towers.types[this.items[itm].forTwr].lvl;
+			}
+			
+			if(towers.types["0"].att>=20)
+				ments.award(74);
+			if(towers.types["9"].spd>=8)
+				ments.award(75);
+			if(towers.types["5"].rng>=15)
+				ments.award(83);
+			if(towers.types["4"].spd>=6)
+				ments.award(97);
+			if(towers.types[this.items[itm].forTwr].lvl>=6)
+				ments.award(98);
+		}else{
+			switch(itm){
+				case 44:
+					$("#spawn").show();
+					break;
+			}
 		}
 		
 		$("#store_"+itm).remove();
 		this.items[itm].inStock=false;
 		
-		var numTower=0;
-		for(var defense in towers.list){
-			if(towers.list[defense].id==this.items[itm].forTwr)
-				numTower++;
-		}
-		if(Math.floor(numType/(5*(1+(itm%4))))<this.items[itm].lvl){
-			store.stock(itm);
+		if(itm<44){
+			var numTower=0;
+			for(var defense in towers.list){
+				if(towers.list[defense].id==this.items[itm].forTwr)
+					numTower++;
+			}
+			if(Math.floor(numTower/(5*(1+(itm%4)))) > this.items[itm].lvl){
+				store.stock(itm);
+			}
 		}
 	}
 };
