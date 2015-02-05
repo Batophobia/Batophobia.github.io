@@ -1,0 +1,75 @@
+CardClicker Design Doc
+
+Terms:
+	Force - base currency
+  Abilities:
+	Bonus		- Extra element
+	Boost		- +1/+1
+	Extra		- Tokens
+	Heal		- Regain life
+	Vicious		- +1/+1 when attacking
+	Defensive	- +1/+1 when defending
+	Smite		- Destroy target unit
+	Transmute	- Give x of element where x is card cost
+	Buff		- Give until +x/+x
+	Protect		- Prevent X damage
+
+incremental for currencies (produced by factories?)
+Pull from repositories during matches
+Each turn, player gets 1 element (player picks which one)
+Elements:
+	Air		-	Yellow
+	Earth	-	Green
+	Water	-	Blue
+	Fire	-	Red
+Spend these to play cards
+Deck size is 40-60 cards
+bought decks are 45 cards
+	45/4 = 11.25
+Hand size is <=7
+Cards are of the following types:
+	Unit (Creature)
+	Mod	(Enchantment/Artifact)
+Units have the following attributes:
+	Cost
+	Name
+	Type
+	Quality
+	Special Abilities
+	Description (flavor text)
+	Attack
+	Defense
+Mods have the following attributes:
+	Cost
+	Name
+	Quality
+	Ability
+	Description (flavor text)
+Keep descriptions under 85 characters
+Cards can have abilities, such as
+	More certain element per turn
+	First Strike
+	Boost other card stats
+	Bigger hand size
+Unit type examples:
+	Militia (soldier)
+	Bird
+	Fish
+	Elf
+Card qualities, in order:
+	Common
+	Uncommon
+	Rare
+	Epic
+	Legendary
+	Mythical
+Booster packs randomly give
+	5 Common
+	3 Uncommon
+	1 Rare or better
+		52%	Rare
+		27%	Epic
+		14%	Legendary
+		7%	Mythical
+Boosters incremental costs
+Deck incremental costs faster, but choose which you want
