@@ -39,6 +39,10 @@ var enemy = {
 					dude.pos.x=.1;
 					dude.pos.y=55;
 					dude.nxtWaypoint=0;
+					
+					this.tilNextLvl+=ments.stats.ascensions;
+					if(this.tilNextLvl>5*this.maxLevel)
+						this.tilNextLvl=5*this.maxLevel;
 				}
 			}
 			
