@@ -17,7 +17,7 @@ var main = {
 	
 	tick : function(){
 		if(main.clearIt){
-			main.clear();
+			localStorage.clear();
 			return false;
 		}
 		
@@ -139,7 +139,12 @@ var main = {
 		main.clearIt=true;
 		window.localStorage.clear();
 		window.location.reload();
-		for(var i=0;i<1000;i++){}
+		
+		//There is no reason for this other than to try and waste time while clearing and reloading the page
+		var temp=Math.PI;
+		for(var i=0;i<10000;i++){
+			temp=Math.atan(temp);
+		}
 	},
 	
 	alrt: function(input){

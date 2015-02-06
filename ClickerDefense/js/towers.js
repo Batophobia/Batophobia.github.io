@@ -220,8 +220,10 @@ var towers = {
 				break;
 		}
 		
-		$("#tower_"+towers.selected).removeClass("sel");
-		towers.selected=-1;
+		if(items.coins<towers.types[towers.selected].cost){
+			$("#tower_"+towers.selected).removeClass("sel");
+			towers.selected=-1;
+		}
 	},
 	
 	shoot: function(twr, baddie){
