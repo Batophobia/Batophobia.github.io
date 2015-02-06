@@ -137,8 +137,8 @@ var main = {
 	clearIt: false,
 	clear: function(){
 		main.clearIt=true;
-		localStorage.clear();
-		location.reload();
+		window.localStorage.clear();
+		window.location.reload();
 	},
 	
 	alrt: function(input){
