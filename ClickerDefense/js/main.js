@@ -16,8 +16,10 @@ var main = {
 	delay: 20,
 	
 	tick : function(){
-		if(main.clearIt)
+		if(main.clearIt){
 			main.clear();
+			return false;
+		}
 		
 		now = new Date();
 		var elapsedTime = (now.getTime() - main.lastTick.getTime());
