@@ -21,14 +21,14 @@ var towers = {
 		0: {name:"Spitball"		, att:1	, hp:10	, spd:1	, rng:2	, cost:5		, lvl:1	, clr:"200,200,255"	, unlk:false},
 		1: {name:"P-Shooter"	, att:2	, hp:10	, spd:1	, rng:2	, cost:15		, lvl:1	, clr:"0,255,0"		, unlk:false},
 		2: {name:"BB Gun"		, att:4	, hp:10	, spd:2	, rng:1	, cost:55		, lvl:1	, clr:"128,128,128"	, unlk:false},
-		3: {name:"Pistol"		, att:4	, hp:15	, spd:2	, rng:2	, cost:200		, lvl:1	, clr:"120,120,200"	, unlk:false},
-		4: {name:"Auto-Rifle"	, att:5	, hp:15	, spd:3	, rng:3	, cost:500		, lvl:1	, clr:"200,120,120"	, unlk:false},
-		5: {name:"Sniper"		, att:6	, hp:10	, spd:1	, rng:4	, cost:1500		, lvl:1	, clr:"100,200,100"	, unlk:false},
-		6: {name:"Rocket"		, att:8 , hp:15	, spd:1	, rng:2	, cost:3000		, lvl:1	, clr:"100,100,100"	, unlk:false},
-		7: {name:"Cannon"		, att:10, hp:25	, spd:1	, rng:3	, cost:8000		, lvl:1	, clr:"125,100,100"	, unlk:false},
-		8: {name:"Missile"		, att:12, hp:25	, spd:2	, rng:4	, cost:20000	, lvl:1	, clr:"255,100,100"	, unlk:false},
-		9: {name:"Lazer"		, att:13, hp:20	, spd:4	, rng:5	, cost:50000	, lvl:1	, clr:"128,255,128"	, unlk:false},
-		10:{name:"Nuke"			, att:20, hp:30	, spd:2	, rng:6	, cost:120000	, lvl:1	, clr:"255,255,255"	, unlk:false},
+		3: {name:"Pistol"		, att:5	, hp:15	, spd:2	, rng:2	, cost:200		, lvl:1	, clr:"120,120,200"	, unlk:false},
+		4: {name:"Auto-Rifle"	, att:7	, hp:15	, spd:3	, rng:3	, cost:500		, lvl:1	, clr:"200,120,120"	, unlk:false},
+		5: {name:"Sniper"		, att:9	, hp:10	, spd:2	, rng:5	, cost:1500		, lvl:1	, clr:"100,200,100"	, unlk:false},
+		6: {name:"Rocket"		, att:12, hp:15	, spd:2	, rng:2	, cost:3000		, lvl:1	, clr:"100,100,100"	, unlk:false},
+		7: {name:"Cannon"		, att:14, hp:25	, spd:3	, rng:3	, cost:8000		, lvl:1	, clr:"125,100,100"	, unlk:false},
+		8: {name:"Missile"		, att:20, hp:25	, spd:3	, rng:4	, cost:20000	, lvl:1	, clr:"255,100,100"	, unlk:false},
+		9: {name:"Lazer"		, att:25, hp:20	, spd:5	, rng:5	, cost:50000	, lvl:1	, clr:"128,255,128"	, unlk:false},
+		10:{name:"Nuke"			, att:50, hp:30	, spd:3	, rng:6	, cost:120000	, lvl:1	, clr:"255,255,255"	, unlk:false},
 	},
 	list: {},
 	selected: -1,
@@ -45,8 +45,14 @@ var towers = {
 	
 	showInfo: function(obj){
 		var id=obj.id.split("_")[1];
+		var numType=0;
+		for(var defense in towers.list){
+			if(towers.list[defense].id==id)
+				numType++;
+		}
+		
 		$("#twrInfo").css('top',10+(id*39));
-		$("#twrInfo").html(towers.types[id].name+"<br/>LVL: "+towers.types[id].lvl+"<br/>ATT: "+towers.types[id].att+"<br/>SPD: "+towers.types[id].spd+"<br/>RNG: "+towers.types[id].rng);
+		$("#twrInfo").html(towers.types[id].name+"<br/>LVL: "+towers.types[id].lvl+"<br/>ATT: "+towers.types[id].att+"<br/>SPD: "+towers.types[id].spd+"<br/>RNG: "+towers.types[id].rng+"<br/># Out: "+numType);
 		$("#twrInfo").show();
 	},
 	
@@ -252,8 +258,10 @@ var towers = {
 					dist += (10*enmy.pos.y-twr.pos.y)*(10*enmy.pos.y-twr.pos.y);
 					dist=Math.sqrt(dist);
 					
-					if(dist <= twr.rng*20)
+					if(dist <= twr.rng*20){
 						towers.list[defense].tgt=baddie;
+						break;
+					}
 				}
 			}else{
 				towers.list[defense].cnt-=twr.spd;

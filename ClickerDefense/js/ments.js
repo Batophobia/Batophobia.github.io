@@ -74,7 +74,7 @@ var ments = {
 		72 :{name:"Scrap Yard"			,how2:"Have 100 Scrap"				,unlk:false},
 		73 :{name:"BFG"					,how2:"Level up the Nuke"			,unlk:false},
 		74 :{name:"Look At Me Now"		,how2:"Spitball ATT >= 20"			,unlk:false},
-		75 :{name:"PEW PEW PEW"			,how2:"Lazer SPD >= 8"				,unlk:false},
+		75 :{name:"PEW PEW PEW"			,how2:"Lazer SPD >= 10"				,unlk:false},
 		76 :{name:"Pop Some Tags"		,how2:"Make $20 per tick"			,unlk:false},
 		77 :{name:"Rich"				,how2:"Have $1000"					,unlk:false},
 		78 :{name:"Richer"				,how2:"Have $10000"					,unlk:false},

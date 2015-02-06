@@ -77,7 +77,6 @@ button:disabled {
 		padding-right:2px;
 	} .storeStock button{
 		font-size: 11px;
-		float: right;
 	}
 .rightBar:empty {
 	display:none;

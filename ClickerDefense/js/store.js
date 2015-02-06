@@ -111,7 +111,7 @@ var store = {
 			
 			if(towers.types["0"].att>=20)
 				ments.award(74);
-			if(towers.types["9"].spd>=8)
+			if(towers.types["9"].spd>=10)
 				ments.award(75);
 			if(towers.types["5"].rng>=15)
 				ments.award(83);

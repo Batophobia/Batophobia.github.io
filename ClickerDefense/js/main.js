@@ -16,6 +16,9 @@ var main = {
 	delay: 20,
 	
 	tick : function(){
+		if(main.clearIt)
+			main.clear();
+		
 		now = new Date();
 		var elapsedTime = (now.getTime() - main.lastTick.getTime());
 		
@@ -53,7 +56,13 @@ var main = {
 		data['map'] = map.waypoints;
 		data['items'].coins = items.coins;
 		data['items'].scrap = items.scrap;
-		data['store'] = store.items;
+		
+		for(var itm in store.items){
+			data.store[itm]={
+				inStock: store.items[itm].inStock,
+				lvl: store.items[itm].lvl
+			}
+		}
 		
 		for(var itm in ments.list)
 			data['ments'][itm] = ments.list[itm].unlk;
@@ -78,7 +87,12 @@ var main = {
 		towers.list=data['towers'];
 		items.coins=data['items'].coins;
 		items.scrap=data['items'].scrap;
-		store.items=data['store'];
+		
+		
+		for(var itm in store.items){
+			store.items[itm].inStock = data['store'][itm].inStock;
+			store.items[itm].lvl = data['store'][itm].lvl;
+		}
 		
 		for(var itm in ments.list)
 			ments.list[itm].unlk=data['ments'][itm];
@@ -118,7 +132,9 @@ var main = {
 		location.reload();
 	},
 	
+	clearIt: false,
 	clear: function(){
+		main.clearIt=true;
 		localStorage.clear();
 		location.reload();
 	},
