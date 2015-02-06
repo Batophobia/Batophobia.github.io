@@ -130,6 +130,17 @@ var store = {
 		$("#store_"+itm).remove();
 		this.items[itm].inStock=false;
 		
+		if(towers.selected>=0){
+			if(items.coins<towers.types[towers.selected].cost){
+				map.canMap.removeEventListener('mousemove', towers.example, false);
+				towers.selPos.x=-1;
+				towers.selPos.y=-1;
+				
+				$("#tower_"+towers.selected).removeClass("sel");
+				towers.selected=-1;
+			}
+		}
+		
 		if(itm<44){
 			var numTower=0;
 			for(var defense in towers.list){
