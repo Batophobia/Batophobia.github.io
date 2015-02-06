@@ -55,6 +55,14 @@ var map = {
 			else if(nxtPoint.x>55)
 				nxtPoint.x=55;
 			
+			if(i%2==0){
+				if(nxtPoint.x<28)
+					nxtPoint.x+=25;
+			}else{
+				if(nxtPoint.x>27)
+					nxtPoint.x-=25;
+			}
+			
 			this.drawWaypoint(nxtPoint);
 			this.waypoints[this.waypoints.length]={
 				x: nxtPoint.x,
