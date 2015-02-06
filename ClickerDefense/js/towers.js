@@ -3,13 +3,14 @@ var towers = {
 		if(Object.size(this.list)>0){
 			var tmpMaxTwr=0;
 			for(var i=0;i<Object.size(this.list);i++){
-				map.ctxMap.fillStyle='rgb('+this.list[i].clr+')';
+				var curTwr=this.types[this.list[i].id];
+				map.ctxMap.fillStyle='rgb('+curTwr.clr+')';
 				map.ctxMap.fillRect(this.list[i].pos.x-4,this.list[i].pos.y-4,8,8);
 				if(this.list[i].id>tmpMaxTwr)
 					tmpMaxTwr=this.list[i].id;
 				
-				this.types[this.list[i].id].cost += Math.floor(this.types[this.list[i].id].cost*.4);
-				$("#tower_"+this.list[i].id).html(towers.types[this.list[i].id].name+"<br/>$"+towers.types[this.list[i].id].cost);
+				curTwr.cost += Math.floor(curTwr.cost*.4);
+				$("#tower_"+this.list[i].id).html(curTwr.name+"<br/>$"+curTwr.cost);
 			}
 			for(var i=0;i<=tmpMaxTwr;i++)
 				this.unlock(i);
@@ -87,13 +88,6 @@ var towers = {
 		
 		towers.list[Object.size(towers.list)]={
 			id : towers.selected,
-			att: towers.types[towers.selected].att,
-			hp:  towers.types[towers.selected].hp,
-			spd: towers.types[towers.selected].spd,
-			rng: towers.types[towers.selected].rng,
-			cost:towers.types[towers.selected].cost,
-			lvl: towers.types[towers.selected].lvl,
-			clr: towers.types[towers.selected].clr,
 			cnt: 15,
 			tgt: -1,
 			pos: { x:tmp.x, y:tmp.y }
@@ -245,8 +239,12 @@ var towers = {
 		}
 		
 		for(var defense in towers.list){
-			var twr=towers.list[defense];
-			if(twr.tgt<0){
+			var twr=towers.types[towers.list[defense].id];
+			twr.pos=towers.list[defense].pos;
+			twr.tgt=towers.list[defense].tgt;
+			twr.cnt=towers.list[defense].cnt;
+			
+			if(parseInt(twr.tgt)<0){
 				for(var baddie in enemy.list){
 					var enmy=enemy.list[baddie];
 					
@@ -255,14 +253,14 @@ var towers = {
 					dist=Math.sqrt(dist);
 					
 					if(dist <= twr.rng*20)
-						twr.tgt=baddie;
+						towers.list[defense].tgt=baddie;
 				}
 			}else{
-				twr.cnt-=twr.spd;
+				towers.list[defense].cnt-=twr.spd;
 				var baddie=enemy.list[twr.tgt];
 				
 				if(baddie===undefined){
-					twr.tgt=-1;
+					towers.list[defense].tgt=-1;
 					return false;
 				}
 				
@@ -271,16 +269,16 @@ var towers = {
 				dist=Math.sqrt(dist);
 				
 				if(dist > twr.rng*20)
-					twr.tgt=-1;
+					towers.list[defense].tgt=-1;
 				
 				if(twr.cnt<=0){
-					twr.cnt=15;
+					towers.list[defense].cnt=15;
 					this.shoot(twr, baddie);
 					
 					baddie.hp-=(twr.att-baddie.def)+items.scrap;
 					if(baddie.hp<=0){
 						enemy.kill(twr.tgt);
-						twr.tgt=-1;
+						towers.list[defense].tgt=-1;
 					}
 				}
 			}

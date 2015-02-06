@@ -100,7 +100,7 @@ var map = {
 		this.ctxMap.closePath();
 		
 		for(var i=0;i<Object.size(towers.list);i++){
-			map.ctxMap.fillStyle='rgb('+towers.list[i].clr+')';
+			map.ctxMap.fillStyle='rgb('+towers.types[towers.list[i].id].clr+')';
 			map.ctxMap.fillRect(towers.list[i].pos.x-4,towers.list[i].pos.y-4,8,8);
 		}
 	},
