@@ -139,6 +139,7 @@ var main = {
 		main.clearIt=true;
 		window.localStorage.clear();
 		window.location.reload();
+		for(var i=0;i<1000;i++){}
 	},
 	
 	alrt: function(input){
