@@ -107,10 +107,6 @@ var towers = {
 		map.ctxMap.fillStyle='rgb('+towers.types[towers.selected].clr+')';
 		map.ctxMap.fillRect(tmp.x-4,tmp.y-4,8,8);
 		
-		map.canMap.removeEventListener('mousemove', towers.example, false);
-		towers.selPos.x=-1;
-		towers.selPos.y=-1;
-		
 		var numType=0;
 		for(var defense in towers.list){
 			if(towers.list[defense].id==towers.selected)
@@ -221,6 +217,10 @@ var towers = {
 		}
 		
 		if(items.coins<towers.types[towers.selected].cost){
+			map.canMap.removeEventListener('mousemove', towers.example, false);
+			towers.selPos.x=-1;
+			towers.selPos.y=-1;
+			
 			$("#tower_"+towers.selected).removeClass("sel");
 			towers.selected=-1;
 		}
