@@ -357,7 +357,7 @@ var store = {
 			strOutput+="~"+Math.ceil(Math.pow(1.2,lvl)*arrPrice[5])+"c";
 		}
 		this.items[itm].price = strOutput.slice(1);
-		$("#str"+itm).text(this.items[itm].display+" ("+this.items[itm].level+") - "+this.items[itm].price.replace("~",", "));
+		$("#str"+itm).text(this.items[itm].display+" ("+this.items[itm].level+") - "+this.items[itm].price.replace(/~/g,", "));
 		items.updatePellets();
 	},
 	
