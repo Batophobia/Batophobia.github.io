@@ -136,14 +136,16 @@ var main = {
 	
 	clearIt: false,
 	clear: function(){
-		main.clearIt=true;
-		window.localStorage.removeItem("ClickerDefenseSave");
-		window.location.reload();
-		
-		//There is no reason for this other than to try and waste time while clearing and reloading the page
-		var temp=Math.PI;
-		for(var i=0;i<10000;i++){
-			temp=Math.atan(temp);
+		if(confirm("Are you sure you want to erase your save data?  You will start completely over.")){
+			main.clearIt=true;
+			window.localStorage.removeItem("ClickerDefenseSave");
+			window.location.reload();
+			
+			//There is no reason for this other than to try and waste time while clearing and reloading the page
+			var temp=Math.PI;
+			for(var i=0;i<10000;i++){
+				temp=Math.atan(temp);
+			}
 		}
 	},
 	
