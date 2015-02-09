@@ -17,7 +17,7 @@ var main = {
 	
 	tick : function(){
 		if(main.clearIt){
-			localStorage.clear();
+			localStorage.removeItem("ClickerDefenseSave");
 			return false;
 		}
 		
@@ -137,7 +137,7 @@ var main = {
 	clearIt: false,
 	clear: function(){
 		main.clearIt=true;
-		window.localStorage.clear();
+		window.localStorage.removeItem("ClickerDefenseSave");
 		window.location.reload();
 		
 		//There is no reason for this other than to try and waste time while clearing and reloading the page
