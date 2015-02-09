@@ -143,12 +143,12 @@ var main = {
 				timesBeat: explore.places[group].timesBeat
 			}
 		}
-		localStorage["save"] = JSON.stringify(data);
+		localStorage["ClickminSave"] = JSON.stringify(data);
 	},
 	
 	load : function(){
-		if('save' in localStorage){
-			var data = JSON.parse(localStorage['save']);
+		if('ClickminSave' in localStorage){
+			var data = JSON.parse(localStorage['ClickminSave']);
 		}else{
 			items.types.stuff[0]={
 				display: "Red Onion",

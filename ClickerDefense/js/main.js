@@ -71,12 +71,12 @@ var main = {
 		
 		data['ments'].stats = ments.stats;
 		
-		localStorage["save"] = JSON.stringify(data);
+		localStorage["ClickerDefenseSave"] = JSON.stringify(data);
 	},
 	
 	load : function(){
-		if('save' in localStorage){
-			var data = JSON.parse(localStorage['save']);
+		if('ClickerDefenseSave' in localStorage){
+			var data = JSON.parse(localStorage['ClickerDefenseSave']);
 		}else{
 			items.addCoins(1);
 			return;
