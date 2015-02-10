@@ -213,6 +213,7 @@ var store = {
 			levelUp: function(){
 				this.level++;
 				pikmin.squad.max+=10;
+				$("#maxTeam").text(pikmin.squad.max);
 			}
 		},
 		itmNectar:	{

@@ -291,6 +291,8 @@ button:disabled {
 		padding-left: 3px;
 		padding-bottom: 3px;
 		font-size: 12px;
+	} .helpSquad{
+		font-size: 11px;
 	}
 .upArrow {
 	width: 0;

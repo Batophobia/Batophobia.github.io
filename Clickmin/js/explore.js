@@ -817,12 +817,10 @@ var explore = {
 				/*//
 				if(explore.places["14"].timesBeat==0){
 					
-				}else*/ if(randNumber>80){
+				}else*/ if(randNumber>40){
 					items.addRandomThing();
-				}else if(randNumber>75){
-					items.giveBomb();
 				}else{
-					items.givePellet();
+					items.giveBomb();
 				}
 				
 				this.blnEndless=confirm("Explore deeper?");
