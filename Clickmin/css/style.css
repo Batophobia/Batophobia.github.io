@@ -141,6 +141,7 @@ button:disabled {
 		padding: 5px;
 	} .pelletColor{
 		display: none;
+		font-size: 11px;
 	}.stuff div{
 		width: 90%;
 		padding: 5px;

@@ -63,13 +63,13 @@ var items = {
 			$("#item45").addClass("canShow");
 			$(".pellets").show();
 			$("#pellets"+clr).show();
-			$("#pellets"+clr).text(this.types.pellets[clr].display+" pellets: "+this.types.pellets[clr].num);
+			$("#pellets"+clr).text(this.types.pellets[clr].display+": "+this.types.pellets[clr].num);
 		}
 	},
 	
 	updatePellets: function(){
 		for(var clr in this.types.pellets){
-			$("#pellets"+clr).text(this.types.pellets[clr].display+" pellets: "+this.types.pellets[clr].num);
+			$("#pellets"+clr).text(this.types.pellets[clr].display+": "+this.types.pellets[clr].num);
 		}
 	},
 	
@@ -169,7 +169,7 @@ var items = {
 		var clr=colors[explore.batman(0,colors.length-1)];
 		this.types.pellets[clr].num+=Math.pow(5,Math.floor((explore.questArea+1)/4));
 		
-		$("#pellets"+clr).text(this.types.pellets[clr].display+" pellets: "+this.types.pellets[clr].num);
+		$("#pellets"+clr).text(this.types.pellets[clr].display+": "+this.types.pellets[clr].num);
 	},
 	
 	useFlower: function(itm, onClr){
