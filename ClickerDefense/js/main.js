@@ -117,6 +117,134 @@ var main = {
 			ments.award(72);
 	},
 	
+	exprt: function(){
+		var strExport="";
+		
+		for(var itm in map.waypoints){
+			strExport = strExport+"{"+map.waypoints[itm].x.toString()+","+map.waypoints[itm].y.toString()+"}";
+		}
+		strExport = strExport+":";
+		
+		for(var itm in towers.list){
+			strExport = strExport+"{"+towers.list[itm].id+","+towers.list[itm].cnt+","+towers.list[itm].tgt+","+towers.list[itm].pos.x+","+towers.list[itm].pos.y+"}";
+		}
+		strExport = strExport+":";
+		
+		strExport = strExport+items.coins+","+items.scrap;
+		strExport = strExport+":";
+		
+		strExport = strExport+enemy.maxLevel+","+enemy.tilNextLvl;
+		for(var itm in enemy.list){
+			strExport = strExport+"{"+enemy.list[itm].att+","+enemy.list[itm].clr+","+enemy.list[itm].def+","+enemy.list[itm].hp+","+enemy.list[itm].lvl+","+enemy.list[itm].nxtWaypoint+","+enemy.list[itm].spd+","+enemy.list[itm].pos.x+","+enemy.list[itm].pos.y+"}";
+		}
+		strExport = strExport+":";
+		
+		for(var itm in store.items){
+			strExport = strExport+"{"+store.items[itm].inStock.toString().replace("true",1).replace("false",0)+","+store.items[itm].lvl+"}";
+		}
+		strExport = strExport+":";
+		
+		for(var itm in ments.list)
+			strExport = strExport+ments.list[itm].unlk.toString().replace("true",1).replace("false",0);
+		
+		for(var itm in ments.stats)
+			strExport = strExport+","+ments.stats[itm];
+		
+		$("#txtExport").val(strExport);
+		$("#divExport").show();
+	},
+	
+	imprt: function(){
+		var strImport=$("#txtExport").val();
+		
+		if(strImport=='')
+			return false;
+		
+		strImport=strImport.split(":");
+		var strMap=strImport[0].split("}");
+		var strTowers=strImport[1].split("}");
+		var strItems=strImport[2].split(",");
+		var strEnemy=strImport[3];
+		var strStore=strImport[4].split("}");
+		var strMents=strImport[5].split(",");
+		
+		map.waypoints=[];
+		for(var itm in strMap){
+			strMap[itm]=strMap[itm].substring(1).split(",");
+			if(strMap[itm]!=''){
+				map.waypoints[map.waypoints.length]={
+					x: parseInt(strMap[itm][0]),
+					y: parseInt(strMap[itm][1])
+				};
+			}
+		}
+		
+		towers.list={};
+		for(var itm in strTowers){
+			strTowers[itm]=strTowers[itm].substring(1).split(",");
+			if(strTowers[itm]!=''){
+				towers.list[Object.size(towers.list)]={
+					id : strTowers[itm][0],
+					cnt: parseInt(strTowers[itm][1]),
+					tgt: strTowers[itm][2],
+					pos: { x:parseInt(strTowers[itm][3]), y:parseInt(strTowers[itm][4]) }
+				};
+			}
+		}
+		
+		items.coins=parseInt(strItems[0]);
+		items.scrap=parseInt(strItems[1]);
+		
+		var temp=strEnemy.split("{")[0].split(",");
+		enemy.maxLevel = temp[0];
+		enemy.tilNextLvl = temp[1];
+		strEnemy=strEnemy.substring(strEnemy.indexOf("{"));//TODO
+		enemy.list={};
+		strEnemy=strEnemy.split("}");
+		for(var itm in strEnemy){
+			strEnemy[itm]=strEnemy[itm].substring(1).split(",");
+			if(strEnemy[itm]!=''){
+				enemy.list[Object.size(enemy.list)]={
+					att : parseInt(strEnemy[itm][0]),
+					clr : strEnemy[itm][1]+","+strEnemy[itm][2]+","+strEnemy[itm][3],
+					def : parseInt(strEnemy[itm][4]),
+					hp  : parseInt(strEnemy[itm][5]),
+					lvl : parseInt(strEnemy[itm][6]),
+					nxtWaypoint:parseInt(strEnemy[itm][7]),
+					spd : parseInt(strEnemy[itm][8]),
+					pos : { x:parseInt(strEnemy[itm][9]), y:parseInt(strEnemy[itm][10]) }
+				};
+			}
+		}
+		
+		for(var itm in store.items){
+			var temp=strStore[itm].substring(1).split(",");
+			if(temp[0]=='1')
+				store.items[itm].inStock=true;
+			else
+				store.items[itm].inStock=false;
+			store.items[itm].lvl=parseInt(temp[1]);
+		}
+		
+		var blnMents=strMents[0];
+		for(var itm in ments.list){
+			var curMent=blnMents.charAt(0);
+			blnMents=blnMents.substring(1);
+			if(curMent=='1')
+				ments.list[itm].unlk=true;
+			else
+				ments.list[itm].unlk=false;
+		}
+		
+		var i=1;
+		for(var itm in ments.stats){
+			ments.stats[itm]=parseInt(strMents[i++]);
+		}
+		
+		this.save();
+		location.reload();
+	},
+	
 	renew: function(){
 		ments.stats.ascensions++;
 		items.scrap+=Math.floor(enemy.maxLevel/12);

@@ -18,6 +18,8 @@
     <!--[if lt IE 7]>
       <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
+	<div id="divExport"><textarea id="txtExport"></textarea><button onclick="main.imprt();">Import Save</button></div>
+	
    <div class="everything">
     <div id="leftBar" class="leftBar">
 		<div id="buttons" class="buttons">
@@ -33,9 +35,11 @@
     <div id='rightBar' class='rightBar'>
 		<div id="towers" class="towers"></div>
 		<div class="menuBtns">
+			<button id="btnImport" class="button" onclick="$('#divExport').toggle();">Import</button>
+			<button id="btnExport" class="button" onclick="main.exprt();">Export</button>
 			<button id="awards" class="button" onclick="$('#achievements').toggle();">Awards</button>
 		</div>
-		<div class="version">version 1.5</div>
+		<div class="version">version 1.6</div>
 	</div>
 	
 	<div id="mainBar" class="mainBar">

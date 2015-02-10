@@ -21,6 +21,15 @@ body {
         margin-right: auto;
     }
 }
+#divExport{
+	display:none;
+	position: absolute;
+	z-index:9999;
+}
+#txtExport{
+	background: #666666;
+	color:#DDDDDD;
+}
 button {
 	background: #222222;
 	border: 1px solid #CCCCCC;
