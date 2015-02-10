@@ -209,6 +209,7 @@ var store = {
 			level: 0,
 			init: function(){
 				pikmin.squad.max+=this.level*10;
+				$("#maxTeam").text(pikmin.squad.max);
 			},
 			levelUp: function(){
 				this.level++;
