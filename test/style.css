@@ -1,0 +1,14 @@
+.banner{
+	background: #FFFF00;
+}	.info{
+		background: #CCCCFF;
+		display: none;
+	}
+span{
+	background: #33FF33;
+	position: absolute;
+	z-index: -1;
+	bottom:0;
+	left:0;
+	padding:15px;
+}
