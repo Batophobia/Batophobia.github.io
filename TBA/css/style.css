@@ -1,0 +1,109 @@
+body {
+	background: #333333;
+	color: #CCCCCC;
+	font-size: 14px;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+.everything{
+	width: 705px;
+	position: absolute;
+}
+button {
+	background: #333333;
+	border: 1px solid #CCCCCC;
+	color: #CCCCCC;
+	cursor: pointer;
+	margin: 5px;
+	border-radius: 4px;
+}
+button:hover {
+	background: #666666;
+}
+button:disabled {
+	background: #999999;
+	cursor: default;
+}
+.mainDiplay{
+	width:400px;
+	height:500px;
+	position:relative;
+	border: 1px solid #CCCCCC;
+}	.consoleDisplay{
+		position: absolute;
+		bottom:1px;
+		width: 100%;
+		height: 50px;
+		border-top: 1px dashed #CCCCCC;
+	} .mainOutput{
+		width: 390px;
+		height: 490px;
+		display: block;
+		margin-left: auto;
+        margin-right: auto;
+		border: 0px;
+		background: #333333;
+		color: #CCCCCC;
+	}
+.version{
+	position: absolute;
+	right:15px;
+	bottom:15px;
+}
+.codeArea{
+	width:300px;
+	height:500px;
+	position:absolute;
+	top:0px;
+	right:0px;
+	border: 1px solid #CCCCCC;
+}	.codeBtns{
+		position: absolute;
+		bottom:1px;
+	} .levelCode{
+		width:275px;
+		height:200px;
+		display: block;
+		margin-left: auto;
+        margin-right: auto;
+		background: #222222;
+		color: #CCCCCC;
+	} .displayCode{
+		width:275px;
+		height:225px;
+		margin-left: auto;
+        margin-right: auto;
+		overflow: scroll;
+		background: #666666;
+		cursor: default;
+	}
+.overlay{
+	position: absolute;
+	top: 50px;
+	left: 50px;
+	background: #444444;
+	border: 1px solid #CCCCCC;
+	width:550px;
+	height:350px;
+}	.overlay:empty{
+		display:none;
+	}
+.hdnCode{
+	width:0px;
+	height:0px;
+	display:none;
+}
+#alerts {
+	background: #333333;
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	padding: 5px;
+	width: 300px;
+}	#alerts .alert {
+		border-bottom: 1px dashed #CCCCCC;
+		text-align: center;
+	} #alerts:empty {
+		display:none;
+	}

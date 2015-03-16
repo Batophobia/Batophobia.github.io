@@ -1,0 +1,35 @@
+<html>
+<head>
+	<style>
+		body{
+			background: 333333;
+			color: CCCCCC;
+		}
+		.consoleDisplay{
+			position: absolute;
+			bottom:1px;
+			width: 98%;
+			height: 50px;
+			border-top: 1px dashed #CCCCCC;
+			overflow: hidden;
+		}
+	</style>
+</head>
+
+<body>
+	<div id='outStuff'></div>
+	<div class="consoleDisplay" id="consoleDisplay"></div>
+	<script src="js/jquery.js"></script>
+	<script>
+	(function () {
+		var realConsole = console.log;
+		console.log = function (message) {
+			var elem=document.getElementById('consoleDisplay');
+			$('#consoleDisplay').append("<div>- "+message+"</div>");
+			elem.scrollTop = elem.scrollHeight;
+			realConsole(message);
+		}
+	})();
+	</script>
+</body>
+</html>
