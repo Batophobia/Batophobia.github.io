@@ -65,9 +65,11 @@ button:disabled {
 	height:750px;
 	margin-left:auto;
 	margin-right:auto;
+	z-index: -99;
 }	.playerSide{
 		border: 1px solid #999999;
 		width:100%;
+		z-index: -98;
 	}	#oppHand{
 			width:1190px;
 			height:25px;
@@ -77,15 +79,18 @@ button:disabled {
 		}#plrHand{
 			width:100%;
 			height:210px;
+			z-index: -97;
 		} .field{
 			width:100%;
 			height:225px;
+			z-index: -96;
 		}	.field .card{
 				margin-left:10px;
 				float: left;
 			}
 	#oppSide{
 		height:260px;
+		z-index: -98;
 	}	#oppHand .card{
 			float: left;
 		}
@@ -144,11 +149,153 @@ button:disabled {
 	width:150px;
 	height:200px;
 	font-size:12px;
+	z-index: 1;
 }	.cardTops{
 		margin-bottom: 10px;
 		border: 1px dotted #333333;
 		height: 17px;
-	}.cardBody{
+	}	.cardTops span{
+			box-sizing:border-box;
+			-moz-box-sizing:border-box;
+			-webkit-box-sizing:border-box;
+			display: inline-block;
+			width: 12px;
+			height: 12px;
+			border-radius: 50%;
+			font-size: 10px;
+		}	.a1::before{
+				border: 6px solid #FFFF69;
+				border-right-color: #FFFF69;
+				border-bottom-color: #FFFF69;
+				border-top-color: #FFFF69;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.e1::before{
+				border: 6px solid #99FF99;
+				border-left-color: #99FF99;
+				border-right-color: #99FF99;
+				border-bottom-color: #99FF99;
+				border-top-color: #99FF99;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.w1::before{
+				border: 6px solid #66CCFF;
+				border-left-color: #66CCFF;
+				border-right-color: #66CCFF;
+				border-bottom-color: #66CCFF;
+				border-top-color: #66CCFF;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.f1::before{
+				border: 6px solid #FF9966;
+				border-left-color: #FF9966;
+				border-right-color: #FF9966;
+				border-bottom-color: #FF9966;
+				border-top-color: #FF9966;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.a2::before{
+				border-right-color: #FFFF69;
+				border-bottom-color: #FFFF69;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.e2::before{
+				border-right-color: #99FF99;
+				border-bottom-color: #99FF99;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.w2::before{
+				border-right-color: #66CCFF;
+				border-bottom-color: #66CCFF;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.f2::before{
+				border-right-color: #FF9966;
+				border-bottom-color: #FF9966;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.a3::before{
+				border-left-color: #FFFF69;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.e3::before{
+				border-left-color: #99FF99;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.w3::before{
+				border-left-color: #66CCFF;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.f3::before{
+				border-left-color: #FF9966;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.a4::before{
+				border-right-color: #FFFF69;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.e4::before{
+				border-right-color: #99FF99;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.w4::before{
+				border-right-color: #66CCFF;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.f4::before{
+				border-right-color: #FF9966;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}
+	.cardBody{
 		position: relative;
 		padding: 5px;
 		margin-bottom: 10px;
@@ -183,6 +330,7 @@ button:disabled {
 	border: 1px solid #333333;
 	border-radius: 5px;
 	padding: 5px;
+	z-index:99;
 }	#helpTip:empty{
 		display:none;
 	}

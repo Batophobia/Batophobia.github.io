@@ -13,14 +13,15 @@ var player = {
 	
 	draw: function(){
 		if(this.hand.length >= this.maxHandSize){
-			//Discard
+			//No Draw
+			return;
 		}
 		this.hand.push(this.deck.pop());
 		
 		var crdDetails=cards.list[this.hand[this.hand.length-1]];
 		
 		var strCard='<div class="card '+crdDetails.kind+'" id="plr'+(this.hand.length-1)+'">';
-			strCard=strCard+'<div class="cardTops">'+crdDetails.cost+': '+crdDetails.name+'</div>';
+			strCard=strCard+'<div class="cardTops">'+cards.dispCost(crdDetails.cost)+': '+crdDetails.name+'</div>';
 			strCard=strCard+'<div class="cardBody"><span class="crdSpecial">'+crdDetails.spec+'</span><div class="cardDesc">'+crdDetails.desc+'</div></div>';
 			if(crdDetails.kind=="unit"){
 				strCard=strCard+'<div class="cardSubs">'+crdDetails.type+' - '+crdDetails.rare+'</div>';
@@ -31,7 +32,7 @@ var player = {
 		strCard=strCard+'</div>';
 		
 		$("#plrHand").append(strCard);
-		$("#plr"+(this.hand.length-1)).on('click', function(){
+		$("#plrHand #plr"+(this.hand.length-1)).on('click', function(){
 			game.play(this);
 		});
 	},
