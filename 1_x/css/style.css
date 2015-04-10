@@ -124,7 +124,7 @@ button:disabled {
 	position: absolute;
 	left: 100px;
 }	.map{
-		border: 1px solid #339933;
+		border: 1px solid #999999;
 		position: relative;
 		top: 20px;
 		left: 20px;
@@ -150,7 +150,7 @@ button:disabled {
 	}	.progPercent{
 			width: 100%;
 			height: 100%;
-			background-color: #669966;
+			background-color: #CCCCCC;
 		}
 .achievements{
 	display: none;

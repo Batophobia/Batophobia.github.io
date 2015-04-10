@@ -2,8 +2,7 @@ var main = {
 	init: function(){
 		this.load();
 		ments.init();
-		
-		timerID=setInterval("main.tick();",this.delay);
+		display.init();
 	},
 	timerID: 0,
 	counter: 0,
@@ -43,7 +42,7 @@ var main = {
 				$(this).remove();
 			});
 		},3000);
-	}
+	},
 };
 
 Object.size = function(obj) {
