@@ -1,0 +1,70 @@
+<html>
+<head></head>
+<body style="background-color: #222; color: #CCC;">
+<div id="txtResponse" style="background-color: #111; color: #CCC; width: 400px; height: 400px;"></div>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		/*
+		var wikiURL = 'http://en.wikipedia.org/w/api.php';
+		$.ajax( {
+			url: wikiURL,
+			jsonp: "callback", 
+			dataType: 'jsonp', 
+			data: { 
+				action: "query",
+				format: "json",
+				prop: "extracts",
+				titles: "Magnamite"
+			},
+			xhrFields: { withCredentials: false },
+			success: function(data) {
+				var id=data["query"]["pages"];
+				id=Object.keys(id)[0];
+				$("#txtResponse").val(data["query"]["pages"][id]["extract"]);
+			}
+		});
+		/*/
+		var wikiURL = 'http://pokemon.wikia.com/api.php';
+		$.ajax( {
+			url: wikiURL,
+			jsonp: "callback", 
+			dataType: 'jsonp', 
+			data: { 
+				action: "parse",
+				format: "json",
+				//prop: "revisions",
+				page: "Ditto"
+			},
+			xhrFields: { withCredentials: false },
+			success: function(data) {
+				var strHtml = data["parse"]["text"]["*"];
+				strHtml = "<h3><span class='mw-headline' id=\"" + strHtml.substr(strHtml.split("Sprite")[0].length);
+				//var id=data["parse"]["text"];
+				//id=Object.keys(id)[0];
+				//$.ajax( {
+				//	url: wikiURL,
+				//	jsonp: "callback", 
+				//	dataType: 'jsonp', 
+				//	data: { 
+				//		action: "parse",
+				//		format: "json",
+				//		//prop: "revisions",
+				//		titles: "Ditto"
+				//	},
+				//	xhrFields: { withCredentials: false },
+				//	success: function(data) {
+				//		var id=data["query"]["pages"];
+				//		id=Object.keys(id)[0];
+				//		$("#txtResponse").val(data["query"]["pages"][id]["extract"]);
+				//	}
+				//});
+				$("#txtResponse").html(strHtml);
+			}
+		});
+		//*/
+	});
+</script>
+</html>
