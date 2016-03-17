@@ -10,17 +10,22 @@
 	$(document).ready(function(){
 		$.ajax({
 			url: 'http://www.imdb.com/xml/find'
-			, dataType: 'json'
+			, dataType: 'xml'
 			, cache: true
-			//, jsonp: "callback"
+			//, jsonp: false
+			//, jsonpCallback: 'jsonCallback'
 			, data: {
 				q: "lost"
 				, nr: 1
 				, tt: "on"
-				, json: 1
-				, s: "ep"
+				, xml: 1
+				//, s: "ep"
 			}
-		}).success(function (data) {
+		}).done(function (data) {
+			$("#txtBox").val(data);
+		}).error(function (data) {
+			$("#txtBox").val(data);
+		}).always(function (data) {
 			$("#txtBox").val(data);
 		});
 	});
