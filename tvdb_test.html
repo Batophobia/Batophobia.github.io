@@ -8,11 +8,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script>
 	$(document).ready(function(){
+		
+	});
+	
+	fetchJSON: function (url) {
+		var root = 'https://query.yahooapis.com/v1/public/yql?q=';
+		var yql = 'select * from xml where url="' + url + '"';
+		var proxy_url = root + encodeURIComponent(yql) + '&format=json&diagnostics=false&callback=xmlCallback';
 		$.ajax({
-			url: 'http://thetvdb.com/api/GetSeries.php'
-			, dataType: 'xml'
+			url: proxy_url
+			//, dataType: 'jsonp'
 			//, cache: true
-			//, jsonp: false //"jsonp"
+			//, jsonp: "jsonp"
 			//, jsonpCallback: 'ajaxData'
 			, data: {
 				seriesname: "Eureka"
@@ -25,6 +32,10 @@
 		//	$("#txtBox").val(data);
 		});
 		//*/
-	});
+    }
+	
+	function xmlCallback(data){
+		$("#txtBox").val(data);
+	}
 </script>
 </html>
