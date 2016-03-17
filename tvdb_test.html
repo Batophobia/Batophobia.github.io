@@ -14,29 +14,22 @@
 	function fetchJSON(url) {
 		var root = 'https://query.yahooapis.com/v1/public/yql?q=';
 		var yql = 'select * from xml where url="' + url + '"';
-		var proxy_url = root + encodeURIComponent(yql) + '&format=json&diagnostics=false&callback=xmlCallback';
+		var proxy_url = root + encodeURIComponent(yql) + '&format=json&diagnostics=false&callback=x';
 		$.ajax({
 			url: proxy_url
 			, data: {
 				seriesname: "Eureka"
 			}
-		//}).done(function (data) {
-		//	$("#txtBox").val(data);
-		//	data = JSON.parse(data);
-		//	for(var itm in data){
-		//		var strHtml = "<div>";
-		//		$("#txtResponse").append(strHtml+"</div>");
-		//	}
+		}).done(function (data) {
+			$("#txtBox").val(data);
+			data = JSON.parse(data);
+			for(var itm in data){
+				var strHtml = "<div>";
+				$("#txtResponse").append(strHtml+"</div>");
+			}
 		});
     }
 	
-	function xmlCallback(data){
-		$("#txtBox").val(data);
-		data = JSON.parse(data);
-		for(var itm in data){
-			var strHtml = "<div>";
-			$("#txtResponse").append(strHtml+"</div>");
-		}
-	}
+	function x(data){ }
 </script>
 </html>
