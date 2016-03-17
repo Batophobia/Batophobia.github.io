@@ -8,11 +8,12 @@
 <script src="test/jquery.js"></script>
 <script>
 	$(document).ready(function(){
+		$.getScript('http://www.imdb.com/xml/find?json=1&nr=1&tt=on&q=lost');
 		$.ajax({
 			url: 'http://www.imdb.com/xml/find'
 			, dataType: 'jsonp'
 			, cache: true
-			, jsonp: "jsonp"
+			, jsonp: false //"jsonp"
 			, jsonpCallback: 'ajaxData'
 			, data: {
 				q: "lost"
