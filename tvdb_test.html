@@ -23,7 +23,7 @@
 		}).done(function (data) {
 			data = data.substr(6, data.length-8);
 			$("#txtBox").val(data);
-			data = JSON.parse(data);
+			data = JSON.parse(data)["query"]["results"]["Data"];
 			for(var itm in data){
 				var strHtml = "<div>";
 				$("#txtResponse").append(strHtml+"</div>");
