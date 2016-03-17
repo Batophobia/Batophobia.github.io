@@ -17,21 +17,17 @@
 		var proxy_url = root + encodeURIComponent(yql) + '&format=json&diagnostics=false&callback=xmlCallback';
 		$.ajax({
 			url: proxy_url
-			//, dataType: 'jsonp'
-			//, cache: true
-			//, jsonp: "jsonp"
-			//, jsonpCallback: 'ajaxData'
 			, data: {
 				seriesname: "Eureka"
 			}
 		}).done(function (data) {
 			$("#txtBox").val(data);
-		//}).error(function (data) {
-		//	$("#txtBox").val(data);
-		//}).always(function (data) {
-		//	$("#txtBox").val(data);
+			data = JSON.parse(data);
+			for(var itm in data){
+				var strHtml = "<div>";
+				$("#txtResponse").append(strHtml+"</div>");
+			}
 		});
-		//*/
     }
 	
 	function xmlCallback(data){
