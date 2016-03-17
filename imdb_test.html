@@ -10,10 +10,10 @@
 	$(document).ready(function(){
 		$.ajax({
 			url: 'http://www.imdb.com/xml/find'
-			, dataType: 'json'
+			, dataType: 'jsonp'
 			, cache: true
-			//, jsonp: false
-			//, jsonpCallback: 'jsonCallback'
+			, jsonp: "jsonp"
+			, jsonpCallback: 'ajaxData'
 			, data: {
 				q: "lost"
 				, nr: 1
@@ -21,13 +21,16 @@
 				, json: 1
 				//, s: "ep"
 			}
-		}).done(function (data) {
-			$("#txtBox").val(data);
-		}).error(function (data) {
-			$("#txtBox").val(data);
-		}).always(function (data) {
-			$("#txtBox").val(data);
+		//}).done(function (data) {
+		//	$("#txtBox").val(data);
+		//}).error(function (data) {
+		//	$("#txtBox").val(data);
+		//}).always(function (data) {
+		//	$("#txtBox").val(data);
 		});
 	});
+	function ajaxData(data){
+		$("#txtBox").val(data);
+	}
 </script>
 </html>
