@@ -1,0 +1,28 @@
+<html>
+<head></head>
+<body style="background-color: #222; color: #CCC;">
+<textarea id="txtBox"></textarea>
+<div id="txtResponse" style="background-color: #111; color: #CCC; width: 400px; height: 400px;"></div>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$.ajax({
+			url: 'http://www.imdb.com/xml/find'
+			, dataType: 'json'
+			, cache: true
+			//, jsonp: "callback"
+			, data: {
+				q: "lost"
+				, nr: 1
+				, tt: "on"
+				, json: 1
+				, s: "ep"
+			}
+		}).success(function (data) {
+			$("#txtBox").val(data);
+		});
+	});
+</script>
+</html>
