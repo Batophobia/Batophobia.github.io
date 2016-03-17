@@ -11,7 +11,7 @@
 		fetchJSON("http://thetvdb.com/api/GetSeries.php?seriesname=Eureka");
 	});
 	
-	fetchJSON: function (url) {
+	function fetchJSON(url) {
 		var root = 'https://query.yahooapis.com/v1/public/yql?q=';
 		var yql = 'select * from xml where url="' + url + '"';
 		var proxy_url = root + encodeURIComponent(yql) + '&format=json&diagnostics=false&callback=xmlCallback';
