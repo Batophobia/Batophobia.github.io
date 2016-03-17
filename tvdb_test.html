@@ -21,6 +21,7 @@
 				seriesname: "Eureka"
 			}
 		}).done(function (data) {
+			data = data.substr(6, data.length-8);
 			$("#txtBox").val(data);
 			data = JSON.parse(data);
 			for(var itm in data){
