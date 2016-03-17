@@ -10,7 +10,7 @@
 	$(document).ready(function(){
 		$.ajax({
 			url: 'http://www.imdb.com/xml/find'
-			, dataType: 'xml'
+			, dataType: 'json'
 			, cache: true
 			//, jsonp: false
 			//, jsonpCallback: 'jsonCallback'
@@ -18,7 +18,7 @@
 				q: "lost"
 				, nr: 1
 				, tt: "on"
-				, xml: 1
+				, json: 1
 				//, s: "ep"
 			}
 		}).done(function (data) {
