@@ -23,9 +23,9 @@
 			data = JSON.parse(data)["query"]["results"]["IMDbResults"]["ResultSet"][0]["ImdbEntity"];
 			//for(var itm in data){
 				var strHtml = "<div>";
-				strHtml = strHtml + "<span>"+data["id"]+"</span>";
-				strHtml = strHtml + "<span>"+data["content"]+"</span>";
-				strHtml = strHtml + "<span>"+data["Description"]+"</span>";
+				strHtml = strHtml + "ID: <span>"+data["id"]+"</span>";
+				strHtml = strHtml + "<br/>Title: <span>"+data["content"]+"</span>";
+				strHtml = strHtml + "<br/>Description: <span>"+data["Description"]+"</span>";
 				$("#txtResponse").append(strHtml+"</div>");
 			//}
 		});
