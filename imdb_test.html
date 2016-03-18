@@ -25,6 +25,7 @@
 		$.ajax({
 			url: proxy_url
 		}).done(function (data) {
+			$("#txtResponse").html("");
 			data = data.substr(6, data.length-8);
 			$("#txtBox").val(data);
 			data = JSON.parse(data)["query"]["results"]["IMDbResults"]["ResultSet"][0]["ImdbEntity"];
