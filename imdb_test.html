@@ -21,7 +21,7 @@
 		$(document).on("click",".imdbEntry", function(){
 			$("#txtPage").html("");
 			$.ajax({
-				url: "http://www.imdb.com/title/"+this.attr("imdbId")+"/episodes"
+				url: "http://www.imdb.com/title/"+$(this).attr("imdbId")+"/episodes"
 			}).done(function (data) {
 				$("#txtPage").html(data);
 			});
@@ -48,7 +48,7 @@
 					$("#txtResponse").append(strHtml+"</div>");
 				}
 			}else{
-				var strHtml = "<div imdbId='"+data[itm]["id"]+"' class='imdbEntry'>";
+				var strHtml = "<div imdbId='"+data["id"]+"' class='imdbEntry'>";
 				strHtml = strHtml + "ID: <span>"+data["id"]+"</span>";
 				strHtml = strHtml + "<br/>Title: <span>"+data["content"]+"</span>";
 				strHtml = strHtml + "<br/>Description: <span>"+data["Description"]["content"]+"</span>";
