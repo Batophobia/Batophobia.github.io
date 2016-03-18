@@ -25,7 +25,7 @@
 				var strHtml = "<div>";
 				strHtml = strHtml + "ID: <span>"+data["id"]+"</span>";
 				strHtml = strHtml + "<br/>Title: <span>"+data["content"]+"</span>";
-				strHtml = strHtml + "<br/>Description: <span>"+data["Description"]+"</span>";
+				strHtml = strHtml + "<br/>Description: <span>"+data["Description"]["content"]+"</span>";
 				$("#txtResponse").append(strHtml+"</div>");
 			//}
 		});
