@@ -41,14 +41,14 @@
 			data = JSON.parse(data)["query"]["results"]["IMDbResults"]["ResultSet"][0]["ImdbEntity"];
 			if(data.length>1){
 				for(var itm in data){
-					var strHtml = "<div imdbId='"data[itm]["id"]"' class='imdbEntry'>";
+					var strHtml = "<div imdbId='"+data[itm]["id"]+"' class='imdbEntry'>";
 					strHtml = strHtml + "ID: <span>"+data[itm]["id"]+"</span>";
 					strHtml = strHtml + "<br/>Title: <span>"+data[itm]["content"]+"</span>";
 					strHtml = strHtml + "<br/>Description: <span>"+data[itm]["Description"]["content"]+"</span>";
 					$("#txtResponse").append(strHtml+"</div>");
 				}
 			}else{
-				var strHtml = "<div imdbId='"data[itm]["id"]"' class='imdbEntry'>";
+				var strHtml = "<div imdbId='"+data[itm]["id"]+"' class='imdbEntry'>";
 				strHtml = strHtml + "ID: <span>"+data["id"]+"</span>";
 				strHtml = strHtml + "<br/>Title: <span>"+data["content"]+"</span>";
 				strHtml = strHtml + "<br/>Description: <span>"+data["Description"]["content"]+"</span>";
