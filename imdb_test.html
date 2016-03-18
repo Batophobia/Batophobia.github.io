@@ -20,12 +20,12 @@
 		}).done(function (data) {
 			data = data.substr(6, data.length-8);
 			$("#txtBox").val(data);
-			data = JSON.parse(data)["query"]["results"];
+			data = JSON.parse(data)["query"]["results"]["IMDbResults"]["ResultSet"][0];
 			for(var itm in data){
 				var strHtml = "<div>";
-				strHtml = strHtml + "<span>"+data[itm]["SeriesName"]+"</span>";
-				strHtml = strHtml + "<span>"+data[itm]["SeriesName"]+"</span>";
-				strHtml = strHtml + "<span>"+data[itm]["Overview"]+"</span>";
+				strHtml = strHtml + "<span>"+data[itm]["id"]+"</span>";
+				strHtml = strHtml + "<span>"+data[itm]["content"]+"</span>";
+				strHtml = strHtml + "<span>"+data[itm]["Description"]+"</span>";
 				$("#txtResponse").append(strHtml+"</div>");
 			}
 		});
