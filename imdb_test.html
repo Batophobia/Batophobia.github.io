@@ -29,13 +29,21 @@
 			data = data.substr(6, data.length-8);
 			$("#txtBox").val(data);
 			data = JSON.parse(data)["query"]["results"]["IMDbResults"]["ResultSet"][0]["ImdbEntity"];
-			//for(var itm in data){
+			if(data.length>1){
+				for(var itm in data){
+					var strHtml = "<div>";
+					strHtml = strHtml + "ID: <span>"+data["id"]+"</span>";
+					strHtml = strHtml + "<br/>Title: <span>"+data["content"]+"</span>";
+					strHtml = strHtml + "<br/>Description: <span>"+data["Description"]["content"]+"</span>";
+					$("#txtResponse").append(strHtml+"</div>");
+				}
+			}else{
 				var strHtml = "<div>";
 				strHtml = strHtml + "ID: <span>"+data["id"]+"</span>";
 				strHtml = strHtml + "<br/>Title: <span>"+data["content"]+"</span>";
 				strHtml = strHtml + "<br/>Description: <span>"+data["Description"]["content"]+"</span>";
 				$("#txtResponse").append(strHtml+"</div>");
-			//}
+			}
 		});
     }
 	
