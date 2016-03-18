@@ -15,7 +15,7 @@
 		fetchJSON(baseURL+"Eureka");
 		
 		$("#getInfo").click(function(e){
-			fetchJSON(baseURL + $("#showTitle").val().replace(' ',''));
+			fetchJSON(baseURL + $("#showTitle").val().replace(' ','+'));
 		});
 		
 		$(document).on("click",".imdbEntry", function(){
