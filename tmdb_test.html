@@ -19,7 +19,14 @@
 		});
 		
 		$(document).on("click",".imdbEntry", function(){
-			$("#txtPage").load("http://www.imdb.com/title/"+$(this).attr("imdbId")+"/episodes","",function (data) {
+			var apikey = "7b91e3ef38e0bc36426c765c54c1503b"
+			$.ajx({
+				url: "https://api.themoviedb.org/3/find/"+$(this).attr("imdbId"),
+				data: {
+					external_source: "imdb_id",
+					api_key: apikey
+				}
+			}).done(function(data){
 				$("#txtPage").html(data);
 			});
 		});
