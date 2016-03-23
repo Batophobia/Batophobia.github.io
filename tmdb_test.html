@@ -27,7 +27,15 @@
 					api_key: apikey
 				}
 			}).done(function(data){
-				$("#txtPage").html(data);
+				$("#txtBox").val(data);
+				data = JSON.parse(data)["tv_results"];
+				for(var itm in data){
+					var strHtml = "<div imdbId='"+data[itm]["id"]+"' class='imdbEntry'>";
+					strHtml = strHtml + "ID: <span>"+data[itm]["id"]+"</span>";
+					strHtml = strHtml + "<br/>Title: <span>"+data[itm]["name"]+"</span>";
+					strHtml = strHtml + "<br/>Description: <span>"+data[itm]["overview"]["content"]+"</span>";
+					$("#txtPage").append(strHtml+"</div>");
+				}
 			});
 		});
 	});
