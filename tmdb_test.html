@@ -1,30 +1,59 @@
 <html>
 <head></head>
 <body style="background-color: #222; color: #CCC;">
+<input type="text" id="showTitle" value="Eureka"/> <br/>
+<input type="button" id="getInfo" value="Search"/> <br/>
 <textarea id="txtBox"></textarea>
 <div id="txtResponse" style="background-color: #111; color: #CCC; width: 400px; height: 400px;"></div>
+<div id="txtPage" style="background-color: #111; color: #CCC; width: 400px; height: 400px; float: right;"></div>
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script>
+	var baseURL = "http://www.imdb.com/xml/find?nr=1&tt=on&xml=1&q=";
 	$(document).ready(function(){
-		$.ajax({
-			url: 'http://thetvdb.com/api/GetSeries.php'
-			, dataType: 'xml'
-			//, cache: true
-			//, jsonp: false //"jsonp"
-			//, jsonpCallback: 'ajaxData'
-			, data: {
-				seriesname: "Eureka"
-			}
-		}).done(function (data) {
-			$("#txtBox").val(data);
-		//}).error(function (data) {
-		//	$("#txtBox").val(data);
-		//}).always(function (data) {
-		//	$("#txtBox").val(data);
+		fetchJSON(baseURL+"Eureka");
+		
+		$("#getInfo").click(function(e){
+			fetchJSON(baseURL + $("#showTitle").val().replace(' ','+'));
 		});
-		//*/
+		
+		$(document).on("click",".imdbEntry", function(){
+			$("#txtPage").load("http://www.imdb.com/title/"+$(this).attr("imdbId")+"/episodes","",function (data) {
+				$("#txtPage").html(data);
+			});
+		});
 	});
+	
+	function fetchJSON(url) {
+		var root = 'https://query.yahooapis.com/v1/public/yql?q=';
+		var yql = "select * from xml where url='"+ url + "'";
+		var proxy_url = root + encodeURIComponent(yql) + '&format=json&diagnostics=false&callback=x';
+		$.ajax({
+			url: proxy_url
+		}).done(function (data) {
+			$("#txtResponse").html("");
+			data = data.substr(6, data.length-8);
+			$("#txtBox").val(data);
+			data = JSON.parse(data)["query"]["results"]["IMDbResults"]["ResultSet"][0]["ImdbEntity"];
+			if(data.length>1){
+				for(var itm in data){
+					var strHtml = "<div imdbId='"+data[itm]["id"]+"' class='imdbEntry'>";
+					strHtml = strHtml + "ID: <span>"+data[itm]["id"]+"</span>";
+					strHtml = strHtml + "<br/>Title: <span>"+data[itm]["content"]+"</span>";
+					strHtml = strHtml + "<br/>Description: <span>"+data[itm]["Description"]["content"]+"</span>";
+					$("#txtResponse").append(strHtml+"</div>");
+				}
+			}else{
+				var strHtml = "<div imdbId='"+data["id"]+"' class='imdbEntry'>";
+				strHtml = strHtml + "ID: <span>"+data["id"]+"</span>";
+				strHtml = strHtml + "<br/>Title: <span>"+data["content"]+"</span>";
+				strHtml = strHtml + "<br/>Description: <span>"+data["Description"]["content"]+"</span>";
+				$("#txtResponse").append(strHtml+"</div>");
+			}
+		});
+    }
+	
+	function x(){}
 </script>
 </html>
