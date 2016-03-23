@@ -4,7 +4,7 @@
 <input type="text" id="showTitle" value="Eureka"/> <br/>
 <input type="button" id="getInfo" value="Search"/> <br/>
 <textarea id="txtBox"></textarea>
-<div id="txtResponse" style="background-color: #111; color: #CCC; width: 400px; height: 400px;"></div>
+<div id="txtResponse" style="background-color: #111; color: #CCC; width: 400px; height: 400px; float: left;"></div>
 <div id="txtPage" style="background-color: #111; color: #CCC; width: 400px; height: 400px; float: right;"></div>
 </body>
 
@@ -27,8 +27,7 @@
 					api_key: apikey
 				}
 			}).done(function(data){
-				$("#txtBox").val(data);
-				data = JSON.parse(data)["tv_results"];
+				data = data["tv_results"];
 				for(var itm in data){
 					var strHtml = "<div imdbId='"+data[itm]["id"]+"' class='imdbEntry'>";
 					strHtml = strHtml + "ID: <span>"+data[itm]["id"]+"</span>";
