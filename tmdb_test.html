@@ -32,7 +32,7 @@
 					var strHtml = "<div imdbId='"+data[itm]["id"]+"' class='imdbEntry'>";
 					strHtml = strHtml + "ID: <span>"+data[itm]["id"]+"</span>";
 					strHtml = strHtml + "<br/>Title: <span>"+data[itm]["name"]+"</span>";
-					strHtml = strHtml + "<br/>Description: <span>"+data[itm]["overview"]["content"]+"</span>";
+					strHtml = strHtml + "<br/>Description: <span>"+data[itm]["overview"]+"</span>";
 					$("#txtPage").append(strHtml+"</div>");
 				}
 			});
