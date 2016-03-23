@@ -19,10 +19,7 @@
 		});
 		
 		$(document).on("click",".imdbEntry", function(){
-			$("#txtPage").html("");
-			$.ajax({
-				url: "http://www.imdb.com/title/"+$(this).attr("imdbId")+"/episodes"
-			}).done(function (data) {
+			$("#txtPage").load("http://www.imdb.com/title/"+$(this).attr("imdbId")+"/episodes","",function (data) {
 				$("#txtPage").html(data);
 			});
 		});
