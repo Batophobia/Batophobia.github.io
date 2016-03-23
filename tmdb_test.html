@@ -20,7 +20,7 @@
 		
 		$(document).on("click",".imdbEntry", function(){
 			var apikey = "7b91e3ef38e0bc36426c765c54c1503b"
-			$.ajx({
+			$.ajax({
 				url: "https://api.themoviedb.org/3/find/"+$(this).attr("imdbId"),
 				data: {
 					external_source: "imdb_id",
