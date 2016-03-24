@@ -111,8 +111,8 @@
 					data=data["seasons"];
 					for(var itm in data){
 						var strHtml = "<div seasonIndex='"+data[itm]["season_number"]+"' class='season'>";
-						//strHtml = strHtml + "ID: <span>"+data[itm]["id"]+"</span>";
-						strHtml = strHtml + "<br/>Season: <span>"+data[itm]["season_number"]+"</span>";
+						//strHtml = strHtml + "ID: <span>"+data[itm]["id"]+"</span><br/>";
+						strHtml = strHtml + "Season: <span>"+data[itm]["season_number"]+"</span>";
 						strHtml = strHtml + "<br/># Ep: <span>"+data[itm]["episode_count"]+"</span>";
 						$("#txtSeasons").append(strHtml+"</div>");
 					}
@@ -136,8 +136,8 @@
 				data = data["episodes"];
 				for(var itm in data){
 					var strHtml = "<div epNumber='"+data[itm]["episode_number"]+"' class='episode'>";
-					//strHtml = strHtml + "ID: <span>"+data[itm]["id"]+"</span>";
-					strHtml = strHtml + "<br/>Episode: <span>"+data[itm]["episode_number"]+"</span>";
+					//strHtml = strHtml + "ID: <span>"+data[itm]["id"]+"</span><br/>";
+					strHtml = strHtml + "Episode: <span>"+data[itm]["episode_number"]+"</span>";
 					strHtml = strHtml + "<br/>Title: <span>"+data[itm]["name"]+"</span>";
 					strHtml = strHtml + "<br/>Info: <span>"+data[itm]["overview"]+"</span>";
 					$("#txtEpisodes").append(strHtml+"</div>");
@@ -166,15 +166,15 @@
 			if(data.length>1){
 				for(var itm in data){
 					var strHtml = "<div imdbId='"+data[itm]["id"]+"' class='imdbEntry'>";
-					//strHtml = strHtml + "ID: <span>"+data[itm]["id"]+"</span>";
-					strHtml = strHtml + "<br/>Title: <span>"+data[itm]["content"]+"</span>";
+					//strHtml = strHtml + "ID: <span>"+data[itm]["id"]+"</span><br/>";
+					strHtml = strHtml + "Title: <span>"+data[itm]["content"]+"</span>";
 					strHtml = strHtml + "<br/>Description: <span>"+data[itm]["Description"]["content"]+"</span>";
 					$("#txtResponse").append(strHtml+"</div>");
 				}
 			}else{
 				var strHtml = "<div imdbId='"+data["id"]+"' class='imdbEntry'>";
-				//strHtml = strHtml + "ID: <span>"+data["id"]+"</span>";
-				strHtml = strHtml + "<br/>Title: <span>"+data["content"]+"</span>";
+				//strHtml = strHtml + "ID: <span>"+data["id"]+"</span><br/>";
+				strHtml = strHtml + "Title: <span>"+data["content"]+"</span>";
 				strHtml = strHtml + "<br/>Description: <span>"+data["Description"]["content"]+"</span>";
 				$("#txtResponse").append(strHtml+"</div>");
 			}
