@@ -88,8 +88,10 @@
 		
 		$(document).on("click",".imdbEntry", function(){
 			$(".selected").removeClass("selected");
+			var tmpElem = $(this);
+			
 			$.ajax({
-				url: "https://api.themoviedb.org/3/find/"+$(this).attr("imdbId"),
+				url: "https://api.themoviedb.org/3/find/"+tmpElem.attr("imdbId"),
 				data: {
 					external_source: "imdb_id",
 					api_key: apikey
@@ -114,7 +116,7 @@
 						strHtml = strHtml + "<br/>Season: <span>"+data[itm]["season_number"]+"</span>";
 						$("#txtSeasons").append(strHtml+"</div>");
 					}
-					$(this).addClass("selected");
+					tmpElem.addClass("selected");
 				});
 			});
 		});
@@ -122,8 +124,10 @@
 		$(document).on("click",".season", function(){
 			$("#txtSeasons .selected").removeClass("selected");
 			$("#txtEpisodes .selected").removeClass("selected");
+			var tmpElem = $(this);
+			
 			$.ajax({
-				url: "https://api.themoviedb.org/3/tv/"+tmdbID+"/season/"+$(this).attr("seasonIndex"),
+				url: "https://api.themoviedb.org/3/tv/"+tmdbID+"/season/"+tmpElem.attr("seasonIndex"),
 				data: {
 					api_key: apikey
 				}
@@ -138,13 +142,14 @@
 					strHtml = strHtml + "<br/>Info: <span>"+data[itm]["overview"]+"</span>";
 					$("#txtEpisodes").append(strHtml+"</div>");
 				}
-				$(this).addClass("selected");
+				tmpElem.addClass("selected");
 			});
 		});
 		
 		$(document).on("click",".episode", function(){
 			$("#txtEpisodes .selected").removeClass("selected");
-			$(this).addClass("selected");
+			var tmpElem = $(this);
+			tmpElem.addClass("selected");
 		});
 	});
 	
