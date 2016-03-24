@@ -18,6 +18,10 @@
 </head>
 
 <body style="background-color: #222; color: #CCC;">
+<input type="text" id="txtUser" placeholder="username" value="Batophobia"/> <br/>
+<input type="password" id="txtPass" placeholder="password" value=""/> <br/>
+<input type="button" id="login" value="Login"/> <br/>
+
 <input type="text" id="showTitle" value="Eureka"/> <br/>
 <input type="button" id="getInfo" value="Search"/> <br/>
 <div class="selBox" id="txtResponse" style="float: left;"></div>
@@ -29,9 +33,40 @@
 <script>
 	var baseURL = "http://www.imdb.com/xml/find?nr=1&tt=on&xml=1&q=";
 	var apikey = "7b91e3ef38e0bc36426c765c54c1503b";
-	var tmdbID=0, numEpisode=0, numSeason=0, season;
+	var tmdbID=0, numEpisode=0, numSeason=0, season, token;
 	
 	$(document).ready(function(){
+		$("#login").click(function(){
+			$.ajax({
+				url: "https://api.themoviedb.org/3/authentication/token/new",
+				data: {
+					api_key: apikey
+				}
+			}).done(function(data){
+				token = data["request_token"];
+				$.ajax({
+					url: "https://api.themoviedb.org/3/authentication/token/validate_with_login",
+					data: {
+						api_key: apikey
+					, request_token: token
+					, username: $("#txtUser").val()
+					, password: $("#txtPass").val()
+					}
+				}).done(function(data){
+					token = data["request_token"];
+					$.ajax({
+						url: "https://api.themoviedb.org/3/authentication/session/new",
+						data: {
+							api_key: apikey
+						  , request_token: token
+						}
+					}).done(function(data){
+						token = data["session_id"];
+					});
+				});
+			});
+		});
+	
 		fetchJSON(baseURL+"Eureka");
 		
 		$("#getInfo").click(function(e){
