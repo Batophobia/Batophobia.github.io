@@ -27,14 +27,22 @@
 					api_key: apikey
 				}
 			}).done(function(data){
-				data = data["tv_results"];
-				for(var itm in data){
-					var strHtml = "<div imdbId='"+data[itm]["id"]+"' class='imdbEntry'>";
-					strHtml = strHtml + "ID: <span>"+data[itm]["id"]+"</span>";
-					strHtml = strHtml + "<br/>Title: <span>"+data[itm]["name"]+"</span>";
-					strHtml = strHtml + "<br/>Description: <span>"+data[itm]["overview"]+"</span>";
-					$("#txtPage").html(strHtml+"</div>");
-				}
+				data = data["tv_results"][0];
+				var tmdbID = data["id"];
+				$.ajax({
+					url: "https://api.themoviedb.org/3/tv/"+tmdbID,
+					data: {
+						api_key: apikey
+					}
+				}).done(function(data){
+					for(var itm in data){
+						var strHtml = "<div imdbId='"+data[itm]["id"]+"' class='imdbEntry'>";
+						strHtml = strHtml + "ID: <span>"+data[itm]["id"]+"</span>";
+						strHtml = strHtml + "<br/>Title: <span>"+data[itm]["name"]+"</span>";
+						strHtml = strHtml + "<br/>Description: <span>"+data[itm]["overview"]+"</span>";
+						$("#txtPage").html(strHtml+"</div>");
+					}
+				});
 			});
 		});
 	});
