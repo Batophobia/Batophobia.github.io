@@ -20,7 +20,6 @@
 <body style="background-color: #222; color: #CCC;">
 <input type="text" id="showTitle" value="Eureka"/> <br/>
 <input type="button" id="getInfo" value="Search"/> <br/>
-<textarea id="txtBox"></textarea>
 <div class="selBox" id="txtResponse" style="float: left;"></div>
 <div class="selBox" id="txtSeasons" style="float: left;"></div>
 <div class="selBox" id="txtEpisodes" style="float: left;"></div>
@@ -72,7 +71,7 @@
 		
 		$(document).on("click",".season", function(){
 			$.ajax({
-				url: "https://api.themoviedb.org/3/tv/"+tmdbID+"/season/season_number"+$(this).attr("seasonIndex"),
+				url: "https://api.themoviedb.org/3/tv/"+tmdbID+"/season/"+$(this).attr("seasonIndex"),
 				data: {
 					api_key: apikey
 				}
@@ -100,7 +99,6 @@
 		}).done(function (data) {
 			$("#txtResponse").html("");
 			data = data.substr(6, data.length-8);
-			$("#txtBox").val(data);
 			data = JSON.parse(data)["query"]["results"]["IMDbResults"]["ResultSet"][0]["ImdbEntity"];
 			if(data.length>1){
 				for(var itm in data){
