@@ -11,6 +11,7 @@
 	.selBox div{
 		padding: 5px;
 		border-bottom: 1px #000 solid;
+		cursor: pointer;
 	}
 </style>
 </head>
@@ -27,6 +28,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script>
 	var baseURL = "http://www.imdb.com/xml/find?nr=1&tt=on&xml=1&q=";
+	var apikey = "7b91e3ef38e0bc36426c765c54c1503b";
+	var tmdbID=0, numEpisode=0, numSeason=0, season;
+	
 	$(document).ready(function(){
 		fetchJSON(baseURL+"Eureka");
 		
@@ -35,8 +39,6 @@
 		});
 		
 		$(document).on("click",".imdbEntry", function(){
-			var apikey = "7b91e3ef38e0bc36426c765c54c1503b";
-			var tmdbID=0, numEpisode=0, numSeason=0;
 			$.ajax({
 				url: "https://api.themoviedb.org/3/find/"+$(this).attr("imdbId"),
 				data: {
@@ -57,13 +59,33 @@
 					numSeason=data["number_of_seasons"];
 					data=data["seasons"];
 					for(var itm in data){
-						var strHtml = "<div imdbId='"+data[itm]["id"]+"' class='season'>";
+						var strHtml = "<div seasonIndex='"+data[itm]["season_number"]+"' class='season'>";
 						strHtml = strHtml + "ID: <span>"+data[itm]["id"]+"</span>";
 						strHtml = strHtml + "<br/># Ep: <span>"+data[itm]["episode_count"]+"</span>";
 						strHtml = strHtml + "<br/>Season: <span>"+data[itm]["season_number"]+"</span>";
 						$("#txtSeasons").append(strHtml+"</div>");
 					}
 				});
+			});
+		});
+		
+		$(document).on("click",".season", function(){
+			$.ajax({
+				url: "https://api.themoviedb.org/3/tv/"+tmdbID+"/season/season_number"+$(this).attr("seasonIndex"),
+				data: {
+					api_key: apikey
+				}
+			}).done(function(data){
+				$("#txtEpisodes").html("");
+				data = data["episodes"];
+				for(var itm in data){
+					var strHtml = "<div imdbId='"+data[itm]["id"]+"' class='season'>";
+					strHtml = strHtml + "ID: <span>"+data[itm]["id"]+"</span>";
+					strHtml = strHtml + "<br/>Episode: <span>"+data[itm]["episode_number"]+"</span>";
+					strHtml = strHtml + "<br/>Title: <span>"+data[itm]["name"]+"</span>";
+					strHtml = strHtml + "<br/>Info: <span>"+data[itm]["overview"]+"</span>";
+					$("#txtEpisodes").append(strHtml+"</div>");
+				}
 			});
 		});
 	});
