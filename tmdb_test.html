@@ -14,6 +14,9 @@
 		border-bottom: 1px #CCC solid;
 		cursor: pointer;
 	}
+	.selected{
+		background-color: #131;
+	}
 </style>
 </head>
 
@@ -84,6 +87,7 @@
 		});
 		
 		$(document).on("click",".imdbEntry", function(){
+			$(".selected").removeClass("selected");
 			$.ajax({
 				url: "https://api.themoviedb.org/3/find/"+$(this).attr("imdbId"),
 				data: {
@@ -110,11 +114,14 @@
 						strHtml = strHtml + "<br/>Season: <span>"+data[itm]["season_number"]+"</span>";
 						$("#txtSeasons").append(strHtml+"</div>");
 					}
+					$(this).addClass("selected");
 				});
 			});
 		});
 		
 		$(document).on("click",".season", function(){
+			$("#txtSeasons .selected").removeClass("selected");
+			$("#txtEpisodes .selected").removeClass("selected");
 			$.ajax({
 				url: "https://api.themoviedb.org/3/tv/"+tmdbID+"/season/"+$(this).attr("seasonIndex"),
 				data: {
@@ -131,7 +138,13 @@
 					strHtml = strHtml + "<br/>Info: <span>"+data[itm]["overview"]+"</span>";
 					$("#txtEpisodes").append(strHtml+"</div>");
 				}
+				$(this).addClass("selected");
 			});
+		});
+		
+		$(document).on("click",".episode", function(){
+			$("#txtEpisodes .selected").removeClass("selected");
+			$(this).addClass("selected");
 		});
 	});
 	
