@@ -11,7 +11,7 @@
 	}
 	.selBox div{
 		padding: 5px;
-		border-bottom: 1px #000 solid;
+		border-bottom: 1px #CCC solid;
 		cursor: pointer;
 	}
 </style>
@@ -79,7 +79,7 @@
 				$("#txtEpisodes").html("");
 				data = data["episodes"];
 				for(var itm in data){
-					var strHtml = "<div imdbId='"+data[itm]["id"]+"' class='season'>";
+					var strHtml = "<div epNumber='"+data[itm]["episode_number"]+"' class='episode'>";
 					strHtml = strHtml + "ID: <span>"+data[itm]["id"]+"</span>";
 					strHtml = strHtml + "<br/>Episode: <span>"+data[itm]["episode_number"]+"</span>";
 					strHtml = strHtml + "<br/>Title: <span>"+data[itm]["name"]+"</span>";
