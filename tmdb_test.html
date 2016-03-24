@@ -36,6 +36,7 @@
 						api_key: apikey
 					}
 				}).done(function(data){
+					$("#txtPage").html("");
 					numEpisode=data["number_of_episodes"];
 					numSeason=data["number_of_seasons"];
 					data=data["seasons"];
@@ -44,7 +45,7 @@
 						strHtml = strHtml + "ID: <span>"+data[itm]["id"]+"</span>";
 						strHtml = strHtml + "<br/># Ep: <span>"+data[itm]["episode_count"]+"</span>";
 						strHtml = strHtml + "<br/>Season: <span>"+data[itm]["season_number"]+"</span>";
-						$("#txtPage").html(strHtml+"</div>");
+						$("#txtPage").append(strHtml+"</div>");
 					}
 				});
 			});
