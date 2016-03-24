@@ -1,11 +1,26 @@
 <html>
-<head></head>
+<head>
+<style>
+	.selBox{
+		background-color: #111;
+		color: #CCC;
+		width: 400px;
+		height: 400px;
+	}
+	.selBox div{
+		padding: 5px;
+		border-bottom: 1px #000 solid;
+	}
+</style>
+</head>
+
 <body style="background-color: #222; color: #CCC;">
 <input type="text" id="showTitle" value="Eureka"/> <br/>
 <input type="button" id="getInfo" value="Search"/> <br/>
 <textarea id="txtBox"></textarea>
-<div id="txtResponse" style="background-color: #111; color: #CCC; width: 400px; height: 400px; float: left;"></div>
-<div id="txtPage" style="background-color: #111; color: #CCC; width: 400px; height: 400px; float: right;"></div>
+<div class="selBox" id="txtResponse" style="float: left;"></div>
+<div class="selBox" id="txtSeasons" style="float: left;"></div>
+<div class="selBox" id="txtEpisodes" style="float: left;"></div>
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -36,16 +51,16 @@
 						api_key: apikey
 					}
 				}).done(function(data){
-					$("#txtPage").html("");
+					$("#txtSeasons").html("");
 					numEpisode=data["number_of_episodes"];
 					numSeason=data["number_of_seasons"];
 					data=data["seasons"];
 					for(var itm in data){
-						var strHtml = "<div imdbId='"+data[itm]["id"]+"' class='imdbEntry'>";
+						var strHtml = "<div imdbId='"+data[itm]["id"]+"' class='season'>";
 						strHtml = strHtml + "ID: <span>"+data[itm]["id"]+"</span>";
 						strHtml = strHtml + "<br/># Ep: <span>"+data[itm]["episode_count"]+"</span>";
 						strHtml = strHtml + "<br/>Season: <span>"+data[itm]["season_number"]+"</span>";
-						$("#txtPage").append(strHtml+"</div>");
+						$("#txtSeasons").append(strHtml+"</div>");
 					}
 				});
 			});
