@@ -20,6 +20,7 @@ function onPlayerReady(){
   // Update page after player is ready
   updateAll();
   player.playVideo();
+  cueNewVideo();
 }
 
 function onPlayerStateChange(event){
@@ -102,7 +103,10 @@ var nodeList = [
 
 // Functions to invoke user requested action through the iFrame API
 function loadNewVideo(){
-  player.loadVideoById(videoIDs[randomVideo()]);
+  player.loadVideoById(randomVideo());
+};
+function cueNewVideo(){
+  player.cueVideoById(randomVideo());
 };
 
 // Controls interval handlers to update page contens
