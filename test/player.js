@@ -20,7 +20,7 @@ function onPlayerReady(){
   // Update page after player is ready
   updateAll();
   player.playVideo();
-  cueNewVideo();
+  //cueNewVideo();
 }
 
 function onPlayerStateChange(event){
