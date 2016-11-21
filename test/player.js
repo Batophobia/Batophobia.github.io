@@ -149,14 +149,16 @@ function randomVideo(){
   return videoIDs[Math.floor(Math.random() * videoIDs.length)];
 };
 
-$("#playlistID").val(playlist);
-$("#btnRefresh").click(function(){
-  videoIDs=[];
-  getList();
-});
-$("#btnAppend").click(function(){
-  getList();
-});
-$("#btnNext").click(function(){
-  player.loadVideoById(randomVideo());
+$(function () {
+  $("#playlistID").val(playlist);
+  $("#btnRefresh").click(function(){
+    videoIDs=[];
+    getList();
+  });
+  $("#btnAppend").click(function(){
+    getList();
+  });
+  $("#btnNext").click(function(){
+    player.loadVideoById(randomVideo());
+  });
 });
