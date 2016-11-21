@@ -20,6 +20,7 @@ function onPlayerReady(){
   // Update page after player is ready
   updateAll();
   playVideo();
+  cueNewVideo();
 }
 
 function onPlayerStateChange(event){
@@ -152,7 +153,6 @@ function getList(nextPage){
           }
         });
         
-        setTimeout(cueNewVideo(), 500);
         return;
       }
       getList(retData.nextPageToken);
