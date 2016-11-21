@@ -13,7 +13,7 @@ function onYouTubeIframeAPIReady() {
     }, function(retData){
       var listLength = retData.pageInfo.totalResults;
       for(i=0;i<listLength;i++){
-        videoIDs.push(retData.items[i].resourceId.videoId);
+        videoIDs.push(retData.items[i].snippet.resourceId.videoId);
       }
     
       player = new YT.Player('player', {
