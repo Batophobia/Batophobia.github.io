@@ -4,55 +4,7 @@ var playlist = "PLpWh_jngQAnG9J4Qlnbj0oXnfY2foglpf";
 var apiKey = "AIzaSyBgKLdKkDMulKrVUE3S5KDvX-jxx3E5q0s"
 // Callback for when the YouTube iFrame player is ready
 function onYouTubeIframeAPIReady() {
-  $.get("https://www.googleapis.com/youtube/v3/playlistItems",
-    {
-      part: "snippet",
-      maxResults: 50,
-      playlistId: playlist,
-      key: apiKey
-    }, function(retData){
-      var nextPage = retData.nextPageToken;
-      
-      for(i=0;i<retData.items.length;i++){
-        videoIDs.push(retData.items[i].snippet.resourceId.videoId);
-      }
-    
-      while(nextPage != undefined){
-        $.get("https://www.googleapis.com/youtube/v3/playlistItems",
-          {
-            part: "snippet",
-            maxResults: 50,
-            playlistId: playlist,
-            key: apiKey,
-            pageToken: nextPage
-          }, function(retData){
-            nextPage = retData.nextPageToken;
-            for(i=0;i<retData.items.length;i++){
-              videoIDs.push(retData.items[i].snippet.resourceId.videoId);
-            }
-          }
-        );
-        var temp = videoIDs.length;
-      }
-    
-      player = new YT.Player('player', {
-        // Set Player height and width
-        height: '390',
-        width: '640',
-        // Set the id of the video to be played
-        videoId: videoIDs[1],
-        // Setup event handelers
-        events: {
-          'onReady': onPlayerReady,
-          'onStateChange': onPlayerStateChange,
-          'onPlaybackQualityChange': onPlaybackQualityChange,
-          'onPlaybackRateChange': onPlaybackRateChange,
-          'onError': onError,
-          'onApiChange': onApiChange,
-        }
-      });
-    }
-  );
+  getList();
 };
 
 // Event Handlers 
@@ -283,4 +235,41 @@ function clearIntervals(){
   for (var interval in activeIntervals){
     clearInterval(interval);
   }
+};
+
+function getList(nextPage){
+  $.get("https://www.googleapis.com/youtube/v3/playlistItems",
+    {
+      part: "snippet",
+      maxResults: 50,
+      playlistId: playlist,
+      key: apiKey,
+      pageToken: nextPage
+    }, function(retData){
+      for(i=0;i<retData.items.length;i++){
+        videoIDs.push(retData.items[i].snippet.resourceId.videoId);
+      }
+    
+      if(retData.nextPageToken===undefined){
+        player = new YT.Player('player', {
+          // Set Player height and width
+          height: '390',
+          width: '640',
+          // Set the id of the video to be played
+          videoId: videoIDs[1],
+          // Setup event handelers
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange,
+            'onPlaybackQualityChange': onPlaybackQualityChange,
+            'onPlaybackRateChange': onPlaybackRateChange,
+            'onError': onError,
+            'onApiChange': onApiChange,
+          }
+        });
+        return;
+      }
+      getList(nextretData.nextPageTokenPage);
+    }
+  );
 };
