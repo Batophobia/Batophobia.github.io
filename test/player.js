@@ -251,12 +251,13 @@ function getList(nextPage){
       }
     
       if(retData.nextPageToken===undefined){
+        var tmpId = randomVideo();
         player = new YT.Player('player', {
           // Set Player height and width
           height: '390',
           width: '640',
           // Set the id of the video to be played
-          videoId: videoIDs[1],
+          videoId: tmpId,
           // Setup event handelers
           events: {
             'onReady': onPlayerReady,
@@ -272,4 +273,8 @@ function getList(nextPage){
       getList(retData.nextPageToken);
     }
   );
+};
+
+function randomVideo(){
+  return videoIDs[Math.floor(Math.random() * videoIDs.length)];
 };
