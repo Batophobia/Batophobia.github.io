@@ -152,10 +152,12 @@ function randomVideo(){
 $(function () {
   $("#playlistID").val(playlist);
   $("#btnRefresh").click(function(){
-    videoIDs=[];
+    playlist = $("#playlistID").val();
+    videoIDs = [];
     getList();
   });
   $("#btnAppend").click(function(){
+    playlist = $("#playlistID").val();
     getList();
   });
   $("#btnNext").click(function(){
