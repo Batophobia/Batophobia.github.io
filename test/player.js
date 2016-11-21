@@ -269,7 +269,7 @@ function getList(nextPage){
         });
         return;
       }
-      getList(nextretData.nextPageTokenPage);
+      getList(retData.nextPageToken);
     }
   );
 };
