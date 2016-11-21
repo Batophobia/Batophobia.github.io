@@ -84,81 +84,11 @@ function update(node){
     case "percentLoaded":
       document.getElementById("percentLoaded").innerHTML = player.getVideoLoadedFraction()*100+"%"
       break;
-    case "status":
-      var state = player.getPlayerState()
-      switch (state){
-        case YT.PlayerState.ENDED:
-          status="ENDED";
-          break;
-        case YT.PlayerState.PLAYING:   
-          status="PLAYING";
-          break;
-        case YT.PlayerState.PAUSED:    
-          status="PAUSED";
-          break;
-        case YT.PlayerState.BUFFERING: 
-          status="BUFFERING";
-          break;
-        case YT.PlayerState.CUED:      
-          status="CUED";
-          break;
-        default:
-          status="UNKNOWN";
-          break;
-      }
-      document.getElementById("status").innerHTML = status+" ("+state+")";
-      break;
-    case "currentTime":
-      document.getElementById("currentTime").innerHTML = player.getCurrentTime()+"s"
-      break;
-    case "volume":
-      document.getElementById("volume").innerHTML = player.getVolume()
-      break;
-    case "mute":
-      document.getElementById("mute").innerHTML = player.isMuted()
-      break;
-    case "quality":
-      var availableQualityLevels = player.getAvailableQualityLevels()
-      var selectbox = document.getElementById('qualityOption');
-      //clear existing options
-      var i;
-      for(i=selectbox.options.length-1;i>=0;i--){
-          selectbox.remove(i);
-      }
-      //write current available options
-      for (var i in availableQualityLevels){
-        var opt = document.createElement("OPTION");
-        opt.text = availableQualityLevels[i];
-        opt.value = availableQualityLevels[i];
-        selectbox.options.add(opt);
-      }
-      document.getElementById("quality").innerHTML = player.getPlaybackQuality()
-      break;
-    case "rate":
-      var availableRates = player.getAvailablePlaybackRates()
-      var selectbox = document.getElementById('rateOption');
-      //clear existing options
-      var i;
-      for(i=selectbox.options.length-1;i>=0;i--){
-          selectbox.remove(i);
-      }
-      //write current available options
-      for (var i in availableRates){
-        var opt = document.createElement("OPTION");
-        opt.text = availableRates[i];
-        opt.value = availableRates[i];
-        selectbox.options.add(opt);
-      }
-      document.getElementById("rate").innerHTML = player.getPlaybackRate()
-      break;
     case "title":
       document.getElementById("title").innerHTML = player.getVideoData()["title"]
       break;
     case "author":
       document.getElementById("author").innerHTML = player.getVideoData()["author"]
-      break;
-    case "video_id":
-      document.getElementById("video_id").innerHTML = player.getVideoData()["video_id"]
       break;
   }
 };
@@ -174,50 +104,16 @@ var nodeList = [
   "url",
   "embedCode",
   "percentLoaded",
-  "status",
-  "currentTime",
-  "volume",
-  "mute",
-  "quality",
-  "rate",
   "title",
-  "author",
-  "video_id",
+  "author"
 ];
 
 // Functions to invoke user requested action through the iFrame API
 function loadNewVideo(){
-  player.loadVideoById(document.getElementById("video_idOption").value);
+  player.loadVideoById(videoIDs[randomVideo()]);
 };
 function cueNewVideo(){
-  player.cueVideoById(document.getElementById("video_idOption").value);
-};
-function playVideo(){
-  player.playVideo();
-};
-function pauseVideo(){
-  player.pauseVideo();
-};
-function stopVideo(){
-  player.stopVideo();
-};
-function seekTo(){
-  player.seekTo(document.getElementById("currentTimeOption").value);  
-};
-function setVolume(){
-  player.setVolume(document.getElementById("volumeOption").value);  
-};
-function mute(){
-  player.mute();
-};
-function unmute(){
-  player.unMute();  
-};
-function setQuality(){
-  player.setPlaybackQuality(document.getElementById("qualityOption").value);  
-};
-function setRate(){
-  player.setPlaybackRate(document.getElementById("rateOption").value);  
+  player.cueVideoById(videoIDs[randomVideo()]);
 };
 
 // Controls interval handlers to update page contens
@@ -226,9 +122,6 @@ var activeIntervals = [];
 function setIntervals(){
   // Sets invertval funtions to actively update page content
   activeIntervals[0] = setInterval(function(){update("percentLoaded")}, 500);
-  activeIntervals[1] = setInterval(function(){update("currentTime")}, 500);
-  activeIntervals[2] = setInterval(function(){update("mute")}, 500);
-  activeIntervals[3] = setInterval(function(){update("volume")}, 500);
 };
 function clearIntervals(){
   // Clears existing intervals to actively update page content
@@ -268,6 +161,8 @@ function getList(nextPage){
             'onApiChange': onApiChange,
           }
         });
+        
+        cueNewVideo();
         return;
       }
       getList(retData.nextPageToken);
