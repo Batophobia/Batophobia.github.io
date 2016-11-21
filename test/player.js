@@ -12,7 +12,7 @@ function onYouTubeIframeAPIReady() {
       key: apiKey
     }, function(retData){
       var listLength = retData.pageInfo.totalResults;
-      for(i=0;i<listLength;i++){
+      for(i=0;i<retData.items.length;i++){
         videoIDs.push(retData.items[i].snippet.resourceId.videoId);
       }
     
