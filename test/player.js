@@ -68,12 +68,6 @@ function update(node){
       var url = player.getVideoUrl();
       document.getElementById("url").innerHTML = "<a href=\""+url+"\" target=\"_blank\">"+url+"</a>";
       break;
-    case "embedCode":
-      var embedCode = player.getVideoEmbedCode();
-      var index = Math.ceil(embedCode.length/3);
-      var fmtEmbedCode = [embedCode.slice(0, index), "\n", embedCode.slice(index, index*2),"\n", embedCode.slice(index*2)].join('');
-      document.getElementById("embedCode").innerText = fmtEmbedCode
-      break;
     case "percentLoaded":
       document.getElementById("percentLoaded").innerHTML = player.getVideoLoadedFraction()*100+"%"
       break;
@@ -95,7 +89,6 @@ function updateAll(){
 var nodeList = [
   "duration",
   "url",
-  "embedCode",
   "percentLoaded",
   "title",
   "author"
