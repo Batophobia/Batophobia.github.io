@@ -20,7 +20,6 @@ function onPlayerReady(){
   // Update page after player is ready
   updateAll();
   player.playVideo();
-  //cueNewVideo();
 }
 
 function onPlayerStateChange(event){
@@ -30,6 +29,7 @@ function onPlayerStateChange(event){
     case YT.PlayerState.ENDED:
       updateAll() // set status for state, ...
       clearIntervals() // clear all intervals
+      player.loadVideoById(randomVideo());
       break;
     case YT.PlayerState.PLAYING:
       updateAll() // set status for state, ...
@@ -100,14 +100,6 @@ var nodeList = [
   "title",
   "author"
 ];
-
-// Functions to invoke user requested action through the iFrame API
-function loadNewVideo(){
-  player.loadVideoById(randomVideo());
-};
-function cueNewVideo(){
-  player.cueVideoById(randomVideo());
-};
 
 // Controls interval handlers to update page contens
 // Array to track intervals
