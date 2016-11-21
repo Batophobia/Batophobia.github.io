@@ -19,8 +19,10 @@ function onApiChange(event){
 function onPlayerReady(){
   // Update page after player is ready
   updateAll();
-  player.playVideo();
-  cueNewVideo();
+  setTimeout(function(){
+    player.playVideo();
+    cueNewVideo();
+  },500);
 }
 
 function onPlayerStateChange(event){
