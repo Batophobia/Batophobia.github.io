@@ -24,65 +24,6 @@
             <!-- The iframe video player will replace this <div> tag. -->
             <div id="player"></div>
           </div>
-          <div class="mdl-cell mdl-cell--7-col">
-            <!-- This table contains editable video on the video in the iframe -->
-            <table class="mdl-data-table">
-              <tr>
-                <td  class="mdl-data-table__cell--non-numeric">VideoID</td>
-                <td id="video_id"></td>
-                <td class="mdl-data-table__cell--non-numeric">
-                  <input id="video_idOption" type="text">
-                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onClick="loadNewVideo()">Load</button>
-                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onClick="cueNewVideo()">Cue</button>
-                </td>
-              </tr><tr>
-                <td  class="mdl-data-table__cell--non-numeric">Status</td>
-                <td id="status"></td>
-                <td class="mdl-data-table__cell--non-numeric">
-                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onClick="playVideo()">Play</button>
-                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onClick="pauseVideo()">Pause</button>
-                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onClick="stopVideo()">Stop</button>
-                </td>
-              </tr><tr>
-                <td  class="mdl-data-table__cell--non-numeric">Current Progress</td>
-                <td id="currentTime"></td>
-                <td  class="mdl-data-table__cell--non-numeric">
-                  <input id="currentTimeOption" type="text">
-                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onClick="seekTo()">Seek</button>
-                </td>
-              </tr><tr>
-                <td  class="mdl-data-table__cell--non-numeric">Volume (0-100)</td>
-                <td id="volume"></td>
-                <td  class="mdl-data-table__cell--non-numeric">
-                  <input id="volumeOption" type="text">
-                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onClick="setVolume()">Set</button>
-                </td>
-              </tr><tr>
-                <td  class="mdl-data-table__cell--non-numeric">Muted?</td>
-                <td id="mute"></td>
-                <td class="mdl-data-table__cell--non-numeric">
-                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onClick="mute()">Mute</button>
-                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onClick="unmute()">Unmute</button>
-                </td>
-              </tr><tr>
-                <td  class="mdl-data-table__cell--non-numeric">Video Quality</td>
-                <td id=quality></td>
-                <td  class="mdl-data-table__cell--non-numeric">
-                  <select id="qualityOption">
-                  </select>
-                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onClick="setQuality()">Set</button>
-                </td>
-              </tr><tr>
-                <td  class="mdl-data-table__cell--non-numeric">Playback Rate</td>
-                <td id=rate></td>
-                <td  class="mdl-data-table__cell--non-numeric">
-                  <select id="rateOption">
-                  </select>
-                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onClick="setRate()">Set</button>
-                </td>
-              </tr>
-            </table>
-            </div>
         </div>
         <div class="mdl-grid">
           <div class="mdl-cell mdl-cell--4-col">
