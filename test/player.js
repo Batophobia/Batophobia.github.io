@@ -147,8 +147,6 @@ function getList(nextPage){
           events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange,
-            'onPlaybackQualityChange': onPlaybackQualityChange,
-            'onPlaybackRateChange': onPlaybackRateChange,
             'onError': onError,
             'onApiChange': onApiChange,
           }
