@@ -8,14 +8,6 @@ function onYouTubeIframeAPIReady() {
 };
 
 // Event Handlers 
-function onPlaybackQualityChange(){
-  // Update playback quality on page
-  update("quality");
-};
-function onPlaybackRateChange(){
-  // Update playback rate on page
-  update("rate");
-};
 function onError(error){
   // Update errors on page
   console.log("Error!");
@@ -162,7 +154,7 @@ function getList(nextPage){
           }
         });
         
-        cueNewVideo();
+        setTimeout(cueNewVideo(), 500);
         return;
       }
       getList(retData.nextPageToken);
