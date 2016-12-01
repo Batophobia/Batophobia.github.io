@@ -53,7 +53,7 @@ function onPlayerStateChange(event){
       setTimeout(function(){
         if($("#duration").text()=="0s")
           player.loadVideoById(randomVideo());
-      },1000);
+      },5000);
       break;
 
   }
