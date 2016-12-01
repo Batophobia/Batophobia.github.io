@@ -84,6 +84,8 @@ function updateAll(){
   for (var node in nodeList){
     update(nodeList[node]);
   }
+  if($("#duration").text()=="0s")
+    player.loadVideoById(randomVideo());
 };
 // Array to track all HTML nodes
 var nodeList = [
