@@ -42,6 +42,8 @@ function onPlayerStateChange(event){
     case YT.PlayerState.BUFFERING:
       updateAll() // set status for state, ...
       clearIntervals() // clear all intervals
+      if($("#duration").text()=="0s")
+        player.loadVideoById(randomVideo());
       break;
     case YT.PlayerState.CUED:
       updateAll() // set status for state, ...
@@ -84,8 +86,6 @@ function updateAll(){
   for (var node in nodeList){
     update(nodeList[node]);
   }
-  if($("#duration").text()=="0s")
-    player.loadVideoById(randomVideo());
 };
 // Array to track all HTML nodes
 var nodeList = [
