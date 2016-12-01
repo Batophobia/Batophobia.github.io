@@ -42,8 +42,10 @@ function onPlayerStateChange(event){
     case YT.PlayerState.BUFFERING:
       updateAll() // set status for state, ...
       clearIntervals() // clear all intervals
-      if($("#duration").text()=="0s")
-        player.loadVideoById(randomVideo());
+      setTimeout(function(){
+        if($("#duration").text()=="0s")
+          player.loadVideoById(randomVideo());
+      },1000);
       break;
     case YT.PlayerState.CUED:
       updateAll() // set status for state, ...
