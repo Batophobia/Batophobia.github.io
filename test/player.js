@@ -130,8 +130,8 @@ function getList(nextPage){
         var tmpId = randomVideo();
         player = new YT.Player('player', {
           // Set Player height and width
-          height: '39',
-          width: '64',
+          height: '200',
+          width: '200',
           // Set the id of the video to be played
           videoId: tmpId,
           // Setup event handelers
