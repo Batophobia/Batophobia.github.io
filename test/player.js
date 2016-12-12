@@ -169,4 +169,7 @@ $(function () {
   $("#btnNext").click(function(){
     player.loadVideoById(randomVideo());
   });
+  $(document).on("click","#videoList",function(){
+    player.loadVideoById($(this).attr("vidID"));
+  });
 });
