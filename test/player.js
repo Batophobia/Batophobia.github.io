@@ -123,6 +123,7 @@ function getList(nextPage){
     }, function(retData){
       for(i=0;i<retData.items.length;i++){
         videoIDs.push(retData.items[i].snippet.resourceId.videoId);
+        $("#videoList").append("<div vidID='"+retData.items[i].snippet.resourceId.videoId+"'>"+retData.items[i].snippet.title+"</div>");
       }
     
       if(retData.nextPageToken===undefined){
@@ -158,6 +159,7 @@ $(function () {
   $("#btnRefresh").click(function(){
     playlist = $("#playlistID").val();
     videoIDs = [];
+    $("#videoList").html("");
     getList();
   });
   $("#btnAppend").click(function(){
