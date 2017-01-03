@@ -76,7 +76,8 @@ function update(node){
       document.getElementById("percentLoaded").innerHTML = player.getVideoLoadedFraction()*100+"%"
       break;
     case "title":
-      document.getElementById("title").innerHTML = player.getVideoData()["title"]
+      document.getElementById("title").innerHTML = player.getVideoData()["title"];
+      document.title = player.getVideoData()["title"]
       break;
     case "author":
       document.getElementById("author").innerHTML = player.getVideoData()["author"]
