@@ -1,7 +1,8 @@
 var player;
 var videoIDs = [];
+var nextID = randomVideo();
 var playlist = "PLpWh_jngQAnG9J4Qlnbj0oXnfY2foglpf";
-var apiKey = "AIzaSyBgKLdKkDMulKrVUE3S5KDvX-jxx3E5q0s"
+var apiKey = "AIzaSyBgKLdKkDMulKrVUE3S5KDvX-jxx3E5q0s";
 // Callback for when the YouTube iFrame player is ready
 function onYouTubeIframeAPIReady() {
   getList();
@@ -29,7 +30,8 @@ function onPlayerStateChange(event){
     case YT.PlayerState.ENDED:
       updateAll() // set status for state, ...
       clearIntervals() // clear all intervals
-      player.loadVideoById(randomVideo());
+      player.loadVideoById(nextID);
+      updateNext();
       break;
     case YT.PlayerState.PLAYING:
       updateAll() // set status for state, ...
@@ -51,8 +53,10 @@ function onPlayerStateChange(event){
       updateAll() // set status for state, ...
       clearIntervals() // clear all intervals
       setTimeout(function(){
-        if($("#duration").text()=="0s")
-          player.loadVideoById(randomVideo());
+        if($("#duration").text()=="0s"){
+          player.loadVideoById(nextID);
+          updateNext();
+        }
       },5000);
       break;
 
@@ -154,6 +158,10 @@ function getList(nextPage){
 function randomVideo(){
   return videoIDs[Math.floor(Math.random() * videoIDs.length)];
 };
+function updateNext(){
+  nextID = randomVideo();
+  $("#").text($("#videoList [vidID='"+nextID+"'").text());
+}
 
 $(function () {
   $("#playlistID").val(playlist);
@@ -168,9 +176,14 @@ $(function () {
     getList();
   });
   $("#btnNext").click(function(){
-    player.loadVideoById(randomVideo());
+    player.loadVideoById(nextID);
+    updateNext();
+  });
+  $("#btnNew").click(function(){
+    updateNext();
   });
   $(document).on("click","#videoList div",function(){
     player.loadVideoById($(this).attr("vidID"));
+    updateNext();
   });
 });
