@@ -161,7 +161,7 @@ function randomVideo(){
 };
 function updateNext(){
   nextID = randomVideo();
-  $("#").text($("#videoList [vidID='"+nextID+"'").text());
+  $("#nextTitle").text($("#videoList [vidID='"+nextID+"'").text());
 }
 
 $(function () {
