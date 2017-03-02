@@ -1,6 +1,6 @@
 var player;
 var videoIDs = [];
-var nextID = randomVideo();
+var nextID;
 var playlist = "PLpWh_jngQAnG9J4Qlnbj0oXnfY2foglpf";
 var apiKey = "AIzaSyBgKLdKkDMulKrVUE3S5KDvX-jxx3E5q0s";
 // Callback for when the YouTube iFrame player is ready
@@ -21,6 +21,7 @@ function onPlayerReady(){
   // Update page after player is ready
   updateAll();
   player.playVideo();
+  updateNext();
 }
 
 function onPlayerStateChange(event){
