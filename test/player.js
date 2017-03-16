@@ -149,9 +149,8 @@ function getList(nextPage){
               'onApiChange': onApiChange,
             }
           });
-        
-          return;
         }
+        return;
       }
       getList(retData.nextPageToken);
     }
