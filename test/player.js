@@ -132,24 +132,26 @@ function getList(nextPage){
         $("#videoList").append("<div vidID='"+retData.items[i].snippet.resourceId.videoId+"'>"+retData.items[i].snippet.title+"</div>");
       }
     
-      if(player===undefined){
-        var tmpId = randomVideo();
-        player = new YT.Player('player', {
-          // Set Player height and width
-          height: '200',
-          width: '200',
-          // Set the id of the video to be played
-          videoId: tmpId,
-          // Setup event handelers
-          events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange,
-            'onError': onError,
-            'onApiChange': onApiChange,
-          }
-        });
+      if(retData.nextPageToken===undefined){  
+        if(player===undefined){
+          var tmpId = randomVideo();
+          player = new YT.Player('player', {
+            // Set Player height and width
+            height: '200',
+            width: '200',
+            // Set the id of the video to be played
+            videoId: tmpId,
+            // Setup event handelers
+            events: {
+              'onReady': onPlayerReady,
+              'onStateChange': onPlayerStateChange,
+              'onError': onError,
+              'onApiChange': onApiChange,
+            }
+          });
         
-        return;
+          return;
+        }
       }
       getList(retData.nextPageToken);
     }
