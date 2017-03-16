@@ -132,7 +132,7 @@ function getList(nextPage){
         $("#videoList").append("<div vidID='"+retData.items[i].snippet.resourceId.videoId+"'>"+retData.items[i].snippet.title+"</div>");
       }
     
-      if(retData.nextPageToken===undefined){
+      if(player===undefined){
         var tmpId = randomVideo();
         player = new YT.Player('player', {
           // Set Player height and width
