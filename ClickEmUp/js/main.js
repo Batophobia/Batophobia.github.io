@@ -3,7 +3,8 @@ var main = {
 		this.load();
 		ments.init();
 		display.init();
-		timerID = setInterval(main.tick(), this.delay);
+		
+		this.timerID = setInterval(main.tick(), this.delay);
 	},
 	timerID: 0,
 	counter: 0,
