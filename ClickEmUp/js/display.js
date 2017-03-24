@@ -2,6 +2,7 @@ var display = {
 	can: 0,
 	ctx: 0,
 	btns: [],
+	shots: [],
 	
 	init: function(){
 		this.can=document.getElementById("map")
@@ -43,7 +44,7 @@ var display = {
 	shoot: function(type){
 		switch(type){
 			default:
-				
+				shots.push({ type: "straight", pow: 1, spd: 1, x:1, y:1 });
 				break;
 		}
 	}
@@ -76,6 +77,10 @@ var display = {
 	},
 	
 	tick : function(){
-		
-	},
+		for(var shot in this.shots){
+			this.ctx.moveTo(this.shots[shot].x,this.shots[shot].y);
+			this.ctx.strokeRect(this.shots[shot].x,this.shots[shot].y,3,1);
+			this.shots[shot].x += this.shots[shot].spd;
+		}
+	}
 };
