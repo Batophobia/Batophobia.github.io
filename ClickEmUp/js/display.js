@@ -78,7 +78,7 @@ var display = {
 	},
 	
 	tick : function(){
-		context.clearRect(0, 0, canvas.width, canvas.height);
+		this.ctx.clearRect(0, 0, canvas.width, canvas.height);
 		display.menu();
 		for(var shot in this.shots){
 			this.ctx.moveTo(this.shots[shot].x,this.shots[shot].y);
