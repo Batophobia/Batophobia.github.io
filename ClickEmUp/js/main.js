@@ -10,6 +10,7 @@ var main = {
 	
 	tick : function(){
 		ments.tick();
+		display.tick();
 		
 		this.save();
 		this.counter++;
