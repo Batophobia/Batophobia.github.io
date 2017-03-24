@@ -18,13 +18,16 @@ var display = {
 			}
 			
 			if(display.btns[btn].name=="Play"){
+				display.shoot("straight", 3, 100);
+			}
+			else if(display.btns[btn].name=="Settings", 3, 100){
 				display.shoot("straight");
 			}
-			else if(display.btns[btn].name=="Settings"){
+			else if(display.btns[btn].name=="Awards", 3, 100){
 				display.shoot("straight");
 			}
-			else if(display.btns[btn].name=="Awards"){
-				display.shoot("straight");
+			else{
+				display.shoot("straight", pnt.x, pnt.y);
 			}
 		}, false);
 		
@@ -41,10 +44,10 @@ var display = {
 		return false;
 	},
 	
-	shoot: function(type){
+	shoot: function(type, x, y){
 		switch(type){
 			default:
-				this.shots.push({ type: "straight", pow: 1, spd: 1, x:1, y:1 });
+				this.shots.push({ type: "straight", pow: 1, spd: 1, x:x, y:y });
 				break;
 		}
 	},
