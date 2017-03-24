@@ -1,1 +1,38 @@
-a
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Click 'em up</title>
+    <meta name="description" content="incremental shoot-em-up style game">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="../ga.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/display.js"></script>
+    <script src="js/ments.js"></script>
+    <script src="js/main.js"></script>
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+<div class="everything">
+    <div id="topBar" class="topBar"></div>
+	
+    <div id='mainBar' class='mainBar'>
+      <canvas id="map" class="map" height="560px" width="560px"></canvas>
+    </div>
+     
+    <div id='lowBar' class='lowBar'>
+      <div class="version">version 1.0</div>
+    </div>
+</div>
+	
+<div id='alerts'></div>
+   
+<script>
+		$(document).ready(function(){
+			main.init();
+		});
+</script>
+</body>
+</html>
