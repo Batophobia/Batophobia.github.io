@@ -85,7 +85,7 @@ var display = {
 			this.ctx.strokeRect(this.shots[shot].x,this.shots[shot].y,3,1);
 			this.shots[shot].x += this.shots[shot].spd;
 			if(this.shots[shot].x > this.can.width)
-				this.shots.splice(shot);
+				this.shots.splice(shot, 1);
 		}
 	}
 };
