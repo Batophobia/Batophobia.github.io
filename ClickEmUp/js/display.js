@@ -47,7 +47,7 @@ var display = {
 				shots.push({ type: "straight", pow: 1, spd: 1, x:1, y:1 });
 				break;
 		}
-	}
+	},
 	
 	getMousePos: function(evt) {
 		var rect = this.can.getBoundingClientRect();
