@@ -44,7 +44,7 @@ var display = {
 	shoot: function(type){
 		switch(type){
 			default:
-				shots.push({ type: "straight", pow: 1, spd: 1, x:1, y:1 });
+				this.shots.push({ type: "straight", pow: 1, spd: 1, x:1, y:1 });
 				break;
 		}
 	},
