@@ -17,13 +17,13 @@ var display = {
 			}
 			
 			if(display.btns[btn].name=="Play"){
-				$("#alerts").html("Play");
+				shoot("straight");
 			}
 			else if(display.btns[btn].name=="Settings"){
-				$("#alerts").html("Settings");
+				shoot("straight");
 			}
 			else if(display.btns[btn].name=="Awards"){
-				$("#alerts").html("Awards");
+				shoot("straight");
 			}
 		}, false);
 		
@@ -39,6 +39,14 @@ var display = {
 		}
 		return false;
 	},
+	
+	shoot: function(type){
+		switch(type){
+			default:
+				
+				break;
+		}
+	}
 	
 	getMousePos: function(evt) {
 		var rect = this.can.getBoundingClientRect();
