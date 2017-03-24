@@ -14,6 +14,7 @@ var display = {
 			var btn=display.isBtn(pnt);
 			
 			if(!btn){
+				display.shoot("straight", pnt.x, pnt.y);
 				return false;
 			}
 			
@@ -25,9 +26,6 @@ var display = {
 			}
 			else if(display.btns[btn].name=="Awards", 3, 100){
 				display.shoot("straight");
-			}
-			else{
-				display.shoot("straight", pnt.x, pnt.y);
 			}
 		}, false);
 		
@@ -80,6 +78,8 @@ var display = {
 	},
 	
 	tick : function(){
+		context.clearRect(0, 0, canvas.width, canvas.height);
+		display.menu();
 		for(var shot in this.shots){
 			this.ctx.moveTo(this.shots[shot].x,this.shots[shot].y);
 			this.ctx.strokeRect(this.shots[shot].x,this.shots[shot].y,3,1);
