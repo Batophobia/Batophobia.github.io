@@ -4,7 +4,7 @@ var main = {
 		ments.init();
 		display.init();
 		
-		this.timerID = setInterval(main.tick(), this.delay);
+		this.timerID = setInterval(function(){ main.tick(); }, this.delay);
 	},
 	timerID: 0,
 	counter: 0,
