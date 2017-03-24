@@ -78,12 +78,14 @@ var display = {
 	},
 	
 	tick : function(){
-		this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+		this.ctx.clearRect(0, 0, this.can.width, this.can.height);
 		display.menu();
 		for(var shot in this.shots){
 			this.ctx.moveTo(this.shots[shot].x,this.shots[shot].y);
 			this.ctx.strokeRect(this.shots[shot].x,this.shots[shot].y,3,1);
 			this.shots[shot].x += this.shots[shot].spd;
+			if(this.shots[shot].x > this.can.width)
+				this.shots.splice(shot);
 		}
 	}
 };
