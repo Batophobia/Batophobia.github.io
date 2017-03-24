@@ -23,12 +23,12 @@ var main = {
 		
 		data['ments'].stats = ments.stats;
 		
-		//localStorage["1_x"] = JSON.stringify(data);
+		//localStorage["ClickEmUp"] = JSON.stringify(data);
 	},
 	
 	load : function(){
 		if('1_x' in localStorage){
-			var data = JSON.parse(localStorage['1_x']);
+			var data = JSON.parse(localStorage['ClickEmUp']);
 		}else{
 			return;
 		}
