@@ -18,13 +18,13 @@ var display = {
 			}
 			
 			if(display.btns[btn].name=="Play"){
-				this.shoot("straight");
+				display.shoot("straight");
 			}
 			else if(display.btns[btn].name=="Settings"){
-				this.shoot("straight");
+				display.shoot("straight");
 			}
 			else if(display.btns[btn].name=="Awards"){
-				this.shoot("straight");
+				display.shoot("straight");
 			}
 		}, false);
 		
