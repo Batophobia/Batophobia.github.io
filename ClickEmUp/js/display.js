@@ -50,8 +50,8 @@ var display = {
 	
 	menu: function(){
 		this.drawButton(300,125,"Play");
-		this.drawButton(200,200,"Settings");
-		this.drawButton(200,275,"Awards");
+		this.drawButton(300,200,"Settings");
+		this.drawButton(300,275,"Awards");
 	},
 	
 	drawButton: function(x, y, text){
