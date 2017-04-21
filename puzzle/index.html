@@ -22,9 +22,10 @@
         border-radius: 25px;
         margin: 0 auto;
         padding: 5px;
+        position: relative;
       }
       #locName{
-        margin: 5px 0;
+        margin: 15px 0 40px 0;
         font-size: 30px;
         border-bottom: 1px solid #FFFFFF;
       }
@@ -55,13 +56,19 @@
         left: 50px;
         top: 15px;
       }
+      #txtKey{
+        position: absolute;
+        bottom: 5px;
+        left: 0;
+        right: 0;
+      }
     </style>
   </head>
   <body>
     <div id="everything">
       <div id="locName"></div>
       <div id="locText"></div>
-      <input type="text" placeholder="ANSWER" id="txtKey" />
+      
       <div id="buttons">
         <div id="dirButtons">
           <button dir="west" id="westBtn">W</button>
@@ -70,6 +77,8 @@
           <button dir="east" id="eastBtn">E</button>
         </div>
       </div>
+      
+      <input type="text" placeholder="ANSWER" id="txtKey" />
     </div>
     
     <script>
