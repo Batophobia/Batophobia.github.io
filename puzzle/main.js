@@ -23,7 +23,7 @@ var main = {
     $("#locName").text(this.locations[this.current].name);
     $("#locText").text( vigenere(this.locations[this.current].text, key) );
     
-    $("#dirButtons buttons").hide();
+    $("#dirButtons button").hide();
     for(var direction in this.locations[this.current].dir){
       $("#"+direction+"Btn").show();
     }
