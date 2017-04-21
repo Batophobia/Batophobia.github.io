@@ -16,7 +16,8 @@ var main = {
   },
   current: "town",
   load: function(){
-	  this.move("east");
+    this.current("town");
+	  this.loadLocation();
   },
   loadLocation: function(){
     var key = $("#txeKey").val();
