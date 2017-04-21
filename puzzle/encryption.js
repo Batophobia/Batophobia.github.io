@@ -13,7 +13,7 @@ function vigenere(text, key) {
   
   var i = 0, b;
   key = key.toUpperCase().replace(/[^A-Z]/g, '');
-  return text.toUpperCase().replace(/[^A-Z]/g, '').replace(/[A-Z]/g, function(a) {
+  return text.toUpperCase().replace(/[A-Z]/g, function(a) {
     b = key[i++ % key.length];
     return String.fromCharCode( ordA(a) + (26 - ordA(b)) );
   });
