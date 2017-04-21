@@ -1,13 +1,48 @@
 <html>
   <head>
     <script src='encryption.js' type="text/javascript"></script>
+    <style>
+      body{
+        background-color: #222222;
+        color: #CCCCCC;
+      }
+      #dirButtons{
+        position: relative;
+      }
+      #dirButtons button{
+        position: absolute;
+      }
+      #btnWest{
+        left: 0;
+        top: 15px;
+      }
+      #btnNorth{
+        left: 40px;
+        top: 0;
+      }
+      #btnSouth{
+        left: 40px;
+        top: 30px;
+      }
+      #btnEast{
+        left: 80px;
+        top: 15px;
+      }
+    </style>
   </head>
   <body>
     <div id="everything">
       <div id="locName"></div>
       <div id="locText"></div>
-      <input placeholder="ANSWER" id="txeKey" />
-      <div id="buttons"></div>
+      <input placeholder="ANSWER" id="txeKey" style="display: none;" />
+      <div id="buttons">
+        <div id="dirButtons">
+          <button id="btnWest">WEST</button>
+          <button id="btnNorth">NORTH</button>
+          <button id="btnSouth">SOUTH</button>
+          <button id="btnEast">EAST</button>
+        </div>
+      </div>
     </div>
   </body>
 </html>
