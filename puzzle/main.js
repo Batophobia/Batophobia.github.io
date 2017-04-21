@@ -16,7 +16,7 @@ var main = {
   },
   current: "town",
   load: function(){
-    this.current("town");
+    this.current="town";
 	  this.loadLocation();
   },
   loadLocation: function(){
