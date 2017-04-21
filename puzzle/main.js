@@ -16,10 +16,16 @@ var main = {
   },
   current: "town",
   load: function(){
+	  this.current="town";
+    this.loadLocation();
   },
   loadLocation: function(){
     var key = $("#txeKey").val();
     $("#locName").text(this.locations[this.current].name);
     $("#locText").text( vigenere(this.locations[this.current].text, key) );
+  },
+  move: function(locName){
+    this.current = locName;
+    this.loadLocation();
   }
 };
