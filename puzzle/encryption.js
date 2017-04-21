@@ -7,6 +7,10 @@ function ordA(a) {
  
 // vigenere
 function vigenere(text, key) {
+  if(key==null || key==""){
+    return text;
+  }
+  
   var i = 0, b;
   key = key.toUpperCase().replace(/[^A-Z]/g, '');
   return text.toUpperCase().replace(/[^A-Z]/g, '').replace(/[A-Z]/g, function(a) {
