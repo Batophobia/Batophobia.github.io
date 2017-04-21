@@ -30,6 +30,8 @@ var main = {
     }
   },
   move: function(direction){
+    if(this.locations[this.current].dir[direction]==null)
+      return false;
     this.current = this.locations[this.current].dir[direction];
     this.loadLocation();
   }
@@ -37,4 +39,4 @@ var main = {
 
 $(document).on("click","#dirButtons button", function(e){
 	main.move($(this).attr("dir"));
-})
+});
