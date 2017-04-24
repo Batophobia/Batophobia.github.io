@@ -15,6 +15,6 @@ function vigenere(text, key) {
   key = key.toUpperCase().replace(/[^A-Z]/g, '');
   return text.toUpperCase().replace(/[A-Z]/g, function(a) {
     b = key[i++ % key.length];
-    return String.fromCharCode( ordA(a) + (26 - ordA(b)) );
+    return String.fromCharCode( ((ordA(a) + (26 - ordA(b)))  % 26 + 65));
   });
 }
