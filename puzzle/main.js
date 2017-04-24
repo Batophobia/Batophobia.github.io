@@ -12,7 +12,7 @@ var main = {
     forestTR: { name: "Rounded Wood", dir: { south: "forestBR", west: "forestTL", east: "mountain" }, text: "KJGA DA IOJ KYIRG MTTPNG, NVZ UEPZQSJ WAJA P ZRCWG CDUI.  CY JYS DTOLI GTSQU JJH WLW PLHR XZ NOL VAS VKHPMF P ZJCE.  VF NVZ IPO HE AT NPVIT, ZMG VDASSD UFBTTZYU \"OJJC MTT TN Q.\"" },
     forestBL: { name: "Inner Forest", dir: { south: "plains", north: "forestTL", east: "forestBR" }, text: "HY VSZ RCAWCYXR IV YJP ABGLXV, JJH PYJ OPO ON HS QWY ZPU BKEC N CHRGEVT IOFV CZNSZ JF.  PY UTSUHFGYN VKHPMF IOJ COQVRL, \"ZR QJE XZ Z.\"" },
     forestBR: { name: "Nice Cabin", dir: { north: "forestTR", west: "forestBL" }, text: "ZYWXWYXUL KYOB P ZRCWG PALFTTIT, NVZ PZOVRL F ELWVC.  AMG XVVAITZ CZNSZ T.E.  LIQ IOJTP DF P ZNIY JITY YJP YBDY YJLO ETHIU \"WZSI MTT TN Y.\"" },
-    mountain: { name: "Grencidep Mountain", dir: {  }, text: "Mountain" },
+    mountain: { name: "Grencidep Mountain", dir: { west: "forestTR" }, text: "CH IUZEE FG A UUPH DCV CFUTAHA UXTED FG SGGY DQNZPEU CAPCOLKREZPN.  AHMLGP, RWC BLGHA WKP NLCM, AJY 23 LRWEVO WSAEYM ZLEY L EVMTYL LQ PRNY.  UHW HOPEPID, WSOE FYIW EF CZHHL, ULH: 7 4 13 0 20 6 21 15 13 13 0 4 10 23 10 1 8 24 3 17 12 19 0" },
   },
   current: "town",
   load: function(){
