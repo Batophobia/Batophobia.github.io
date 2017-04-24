@@ -22,7 +22,7 @@ var main = {
   loadLocation: function(){
     var key = $("#txeKey").val();
     $("#locName").text(this.locations[this.current].name);
-    $("#locText").text( vigenere(this.locations[this.current].text, key) );
+    $("#locText").text( vigenere(this.locations[this.current].text, $("#txtKey".val() ) );
     
     $("#dirButtons button").hide();
     for(var direction in this.locations[this.current].dir){
