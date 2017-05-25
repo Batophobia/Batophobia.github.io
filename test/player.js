@@ -157,8 +157,11 @@ function getList(nextPage){
   );
 };
 
+var vidIndex=0;
 function randomVideo(){
-  return videoIDs[Math.floor(Math.random() * videoIDs.length)];
+  vidIndex += Math.floor(Math.random() * videoIDs.length;
+  vidIndex = vidIndex % videoIDs.length;
+  return videoIDs[vidIndex];
 };
 function updateNext(){
   nextID = randomVideo();
