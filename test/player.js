@@ -159,7 +159,7 @@ function getList(nextPage){
 
 var vidIndex=0;
 function randomVideo(){
-  vidIndex += Math.floor(Math.random() * videoIDs.length;
+  vidIndex += Math.floor(Math.random() * videoIDs.length);
   vidIndex = vidIndex % videoIDs.length;
   return videoIDs[vidIndex];
 };
