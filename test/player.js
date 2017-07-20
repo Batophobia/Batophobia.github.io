@@ -5,7 +5,6 @@ var playlist = "PLpWh_jngQAnG9J4Qlnbj0oXnfY2foglpf";
 var apiKey = "AIzaSyBgKLdKkDMulKrVUE3S5KDvX-jxx3E5q0s";
 // Callback for when the YouTube iFrame player is ready
 function onYouTubeIframeAPIReady() {
-  debugger;
   getList();
 };
 
@@ -170,6 +169,7 @@ function updateNext(){
 }
 
 $(function () {
+  debugger;
   $("#playlistID").val(playlist);
   $("#btnRefresh").click(function(){
     playlist = $("#playlistID").val();
