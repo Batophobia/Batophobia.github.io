@@ -186,7 +186,7 @@ $(function () {
     getList();
   });
   $("#btnNext").click(function(){
-    clearIntervals();
+    //clearIntervals();
     player.loadVideoById(nextID);
     updateNext();
   });
@@ -194,7 +194,7 @@ $(function () {
     updateNext();
   });
   $(document).on("click","#videoList div",function(){
-    clearIntervals();
+    //clearIntervals();
     player.loadVideoById($(this).attr("vidID"));
     updateNext();
   });
