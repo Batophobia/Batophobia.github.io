@@ -164,7 +164,7 @@ var vidIndex=0;
 function randomVideo(){
   var nextVid = videoIDs.length-1;
   nextVid = nextVid * $("#jumpRange").val() / 100.0;
-  nextVid = Math.floor(Math.random() * listLength);
+  nextVid = Math.floor(Math.random() * nextVid);
   vidIndex += nextVid==0 ? 1 : nextVid;
   vidIndex = vidIndex % videoIDs.length;
   return videoIDs[vidIndex];
