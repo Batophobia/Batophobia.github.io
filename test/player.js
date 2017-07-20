@@ -201,4 +201,7 @@ $(function () {
   $(document).on("input","#jumpRange",function(){
     $("#jumpPercent").text($(this).val()+"%");
   });
+  $(document).on("click","#hiJump", function(){
+    $("helpJump").toggle();
+  });
 });
