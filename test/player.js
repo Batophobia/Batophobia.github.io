@@ -51,6 +51,7 @@ function onPlayerStateChange(event){
       clearIntervals() // clear all intervals
       break;
     default:
+      alert(event.data);
       updateAll() // set status for state, ...
       clearIntervals() // clear all intervals
       setTimeout(function(){
@@ -169,7 +170,6 @@ function updateNext(){
 }
 
 $(function () {
-  debugger;
   $("#playlistID").val(playlist);
   $("#btnRefresh").click(function(){
     playlist = $("#playlistID").val();
