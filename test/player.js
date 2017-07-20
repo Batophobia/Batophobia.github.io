@@ -198,7 +198,7 @@ $(function () {
     player.loadVideoById($(this).attr("vidID"));
     updateNext();
   });
-  $(document).on("change","#jumpRange",function(){
+  $(document).on("input","#jumpRange",function(){
     $("#jumpPercent").text($(this).val()+"%");
   });
 });
