@@ -28,6 +28,19 @@
         border-radius: 50%;
         padding: 0 3px;
       }
+      #helpJump{
+        border: 1px solid #CCC;
+        position: absolute;
+        bottom: 0px;
+        left: auto;
+        right: auto;
+        width: 200px;
+      }
+      .hlpClose{
+        position: absolute;
+        right: 3px;
+        top: 3px;
+      }
     </style>
   </head>
   <body style="background-color: #111; color: #CCC;">
@@ -73,7 +86,10 @@
               <button id="btnNext">Play Next</button>
             </div>
             Random jump<sup class="helpIcon" id="hiJump">?</sup><input type="range" id="jumpRange" value="100" step=".1" min=".1" style="vertical-align: bottom;" /><span id="jumpPercent">100%</span>
-            <div id="helpJump" style="display: none;">The next random video will be within this percentage of the last video, moving up the list and wrapping around to the bottom.  So, a value of 50% will limit the next video to half the videos, specificlaly, the half above the current next option.  100% means any video (exluding the current one) can be next.</div>
+            <div id="helpJump" style="display: none;"><div style="position: relative;">
+              <span class="hlpClose">x</span>
+              The next random video will be within this percentage of the last video, moving up the list and wrapping around to the bottom.  So, a value of 50% will limit the next video to half the videos, specificlaly, the half above the current next option.  100% means any video (exluding the current one) can be next.
+              </div></div>
           </div>
         </div>
       </main>
