@@ -26,7 +26,7 @@
         cursor: pointer;
         border: 1px solid #CCC;
         border-radius: 50%;
-        padding: 0 3px 0 2px;
+        padding: 0 3px;
       }
     </style>
   </head>
@@ -72,7 +72,7 @@
               <button id="btnNew">New Next</button>
               <button id="btnNext">Play Next</button>
             </div>
-            <div>Random jump<sup class="helpIcon" id="hiJump">?</sup><input type="range" id="jumpRange" value="100" step=".1" min=".1" /><span id="jumpPercent">100%</span></div>
+            Random jump<sup class="helpIcon" id="hiJump">?</sup><input type="range" id="jumpRange" value="100" step=".1" min=".1" style="vertical-align: bottom;" /><span id="jumpPercent">100%</span>
             <div id="helpJump" style="display: none;">The next random video will be within this percentage of the last video, moving up the list and wrapping around to the bottom.  So, a value of 50% will limit the next video to half the videos, specificlaly, the half above the current next option.  100% means any video (exluding the current one) can be next.</div>
           </div>
         </div>
