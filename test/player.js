@@ -202,6 +202,6 @@ $(function () {
     $("#jumpPercent").text($(this).val()+"%");
   });
   $(document).on("click","#hiJump", function(){
-    $("helpJump").toggle();
+    $("#helpJump").toggle();
   });
 });
