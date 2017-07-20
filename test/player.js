@@ -11,7 +11,8 @@ function onYouTubeIframeAPIReady() {
 // Event Handlers 
 function onError(error){
   // Update errors on page
-  console.log("Error!");
+  $("#btnNext").click();
+  console.log("Error! "+error.data);
 };
 function onApiChange(event){
   // Update currently availbe APIs
@@ -53,13 +54,14 @@ function onPlayerStateChange(event){
     default:
       updateAll() // set status for state, ...
       clearIntervals() // clear all intervals
+      /* Formerly used for video loading errors (private/deleted/etc.)
       setTimeout(function(){
-        var temp = $(".ytp-error-content-wrap");
         if($("#duration").text()=="0s"){
           player.loadVideoById(nextID);
           updateNext();
         }
       },5000);
+      //*/
       break;
 
   }
@@ -160,7 +162,9 @@ function getList(nextPage){
 
 var vidIndex=0;
 function randomVideo(){
-  vidIndex += Math.floor(Math.random() * videoIDs.length);
+  var listLength = videoIDs.length-1;
+  listLength = listLength * $("#jumpRange").val() / 100.0;
+  vidIndex += Math.floor(Math.random() * listLength);
   vidIndex = vidIndex % videoIDs.length;
   return videoIDs[vidIndex];
 };
@@ -193,5 +197,8 @@ $(function () {
     clearIntervals();
     player.loadVideoById($(this).attr("vidID"));
     updateNext();
+  });
+  $(document).on("change","#jumpRange",function(){
+    $("#jumpPercent").text($(this).val()+"%");
   });
 });
