@@ -204,4 +204,7 @@ $(function () {
   $(document).on("click","#hiJump", function(){
     $("#helpJump").toggle();
   });
+  $(document).on("click",".hlpClose", function(){
+    $("#helpJump").hide();
+  });
 });
