@@ -54,7 +54,7 @@ function onPlayerStateChange(event){
       updateAll() // set status for state, ...
       clearIntervals() // clear all intervals
       setTimeout(function(){
-        var temp = $("ytp-error-content-wrap");
+        var temp = $(".ytp-error-content-wrap");
         if($("#duration").text()=="0s"){
           player.loadVideoById(nextID);
           updateNext();
