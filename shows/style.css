@@ -18,6 +18,7 @@
   cursor: pointer;
   padding: 5px;
   border-right: 1px solid #222;
+  margin: 0;
 }
 #navBar li:hover {
   background-color: #BBB;
