@@ -8,11 +8,10 @@
   left: 0;
 }
 #navBar li {
-  display: inline;
+  display: inline-block;
   cursor: pointer;
   padding: 5px;
   border-right: 1px solid #222;
-  display: block;
 }
 #navBar li:hover {
   background-color: #BBB;
