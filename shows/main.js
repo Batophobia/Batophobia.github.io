@@ -1,5 +1,6 @@
 $(function(){
-  $("#frmShowSearch .btnSearch").click(function(){
+  $("#frmShowSearch .btnSearch").click(function(e){
+    e.preventDefault();
     searchShow();
   });
 });
