@@ -1,5 +1,6 @@
 $(function(){
   $("#secHome").show();
+  loadShows();
   
   $("#btnShowSearch").click(function(e){
     e.preventDefault();
@@ -10,7 +11,18 @@ $(function(){
     $(".section").hide();
     $("#"+$(this).attr("for")).show();
   });
+  
+  $(".toggleShow").on("click", function(){
+    if(UserShows[$(this).parent().attr("for")]){
+      UserShows[$(this).parent().attr("for")] = true;
+    }else{
+      delete UserShows[$(this).parent().attr("for")];
+    }
+    saveShows();
+  });
 });
+
+var UserShows={};
 
 function searchShow(){
   $("#ShowSearchResults").html("Loading...");
@@ -20,12 +32,19 @@ function searchShow(){
     for(var show in retData){
       $("#tblShowSearch").append(
         "<tr for='"+retData[show].show.id+"'>"
-        +"<td>Add Show</td>"
-        +"<td>"+retData[show].show.name+"</td>"
+        +"<td class='toggleShow'>Add Show</td>"
+        +"<td class='showName'>"+retData[show].show.name+"</td>"
         +"<td><img src='"+retData[show].show.image.medium+"' /></td>"
         +"<td>"+retData[show].show.summary+"</td>"
         +"</tr>"
       );
     }
   });
+}
+
+function saveShows(){
+  localStorage["ShowTracker"] = JSON.stringify( UserShows );
+}
+function loadShows(){
+  UserShows = JSON.parse( localStorage["ShowTracker"] );
 }
