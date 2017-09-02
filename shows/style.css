@@ -2,10 +2,12 @@
   width: 100%;
   list-style-type: none;
   background-color: #CCC;
+  text-align: center;
 }
 #navBar li {
   display: inline;
   cursor: pointer;
+  padding: 5px;
 }
 #navBar li:hover {
   background-color: #BBB;
