@@ -46,6 +46,9 @@ function saveShows(){
   localStorage["ShowTracker"] = JSON.stringify( UserShows );
 }
 function loadShows(){
-  if(localStorage["ShowTracker"]!==undefined)
-    UserShows = JSON.parse( localStorage["ShowTracker"] );
+  if(localStorage["ShowTracker"]===undefined)
+    return false;
+  
+  UserShows = JSON.parse( localStorage["ShowTracker"] );
+  //20 calls per 10 seconds
 }
