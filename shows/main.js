@@ -12,7 +12,7 @@ $(function(){
     $("#"+$(this).attr("for")).show();
   });
   
-  $(".toggleShow").on("click", function(){
+  $(document).on("click", ".toggleShow", function(){
     if(UserShows[$(this).parent().attr("for")]){
       UserShows[$(this).parent().attr("for")] = true;
     }else{
