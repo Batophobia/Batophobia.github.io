@@ -1,3 +1,9 @@
 #navBar{
   width: 100%;
 }
+
+#credit{
+ position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
