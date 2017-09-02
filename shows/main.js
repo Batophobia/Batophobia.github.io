@@ -1,7 +1,14 @@
 $(function(){
+  $("#secHome").show();
+  
   $("#btnShowSearch").click(function(e){
     e.preventDefault();
     searchShow();
+  });
+  
+  $("#navBar li").click(function(){
+    $(".section").hide();
+    $("#"+$(this).attr("for")).show();
   });
 });
 
