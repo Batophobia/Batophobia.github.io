@@ -3,11 +3,16 @@
   list-style-type: none;
   background-color: #CCC;
   text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 #navBar li {
   display: inline;
   cursor: pointer;
   padding: 5px;
+  border-right: 1px solid #222;
+  display: block;
 }
 #navBar li:hover {
   background-color: #BBB;
