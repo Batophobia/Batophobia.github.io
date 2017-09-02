@@ -5,6 +5,8 @@
 .btnSubmit{
   border: 1px solid #000;
   cursor: pointer;
+  padding: 2px 5px;
+  display: inline-block;
 }
 
 #credit{
