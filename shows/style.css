@@ -2,6 +2,11 @@
   width: 100%;
 }
 
+.btnSubmit{
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
 #credit{
  position: absolute;
   bottom: 0px;
