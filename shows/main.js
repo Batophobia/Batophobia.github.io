@@ -1,5 +1,5 @@
 $(function(){
-  $("#frmShowSearch .btnSearch").click(function(e){
+  $("#btnShowSearch").click(function(e){
     e.preventDefault();
     searchShow();
   });
