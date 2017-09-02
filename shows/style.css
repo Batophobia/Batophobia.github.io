@@ -26,6 +26,7 @@
 
 .section{
   padding-top: 50px;
+  display: none;
 }
 
 .btnSubmit{
