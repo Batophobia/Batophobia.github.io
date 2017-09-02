@@ -1,5 +1,14 @@
 #navBar{
   width: 100%;
+  list-style-type: none;
+  background-color: #CCC;
+}
+#navBar li {
+  display: inline;
+  cursor: pointer;
+}
+#navBar li:hover {
+  background-color: #BBB;
 }
 
 .btnSubmit{
