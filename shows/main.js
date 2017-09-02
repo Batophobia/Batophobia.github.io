@@ -46,5 +46,6 @@ function saveShows(){
   localStorage["ShowTracker"] = JSON.stringify( UserShows );
 }
 function loadShows(){
-  UserShows = JSON.parse( localStorage["ShowTracker"] );
+  if(localStorage["ShowTracker"]!==undefined)
+    UserShows = JSON.parse( localStorage["ShowTracker"] );
 }
