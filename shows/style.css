@@ -24,6 +24,15 @@
   background-color: #BBB;
 }
 
+#messages{
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+#messages div{
+  background-color: #CCC;
+}
+
 .section{
   padding-top: 50px;
   display: none;
