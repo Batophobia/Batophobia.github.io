@@ -41,3 +41,9 @@
   bottom: 0px;
   right: 0px;
 }
+
+.toggleShow{
+  cursor: pointer;
+  color: #339;
+  text-decoration: underline;
+}
