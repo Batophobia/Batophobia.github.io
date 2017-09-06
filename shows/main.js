@@ -18,8 +18,8 @@ $(function(){
       msg("Removed Show");
     }else{
       UserShows[$(this).parent().attr("for")] = {
-        name: $(this).parent().find("showName"),
-        image: $(this).parent().find("showImage")
+        name: $(this).parent().find("showName").text(),
+        image: $(this).parent().find("showImage").attr("src")
       };
       msg("Added Show");
     }
