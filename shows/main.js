@@ -15,8 +15,10 @@ $(function(){
   $(document).on("click", ".toggleShow", function(){
     if(UserShows[$(this).parent().attr("for")]){
       UserShows[$(this).parent().attr("for")] = true;
+      msg("Added Show");
     }else{
       delete UserShows[$(this).parent().attr("for")];
+      msg("Removed Show");
     }
     saveShows();
   });
@@ -51,4 +53,14 @@ function loadShows(){
   
   UserShows = JSON.parse( localStorage["ShowTracker"] );
   //20 calls per 10 seconds
+}
+
+msg(input){
+  var message = $("<div>"+input+"<div>");
+		$('#messages').append(message);
+		setTimeout(function(){
+			message.fadeOut('slow',function(){
+				$(this).remove();
+			});
+  },3000);
 }
