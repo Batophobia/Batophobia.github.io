@@ -55,8 +55,11 @@ body{
   right: 0px;
 }
 
-.toggleShow{
+a, .toggleShow{
   cursor: pointer;
   color: #CCF;
   text-decoration: underline;
+}
+a:visited{
+  color: #FCF
 }
