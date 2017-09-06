@@ -43,7 +43,7 @@ body{
 }
 
 .btnSubmit{
-  border: 1px solid #000;
+  border: 1px solid #CCC;
   cursor: pointer;
   padding: 2px 5px;
   display: inline-block;
