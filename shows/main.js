@@ -57,10 +57,10 @@ function loadShows(){
 
 msg(input){
   var message = $("<div>"+input+"<div>");
-		$('#messages').append(message);
-		setTimeout(function(){
-			message.fadeOut('slow',function(){
-				$(this).remove();
-			});
+	$('#messages').append(message);
+	setTimeout(function(){
+	  message.fadeOut('slow',function(){
+		  $(this).remove();
+		});
   },3000);
 }
