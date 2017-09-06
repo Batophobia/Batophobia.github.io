@@ -1,6 +1,11 @@
+body{
+  background-color: #131;
+  color: #CCC;
+}
+
 #navBar{
   width: 100%;
-  background-color: #CCC;
+  background-color: #363;
   text-align: center;
   position: fixed;
   top: 0;
@@ -10,18 +15,18 @@
   list-style-type: none;
   width: 100%;
   text-align: center;
-  background-color: #CCC;
+  background-color: #363;
   margin: 0;
 }
 #navBar li {
   display: inline-block;
   cursor: pointer;
   padding: 5px;
-  border-right: 1px solid #222;
+  border-right: 1px solid #CCC;
   margin: 0;
 }
 #navBar li:hover {
-  background-color: #BBB;
+  background-color: #565;
 }
 
 #messages{
@@ -30,7 +35,7 @@
   top: 5px;
 }
 #messages div{
-  background-color: #CCC;
+  background-color: #333;
 }
 
 .section{
@@ -53,6 +58,6 @@
 
 .toggleShow{
   cursor: pointer;
-  color: #339;
+  color: #CCF;
   text-decoration: underline;
 }
