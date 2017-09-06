@@ -17,6 +17,8 @@ $(function(){
       delete UserShows[$(this).parent().attr("for")];
       msg("Removed Show");
     }else{
+	    console.log($(this).parent().find("showName").text());
+	    console.log($(this).parent().find("showImage").attr("src"));
       UserShows[$(this).parent().attr("for")] = {
         name: $(this).parent().find("showName").text(),
         image: $(this).parent().find("showImage").attr("src")
