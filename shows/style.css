@@ -58,6 +58,8 @@ body{
 }
 .showWrapper .showName{
   border-bottom: 1px solid #CCC;
+  float: left;
+  margin: 10px 5px;
 }
 
 #credit{
