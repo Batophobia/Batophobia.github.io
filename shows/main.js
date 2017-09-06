@@ -13,14 +13,16 @@ $(function(){
   });
   
   $(document).on("click", ".toggleShow", function(e){
-    if(UserShows[$(this).parent().attr("for")]){
-      delete UserShows[$(this).parent().attr("for")];
+    var show = $(this).parent().attr("for");
+    if(UserShows[show]){
+      delete UserShows[show];
       msg("Removed Show");
     }else{
-      UserShows[$(this).parent().attr("for")] = {
+      UserShows[show] = {
         name: $(this).parent().find(".showName").text(),
         image: $(this).parent().find(".showImage").attr("src")
       };
+      addMyShow(show, UserShows[show].name, UserShows[show].image);
       msg("Added Show");
     }
     saveShows();
@@ -58,12 +60,15 @@ function loadShows(){
   //20 calls per 10 seconds
   
   for(var show in UserShows){
-    $("#secShows").append(
-      "<span class='showWrapper' for='"+show+"'>"+
-      "<div class='showName'>"+UserShows[show].name+"</div>"+
-      "<img src='"+UserShows[show].image+"' />"+
-      "</span>");
+    addMyShow(show, UserShows[show].name, UserShows[show].image);
   }
+}
+
+function addMyShow(id, name, img){
+	$("#secShows").append("<span class='showWrapper' for='"+id+"'>"+
+      "<div class='showName'>"+name+"</div>"+
+      "<img src='"+img+"' />"+
+      "</span>");
 }
 
 function msg(input){
