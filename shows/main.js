@@ -55,7 +55,7 @@ function loadShows(){
   //20 calls per 10 seconds
 }
 
-msg(input){
+function msg(input){
   var message = $("<div>"+input+"<div>");
 	$('#messages').append(message);
 	setTimeout(function(){
