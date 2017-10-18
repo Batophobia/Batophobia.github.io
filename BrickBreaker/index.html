@@ -1,1 +1,65 @@
-<html></hmtl>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Brick Breaker</title>
+    <meta name="description" content="Brick Breaker is like Breakout, but with no paddles and increasing number of balls shot.">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="../ga.js"></script>
+	  <script src="js/jquery.js"></script>
+    <script src="js/towers.js"></script>
+    <script src="js/items.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/enemy.js"></script>
+    <script src="js/store.js"></script>
+    <script src="js/ments.js"></script>
+    <script src="js/main.js"></script>
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+	<div id="divExport"><textarea id="txtExport"></textarea><button onclick="main.imprt();">Import Save</button></div>
+	
+   <div class="everything">
+    <div id="leftBar" class="leftBar">
+		<div id="buttons" class="buttons">
+			<div id="store" class="store"></div>
+			<div id="spcBtns" class="spcBtns">
+				<button id="clear" class="button" onclick="main.clear();">Clear Save</button>
+			</div>
+		</div>
+    </div>
+	
+    <div id='rightBar' class='rightBar'>
+		<div id="towers" class="towers"></div>
+		<div class="menuBtns">
+			<button id="btnImport" class="button" onclick="$('#divExport').toggle();">Import</button>
+			<button id="btnExport" class="button" onclick="main.exprt();">Export</button>
+			<button id="awards" class="button" onclick="$('#achievements').toggle();">Awards</button>
+		</div>
+		<div class="version">version 1.0</div>
+	</div>
+	
+	<div id="mainBar" class="mainBar">
+		<div id="coin" class="coin"></div>
+		<div id="maxLevel" class="maxLevel">Level: 1</div>
+		<canvas id="gameScreen" class="gameScreen" height="560px" width="560px"></canvas>
+	</div>
+	
+  <div id='alerts'></div>
+	<div id="twrInfo" class="twrInfo"></div>
+	
+	<div id="achievements" class="achievements">
+		<span class="closeX" onclick="$('#achievements').hide();">x</span>
+    <div id="achievementsList"></div>
+	</div>
+   </div>
+   
+	<script>
+		$(document).ready(function(){
+			main.init();
+		});
+	</script>
+  </body>
+</html>
