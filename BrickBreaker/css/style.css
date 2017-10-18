@@ -1,0 +1,184 @@
+body {
+	background: #222222;
+	font-family: monospace;
+	color: #CCCCCC;
+	font-size: 14px;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+.everything{
+	width: 800px;
+	height: 600px;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	position:relative;
+	border: 1px dotted #CCCCCC;
+}@media (min-width: 801px){
+    .everything{
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+#divExport{
+	display:none;
+	position: absolute;
+	z-index:9999;
+}
+#txtExport{
+	background: #666666;
+	color:#DDDDDD;
+}
+button {
+	background: #222222;
+	border: 1px solid #CCCCCC;
+	color: #CCCCCC;
+	cursor: pointer;
+	margin: 5px;
+	border-radius: 4px;
+}
+button:hover {
+	background: #666666;
+}
+button:disabled {
+	background: #999999;
+	cursor: default;
+}
+.version{
+	font-size: 12px;
+	position: absolute;
+	right:1px;
+	bottom:1px;
+}
+.leftBar:empty {
+	display:none;
+}
+.leftBar {
+	width: 100px;
+	height: 600px;
+	border-right: 1px solid #CCCCCC;
+	position: absolute;
+	left: 0px;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}	.spcBtns{
+		position: absolute;
+		left: 1px;
+		bottom: 1px;
+	} .storeStock{
+		font-size: 12px;
+		padding-left:2px;
+		padding-right:2px;
+	} .storeStock button{
+		font-size: 11px;
+	}
+.rightBar:empty {
+	display:none;
+}
+.rightBar {
+	width: 100px;
+	height: 600px;
+	border-left: 1px solid #CCCCCC;
+	position: absolute;
+	right: 0px;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	overflow: auto;
+}	.menuBtns{
+		position: absolute;
+		bottom: 15px;
+		right: 1px;
+	} .tower{
+		width: 90px;
+		margin: 5px;
+		text-align: right;
+	}	.sel{
+			background-color: #666666;
+		}
+	#awards{
+		display: none;
+	}
+.mainBar {
+	width: 600px;
+	height: 600px;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	overflow: hidden;
+	position: absolute;
+	left: 100px;
+}	.map{
+		border: 1px solid #339933;
+		position: relative;
+		top: 20px;
+		left: 20px;
+	} .coin{
+		position: absolute;
+		top: 1px;
+		left: 1px;
+	} .scrap{
+		position: absolute;
+		top: 1px;
+		right: 1px;
+	} .maxLevel{
+		position: absolute;
+		bottom: 1px;
+		left: 1px;
+	} .progBar{
+		position: absolute;
+		bottom: 1px;
+		right: 2px;
+		width: 125px;
+		height: 10px;
+		border: 1px solid #CCCCCC;
+	}	.progPercent{
+			width: 100%;
+			height: 100%;
+			background-color: #669966;
+		}
+.achievements{
+	display: none;
+	background: #222222;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 750px;
+	height: 500px;
+}	.achievements table{
+		background: #222222;
+		width: 100%;
+		height: 100%;
+	}	.achievements td{
+			font-size: 11px;
+			border: 1px solid #CCCCCC;
+			width: 75px;
+			height: 50px;
+			margin: 5px;
+			vertical-align: top;
+		} #gameStats{
+		caption-side: bottom;
+		font-size: 11px;
+		background: #222222;
+	} .closeX{
+		font-size: 11px;
+		position: absolute;
+		top: 2px;
+		right: 5px;
+		cursor: pointer;
+	}
+#alerts {
+	background: #222222;
+	position: absolute;
+	bottom: 5px;
+	left: 250px;
+	padding: 5px;
+	width: 300px;
+}	#alerts .alert {
+		border-bottom: 1px dashed #CCCCCC;
+		text-align: center;
+	} #alerts:empty {
+		display:none;
+}
