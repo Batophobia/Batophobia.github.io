@@ -32,10 +32,12 @@ function initClient() {
 
 function updateSigninStatus(isSignedIn) {
 	if (isSignedIn) {
-	  showLoading();
+	  $("#btnLogin").hide();
+    $("#btnLogout").show();
     getDriveFiles();
 	} else {
-		// Need to log in
+		$("#btnLogin").show();
+		$("#btnLogout").hide();
 	}
 }
 
