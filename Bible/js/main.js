@@ -92,7 +92,13 @@ function getSave(){
     if (!resp.error) {
       DRIVE_FILES = resp.items;
     }else{
-      showErrorMessage("Error: " + resp.error.message);
+	    if(resp.error.message=="File not found: .")
+        createSave();
+      showMessage("Error",resp.error.message);
     }
   });
+}
+
+function createSave(){
+  // TODO
 }
