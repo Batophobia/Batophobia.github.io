@@ -12,7 +12,7 @@ var FILE_COUNTER = 0;
 var FOLDER_ARRAY = [];
 
 $(function(){
-  showUserInfo();
+  //showUserInfo();
 });
 
 function handleClientLoad() {
