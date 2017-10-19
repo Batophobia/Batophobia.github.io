@@ -2,8 +2,8 @@
 var SCOPES = ['https://www.googleapis.com/auth/drive','profile'];
 var CLIENT_ID = '545924454876-8mkdag6i3eibgvlp0a19da6jfr3cb3kq.apps.googleusercontent.com';
 var API_KEY = 'AIzaSyAZUjEtRhHFFHzAXferXelEyNaSs_IPf-o';
-var FOLDER_NAME = "";
-var FOLDER_ID = "root";
+var FOLDER_NAME = "ModernBible_AppData";
+var FOLDER_ID = "ModernBible_AppData";
 var FOLDER_PERMISSION = true;
 var FOLDER_LEVEL = 0;
 var NO_OF_FILES = 1;
@@ -34,7 +34,7 @@ function updateSigninStatus(isSignedIn) {
 	if (isSignedIn) {
 	  $("#btnLogin").hide();
     $("#btnLogout").show();
-    getDriveFiles();
+    gdriveSetup();
 	} else {
 		$("#btnLogin").show();
 		$("#btnLogout").hide();
@@ -73,4 +73,26 @@ function showMessage(type, message){
 			$(this).remove();
 		});
   },3000);
+}
+
+function gdriveSetup(){
+  gapi.client.load('drive', 'v3', getSave);
+}
+
+function getSave(){
+	var query = "";
+	query = "'" + FOLDER_ID + "' in parents";
+	var request = gapi.client.drive.files.list({
+    'maxResults': NO_OF_FILES,
+    'q': query,
+    'corpora': 'user'
+  });
+
+  request.execute(function (resp) {
+    if (!resp.error) {
+      DRIVE_FILES = resp.items;
+    }else{
+      showErrorMessage("Error: " + resp.error.message);
+    }
+  });
 }
