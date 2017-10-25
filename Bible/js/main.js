@@ -6,7 +6,7 @@ $(function(){
     $("#passageText").text("");
     data = Json.parse(data);
     for(var itm in data){
-      $("#passageText").append(itm+": "+data[itm]);
+      $("#passageText").append(itm+": "+data[itm]+"<br/>");
     }
   });
 });
