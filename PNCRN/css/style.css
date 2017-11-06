@@ -1,0 +1,405 @@
+body {
+	background: #FFFFFF;
+	font-family: monospace;
+	color: #333333;
+	font-size: 14px;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+.everything{
+	width: 100%;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+button {
+	background: #FFFFFF;
+	border: 1px solid #333333;
+	color: #333333;
+	cursor: pointer;
+	margin: 5px;
+	border-radius: 4px;
+}
+button:hover {
+	background: #CCCCCC;
+}
+button:disabled {
+	background: #999999;
+	cursor: default;
+}
+.buttons{
+	width:100px;
+	height:600px;
+	float:left;
+}
+.version{
+	position: absolute;
+	right:15px;
+	bottom:15px;
+}
+.store{
+	border: 1px solid #999999;
+	width:1000px;
+	height:750px;
+	margin-left:auto;
+	margin-right:auto;
+	padding: 10px;
+}	.strItm{
+		position: relative;
+		width:90%;
+		height:50px;
+		padding-top:35px;
+		padding-left:10px;
+		margin-left:15px;
+		margin-top:15px;
+		border: 1px solid #999999;
+		border-radius: 4px;
+	}	.strItm button{
+			position: absolute;
+			right: 10px;
+		}
+.gameBoard{
+	display:none;
+	width:1200px;
+	height:750px;
+	margin-left:auto;
+	margin-right:auto;
+	z-index: -99;
+}	.playerSide{
+		border: 1px solid #999999;
+		width:100%;
+		z-index: -98;
+	}	#oppHand{
+			width:1190px;
+			height:25px;
+			overflow:hidden;
+			padding-left: 10px;
+			border-bottom: 1px solid #999999;
+		}#plrHand{
+			width:100%;
+			height:210px;
+			z-index: -97;
+		} .field{
+			width:100%;
+			height:225px;
+			z-index: -96;
+		}	.field .card{
+				margin-left:10px;
+				float: left;
+			}
+	#oppSide{
+		height:260px;
+		z-index: -98;
+	}	#oppHand .card{
+			float: left;
+		}
+	#plrSide{
+		height:450px;
+	}	#plrHand .card{
+			float: right;
+		}
+	#oppField{
+		transform:rotate(180deg);
+		-ms-transform:rotate(180deg);
+		-webkit-transform:rotate(180deg);
+	} #plrField{
+		margin-top:10px;
+	} #gamePool{
+		width: 100%;
+		height: 35px;
+	}	.rsrc{
+			float: left;
+			margin-left:5px;
+			padding-left:10px;
+			padding-right:10px;
+		}	#numAir{
+				background-color:#FFFF69;
+			}#numEarth{
+				background-color:#99FF99;
+			}#numWater{
+				background-color:#66CCFF;
+			}#numFire{
+				background-color:#FF9966;
+			}
+	.totalElems{
+		width: 275px;
+		height: 35px;
+		position: absolute;
+		top: 5px;
+		right: 5px;
+	}	#ttlAir{
+			background-color:#FFFF69;
+			display:none;
+		}#ttlEarth{
+			background-color:#99FF99;
+			display:none;
+		}#ttlWater{
+			background-color:#66CCFF;
+			display:none;
+		}#ttlFire{
+			background-color:#FF9966;
+			display:none;
+		}
+.card{
+	position: relative;
+	border: 1px solid #333333;
+	padding: 5px;
+	border-radius: 4px;
+	width:150px;
+	height:200px;
+	font-size:12px;
+	z-index: 1;
+}	.cardTops{
+		margin-bottom: 10px;
+		border: 1px dotted #333333;
+		height: 17px;
+	}	.cardTops span{
+			box-sizing:border-box;
+			-moz-box-sizing:border-box;
+			-webkit-box-sizing:border-box;
+			display: inline-block;
+			width: 12px;
+			height: 12px;
+			border-radius: 50%;
+			font-size: 10px;
+		}	.a1::before{
+				border: 6px solid #FFFF69;
+				border-right-color: #FFFF69;
+				border-bottom-color: #FFFF69;
+				border-top-color: #FFFF69;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.e1::before{
+				border: 6px solid #99FF99;
+				border-left-color: #99FF99;
+				border-right-color: #99FF99;
+				border-bottom-color: #99FF99;
+				border-top-color: #99FF99;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.w1::before{
+				border: 6px solid #66CCFF;
+				border-left-color: #66CCFF;
+				border-right-color: #66CCFF;
+				border-bottom-color: #66CCFF;
+				border-top-color: #66CCFF;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.f1::before{
+				border: 6px solid #FF9966;
+				border-left-color: #FF9966;
+				border-right-color: #FF9966;
+				border-bottom-color: #FF9966;
+				border-top-color: #FF9966;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.a2::before{
+				border-right-color: #FFFF69;
+				border-bottom-color: #FFFF69;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.e2::before{
+				border-right-color: #99FF99;
+				border-bottom-color: #99FF99;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.w2::before{
+				border-right-color: #66CCFF;
+				border-bottom-color: #66CCFF;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.f2::before{
+				border-right-color: #FF9966;
+				border-bottom-color: #FF9966;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.a3::before{
+				border-left-color: #FFFF69;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.e3::before{
+				border-left-color: #99FF99;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.w3::before{
+				border-left-color: #66CCFF;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.f3::before{
+				border-left-color: #FF9966;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.a4::before{
+				border-right-color: #FFFF69;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.e4::before{
+				border-right-color: #99FF99;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.w4::before{
+				border-right-color: #66CCFF;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}.f4::before{
+				border-right-color: #FF9966;
+				content: "";
+				box-sizing:border-box;
+				border-radius: 50%;
+				position: absolute;
+				z-index: -1;
+			}
+	.cardBody{
+		position: relative;
+		padding: 5px;
+		margin-bottom: 10px;
+		border: 1px dotted #333333;
+		width:138px;
+		height:110px;
+	}	.cardDesc{
+			position: absolute;
+			margin-top: 10px;
+			font-style: italic;
+			font-size:11px;
+			bottom: 10px;
+		}
+	.cardSubs{
+		position: absolute;
+		bottom:25px;
+		left:5px;
+	}.cardPowr{
+		position: absolute;
+		bottom:5px;
+		right:5px;
+	}
+.unit{
+	background: #F6CFF3;
+}
+.mod{
+	background: #F6C090;
+}
+#helpTip{
+	position: absolute;
+	background: #FFFFCC;
+	border: 1px solid #333333;
+	border-radius: 5px;
+	padding: 5px;
+	z-index:99;
+}	#helpTip:empty{
+		display:none;
+	}
+.helpMenu{
+	position: absolute;
+	left:300px;
+	top:150px;
+	width:800px;
+	height:500px;
+	background: #CCCCCC;
+	border: 1px solid #333333;
+	border-radius: 50px;
+	display: none;
+	z-index:98;
+}	.helpScreen{
+		position: relative;
+		background: #CCFFCC;
+		margin-left: 100px;
+		margin-top: 50px;
+		width: 600px;
+		height: 400px;
+		border: 1px solid #999999;
+		border-radius: 5px;
+		z-index: 99;
+	}	.helpLeft{
+			position: absolute;
+			top: 5px;
+			left: 5px;
+			width: 290px;
+			height: 390px;
+			border-right: 1px solid #999999;
+			overflow: auto;
+		}.helpRight{
+			position: absolute;
+			top: 5px;
+			left: 300px;
+			width: 290px;
+			height: 390px;
+		}.helpText{
+			display: none;
+		}.genTopic{
+			margin-top: 5px;
+			cursor: pointer;
+		}.helpTopic{
+			display: none;
+			cursor: pointer;
+			margin-left: 5px;
+		}.hlpClose{
+			cursor: pointer;
+			position: absolute;
+			top: -25px;
+			right: -50px;
+		}
+pre {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	font: 4px/3px monospace;
+}
+#alerts {
+	background: #FFFFFF;
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	padding: 5px;
+	width: 300px;
+}	#alerts .alert {
+		border-bottom: 1px dashed #333333;
+		text-align: center;
+	} #alerts:empty {
+		display:none;
+	}
