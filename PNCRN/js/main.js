@@ -3,11 +3,7 @@ var main = {
 		this.load();
 		this.timerID = window.setInterval(function(){main.tick()}, 1250);
 		player.init();
-		store.init();
-		
-		$("#btnPlay").on('click', function(){
-			game.init();
-		});
+		cards.init();
 	},
 	counter: 0,
 	
