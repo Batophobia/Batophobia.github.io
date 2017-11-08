@@ -29,6 +29,10 @@ var player = {
 		
 		var crdDetails=this.hand[this.hand.length-1];
 		
+		var strCard='<div class="card '+crdDetails.color+'"Res id="plrCorn'+(this.hand.length-1)+'">';
+			strCard=strCard+'<div class="cardTops">'+crdDetails.name+'</div>';
+			strCard=strCard+'<div class="cardBody">'+crdDetails.count+'</div>';
+			strCard=strCard+'</div>';
 		$("#plrHand").append(strCard);
 		$("#plrHand #plr"+(this.hand.length-1)).on('click', function(){
 			//game.play(this);
@@ -39,13 +43,8 @@ var player = {
 		var crdDetails = cards.crnDeck.pop();
 		var strCard='<div class="card corn" id="plrCorn'+(this.hand.length-1)+'">';
 			strCard=strCard+'<div class="cardTops">'+crdDetails.name+'</div>';
-			strCard=strCard+'<div class="cardBody"><span class="crdSpecial">'+crdDetails.spec+'</span><div class="cardDesc">'+crdDetails.desc+'</div></div>';
-			if(crdDetails.kind=="unit"){
-				strCard=strCard+'<div class="cardSubs">'+crdDetails.type+' - '+crdDetails.rare+'</div>';
-				strCard=strCard+'<div class="cardPowr">'+crdDetails.att+' | '+crdDetails.def+'</div>';
-			}else{
-				strCard=strCard+'<div class="cardSubs">Mod - '+crdDetails.rare+'</div>';
-			}
+			strCard=strCard+'<div class="cardBody"><div class="'+crdDetails.txtType+'">'+crdDetails.txt+'</div></div>';
+			strCard=strCard+'<div class="cardPowr">'+crdDetails.ico+'</div>';
 		strCard=strCard+'</div>';
 	},
 	
