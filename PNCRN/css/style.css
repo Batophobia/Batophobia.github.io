@@ -43,13 +43,10 @@ table, td{
 	border: 1px solid black;
 } td.loc{
 		border: 1px dotted black;
-		width: 24%;
+		width: 66%;
 	}
 	td.corns{
 		width: 33%;
-	}
-	td.mines{
-		width: 19%;
 	}
 	td.deck, td.discard{
 		width: 150px;
