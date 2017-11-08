@@ -38,6 +38,13 @@ table, td{
 	border: 1px solid black;
 } td.loc{
 		border: 1px dotted black;
+		width: 24%;
+	}
+	td.corns{
+		width: 33%;
+	}
+	td.mines{
+		width: 19%;
 	}
 .card{
 	position: relative;
