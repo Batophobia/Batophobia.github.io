@@ -36,7 +36,9 @@ table{
 }
 table, td{
 	border: 1px solid black;
-}
+} td.loc{
+		border: 1px dotted black;
+	}
 .card{
 	position: relative;
 	border: 1px solid #333333;
