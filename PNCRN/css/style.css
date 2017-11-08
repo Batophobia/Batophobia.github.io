@@ -43,7 +43,7 @@ table, td{
 	border: 1px solid black;
 } td.loc{
 		border: 1px dotted black;
-		width: 66%;
+		width: 33%;
 	}
 	td.corns{
 		width: 33%;
