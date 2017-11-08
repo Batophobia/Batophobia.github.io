@@ -29,6 +29,10 @@ body {
 		width:100%;
 	  height: 250px;
 		z-index: -98;
+	} #oppSide{
+		transform:rotate(180deg);
+		-ms-transform:rotate(180deg);
+		-webkit-transform:rotate(180deg);
 	}
 table{
 	border-collapse: collapse;
