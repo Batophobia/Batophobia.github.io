@@ -52,7 +52,7 @@ table, td{
 		width: 19%;
 	}
 	td.deck, td.discard{
-		width: 180px;
+		width: 150px;
 	}
 	td.discard{
 		background-color: #CCCCCC;
