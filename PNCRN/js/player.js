@@ -1,27 +1,44 @@
 var player = {
 	init : function(){
-		//for(var i=0;i<50;i++){
-		//	this.deck.push(rndm(0,cards.list.length));
-		//}
+		// Draw hand
+		//draw();
+		
+		// Give base corn
 	},
 	
-	cardList: [ ],
-	decks: [ ], // Saved decks
-	deck: [ ], // default 45-60 cards
-	hand: [ ], // default <= 5
-	maxHandSize: 5,
+	hand: [ ], // default <= 8
+	maxHandSize: 8,
+	
+	field: {
+		corns: [ ],
+		mine: { workers: [], level: 0 }, // 1 piece -> 2 pieces -> 4 pieces
+		refine: { workers: [], level: 0 }, // 2 for 1 -> 1 for 1 -> 2 for 2
+		market: { workers: [], level: 0 }, // trade: 2 for 1 -> 3 for 2 -> 1 for 1
+		town: { workers: [], level: 0 }, // # workers: 4 -> 7 -> 12
+		farm: { workers: [], level: 0 }, // # corn: 1 -> 2 -> 3
+		lab: { workers: [], level: 0 }, // ??? used for upgrading?
+	},
 	
 	draw: function(){
 		if(this.hand.length >= this.maxHandSize){
 			//No Draw
 			return;
 		}
-		this.hand.push(this.deck.pop());
+		// Draw card
+		this.hand.push(cards.resDeck.pop());
 		
-		var crdDetails=cards.list[this.hand[this.hand.length-1]];
+		var crdDetails=this.hand[this.hand.length-1];
 		
-		var strCard='<div class="card '+crdDetails.kind+'" id="plr'+(this.hand.length-1)+'">';
-			strCard=strCard+'<div class="cardTops">'+cards.dispCost(crdDetails.cost)+': '+crdDetails.name+'</div>';
+		$("#plrHand").append(strCard);
+		$("#plrHand #plr"+(this.hand.length-1)).on('click', function(){
+			//game.play(this);
+		});
+	},
+	
+	drawCorn: function(){
+		var crdDetails = cards.crnDeck.pop();
+		var strCard='<div class="card corn" id="plrCorn'+(this.hand.length-1)+'">';
+			strCard=strCard+'<div class="cardTops">'+crdDetails.name+'</div>';
 			strCard=strCard+'<div class="cardBody"><span class="crdSpecial">'+crdDetails.spec+'</span><div class="cardDesc">'+crdDetails.desc+'</div></div>';
 			if(crdDetails.kind=="unit"){
 				strCard=strCard+'<div class="cardSubs">'+crdDetails.type+' - '+crdDetails.rare+'</div>';
@@ -30,32 +47,6 @@ var player = {
 				strCard=strCard+'<div class="cardSubs">Mod - '+crdDetails.rare+'</div>';
 			}
 		strCard=strCard+'</div>';
-		
-		$("#plrHand").append(strCard);
-		$("#plrHand #plr"+(this.hand.length-1)).on('click', function(){
-			//game.play(this);
-		});
-	},
-	
-	total: {
-		air: 0,
-		earth: 0,
-		water: 0,
-		fire: 0,
-		kurenc: 1000
-	},
-	incr: {
-		air: 0,
-		earth: 0,
-		water: 0,
-		fire: 0,
-		kurenc: 1
-	},
-	pool: {
-		air: 0,
-		earth: 0,
-		water: 0,
-		fire: 0
 	},
 	
 	tick: function(){
