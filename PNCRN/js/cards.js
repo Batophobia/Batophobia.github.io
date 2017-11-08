@@ -29,10 +29,24 @@ var cards = {
 	resDeck: [ ],
 	resDiscard: [ ],
 	crnDeck: [
-		{ name: "Uzi-corn" },
-		{ name: "Uni-corn" }
+		{ name: "Uzicorn", ico: "B", txtType: "crdSpecial", txt: "Rock-Paper-Sciccors target opponent.  Loser sacrifices a worker." },
+		{ name: "Gigacorn", ico: "B", txtType: "crdSpecial", txt: "Makes 5 poo pieces instead of 4." },
+		{ name: "Uni-corn", ico: "B", txtType: "crdSpecial", txt: "Can feed without farm worker." }
 	],
 	crnDiscard: [ ],
+	
+	/*
+	.............
+	: NAME      :
+	:-----------:
+	:   corn    :
+	:  image    :
+	:-----------:
+	: special   :
+	: text      :
+	:         @ : <-- expansion icon
+	.............
+	*/
 	
 	// https://stackoverflow.com/a/2450976/1618257
 	shuffle: function(array) {
