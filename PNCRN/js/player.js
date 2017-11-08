@@ -33,7 +33,7 @@ var player = {
 		
 		$("#plrHand").append(strCard);
 		$("#plrHand #plr"+(this.hand.length-1)).on('click', function(){
-			game.play(this);
+			//game.play(this);
 		});
 	},
 	
@@ -59,22 +59,7 @@ var player = {
 	},
 	
 	tick: function(){
-		if(game.blnInGame){
-			if(main.counter%500==0)
-				this.total.kurenc+=this.incr.kurenc;
-		}else{
-			this.total.kurenc+=this.incr.kurenc;
-			this.total.air+=this.incr.air;
-			this.total.earth+=this.incr.earth;
-			this.total.water+=this.incr.water;
-			this.total.fire+=this.incr.fire;
-		}
 		
-		$(".kurenc").html("&#6107;"+this.total.kurenc);
-		$("#ttlAir").html("Total<br/>Air<br/>"+this.total.air);
-		$("#ttlEarth").html("Total<br/>Earth<br/>"+this.total.earth);
-		$("#ttlWater").html("Total<br/>Water<br/>"+this.total.water);
-		$("#ttlFire").html("Total<br/>Fire<br/>"+this.total.fire);
 	},
 	
 	updateDisplay: function(){
