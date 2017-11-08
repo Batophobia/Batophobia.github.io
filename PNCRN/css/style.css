@@ -46,6 +46,12 @@ table, td{
 	td.mines{
 		width: 19%;
 	}
+	td.deck, td.discard{
+		width: 180px;
+	}
+	td.discard{
+		background-color: #CCCCCC;
+	}
 .card{
 	position: relative;
 	border: 1px solid #333333;
