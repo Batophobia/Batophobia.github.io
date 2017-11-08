@@ -1,62 +1,55 @@
 var cards = {
-	init : function(){
-		
+	init: function(){
+		this.resDeck = [ ];
+		var numDoubles = Math.floor(this.numResCards * (this.prcntDblRes/100.0));
+		var numSingles = this.numResCards - numDoubles;
+		for(i=0;i<this.numSingles;i++){
+			for(var r in this.res){
+				this.resDeck.push({ name: this.res.name, color: this.res.color, count: 1 });
+			}
+		}
+		for(i=0;i<this.numDoubles;i++){
+			for(var r in this.res){
+				this.resDeck.push({ name: this.res.name, color: this.res.color, count: 2 });
+			}
+		}
+		this.resDeck = this.shuffle(this.resDeck);
+		this.crnDeck = this.shuffle(this.crnDeck);
 	},
 	
-	//desc maxlength: 86
-	//name maxlenght: 16-[3*(#colors-1)]
-	//spec maxlength: 20
 	res: [
-		{ kind: "wld", num: 1 },
-		{ kind: "grn", num: 1 },
-		{ kind: "red", num: 1 },
-		{ kind: "blu", num: 1 },
-		{ kind: "ylw", num: 1 }
+		{ color: "p", name:"Bow" }, // bow (purple)
+		{ color: "r", name:"Heart" }, // heart (red)
+		{ color: "b", name:"Cupcake" }, // cupcake (blue)
+		{ color: "y", name:"Star" }  // star (yellow)
 	],
 	
-	payFor: function(crd){
-		cost=this.list[crd].cost.split("~");
-		
-		var aPrice=0, ePrice=0, wPrice=0, fPrice=0;
-		
-		for(var item in cost){
-			var price=cost[item];
-			var elem=price.slice(-1);
-			var num=parseInt(price.substr(0,price.length-1));
-			
-			if(elem=="a")
-				aPrice=num;
-			else if(elem=="e")
-				ePrice=num;
-			else if(elem=="w")
-				wPrice=num;
-			else if(elem=="f")
-				fPrice=num;
-		}
-		
-		return [aPrice, ePrice, wPrice, fPrice];
-	},
+	numResCards: 25, // How many cards of each resource
+	prcntDblRes: 20, // Percentage of double resource cards (rounded down)
+	resDeck: [ ],
+	resDiscard: [ ],
+	crnDeck: [
+		{ name: "Uzi-corn" },
+		{ name: "Uni-corn" }
+	],
+	crnDiscard: [ ],
 	
-	dispCost: function(cst){
-		cost=cst.split("~");
-		var strReturn="";
-		
-		for(var item in cost){
-			var price=cost[item];
-			var elem="", i=1;
-			while(price.slice(-1).match(/[aewf]/g)){
-				elem=elem+" "+price.slice(-1)+i;
-				price=price.substr(0,price.length-1)
-				i++;
-			}
-			var num=parseInt(price.substr(0,price.length));
-			
-			if(num>0)
-				strReturn=strReturn+"<span class='"+elem+"'>"+num+"</span>";
-		}
-		
-		return strReturn;
-	},
+	// https://stackoverflow.com/a/2450976/1618257
+	shuffle: function(array) {
+  	var currentIndex = array.length, temporaryValue, randomIndex;
+	  // While there remain elements to shuffle...
+	  while (0 !== currentIndex) {
+	    // Pick a remaining element...
+	    randomIndex = Math.floor(Math.random() * currentIndex);
+	    currentIndex -= 1;
+	
+	    // And swap it with the current element.
+	    temporaryValue = array[currentIndex];
+	    array[currentIndex] = array[randomIndex];
+	    array[randomIndex] = temporaryValue;
+	  }
+  	return array;
+	}
 	
 	updateDisplay: function(){
 		
