@@ -57,6 +57,12 @@ table, td{
 	td.discard{
 		background-color: #CCCCCC;
 	}
+	.cardList table{
+		height: 200px;
+	} .cardList table td{
+			border: 1px dotted black;
+			width: 25%;
+		}
 .card{
 	position: relative;
 	border: 1px solid #333333;
