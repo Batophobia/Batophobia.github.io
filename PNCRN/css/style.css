@@ -13,52 +13,11 @@ body {
 	-webkit-user-select: none;
 	-ms-user-select: none;
 }
-button {
-	background: #FFFFFF;
-	border: 1px solid #333333;
-	color: #333333;
-	cursor: pointer;
-	margin: 5px;
-	border-radius: 4px;
-}
-button:hover {
-	background: #CCCCCC;
-}
-button:disabled {
-	background: #999999;
-	cursor: default;
-}
-.buttons{
-	width:100px;
-	height:600px;
-	float:left;
-}
 .version{
 	position: absolute;
 	right:15px;
 	bottom:15px;
 }
-.store{
-	border: 1px solid #999999;
-	width:1000px;
-	height:750px;
-	margin-left:auto;
-	margin-right:auto;
-	padding: 10px;
-}	.strItm{
-		position: relative;
-		width:90%;
-		height:50px;
-		padding-top:35px;
-		padding-left:10px;
-		margin-left:15px;
-		margin-top:15px;
-		border: 1px solid #999999;
-		border-radius: 4px;
-	}	.strItm button{
-			position: absolute;
-			right: 10px;
-		}
 .gameBoard{
 	display:none;
 	width:1200px;
@@ -69,78 +28,9 @@ button:disabled {
 }	.playerSide{
 		border: 1px solid #999999;
 		width:100%;
+	  height: 250px;
 		z-index: -98;
-	}	#oppHand{
-			width:1190px;
-			height:25px;
-			overflow:hidden;
-			padding-left: 10px;
-			border-bottom: 1px solid #999999;
-		}#plrHand{
-			width:100%;
-			height:210px;
-			z-index: -97;
-		} .field{
-			width:100%;
-			height:225px;
-			z-index: -96;
-		}	.field .card{
-				margin-left:10px;
-				float: left;
-			}
-	#oppSide{
-		height:260px;
-		z-index: -98;
-	}	#oppHand .card{
-			float: left;
-		}
-	#plrSide{
-		height:450px;
-	}	#plrHand .card{
-			float: right;
-		}
-	#oppField{
-		transform:rotate(180deg);
-		-ms-transform:rotate(180deg);
-		-webkit-transform:rotate(180deg);
-	} #plrField{
-		margin-top:10px;
-	} #gamePool{
-		width: 100%;
-		height: 35px;
-	}	.rsrc{
-			float: left;
-			margin-left:5px;
-			padding-left:10px;
-			padding-right:10px;
-		}	#numAir{
-				background-color:#FFFF69;
-			}#numEarth{
-				background-color:#99FF99;
-			}#numWater{
-				background-color:#66CCFF;
-			}#numFire{
-				background-color:#FF9966;
-			}
-	.totalElems{
-		width: 275px;
-		height: 35px;
-		position: absolute;
-		top: 5px;
-		right: 5px;
-	}	#ttlAir{
-			background-color:#FFFF69;
-			display:none;
-		}#ttlEarth{
-			background-color:#99FF99;
-			display:none;
-		}#ttlWater{
-			background-color:#66CCFF;
-			display:none;
-		}#ttlFire{
-			background-color:#FF9966;
-			display:none;
-		}
+	}
 .card{
 	position: relative;
 	border: 1px solid #333333;
