@@ -36,6 +36,7 @@ table{
 }
 table, td{
 	border: 1px solid black;
+	height: 250px;
 } td.loc{
 		border: 1px dotted black;
 		width: 24%;
