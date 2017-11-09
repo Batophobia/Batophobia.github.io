@@ -6,8 +6,8 @@ var player = {
 		// Give base corn
 	},
 	
-	hand: [ ], // default <= 8
-	maxHandSize: 8,
+	hand: [ ], // default <= 7
+	maxHandSize: 7,
 	
 	field: {
 		corns: [ ],
