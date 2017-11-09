@@ -19,24 +19,23 @@ var player = {
 		lab: { workers: [], level: 0 }, // ??? used for upgrading?
 	},
 	
-	draw: function(){
+	drawRes: function(fieldNo){
 		if(this.hand.length >= this.maxHandSize){
 			//No Draw
 			return;
 		}
 		// Draw card
-		this.hand.push(cards.resDeck.pop());
+		this.hand.push(cards.resField[fieldNo]);
+		cards.resField[fieldNo].splice(fieldNo, 1);
+		$($(".cardList td.fieldCard")[fieldNo]).remove();
+		cards.replaceRes();
 		
 		var crdDetails=this.hand[this.hand.length-1];
-		
-		var strCard='<div class="card '+crdDetails.color+'"Res id="plrCorn'+(this.hand.length-1)+'">';
+		var strCard='<div class="card '+crdDetails.color+'Res resCard" id="plrRes'+(this.hand.length-1)+'">';
 			strCard=strCard+'<div class="cardTops">'+crdDetails.name+'</div>';
 			strCard=strCard+'<div class="cardBody">'+crdDetails.count+'</div>';
 			strCard=strCard+'</div>';
 		$("#plrHand").append(strCard);
-		$("#plrHand #plr"+(this.hand.length-1)).on('click', function(){
-			//game.play(this);
-		});
 	},
 	
 	drawCorn: function(){
