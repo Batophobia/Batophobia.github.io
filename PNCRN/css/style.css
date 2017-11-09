@@ -24,12 +24,14 @@ body {
 	z-index: 20;
 	width: 20px;
 	height: 20px;
+	position: absolute;
 }
 .poo {
 	background-color: #CC9933;
 	z-index: 20;
 	width: 20px;
 	height: 20px;
+	position: absolute;
 }
 
 .gameBoard{
