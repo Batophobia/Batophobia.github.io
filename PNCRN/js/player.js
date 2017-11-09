@@ -26,7 +26,7 @@ var player = {
 		}
 		// Draw card
 		this.hand.push(cards.resField[fieldNo]);
-		cards.resField[fieldNo].splice(fieldNo, 1);
+		cards.resField.splice(fieldNo, 1);
 		$($(".cardList td.fieldCard")[fieldNo]).remove();
 		cards.replaceRes();
 		
