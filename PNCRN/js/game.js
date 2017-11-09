@@ -28,8 +28,9 @@ $(function(){
 
 // https://stackoverflow.com/a/36161139/1618257
 function drag_start(event) {
+	$(this).addClass("dragging");
 	var style = window.getComputedStyle(event.target, null);
-	event.dataTransfer.setData("text/plain", (parseInt(style.getPropertyValue("left"), 10) - event.clientX) + ',' + (parseInt(style.getPropertyValue("top"), 10) - event.clientY) + ',' + event.target.getAttribute('data-item'));
+	event.dataTransfer.setData("text/plain", (parseInt(style.getPropertyValue("left"), 10) - event.clientX) + ',' + (parseInt(style.getPropertyValue("top"), 10) - event.clientY));
 }
 function drag_over(event) {
 	event.preventDefault();
@@ -37,9 +38,10 @@ function drag_over(event) {
 }
 function drop(event) {
 	var offset = event.dataTransfer.getData("text/plain").split(',');
-	var dm = document.getElementsByClassName('dragme');
-	dm[parseInt(offset[2])].style.left = (event.clientX + parseInt(offset[0], 10)) + 'px';
-	dm[parseInt(offset[2])].style.top = (event.clientY + parseInt(offset[1], 10)) + 'px';
+	var dm = $('.dragging')[0];
+	dm.style.left = (event.clientX + parseInt(offset[0], 10)) + 'px';
+	dm.style.top = (event.clientY + parseInt(offset[1], 10)) + 'px';
+	$('.dragging').removeClass("dragging");
 	event.preventDefault();
 	return false;
 }
