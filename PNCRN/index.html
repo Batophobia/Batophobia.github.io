@@ -17,9 +17,32 @@
       <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
 	<div class="everything">
-		<div id="buttons">
+		<div id="buttons" style="position: absolute; left: 0; top: 5px;">
 			<input id="btnWork" type="button" value="Worker"/><br/>
 			<input id="btnPoo" type="button" value="Poo"/>
+		</div>
+		<div id="legend" style="position: absolute; right: 0; top: 5px;">
+			Costs (where lvl is the going to level)
+			<ul>
+				<li>mine:		[lvl] of each OR [4 x lvl] of 1</li>
+				<li>refine:	[2 x lvl] of 2</li>
+				<li>market:	[lvl] of star and [2 x lvl] of bow</li>
+				<li>town:		[lvl] of cake and [2 x lvl] of heart</li>
+				<li>farm:		[lvl] of bow and [2 x lvl] of cake</li>
+				<li>lab:		[lvl] of heart and [2 x lvl] of star</li>
+			</ul>
+		
+			Actions (aside from "make poo" and "move worker", requires worker on space)
+			<ul>
+				<li>move worker</li>
+				<li>make poo (4 pieces from untapped corn) [tap corn]</li>
+				<li>mine poo (1 piece)</li>
+				<li>refine poo (draw res from field or top card) [1 poo from mine]</li>
+				<li>trade a card (with res on field)</li>
+				<li>recruit worker (do not get +1 action, new worker on town) [2 resources (any type)]</li>
+				<li>feed corn (untap a corn)</li>
+				<li>upgrade plot (prices above)</li>
+			</ul>
 		</div>
 		<div class="gameBoard">
 			<div class="playerSide" id="oppSide">
