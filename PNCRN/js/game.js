@@ -7,11 +7,15 @@ $(function(){
   
   $("#btnPoo").click(function(){
     // Make poo
-    $(".everything").append('<div draggable="true" class="poo"></div>');
+    var num = $(".poo").length;
+    $(".everything").append('<div draggable="true" class="poo" id="poo'+num+'"></div>');
+    $("#poo"+num).draggable();
   });
   
   $("#btnWork").click(function(){
     // Make worker
-    $(".everything").append('<div draggable="true" class="worker"></div>');
+    var num = $(".worker").length;
+    $(".everything").append('<div draggable="true" class="worker" id="worker'+num+'"></div>');
+    $("#worker"+num).draggable();
   });
 });
