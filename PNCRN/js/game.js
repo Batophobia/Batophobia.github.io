@@ -4,6 +4,12 @@ $(function(){
     var fieldNo = $(this).index();
     player.drawRes(fieldNo);
   });
+	
+	$(document).on("click","#plrHand .card",function(){
+    // Draw res card from field
+    var fieldNo = $(this).index();
+    player.playRes(fieldNo);
+  });
   
   $("#btnPoo").click(function(){
     // Make poo
