@@ -103,6 +103,12 @@ table, td{
 .fieldCard, .resCard{
 	cursor: pointer;
 }
+
+.hand{
+	width: 100%;
+	float: right;
+}
+
 #helpTip{
 	position: absolute;
 	background: #FFFFCC;
@@ -169,6 +175,7 @@ pre {
 	-ms-user-select: none;
 	font: 4px/3px monospace;
 }
+
 #alerts {
 	background: #FFFFFF;
 	position: absolute;
