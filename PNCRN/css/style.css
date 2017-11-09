@@ -19,11 +19,13 @@ body {
 	bottom:15px;
 }
 
-.worker{
+.worker {
 	background-color: #FF0000;
+	z-index: 20;
 }
-.poo{
+.poo {
 	background-color: #CC9933;
+	z-index: 20;
 }
 
 .gameBoard{
