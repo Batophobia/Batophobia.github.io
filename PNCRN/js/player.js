@@ -59,7 +59,7 @@ var player = {
 	
 	playRes: function(num){
 		this.hand.splice(num,1);
-		$($("#plrHand")[num]).remove();
+		$($("#plrHand .resCard")[num]).remove();
 	},
 	
 	drawCorn: function(){
