@@ -81,7 +81,7 @@ var cards = {
 		var strCard='<td class="fieldCard"><div class="card '+crdDetails.color+'Res">';
 			strCard=strCard+'<div class="cardTops">'+crdDetails.name+'</div>';
 			strCard=strCard+'<div class="cardBody">'+crdDetails.count+'</div>';
-			strCard=strCard+'</div><td>';
+			strCard=strCard+'</div></td>';
 		$(".cardList table tr").append(strCard);
 	},
 	
