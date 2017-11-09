@@ -73,6 +73,7 @@ var cards = {
 	replaceRes: function(){
 		if(this.resDeck.length<1){
 			$(".cardList table tr").append("<td></td>");
+			return false;
 		}
 		this.resField.push(this.resDeck.pop());
 		var crdDetails=this.resField[this.resField.length-1];
