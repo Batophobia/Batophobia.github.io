@@ -7,11 +7,11 @@ $(function(){
   
   $("#btnPoo").click(function(){
     // Make poo
-    $("#everything").append('<div draggable="true" class="poo"></div>');
+    $(".everything").append('<div draggable="true" class="poo"></div>');
   });
   
   $("#btnWork").click(function(){
     // Make worker
-    $("#everything").append('<div draggable="true" class="worker"></div>');
+    $(".everything").append('<div draggable="true" class="worker"></div>');
   });
 });
