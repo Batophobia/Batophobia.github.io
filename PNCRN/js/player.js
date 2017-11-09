@@ -19,6 +19,25 @@ var player = {
 		lab: { workers: [], level: 0 }, // ??? used for upgrading?
 	},
 	
+	/* Costs (where lvl is the going to level)
+		mine:		[lvl] of each OR [4 x lvl] of 1
+		refine:	[2 x lvl] of 2
+		market:	[lvl] of star and [2 x lvl] of bow
+		town:		[lvl] of cake and [2 x lvl] of heart
+		farm:		[lvl] of bow and [2 x lvl] of cake
+		lab:		[lvl] of heart and [2 x lvl] of star
+		
+		Actions (aside from "make poo" and "move worker", requires worker on space)
+		- move worker
+		- make poo (4 pieces from untapped corn) [tap corn]
+		- mine poo (1 piece)
+		- refine poo (draw res from field or top card) [1 poo from mine]
+		- trade a card (with res on field)
+		- recruit worker (do not get +1 action, new worker on town) [2 resources (any type)]
+		- feed corn (untap a corn)
+		- upgrade plot (prices above)
+	*/
+	
 	drawRes: function(fieldNo){
 		if(this.hand.length >= this.maxHandSize){
 			//No Draw
