@@ -3,12 +3,12 @@ var cards = {
 		this.resDeck = [ ];
 		var numDoubles = Math.floor(this.numResCards * (this.prcntDblRes/100.0));
 		var numSingles = this.numResCards - numDoubles;
-		for(i=0;i<this.numSingles;i++){
+		for(i = 0;i < numSingles; i++){
 			for(var r in this.res){
 				this.resDeck.push({ name: this.res.name, color: this.res.color, count: 1 });
 			}
 		}
-		for(i=0;i<this.numDoubles;i++){
+		for(i = 0;i < numDoubles; i++){
 			for(var r in this.res){
 				this.resDeck.push({ name: this.res.name, color: this.res.color, count: 2 });
 			}
