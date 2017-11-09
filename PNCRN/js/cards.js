@@ -5,12 +5,12 @@ var cards = {
 		var numSingles = this.numResCards - numDoubles;
 		for(i = 0;i < numSingles; i++){
 			for(var r in this.res){
-				this.resDeck.push({ name: this.res.name, color: this.res.color, count: 1 });
+				this.resDeck.push({ name: this.res[r].name, color: this.res[r].color, count: 1 });
 			}
 		}
 		for(i = 0;i < numDoubles; i++){
 			for(var r in this.res){
-				this.resDeck.push({ name: this.res.name, color: this.res.color, count: 2 });
+				this.resDeck.push({ name: this.res[r].name, color: this.res[r].color, count: 2 });
 			}
 		}
 		this.resDeck = this.shuffle(this.resDeck);
