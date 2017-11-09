@@ -100,6 +100,9 @@ table, td{
 .yRes{
 	background: #FFFF33;
 }
+.fieldCard, .resCard{
+	cursor: pointer;
+}
 #helpTip{
 	position: absolute;
 	background: #FFFFCC;
