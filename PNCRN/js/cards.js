@@ -15,6 +15,10 @@ var cards = {
 		}
 		this.resDeck = this.shuffle(this.resDeck);
 		this.crnDeck = this.shuffle(this.crnDeck);
+		
+		for(i = 0; i++ < 4;){
+			this.replaceRes();
+		}
 	},
 	
 	res: [
@@ -27,6 +31,7 @@ var cards = {
 	numResCards: 25, // How many cards of each resource
 	prcntDblRes: 20, // Percentage of double resource cards (rounded down)
 	resDeck: [ ],
+	resField: [ ],
 	resDiscard: [ ],
 	crnDeck: [
 		{ name: "Uzicorn", ico: "B", txtType: "crdSpecial", txt: "Rock-Paper-Sciccors target opponent.  Loser sacrifices a worker." },
@@ -63,7 +68,21 @@ var cards = {
 	    array[randomIndex] = temporaryValue;
 	  }
   	return array;
-	}
+	},
+	
+	replaceRes: function(){
+		if(this.resDeck.length<1){
+			$(".cardList table tr").append("<td></td>");
+		}
+		this.resField.push(this.resDeck.pop());
+		var crdDetails=this.resField[this.resField.length-1];
+		
+		var strCard='<td class="fieldCard"><div class="card '+crdDetails.color+'Res">';
+			strCard=strCard+'<div class="cardTops">'+crdDetails.name+'</div>';
+			strCard=strCard+'<div class="cardBody">'+crdDetails.count+'</div>';
+			strCard=strCard+'</div><td>';
+		$(".cardList table tr").append(strCard);
+	},
 	
 	updateDisplay: function(){
 		
