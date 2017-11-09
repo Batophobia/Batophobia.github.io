@@ -57,6 +57,11 @@ var player = {
 		$("#plrHand").append(strCard);
 	},
 	
+	playRes: function(num){
+		this.hand.splice(num,1);
+		$($("#plrHand")[num]).remove();
+	},
+	
 	drawCorn: function(){
 		var crdDetails = cards.crnDeck.pop();
 		var strCard='<div class="card corn" id="plrCorn'+(this.hand.length-1)+'">';
@@ -64,6 +69,7 @@ var player = {
 			strCard=strCard+'<div class="cardBody"><div class="'+crdDetails.txtType+'">'+crdDetails.txt+'</div></div>';
 			strCard=strCard+'<div class="cardPowr">'+crdDetails.ico+'</div>';
 		strCard=strCard+'</div>';
+		$("#plrSide td.corns").append(strCard);
 	},
 	
 	tick: function(){
