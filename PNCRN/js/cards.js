@@ -33,10 +33,32 @@ var cards = {
 	resDeck: [ ],
 	resField: [ ],
 	resDiscard: [ ],
-	crnDeck: [
-		{ name: "Uzicorn", ico: "B", txtType: "crdSpecial", txt: "Rock-Paper-Sciccors target opponent.  Loser sacrifices a worker." },
+	crnDeck: [ // Alt means instead of tap to poop you can tap to do thing
+		  // Unicorn with a gun
+		{ name: "Uzicorn", ico: "B", txtType: "crdSpecial", txt: "alt: Rock-Paper-Sciccors target opponent.  Loser sacrifices a worker.  In case of tie, there is no loser." },
+		  // Gigantic unicorn
 		{ name: "Gigacorn", ico: "B", txtType: "crdSpecial", txt: "Makes 5 poo pieces instead of 4." },
+		  // Rhino
+		{ name: "Rhinocorn", ico: "B", txtType: "crdSpecial", txt: "alt: Flip a coin.  If it is heads, opponent sacrifices a worker." },
+		  // Bedazled unicorn
+		{ name: "Rhine-corn", ico: "B", txtType: "crdSpecial", txt: "alt: Add 2 resource of any type for upgrading." },
+		  // can of corn with horn
+		{ name: "Cannicorn", ico: "B", txtType: "crdSpecial", txt: "sacrifice a corn: feed this corn as free action" },
+		  // Parks and rec
+		{ name: "Jerrycorn", ico: "B", txtType: "crdSpecial", txt: "alt: roll area die, stomp that area" },
+		  // Scarecrow with a horn
+		{ name: "Scare-corn", ico: "B", txtType: "crdSpecial", txt: "alt: Flip a coin.  If heads, all your corn untap and poop.  If tails, all your opponents corn untap and poop." },
+		  // Gassy unicorn
+		{ name: "Stinkicorn", ico: "B", txtType: "crdSpecial", txt: "When tapping, roll area die.  Workers in that area must move.  These moves are free and done by all players." },
+		  // Corn with horn
 		{ name: "Uni-corn", ico: "B", txtType: "crdSpecial", txt: "Can feed without farm worker." }
+		
+		/* Expansion ideas
+		-- Other Games Expansion --
+		  // Splendor guy with horn
+		{ name: "Splendicorn", ico: "B", txtType: "crdSpecial", txt: "Sacrifice this corn: all resources played this turn are doubled" },
+		{ name: "Unocorn", ico: "B", txtType: "crdSpecial", txt: "If a player ends their turn with 1 card in their hand and does not say 'Uno', they discard 1 card." },
+		*/
 	],
 	crnDiscard: [ ],
 	
