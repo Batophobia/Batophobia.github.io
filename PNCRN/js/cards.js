@@ -44,7 +44,7 @@ var cards = {
 		{ name: "Rhine-corn", ico: "B", txtType: "crdSpecial", txt: "alt: Add 2 resource of any type for upgrading." },
 		  // can of corn with horn
 		{ name: "Cannicorn", ico: "B", txtType: "crdSpecial", txt: "sacrifice a corn: feed this corn as free action" },
-		  // Parks and rec
+		  // Parks and rec (alternatively Lil' Sebastion)
 		{ name: "Jerrycorn", ico: "B", txtType: "crdSpecial", txt: "alt: roll area die, stomp that area" },
 		  // Scarecrow with a horn
 		{ name: "Scare-corn", ico: "B", txtType: "crdSpecial", txt: "alt: Flip a coin.  If heads, all your corn untap and poop.  If tails, all your opponents corn untap and poop." },
