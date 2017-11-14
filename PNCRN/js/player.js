@@ -21,11 +21,11 @@ var player = {
 	
 	/* Costs (where lvl is the going to level)
 		mine:		[lvl] of each OR [4 x lvl] of 1
-		refine:	[2 x lvl] of 2
+		refine:	[lvl] of heart and [2 x lvl] of star
 		market:	[lvl] of star and [2 x lvl] of bow
 		town:		[lvl] of cake and [2 x lvl] of heart
 		farm:		[lvl] of bow and [2 x lvl] of cake
-		lab:		[lvl] of heart and [2 x lvl] of star
+		lab:		[2 x lvl] of 2
 		
 		Actions (aside from "make poo" and "move worker", requires worker on space)
 		- move worker
