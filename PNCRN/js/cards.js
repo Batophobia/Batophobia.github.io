@@ -29,7 +29,7 @@ var cards = {
 	],
 	
 	numResCards: 25, // How many cards of each resource
-	prcntDblRes: 20, // Percentage of double resource cards (rounded down)
+	prcntDblRes: 10, // Percentage of double resource cards (rounded down)
 	resDeck: [ ],
 	resField: [ ],
 	resDiscard: [ ],
@@ -39,11 +39,9 @@ var cards = {
 		  // Gigantic unicorn
 		{ name: "Gigacorn", ico: "B", txtType: "crdSpecial", txt: "Makes 5 poo pieces instead of 4." },
 		  // Rhino
-		{ name: "Rhinocorn", ico: "B", txtType: "crdSpecial", txt: "alt: Flip a coin.  If it is heads, opponent sacrifices a worker." },
-		  // Bedazled unicorn
+		{ name: "Rhinocorn", ico: "B", txtType: "crdSpecial", txt: "alt: Flip a coin.  If it is heads, target opponent sacrifices a worker." },
+		  // Bedazzled unicorn
 		{ name: "Rhine-corn", ico: "B", txtType: "crdSpecial", txt: "alt: Add 2 resource of any type for upgrading." },
-		  // can of corn with horn
-		{ name: "Cannicorn", ico: "B", txtType: "crdSpecial", txt: "sacrifice a corn: feed this corn as free action" },
 		  // Parks and rec (alternatively Lil' Sebastion)
 		{ name: "Jerrycorn", ico: "B", txtType: "crdSpecial", txt: "alt: roll area die, stomp that area" },
 		  // Scarecrow with a horn
@@ -54,23 +52,41 @@ var cards = {
 		{ name: "Mineicorn", ico: "B", txtType: "crdSpecial", txt: "When mining, roll area die.  If it's the mine, mine an additional poo piece." },
 		  // Unicorn on a teleport
 		{ name: "Telecorn", ico: "B", txtType: "crdSpecial", txt: "alt: move any number of your workers." },
-		// Robot unicorn
+		  // Robot unicorn
 		{ name: "Robocorn", ico: "B", txtType: "crdSpecial", txt: "alt: Draw a resource." },
-		// spy unicorn
-		{ name: "Moleicorn", ico: "B", txtType: "crdSpecial", txt: "alt: Take an opponent's card at random." },
-		// Super Sayian
+		  // spy unicorn
+		{ name: "Moleicorn", ico: "B", txtType: "crdSpecial", txt: "alt: Take target opponent's card at random." },
+		  // Super Sayian
 		{ name: "Supercorn", ico: "B", txtType: "crdSpecial", txt: "If you have the fewer unicorns than an opponent, your workers do not get stomped." },
-		// Narwhal
+		  // Narwhal
 		{ name: "Whalicorn", ico: "B", txtType: "crdSpecial", txt: "alt: Sacrifice X workers and draw X resources." },
-		// Unicorn storm
+		  // Unicorn in overalls
+		{ name: "Ranchcorn", ico: "B", txtType: "crdSpecial", txt: "ALT: Pays all bows for farm upgrade." },
+		  // Unicorn with mayor sash
+		{ name: "Mayorcorn", ico: "B", txtType: "crdSpecial", txt: "ALT: Pays all cake for town upgrade." },
+		  // Unicorn behind counter
+		{ name: "Vendocorn", ico: "B", txtType: "crdSpecial", txt: "ALT: Pays all star for market upgrade." },
+		  // Unicorn with money and cigar
+		{ name: "Bosscorn", ico: "B", txtType: "crdSpecial", txt: "ALT: Pays all heart for refinery upgrade." },
+		  // Unicorn in sunglasses with earpiece
+		{ name: "Bodycorn", ico: "B", txtType: "crdSpecial", txt: "You may save 1 worker each stomping." },
+		  // Unicorn storm
 		{ name: "Thundercorn", ico: "B", txtType: "crdSpecial", txt: "alt: each player sacrifices half their workers, rounded down." },
 		  // Corn with horn
 		{ name: "Uni-corn", ico: "B", txtType: "crdSpecial", txt: "Can feed without farm worker." }
 		
 		/* Expansion ideas
+		-- Apocirnlypse --
+		  // Frankenstein
+		{ name: "Frankencorn", ico: "B", txtType: "crdSpecial", txt: "alt: Replace a corn with one from the corn discard." },
+		  // can of corn with horn
+		{ name: "Cannicorn", ico: "B", txtType: "crdSpecial", txt: "sacrifice a corn: feed this corn as free action" },
+		  // Unicorn with glasses
+		{ name: "Academicorn", ico: "B", txtType: "crdSpecial", txt: "sacrifice this corn: Upgrade the lab 1 level." },
 		-- Other Games Expansion --
 		  // Splendor guy with horn
 		{ name: "Splendicorn", ico: "B", txtType: "crdSpecial", txt: "Sacrifice this corn: all resources played this turn are doubled" },
+		  // Draw 4 with a horn
 		{ name: "Unocorn", ico: "B", txtType: "crdSpecial", txt: "If a player ends their turn with 1 card in their hand and does not say 'Uno', they discard 1 card." },
 		*/
 	],
