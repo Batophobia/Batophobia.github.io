@@ -50,6 +50,20 @@ var cards = {
 		{ name: "Scare-corn", ico: "B", txtType: "crdSpecial", txt: "alt: Flip a coin.  If heads, all your corn untap and poop.  If tails, all your opponents corn untap and poop." },
 		  // Gassy unicorn
 		{ name: "Stinkicorn", ico: "B", txtType: "crdSpecial", txt: "When tapping, roll area die.  Workers in that area must move.  These moves are free and done by all players." },
+		  // Blocky unicorn
+		{ name: "Mineicorn", ico: "B", txtType: "crdSpecial", txt: "When mining, roll area die.  If it's the mine, mine an additional poo piece." },
+		  // Unicorn on a teleport
+		{ name: "Telecorn", ico: "B", txtType: "crdSpecial", txt: "alt: move any number of your workers." },
+		// Robot unicorn
+		{ name: "Robocorn", ico: "B", txtType: "crdSpecial", txt: "alt: Draw a resource." },
+		// spy unicorn
+		{ name: "Moleicorn", ico: "B", txtType: "crdSpecial", txt: "alt: Take an opponent's card at random." },
+		// Super Sayian
+		{ name: "Supercorn", ico: "B", txtType: "crdSpecial", txt: "If you have the fewer unicorns than an opponent, your workers do not get stomped." },
+		// Narwhal
+		{ name: "Whalicorn", ico: "B", txtType: "crdSpecial", txt: "alt: Sacrifice X workers and draw X resources." },
+		// Unicorn storm
+		{ name: "Thundercorn", ico: "B", txtType: "crdSpecial", txt: "alt: each player sacrifices half their workers, rounded down." },
 		  // Corn with horn
 		{ name: "Uni-corn", ico: "B", txtType: "crdSpecial", txt: "Can feed without farm worker." }
 		
