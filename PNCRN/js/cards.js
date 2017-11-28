@@ -84,6 +84,8 @@ var cards = {
 		  // Unicorn with glasses
 		{ name: "Academicorn", ico: "B", txtType: "crdSpecial", txt: "sacrifice this corn: Upgrade the lab 1 level." },
 		-- Other Games Expansion --
+		  // Sheep with horn
+		{ name: "Catanicorn", ico: "B", txtType: "crdSpecial", txt: "You may play 2 of a resource as 1 of any resource" },
 		  // Splendor guy with horn
 		{ name: "Splendicorn", ico: "B", txtType: "crdSpecial", txt: "Sacrifice this corn: all resources played this turn are doubled" },
 		  // Draw 4 with a horn
