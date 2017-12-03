@@ -42,8 +42,8 @@ var cards = {
 		{ name: "Rhinocorn", ico: "B", txtType: "crdSpecial", txt: "alt: Flip a coin.  If it is heads, target opponent sacrifices a worker." },
 		  // Bedazzled unicorn
 		{ name: "Rhine-corn", ico: "B", txtType: "crdSpecial", txt: "alt: Add 2 resource of any type for upgrading." },
-		  // Parks and rec (alternatively Lil' Sebastion)
-		{ name: "Jerrycorn", ico: "B", txtType: "crdSpecial", txt: "alt: roll area die, stomp that area" },
+		  // * Teddybear
+		{ name: "Bearcorn", ico: "B", txtType: "crdSpecial", txt: "alt: roll area die, stomp that area" },
 		  // * Scarecrow with a horn
 		{ name: "Scare-corn", ico: "B", txtType: "crdSpecial", txt: "alt: Flip a coin.  If heads, all your corn untap and poop.  If tails, all your opponents corn untap and poop." },
 		  // * Gassy unicorn
@@ -90,6 +90,9 @@ var cards = {
 		{ name: "Splendicorn", ico: "B", txtType: "crdSpecial", txt: "Sacrifice this corn: all resources played this turn are doubled" },
 		  // Draw 4 with a horn
 		{ name: "Unocorn", ico: "B", txtType: "crdSpecial", txt: "If a player ends their turn with 1 card in their hand and does not say 'Uno', they discard 1 card." },
+		-- Untitled --
+		  // Parks and rec (alternatively Lil' Sebastion)
+		{ name: "Jerrycorn", ico: "B", txtType: "crdSpecial", txt: "alt: roll area die, stomp that area" },
 		*/
 	],
 	crnDiscard: [ ],
