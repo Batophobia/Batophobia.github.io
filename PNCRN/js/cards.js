@@ -34,7 +34,7 @@ var cards = {
 	resField: [ ],
 	resDiscard: [ ],
 	crnDeck: [ // Alt means instead of tap to poop you can tap to do thing
-		  // Unicorn with a gun
+		  // * Unicorn with a gun
 		{ name: "Uzicorn", ico: "B", txtType: "crdSpecial", txt: "alt: Rock-Paper-Sciccors target opponent.  Loser sacrifices a worker.  In case of tie, there is no loser." },
 		  // * Gigantic unicorn
 		{ name: "Gigacorn", ico: "B", txtType: "crdSpecial", txt: "Makes 5 poo pieces instead of 4." },
