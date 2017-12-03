@@ -40,7 +40,7 @@ var cards = {
 		{ name: "Gigacorn", ico: "B", txtType: "crdSpecial", txt: "Makes 5 poo pieces instead of 4." },
 		  // * Rhino
 		{ name: "Rhinocorn", ico: "B", txtType: "crdSpecial", txt: "alt: Flip a coin.  If it is heads, target opponent sacrifices a worker." },
-		  // Bedazzled unicorn
+		  // * Bedazzled unicorn
 		{ name: "Rhine-corn", ico: "B", txtType: "crdSpecial", txt: "alt: Add 2 resource of any type for upgrading." },
 		  // * Teddybear
 		{ name: "Bearcorn", ico: "B", txtType: "crdSpecial", txt: "alt: roll area die, stomp that area" },
