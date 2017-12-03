@@ -36,43 +36,43 @@ var cards = {
 	crnDeck: [ // Alt means instead of tap to poop you can tap to do thing
 		  // Unicorn with a gun
 		{ name: "Uzicorn", ico: "B", txtType: "crdSpecial", txt: "alt: Rock-Paper-Sciccors target opponent.  Loser sacrifices a worker.  In case of tie, there is no loser." },
-		  // Gigantic unicorn
+		  // * Gigantic unicorn
 		{ name: "Gigacorn", ico: "B", txtType: "crdSpecial", txt: "Makes 5 poo pieces instead of 4." },
-		  // Rhino
+		  // * Rhino
 		{ name: "Rhinocorn", ico: "B", txtType: "crdSpecial", txt: "alt: Flip a coin.  If it is heads, target opponent sacrifices a worker." },
 		  // Bedazzled unicorn
 		{ name: "Rhine-corn", ico: "B", txtType: "crdSpecial", txt: "alt: Add 2 resource of any type for upgrading." },
 		  // Parks and rec (alternatively Lil' Sebastion)
 		{ name: "Jerrycorn", ico: "B", txtType: "crdSpecial", txt: "alt: roll area die, stomp that area" },
-		  // Scarecrow with a horn
+		  // * Scarecrow with a horn
 		{ name: "Scare-corn", ico: "B", txtType: "crdSpecial", txt: "alt: Flip a coin.  If heads, all your corn untap and poop.  If tails, all your opponents corn untap and poop." },
-		  // Gassy unicorn
+		  // * Gassy unicorn
 		{ name: "Stinkicorn", ico: "B", txtType: "crdSpecial", txt: "When tapping, roll area die.  Workers in that area must move.  These moves are free and done by all players." },
-		  // Blocky unicorn
+		  // * Blocky unicorn
 		{ name: "Mineicorn", ico: "B", txtType: "crdSpecial", txt: "When mining, roll area die.  If it's the mine, mine an additional poo piece." },
-		  // Unicorn on a teleport
+		  // * Unicorn on a teleport
 		{ name: "Telecorn", ico: "B", txtType: "crdSpecial", txt: "alt: move any number of your workers." },
-		  // Robot unicorn
+		  // * Robot unicorn
 		{ name: "Robocorn", ico: "B", txtType: "crdSpecial", txt: "alt: Draw a resource." },
-		  // spy unicorn
+		  // * spy unicorn
 		{ name: "Moleicorn", ico: "B", txtType: "crdSpecial", txt: "alt: Take target opponent's card at random." },
-		  // Super Sayian
+		  // * Super Sayian
 		{ name: "Supercorn", ico: "B", txtType: "crdSpecial", txt: "If you have the fewer unicorns than an opponent, your workers do not get stomped." },
-		  // Narwhal
+		  // * Narwhal
 		{ name: "Whalicorn", ico: "B", txtType: "crdSpecial", txt: "alt: Sacrifice X workers and draw X resources." },
-		  // Unicorn in overalls
+		  // * Unicorn in overalls
 		{ name: "Ranchcorn", ico: "B", txtType: "crdSpecial", txt: "ALT: Pays all bows for farm upgrade." },
-		  // Unicorn with mayor sash
+		  // * Unicorn with mayor sash
 		{ name: "Mayorcorn", ico: "B", txtType: "crdSpecial", txt: "ALT: Pays all cake for town upgrade." },
-		  // Unicorn behind counter
+		  // * Unicorn behind counter
 		{ name: "Vendocorn", ico: "B", txtType: "crdSpecial", txt: "ALT: Pays all star for market upgrade." },
-		  // Unicorn with money and cigar
+		  // * Unicorn with money and cigar
 		{ name: "Bosscorn", ico: "B", txtType: "crdSpecial", txt: "ALT: Pays all heart for refinery upgrade." },
-		  // Unicorn in sunglasses with earpiece
+		  // * Unicorn in sunglasses with earpiece
 		{ name: "Bodycorn", ico: "B", txtType: "crdSpecial", txt: "You may save 1 worker each stomping." },
-		  // Unicorn storm
+		  // * Unicorn storm
 		{ name: "Thundercorn", ico: "B", txtType: "crdSpecial", txt: "alt: each player sacrifices half their workers, rounded down." },
-		  // Corn with horn
+		  // * Corn with horn
 		{ name: "Uni-corn", ico: "B", txtType: "crdSpecial", txt: "Can feed without farm worker." }
 		
 		/* Expansion ideas
