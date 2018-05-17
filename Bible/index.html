@@ -1,6 +1,10 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="google-signin-scope" 
+      content="https://www.googleapis.com/auth/spreadsheets">
+    <meta name="google-signin-client_id" content="545924454876-8mkdag6i3eibgvlp0a19da6jfr3cb3kq.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <title>The Modern Bible</title>
     <meta name="description" content="The Modern Bible, a new way to read and study the Bible in the modern age">
     <link rel="stylesheet" href="css/style.css">
@@ -9,6 +13,12 @@
     <script src="js/main.js"></script>
   </head>
   <body>
+    <div id="profile" style="margin: 0 20px;">
+      <b class="name"></b><br/>
+      <i class="email"></i>
+    </div>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    
     <div id="mainWindow">
       <div id="search">
         <input id="passage" />
