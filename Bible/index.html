@@ -18,6 +18,10 @@ limitations under the License.
   <head>
     <title>Google Sheets API Quickstart</title>
     <meta charset='utf-8' />
+    <script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
     <script src="../jquery.js"></script>
     <script src="js/gdrive.js"></script>
   </head>
@@ -29,10 +33,5 @@ limitations under the License.
     <button id="signout-button" style="display: none;">Sign Out</button>
 
     <pre id="content"></pre>
-
-    <script async defer src="https://apis.google.com/js/api.js"
-      onload="this.onload=function(){};handleClientLoad()"
-      onreadystatechange="if (this.readyState === 'complete') this.onload()">
-    </script>
   </body>
 </html>
