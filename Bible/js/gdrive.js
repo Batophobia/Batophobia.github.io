@@ -9,8 +9,13 @@
       // included, separated by spaces.
       var SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
 
-      var authorizeButton = document.getElementById('authorize-button');
-      var signoutButton = document.getElementById('signout-button');
+      var authorizeButton;
+      var signoutButton;
+
+      function init_gDrive(){
+            authorizeButton = document.getElementById('authorize-button');
+            signoutButton = document.getElementById('signout-button');
+      }
 
       /**
        *  On load, called to load the auth2 library and API client library.
@@ -105,3 +110,7 @@
           appendPre('Error: ' + response.result.error.message);
         });
       }
+
+$(function(){
+  init_gDrive();
+});
