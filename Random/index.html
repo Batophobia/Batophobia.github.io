@@ -7,7 +7,6 @@
     .main{
       width: 800px;
       height: 800px;
-      overflow: auto;
     }@media (min-width: 801px){
       .main{
         margin-left: auto;
@@ -16,11 +15,14 @@
     }
     .left{
       width: 33%;
+			height: 800px;
       display: inline-block;
     }
     .right{
       width: 66%;
+			height: 800px;
       display: inline-block;
+			overflow: auto;
     }
     #alerts {
     	position: absolute;
@@ -44,7 +46,7 @@
 <body>
   <div class="main">
     <div class="left">
-      <textarea id="txtPeople" placeholder="Enter names here, 1 name per line"></textarea>
+      <textarea id="txtPeople" placeholder="Enter names here, 1 name per line" style="width: 100%; height: 90%;"></textarea>
       <button id="btnUpdate">Update</button>
     </div>
     <div class="right">
