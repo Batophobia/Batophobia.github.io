@@ -6,6 +6,7 @@ $(".numEntry[for='Valca Castillo']").val(25);
 var ti=0;
 
 function doWin(){
+	ti++;
   $("#btnPick").click();
   setTimeout(function(){
 		$("#closeWin").click();
