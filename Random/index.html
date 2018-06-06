@@ -46,8 +46,8 @@
 			top: 50%;
 			left: 50%; 
   		width: 400px;
-			height: 150px;
-			margin-top: -75px;
+			height: 120px;
+			margin-top: -60px;
 			margin-left: -200px;
 			background-color: #FFFFFF;
 			border: 1px solid #333333;
@@ -109,7 +109,7 @@
 			<div style="position: relative; height: 100%; width: 100%;">
 				<span id="closeWin" style="color:#FFFFFF; cursor: pointer;">x</span>
 				<h3 style="margin: 0; background-color: #407CCA; color: #FFFFFF; padding: 5px;">The winner is...</h3>
-				<div style="color: #77BC1F; text-align: center; overflow: hidden; height: 100px;" id="winner"></div>
+				<div style="color: #77BC1F; text-align: center; overflow: hidden; height: 80px;" id="winner"></div>
 			</div>
 		</div>
     <div id="alerts"></div>
@@ -188,7 +188,7 @@
 		$("#winner").html(name);
 		$("#winWrap").show();
 		$("#greyout").show();
-		$("#winner").animate({scrollTop: $("#winner")[0].scrollHeight }, 1500);
+		$("#winner").animate({scrollTop: $("#winner")[0].scrollHeight }, 5000);
 		//msgNote("success",name+" is the winner");
 	}
 	
