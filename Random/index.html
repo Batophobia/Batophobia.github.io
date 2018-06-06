@@ -185,6 +185,7 @@
 	}
 	
 	function declareWinner(name){
+		$("#winner").animate({scrollTop: 0 }, 1);
 		$("#winner").html(name);
 		$("#winWrap").show();
 		$("#greyout").show();
