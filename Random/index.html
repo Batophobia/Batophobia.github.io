@@ -176,7 +176,7 @@
 		
 		if(name.split(":")[1]!==undefined){
 			num = parseInt(name.split(":")[1].trim());
-			name.split(":")[0].trim();
+			name = name.split(":")[0].trim();
 		}
 		
 		userList[name] = {min: num, max: num};
