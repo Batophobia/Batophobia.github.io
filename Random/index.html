@@ -137,23 +137,26 @@
   });
 	
 	$("#btnPick").click(function(e){
-		var ttl = 0;
+		var ttl = 0, winScroll="";
 		$(".userRow").each(function(){
 			var tmp = ttl;
 			ttl+=parseInt($(this).find(".numEntry").val());
 			userList[$(this).attr("for")] = {min: tmp, max: ttl};
 		});
-		var win = Math.random() * ttl;
-		for(var i in userList){
-			if(userList[i].max>=win && userList[i].min<=win){
-				declareWinner(i);
-				return false;
+		for(var cnt=Math.random() * 10 + 15; cnt > 0; cnt--){
+			var win = Math.random() * ttl;
+			for(var i in userList){
+				if(userList[i].max>=win && userList[i].min<=win){
+					winScroll = winScroll + "<h1>"+i+"</h1>";
+					break;
+				}
 			}
 		}
+		declareWinner(winScroll);
 	});
 	
 	$("#closeWin").click(function(e){
-		$("#winner").text("");
+		$("#winner").html("");
 		$("#winWrap").hide();
 		$("#greyout").hide();
 	});
@@ -177,10 +180,11 @@
 	}
 	
 	function declareWinner(name){
-		$("#winner").text(name);
+		$("#winner").html(name);
 		$("#winWrap").show();
 		$("#greyout").show();
-		msgNote("success",name+" is the winner");
+		$("#winner").animate({scrollTop: $("#winner")[0].scrollHeight }, 100);
+		//msgNote("success",name+" is the winner");
 	}
 	
   function msgNote(type, input){
