@@ -34,7 +34,7 @@
 			margin-left: -200px;
 			background-color: #FFFFFF;
 			border: 1px solid #333333;
-			z-index: 10px;
+			z-index: 10;
 		} #closeWin{
 			position: absolute;
 			top: 2px;
@@ -65,6 +65,7 @@
 			right: 0;
 			height: 100%;
 			width: 100%;
+			z-index: 9;
 			background-color: rgba(20,20,20,200);
 		}
   </style>
@@ -136,6 +137,7 @@
 	$("#closeWin").click(function(e){
 		$("#winner").text("");
 		$("#winWrap").hide();
+		$("#greyout").hide();
 	});
   
 	function addUser(name, num){
@@ -159,6 +161,7 @@
 	function declareWinner(name){
 		$("#winner").text(name);
 		$("#winWrap").show();
+		$("#greyout").show();
 		msgNote("success",name+" is the winner");
 	}
 	
