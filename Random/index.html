@@ -57,7 +57,15 @@
         </tbody>
       </table>
     </div>
-    
+		<div><button id="btnPick">Pick Random</button></div>
+		
+		<div id="winWrap" style="display: none;">
+			<div style="position: relative;">
+				<span id="closeWin">x</span>
+				<h3>The winner is...</h3>
+				<h1 id="winner"></h1>
+			</div>
+		</div>
     <div id="alerts"></div>
   </div>
 </body>
@@ -67,6 +75,7 @@
   $("#btnAdd").click(function(e){
     addUser($("#txtSingle").val())
   });
+	
 	$("#btnUpdate").click(function(e){
 		var list = $("#txtPeople").val();
 		if($("#txtPeople").val()==""){
@@ -79,23 +88,48 @@
 				addUser(list[i]);
 		}
   });
+	
+	$("#btnPick").click(function(e){
+		var ttl = 0;
+		$(".userRow").each(function(){
+			ttl+=parseInt($(this).find(".numEntry").val());
+			userList[$(this).attr("for")] = ttl;
+		});
+		var win = Math.random() * ttl;
+		for(var i in userList){
+			if(userList[i]>ttl){
+				declareWinner(i);
+			}
+		}
+	});
+	
+	$("#closeWin").click(function(e){
+		$("#winner").text("");
+		$("#winWrap").hide();
+	});
   
 	function addUser(name, num){
 		if(num===undefined || num==null){
 			num=1;
 		}
 		
-		if(val===undefined || val==""){
+		if(name===undefined || name==""){
       msgNote("error","Enter a name to add");
       return false;
-    } if(userList[val]!==undefined){
+    } if(userList[name]!==undefined){
       msgNote("error",name+" is already listed");
       return false;
     }
 		
 		userList[name] = 1;
-    var newRow = "<tr for='"+name+"'><td>"+name+"</td><td><input type='numeric' class='numEntry' for='"+num+"' value='1' /></td></tr>";
+    var newRow = "<tr for='"+name+"' class='userRow'><td>"+name+"</td><td><input type='numeric' class='numEntry' for='"+num+"' value='1' /></td></tr>";
     $(newRow).insertBefore("#lastRow");
+	}
+	
+	function declareWinner(name){
+		$("#winner").text(name);
+		$("#winWrap").show();
+		msgNote("success",name+" is the winner");
 	}
 	
   function msgNote(type, input){
