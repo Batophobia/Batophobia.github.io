@@ -2,6 +2,34 @@
 <head>
   <title>Random Picker</title>
   <script src="../jquery.js"></script>
+	
+	<style>
+    .main{
+      width: 100%;
+    }
+    .left{
+      width: 33%;
+    }
+    .right{
+      width: 66%;
+    }
+    #alerts {
+    	position: absolute;
+    	top: 5px;
+    	right: 5px;
+    	padding: 5px;
+    	width: 300px;
+    }	#alerts .alert {
+  	  	border-bottom: 1px dashed #CCCCCC;
+  	  	text-align: center;
+  	  } #alerts .error {
+  	  	background-color: #FF0000;
+  	  } #alerts .success {
+  	  	background-color: #00FF00;
+  	  } #alerts:empty {
+  	  	display:none;
+    }
+  </style>
 </head>
 
 <body>
