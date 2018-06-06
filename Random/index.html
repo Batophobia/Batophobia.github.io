@@ -120,7 +120,7 @@
 		});
 		var win = Math.random() * ttl;
 		for(var i in userList){
-			if(userList[i].max=>win && userList[i].min<=win){
+			if(userList[i].max>=win && userList[i].min<=win){
 				declareWinner(i);
 				return false;
 			}
