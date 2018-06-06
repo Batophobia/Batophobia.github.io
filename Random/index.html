@@ -65,20 +65,39 @@
 <script>
   var userList = {};
   $("#btnAdd").click(function(e){
-    var val = $("#txtSingle").val();
-    if(val===undefined || val==""){
+    addUser($("#txtSingle").val())
+  });
+	$("#btnUpdate").click(function(e){
+		var list = $("#txtPeople").val();
+		if($("#txtPeople").val()==""){
+			msgNote("error","Enter at least one person");
+		}
+		list = list.split("\n")
+		
+		for(var i in list){
+			if(list[i]!=null)
+				addUser(list[i]);
+		}
+  });
+  
+	function addUser(name, num){
+		if(num===undefined || num==null){
+			num=1;
+		}
+		
+		if(val===undefined || val==""){
       msgNote("error","Enter a name to add");
       return false;
     } if(userList[val]!==undefined){
-      msgNote("error","Name already added");
+      msgNote("error",name+" is already listed");
       return false;
     }
-    
-    userList[val] = 1;
-    var newRow = "<tr for='"+val+"'><td>"+val+"</td><td><input type='numeric' class='numEntry' for='"+val+"' value='1' /></td></tr>";
+		
+		userList[name] = 1;
+    var newRow = "<tr for='"+name+"'><td>"+name+"</td><td><input type='numeric' class='numEntry' for='"+num+"' value='1' /></td></tr>";
     $(newRow).insertBefore("#lastRow");
-  });
-  
+	}
+	
   function msgNote(type, input){
 		var alert = $("<div class='"+type+" alert'>" + input + "</div>");
 		$('#alerts').append(alert);
