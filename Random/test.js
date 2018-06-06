@@ -6,7 +6,9 @@ $(".numEntry[for='Valca Castillo']").val(25);
 var ti=0;
 
 function doWin(){
-	ti++;
+	if(ti++>100)
+		return false;
+	
   $("#btnPick").click();
   setTimeout(function(){
 		$("#closeWin").click();
