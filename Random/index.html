@@ -17,15 +17,16 @@
       }
     }
     .left{
-      width: 33%;
+      width: 300px;
 			height: 100%;
       display: inline-block;
-			padding-right: 10px;
+			float: left;
     }
     .right{
-      width: 66%;
+      width: 500px;
 			height: 100%;
       display: inline-block;
+			float: right;
 			overflow: auto;
     }
 		#winWrap{
@@ -89,7 +90,7 @@
         </tbody>
       </table>
     </div>
-		<div><button id="btnPick">Pick Random</button></div>
+		<div style="clear: both; text-align: center;"><button id="btnPick">Pick Random</button></div>
 		
 		<div id="winWrap" style="display: none;">
 			<div style="position: relative; height: 100%; width: 100%;">
