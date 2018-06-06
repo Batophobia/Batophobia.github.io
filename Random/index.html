@@ -57,7 +57,7 @@
   var userList = {};
   $("#btnAdd").click(function(e){
     var val = $("txtSingle").val();
-    if(val==""){
+    if(val===undefined || val==""){
       msgNote("error","Enter a name to add");
       return false;
     } if(userList[val]!==undefined){
