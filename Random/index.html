@@ -114,13 +114,15 @@
 	$("#btnPick").click(function(e){
 		var ttl = 0;
 		$(".userRow").each(function(){
+			var tmp = ttl;
 			ttl+=parseInt($(this).find(".numEntry").val());
-			userList[$(this).attr("for")] = ttl;
+			userList[$(this).attr("for")] = {min: tmp, max: ttl};
 		});
 		var win = Math.random() * ttl;
 		for(var i in userList){
-			if(userList[i]>win){
+			if(userList[i].max=>win && userList[i].min<=win){
 				declareWinner(i);
+				return false;
 			}
 		}
 	});
@@ -143,8 +145,8 @@
       return false;
     }
 		
-		userList[name] = 1;
-    var newRow = "<tr for='"+name+"' class='userRow'><td>"+name+"</td><td><input type='numeric' class='numEntry' for='"+num+"' value='1' /></td></tr>";
+		userList[name] = {min: num, max: num};
+    var newRow = "<tr for='"+name+"' class='userRow'><td>"+name+"</td><td><input type='numeric' class='numEntry' for='"+name+"' value='"+num+"' /></td></tr>";
     $(newRow).insertBefore("#lastRow");
 	}
 	
