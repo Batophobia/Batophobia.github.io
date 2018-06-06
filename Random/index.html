@@ -1,0 +1,53 @@
+<html>
+<head>
+  <title>Random Picker</title>
+  <script src="../jquery.js"></script>
+</head>
+
+<body>
+  <div class="main">
+    <div class="left">
+      <textarea id="txtPeople" placeholder="Enter names here, 1 name per line"></textarea>
+      <button id="btnUpdate">Update</button>
+    </div>
+    <div class="right">
+      <table id="userList">
+        <thead><th>Name</th><th># Entries</th></thead>
+        <tbody id="tblBod">
+          <td id="lastRow"><input id="txtSingle"/></td><td><button id="btnAdd">Add<button></td>
+        </tbody>
+      </table>
+    </div>
+    
+    <div id="alerts"></div>
+  </div>
+</body>
+
+<script>
+  var userList = {};
+  $("#btnAdd").click(function(e){
+    var val = $("txtSingle").val();
+    if(val==""){
+      msgNote("error","Enter a name to add");
+      return false;
+    } if(userList[val]!==undefined){
+      msgNote("error","Name already added");
+      return false;
+    }
+    
+    userList[val] = 1;
+    var newRow = "<tr for='"+val+"'><td>"+val+"</td><td><input type='numeric' class='numEntry' for='"+val+"' value='1' /></td></tr>";
+    $(newRow).insertBefore("#lastRow");
+  });
+  
+  function msgNote(type, input){
+		var alert = $("<div class='"+type+" alert'>" + input + "</div>");
+		$('#alerts').append(alert);
+		setTimeout(function(){
+			alert.fadeOut('slow',function(){
+				$(this).remove();
+			});
+		},3000);
+}
+</script>
+</html>
