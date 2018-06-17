@@ -29,6 +29,9 @@
 				max-height: 300px;
 				overflow: auto;
     	}
+			hr{
+				width: 75%;
+			}
 		}
  		@media screen and (orientation:landscape) {
 	    .main{
@@ -55,6 +58,9 @@
 				overflow: auto;
     	} #userList {
 				float: right;
+			}
+			hr{
+				display: none;
 			}
  		}
     
@@ -121,6 +127,7 @@
       <textarea id="txtPeople" placeholder="Enter names here, 1 name per line" style="width: 100%; height: 90%;"></textarea>
       <button id="btnUpdate" style="margin-top:2px;">Update</button>
     </div>
+		<hr />
     <div class="right">
       <table id="userList" style="width: 75%;">
         <thead><th>Name</th><th># Entries</th></thead>
