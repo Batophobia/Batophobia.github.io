@@ -37,7 +37,7 @@ button:hover{
 }
     
 .hero{
-  width: 19%;
+  width: 20%;
   border: 1px solid #000000;
 } .hero .heroName{
     font-weight: bold;
@@ -47,7 +47,7 @@ button:hover{
   .hero .virtHubr, .hero .bgrounds, .hero .traits, .hero .skills{
     border-bottom: 1px solid #000000;
   }
-  .hero .virtHubr span, .hero .bgrounds span{
+  .hero .virtHubr span, .hero .bgrounds span, .hero .skills .skill{
     width: 50%;
     text-align: center;
     cursor: pointer;
@@ -81,9 +81,7 @@ button:hover{
   .t5{
     border-bottom: 1px solid #FFCCCC;
   }
-  .hero .skills .skill, .hero .advantages .adv {
-    display: inline-block;
-    width: 50%;
+  .hero .advantages .adv{
     text-align: center;
     cursor: pointer;
   }
