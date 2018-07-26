@@ -2,21 +2,23 @@ body{
 	background-color: #751014;
 }
 @media screen and (orientation:portrait) {
-  	.main{
+  .main{
 		width: 300px;
 		margin-top: 50px;
-   }@media (min-width: 301px){
-     .main{
+    background-color: #F1F1D4;
+  }@media (min-width: 301px){
+    .main{
        margin-left: auto;
        margin-right: auto;
-    	}
-  	}
+   	}
+  }
 }
 @media screen and (orientation:landscape) {
  .main{
    width: 800px;
    height: 600px;
    margin-top: 50px;
+   background-color: #F1F1D4;
  }@media (min-width: 801px){
   .main{
     margin-left: auto;
