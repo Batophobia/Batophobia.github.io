@@ -32,11 +32,14 @@ body{
 			border: 1px solid #333333;
 		}
 		button:hover{
-			background-color: 3364A0;
+			background-color: #3364A0;
 		}
     
     .popup {
       position: absolute;
+      padding: 5px;
+      background-color: #3364A0;
+      border: 1px solid #000000;
     }
     .popup:empty {
       display: none;
