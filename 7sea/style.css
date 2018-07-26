@@ -10,7 +10,7 @@ body{
     .main{
       margin-left: auto;
       margin-right: auto;
-   	}
+    }
   }
 }
 @media screen and (orientation:landscape) {
@@ -44,7 +44,7 @@ button:hover{
     border-bottom: 1px dashed #000000;
     text-align: center;
   }
-  .hero .virtHubr, .hero .bgrounds, .hero .traits, .hero .skills{
+  .hero .virtHubr, .hero .bgrounds, .hero .skills{
     border-bottom: 1px solid #000000;
   }
   .hero .virtHubr span, .hero .bgrounds span, .hero .skills .skill{
@@ -65,25 +65,29 @@ button:hover{
   .hero .traits > .trait ~ .trait{
     border-left: 1px solid #000000;
   }
-  .hero .traits .trait:hover{
+  .hero .traits .trait:hover, .hero .skills .skill:hover {
     background-color: rgba(0,0,0,.1);
     border-bottom-width: 3px; 
   }
+  .t1{
+    border-bottom: 1px solid #6666FF;
+  }
   .t2{
-    border-bottom: 1px solid #CCCCFF;
+    border-bottom: 1px solid #00FF00;
   }
   .t3{
-    border-bottom: 1px solid #CCFFCC;
+    border-bottom: 1px solid #CCCC00;
   }
   .t4{
-    border-bottom: 1px solid #CCFFFF;
+    border-bottom: 1px solid #FF6600;
   }
   .t5{
-    border-bottom: 1px solid #FFCCCC;
+    border-bottom: 1px solid #FF0000;
   }
   .hero .advantages .adv{
     text-align: center;
     cursor: pointer;
+    display: block;
   }
 
 .popup {
@@ -97,14 +101,14 @@ button:hover{
 }
 
 #greyout{
-	display: none;
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	height: 100%;
-	width: 100%;
-	z-index: 9;
-	background-color: rgba(0,0,0,.75);
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 9;
+  background-color: rgba(0,0,0,.75);
 }
