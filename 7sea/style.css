@@ -1,59 +1,81 @@
 body{
-			background-color: #751014;
-		}
-		@media screen and (orientation:portrait) {
-    	.main{
-				width: 300px;
-				margin-top: 50px;
-	    }@media (min-width: 301px){
-	      .main{
-	        margin-left: auto;
-	        margin-right: auto;
-      	}
+	background-color: #751014;
+}
+@media screen and (orientation:portrait) {
+  	.main{
+		width: 300px;
+		margin-top: 50px;
+   }@media (min-width: 301px){
+     .main{
+       margin-left: auto;
+       margin-right: auto;
     	}
-		}
- 		@media screen and (orientation:landscape) {
-	    .main{
-	      width: 800px;
-	      height: 600px;
-				margin-top: 50px;
-	    }@media (min-width: 801px){
-	      .main{
-	        margin-left: auto;
-	        margin-right: auto;
-      	}
-    	}
- 		}
+  	}
+}
+@media screen and (orientation:landscape) {
+ .main{
+   width: 800px;
+   height: 600px;
+   margin-top: 50px;
+ }@media (min-width: 801px){
+  .main{
+    margin-left: auto;
+    margin-right: auto;
+	}
+ }
+}
+  
+button{
+	color: #FFFFFF;
+	background-color: #47a3e2;
+	padding: 5px 10px;
+	border: 1px solid #333333;
+}
+button:hover{
+	background-color: #3364A0;
+}
     
-		button{
-			color: #FFFFFF;
-			background-color: #47a3e2;
-			padding: 5px 10px;
-			border: 1px solid #333333;
-		}
-		button:hover{
-			background-color: #3364A0;
-		}
-    
-    .popup {
-      position: absolute;
-      padding: 5px;
-      background-color: #3364A0;
-      border: 1px solid #000000;
-    }
-    .popup:empty {
-      display: none;
-    }
-		
-		#greyout{
-			display: none;
-			position: fixed;
-			top: 0;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			height: 100%;
-			width: 100%;
-			z-index: 9;
-			background-color: rgba(0,0,0,.75);
-		}
+.hero{
+  width: 20%;
+  border: 1px solid #CCCCFF;
+} .hero .heroName{
+    font-weight: bold;
+    border-bottom: 1px dashed #CCCCFF;
+  }
+  .hero .virtHubr span, .hero .bgrounds span{
+    width: 50%;
+    text-align: center;
+  }
+  .hero .virtHubr span:hover, .hero .bgrounds span {
+    background-color: rgba(0,0,0,.1);
+  }
+  .hero .traits .trait{
+    width: 20%;
+    text-align: center;
+  }
+  .hero .traits .trait:hover{
+    background-color: rgba(0,0,0,.1);
+  }
+
+.popup {
+  position: absolute;
+  padding: 5px;
+  background-color: #3364A0;
+  border: 1px solid #000000;
+}
+.popup:empty {
+  display: none;
+}
+
+#greyout{
+	display: none;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 9;
+	background-color: rgba(0,0,0,.75);
+}
