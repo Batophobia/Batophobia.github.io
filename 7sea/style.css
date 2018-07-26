@@ -25,7 +25,15 @@ body{
    }
  }
 }
-  
+
+.left{
+  padding: 5px;
+}
+.left div{
+  padding: 5px;
+  cursor: pointer;
+}
+
 button{
   color: #FFFFFF;
   background-color: #47a3e2;
