@@ -43,6 +43,10 @@ button:hover{
 } .hero .heroName{
     font-weight: bold;
     border-bottom: 1px dashed #CCCCFF;
+    text-align: center;
+  }
+  .hero .virtHubr, .hero .bgrounds, .hero .traits, .hero .skills{
+    border-bottom: 1px solid #000000;
   }
   .hero .virtHubr span, .hero .bgrounds span{
     width: 50%;
@@ -57,12 +61,19 @@ button:hover{
     width: 20%;
     text-align: center;
     cursor: pointer;
+    display: inline-block;
   }
   .hero .traits > .trait ~ .trait{
     border-left: 1px solid #000000;
   }
   .hero .traits .trait:hover{
     background-color: rgba(0,0,0,.1);
+  }
+  .hero .skills .skill, .hero .advantages .adv {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    cursor: pointer;
   }
 
 .popup {
