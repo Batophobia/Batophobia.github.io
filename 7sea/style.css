@@ -15,9 +15,8 @@ body{
 }
 @media screen and (orientation:landscape) {
  .main{
-   width: 800px;
+   width: 900px;
    height: 600px;
-   margin-top: 50px;
    background-color: #F1F1D4;
  }@media (min-width: 801px){
   .main{
@@ -38,8 +37,8 @@ button:hover{
 }
     
 .hero{
-  width: 20%;
-  border: 1px solid #CCCCFF;
+  width: 19%;
+  border: 1px solid #000000;
 } .hero .heroName{
     font-weight: bold;
     border-bottom: 1px dashed #CCCCFF;
@@ -68,6 +67,19 @@ button:hover{
   }
   .hero .traits .trait:hover{
     background-color: rgba(0,0,0,.1);
+    border-bottom-width: 3px; 
+  }
+  .t2{
+    border-bottom: 1px solid #CCCCFF;
+  }
+  .t3{
+    border-bottom: 1px solid #CCFFCC;
+  }
+  .t4{
+    border-bottom: 1px solid #CCFFFF;
+  }
+  .t5{
+    border-bottom: 1px solid #FFCCCC;
   }
   .hero .skills .skill, .hero .advantages .adv {
     display: inline-block;
