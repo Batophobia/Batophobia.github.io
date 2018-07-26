@@ -34,6 +34,13 @@ body{
 		button:hover{
 			background-color: 3364A0;
 		}
+    
+    .popup {
+      position: absolute;
+    }
+    .popup:empty {
+      display: none;
+    }
 		
 		#greyout{
 			display: none;
