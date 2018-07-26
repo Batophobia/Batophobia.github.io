@@ -27,10 +27,10 @@ body{
 }
   
 button{
-	color: #FFFFFF;
-	background-color: #47a3e2;
-	padding: 5px 10px;
-	border: 1px solid #333333;
+  color: #FFFFFF;
+  background-color: #47a3e2;
+  padding: 5px 10px;
+  border: 1px solid #333333;
 }
 button:hover{
 	background-color: #3364A0;
@@ -41,7 +41,7 @@ button:hover{
   border: 1px solid #000000;
 } .hero .heroName{
     font-weight: bold;
-    border-bottom: 1px dashed #CCCCFF;
+    border-bottom: 1px dashed #000000;
     text-align: center;
   }
   .hero .virtHubr, .hero .bgrounds, .hero .traits, .hero .skills{
