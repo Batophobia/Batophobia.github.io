@@ -58,7 +58,7 @@ function addHero(objHero){
     heroHtml = heroHtml + '<span class="adv" descr="'+objHero.advantage[adv].descr+'">'+objHero.advantage[adv].name+'</span>';
   }
   heroHtml = heroHtml + '</div>';
-  $("#heroes").append("");
+  $("#heroes").append(heroHtml);
 }
 
 function hideAll(){
