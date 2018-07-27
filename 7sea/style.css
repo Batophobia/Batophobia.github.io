@@ -33,6 +33,13 @@ body{
   margin: 5% auto; /* Will not center vertically and won't work in IE6/7. */
   left: 0;
   right: 0;
+  padding: 5px;
+  background-color: #3364A0;
+  border: 1px solid #000000;
+  z-index: 9;
+}
+.popup:empty {
+  display: none;
 }
 
 .left{
@@ -123,16 +130,6 @@ button:hover{
     cursor: pointer;
     display: block;
   }
-
-.popup {
-  position: absolute;
-  padding: 5px;
-  background-color: #3364A0;
-  border: 1px solid #000000;
-}
-.popup:empty {
-  display: none;
-}
 
 #greyout{
   display: none;
