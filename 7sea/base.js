@@ -25,6 +25,10 @@ $(function() {
     hideAll();
     $("#plot").show();
   });
+  $(document).on("click","#navNPC",function(e){
+    hideAll();
+    $("#npc").show();
+  });
   $(document).on("click","#navLookup",function(e){
     hideAll();
     $("#search").show();
@@ -258,6 +262,7 @@ function addHero(objHero, varName){
 function hideAll(){
   $("#heroes").hide();
   $("#plot").hide();
+  $("#npc").hide();
   $("#search").hide();
   $("#addHero").hide();
   $(".morePlot").hide();
