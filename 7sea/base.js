@@ -85,6 +85,11 @@ $(function() {
       $(".popup").html(popupHtml);
     }
   });
+  
+  $(document).on("click","#btnClose",function(){
+    $(".popup").html("");
+    $("#greyout").hide();
+  }
 });
 
 function addHero(objHero){
