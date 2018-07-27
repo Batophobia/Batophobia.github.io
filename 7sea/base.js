@@ -18,7 +18,7 @@ $(function() {
     popupHtml = popupHtml + "<select>";
     popupHtml = popupHtml + "</select>";
     popupHtml = popupHtml + "</div>";
-    $("#popup").html("<select></select>");
+    $(".popup").html(popupHtml);
   });
   $(document).on("click","#navPlot",function(e){
     hideAll();
