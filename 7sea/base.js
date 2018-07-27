@@ -150,6 +150,14 @@ $(function() {
 });
 
 var base={
+  places: {
+    vodacce: "",
+    castille: "",
+    inismore: "",
+    alahnahquin: "",
+    aksum: "",
+    aragosta: ""
+  },
   trait: {
     brawn: "Brawn is a Hero’s strength and physical power.",
     finesse: "Finesse measures a Hero’s coordination and agility.",
@@ -174,7 +182,9 @@ var base={
     theft: "Use Theft when you swipe something from someone’s pocket without him noticing. Use Theft when you pick a lock, crack a safe, or something similar.",
     warfare: "Use Warfare whenever you need tactical expertise, such as when you’re breaching a castle’s defense. Use Warfare when you lead an army in battle.",
     weaponry: "Use Weaponry when you attack something with a sword, axe, hammer or knife in your hand."
-  }
+  },
+  glamours: "All Glamours require a Hero Point to activate. Major Glamours can be activated once per Episode, while Minor Glamours can be activated once per Scene.",
+  iethihsothokon: "At the beginning of each Scene you may attune your spirit to one Iethihsothókon you know at no cost. Until you attune to a different Iethihsothókon you have access to its associated Iáhthénen, and may activate its associated Iónhnhe by spending a Hero Point. At the beginning of each new Round, an Akwékon may freely attune to a different Iethihsothókon, gaining access to that Iethihsothókon’s Iáhthénen and Iónhnhe. Additionally, an Akwékon may attune to a different Iethihsothókon during a Scene by spending one Raise."
 };
 
 function searchJson(needle, haystack){
@@ -217,6 +227,20 @@ function addHero(objHero, varName){
     heroHtml = heroHtml + '<span class="adv" descr="'+objHero.advantage[adv].descr+'">'+objHero.advantage[adv].name+'</span>';
   }
   heroHtml = heroHtml + '</div>';
+  if(objHero.glamours!==undefined){
+    heroHtml = heroHtml + '<div class="glamours">';
+    for(var g in objHero.glamours){
+      heroHtml = heroHtml + '<span class="glamour '+objHero.glamours[g].type+'" descr="'+objHero.glamours[g].descr+'">'+capital(g)+'</span>';
+    }
+    heroHtml = heroHtml + '</div>';
+  }
+  if(objHero.iethihsothokon!==undefined){
+    heroHtml = heroHtml + '<div class="iethihsothokons">';
+    for(var i in objHero.iethihsothokon){
+      heroHtml = heroHtml + '<span class="iethihsothokon" descr="'+objHero.iethihsothokon[i].descr+'">'+capital(i)+'('+objHero.iethihsothokon[i].type+')</span>';
+    }
+    heroHtml = heroHtml + '</div>';
+  }
   $("#heroes").append(heroHtml);
 }
 
