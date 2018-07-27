@@ -57,6 +57,7 @@ $(function() {
   });
   
   // Search
+  var srchTimer;
   $("#txtSearch").keyup(function(e){
     clearTimeout(srchTimer);
     
