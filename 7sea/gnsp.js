@@ -1,5 +1,10 @@
 var gnsp = {  // Adventure letters
   title: "Good Night Sweet Prince",
+  plot: {
+    0: { name:"Step 1", descr: "The Heroes witness the poisoning of the Avalonian envoy and investigate." },
+    1: { name:"Step 2", descr: "The Heroes attempt to thwart the Prince’s scheme." },
+    2: { name:"Goal", descr: "The Heroes confront the Prince and deal with the fallout of the completed ritual." },
+  },
   npc: {
     
   },
