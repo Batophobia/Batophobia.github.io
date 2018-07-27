@@ -99,7 +99,7 @@ function addHero(objHero, varName){
   // Backgrounds
   heroHtml = heroHtml + '<div class="bgrounds">';
   for(var bgrnd in objHero.background){
-    heroHtml = heroHtml + '<span class="bground" descr="'+objHero.background[bgrnd]+'">'+bgrnd+'</span>';
+    heroHtml = heroHtml + '<span class="bground" descr="'+objHero.background[bgrnd]+'">'+capital(bgrnd)+'</span>';
   }
   heroHtml = heroHtml + '</div>';
   // Traits
@@ -133,5 +133,9 @@ function hideAll(){
 }
 
 function capital(input){
+  if(input.indexOf('_')>-1){
+    input=input.replace('_',' ');
+    input.repace(/\s[a-z]/g,function(c){ return c.toUpperCase(); });
+  }
   return input.charAt(0).toUpperCase() + input.slice(1);
 }
