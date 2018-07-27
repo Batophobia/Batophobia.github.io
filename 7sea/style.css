@@ -146,6 +146,9 @@ button:hover{
     cursor: pointer;
     display: block;
   }
+  .hero .glamours{
+    border-top: 1px solid #000000;
+  }
   .hero .glamours .glamour{
     text-align: center;
     cursor: pointer;
@@ -156,6 +159,9 @@ button:hover{
   }
   .hero .glamours .glamour.Minor{
     width: 50%;
+  }
+  .hero .iethihsothokons{
+    border-top: 1px solid #000000;
   }
   .hero .iethihsothokons .iethihsothokon{
     text-align: center;
