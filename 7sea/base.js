@@ -97,7 +97,7 @@ $(function() {
       popupHtml = popupHtml + "<h1>Panache - " + $(this).attr('lvl') + "</h1>";
       popupHtml = popupHtml + "<div class='popupInfo'>" + base.trait.panache + "</div>";
     } else {
-      if($(this).hasClass("skill")){
+      if($(this).hasClass("skill"))
         popupHtml = popupHtml + "<h1>"+$(this).text()+" - " + $(this).attr('lvl') + "</h1>";
       else
         popupHtml = popupHtml + "<h1>"+$(this).text()+"</h1>";
