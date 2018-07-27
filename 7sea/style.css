@@ -156,6 +156,7 @@ button:hover{
   }
   .hero .glamours .glamour.Major{
     width: 100%;
+    font-weight: bold;
   }
   .hero .glamours .glamour.Minor{
     width: 50%;
