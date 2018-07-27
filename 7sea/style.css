@@ -141,6 +141,19 @@ button:hover{
     display: block;
   }
 
+.plot li{
+  list-style-type: none;
+  display: block;
+  background-color: rgb(25,54,47);
+  color: #FFFFFF;
+  padding: 5px;
+  margin-bottom: 3px;
+}
+.plotDetails{
+  display: none;
+  padding-left: 10px;
+}
+
 #greyout{
   display: none;
   position: fixed;
