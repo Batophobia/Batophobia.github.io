@@ -6,6 +6,7 @@ body{
     width: 300px;
     margin-top: 50px;
     background-color: #F3F3C5;
+    overflow: auto;
   }@media (min-width: 301px){
     .main{
       margin-left: auto;
@@ -18,6 +19,7 @@ body{
    width: 950px;
    height: 600px;
    background-color: #F3F3C5;
+   overflow: auto;
  }@media (min-width: 951px){
   .main{
     margin-left: auto;
