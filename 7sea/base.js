@@ -43,8 +43,18 @@ $(function() {
   
   // Load plot
   for(var step in gnsp.plot){
-    $("#plot").append("<li for='"+step+"'>"+gnsp.plot[step].name+"</li><div class='plotDetails' for='"+step+"'>"+gnsp.plot[step].descr+"</div>");
+    $("#plot").append("<li for='"+step+"'><i class='arrow right' />"+gnsp.plot[step].name+"</li><div class='plotDetails' for='"+step+"'>"+gnsp.plot[step].descr+"</div>");
   }
+  $(document).on("click","#plot li", function(){
+    $(this).next().toggle();
+    if($(this).find(".arrow").hasClass("right")){
+      $(this).find(".arrow").removeClass("right");
+      $(this).find(".arrow").addClass("down");
+    } else {
+      $(this).find(".arrow").removeClass("down");
+      $(this).find(".arrow").addClass("right");
+    }
+  });
   
   // Search
   $("#txtSearch").keyup(function(e){
