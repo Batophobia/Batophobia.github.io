@@ -42,16 +42,14 @@ body{
   display: none;
 }
 
-.left{
-  padding: 5px;
+.left {
   text-align: center;
-  background-color: #3364A0;
+  background-color: #6589B6;
 }
 .left div{
-  padding: 5px;
   cursor: pointer;
   display: inline-block;
-  padding: 5 10px;
+  padding: 5px 10px;
 }
 .left > div ~ div{
   border-left: 1px solid #333333;
