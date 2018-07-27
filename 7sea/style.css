@@ -44,10 +44,20 @@ body{
 
 .left{
   padding: 5px;
+  text-align: center;
+  background-color: #3364A0;
 }
 .left div{
   padding: 5px;
   cursor: pointer;
+  display: inline-block;
+  padding: 5 10px;
+}
+.left > div ~ div{
+  border-left: 1px solid #333333;
+}
+.left div:hover{
+  background-color: rgba(0,0,0,.1);
 }
 
 button{
