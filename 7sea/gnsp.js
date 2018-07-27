@@ -17,9 +17,9 @@ var gnsp = {  // Adventure letters
       gender: "Male",
       nation: "Vodacce",
       virtue: "Commanding",
-      virtueDescr: "Activate: GM gives a Hero Point to all other Heroes in this Scene.",
+      virtueDescr: "Activate your Virtue. The GM gives a Hero Point to all other Heroes in this Scene.",
       hubris: "Trusting",
-      hubrisDescr: "Receive a Hero Point when you accept someone’s lies or lopsided deal.",
+      hubrisDescr: "You receive a Hero Point when you accept someone’s lies or lopsided deal.",
       trait: {
         brawn: 2,
         finesse: 3,
@@ -40,8 +40,8 @@ var gnsp = {  // Adventure letters
         weaponry: 3 
       },
       background: {
-        bravo: "Earn Hero Point when putting self in danger to defend someone sworn to protect",
-        moroso: "Earn Hero Point when choose to let another character get away with something because you're romantically interested in them"
+        bravo: " Earn a Hero Point when you put yourself in danger to defend the life of someone you’ve sworn to protect",
+        moroso: " Earn a Hero Point when you choose to let another  character  get  away  with  something  because  you’re romantically interested in them, and it gets you into trouble"
       },
       advantage: {
         1: {
@@ -75,9 +75,9 @@ var gnsp = {  // Adventure letters
       gender: "Female",
       nation: "Castille",
       virtue: "Subtle",
-      virtueDescr: "Activate when you act behind the scenes, from the shadows or through a proxy. For the next Risk, when you determine Raises, every die counts as a Raise.",
+      virtueDescr: "Activate your Virtue when you act behind the scenes, from the shadows or through a proxy. For the next Risk, when you determine Raises, every die counts as a Raise.",
       hubris: "Curious",
-      hubrisDescr: "Receive a Hero Point when you investigate something unusual, especially if it looks dangerous.",
+      hubrisDescr: "You receive a Hero Point when you investigate something unusual, especially if it looks dangerous.",
       trait: {
         brawn: 2,
         finesse: 2,
@@ -98,8 +98,8 @@ var gnsp = {  // Adventure letters
         theft: 3
       },
       background: {
-        criminal: "Earn Hero Point when break law pursuing noble endeavor",
-        sabueso_real: "Earn Hero Point when refuse to act until have more info, causing more trouble"
+        criminal: " Earn a Hero Point when you break the law in the pursuit of a noble endeavor",
+        sabueso_real: " Earn a Hero Point when you refuse to act until you have more information, and this causes even more trouble for you"
       },
       advantage: {
         1: {
