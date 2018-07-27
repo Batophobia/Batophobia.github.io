@@ -43,9 +43,6 @@ $(function() {
   
   // Load plot
   
-  // Add Player
-  addHero(gnsp.hero.nico);
-  
   // Search
   $("#txtSearch").keyup(function(e){
     clearTimeout(srchTimer);
@@ -89,7 +86,7 @@ $(function() {
   $(document).on("click","#btnClose",function(){
     $(".popup").html("");
     $("#greyout").hide();
-  }
+  });
 });
 
 function addHero(objHero, varName){
