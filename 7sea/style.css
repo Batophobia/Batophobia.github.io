@@ -205,6 +205,14 @@ i.arrow.down {
   -webkit-transform: rotate(45deg);
 }
 
+.npcGuy{
+  max-width: 32%;
+  display: inline-block;
+}
+.npcName{
+  background-color: #CCCCCC;
+}
+
 .search table td{
   padding: 10px;
 }
