@@ -134,8 +134,8 @@ function hideAll(){
 
 function capital(input){
   if(input.indexOf('_')>-1){
-    input=input.replace('_',' ');
-    input.replace(/\s[a-z]/g,function(c){ return c.toUpperCase(); });
+    input = input.replace('_',' ');
+    input = input.replace(/\s[a-z]/g,function(c){ return c.toUpperCase(); });
   }
   return input.charAt(0).toUpperCase() + input.slice(1);
 }
