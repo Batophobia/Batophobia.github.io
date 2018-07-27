@@ -1,31 +1,16 @@
 body{
   background-color: #751014;
 }
-@media screen and (orientation:portrait) {
-  .main{
-    width: 300px;
-    margin-top: 50px;
-    background-color: #F3F3C5;
-    overflow: auto;
-  }@media (min-width: 301px){
-    .main{
-      margin-left: auto;
-      margin-right: auto;
-    }
-  }
-}
-@media screen and (orientation:landscape) {
+.main{
+  width: 950px;
+  height: 600px;
+  background-color: #F3F3C5;
+  overflow: auto;
+}@media (min-width: 951px){
  .main{
-   width: 950px;
-   height: 600px;
-   background-color: #F3F3C5;
-   overflow: auto;
- }@media (min-width: 951px){
-  .main{
-    margin-left: auto;
-    margin-right: auto;
-   }
- }
+   margin-left: auto;
+   margin-right: auto;
+  }
 }
 
 .popup{
