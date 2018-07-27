@@ -75,9 +75,9 @@ $(function() {
     else if($(this).hasClass("wits"))
       popupHtml = popupHtml + "<h1>Wits</h1>";
     else if($(this).hasClass("panache"))
-      popupHtml = popupHtml + "<h1>"+$(this).text()+"</h1>";
-    else
       popupHtml = popupHtml + "<h1>Panache</h1>";
+    else
+      popupHtml = popupHtml + "<h1>"+$(this).text()+"</h1>";
     popupHtml = popupHtml + "<div class='popupInfo'>" + $(this).attr("descr") + "</div>";
     popupHtml = popupHtml + "<button id='btnClose'>Close</button>";
     popupHtml = popupHtml + "</div>";
