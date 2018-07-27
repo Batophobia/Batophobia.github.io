@@ -207,7 +207,7 @@ var gnsp = {  // Adventure letters
         weaponry: 1 
       },
       background: {
-        knightErrant: "Earn a Hero Point when you uphold an ideal of knightly virtue in a way that gets you into trouble",
+        knight_errant: "Earn a Hero Point when you uphold an ideal of knightly virtue in a way that gets you into trouble",
         dornalai: "Earn a Hero Point when you let bygones be bygones after a fight, win or lose, and form a bond with your opponent"
       },
       advantage: {
