@@ -48,7 +48,7 @@ $(function() {
     tmpHtml = tmpHtml + "<div class='plotDetails' for='"+step+"'>"+gnsp.plot[step].descr;
     tmpHtml = tmpHtml + "<button class='btnMorePlot'>More</button>";
     for(var more in gnsp.plot[step].sub){
-      tmpHtml = tmpHtml + "<div class='morePlot'>"+gnsp.plot[step].sub[more].name+"<br/>"+gnsp.plot[step].sub[more].descr+"</div>";
+      tmpHtml = tmpHtml + "<div class='morePlot'><b>"+gnsp.plot[step].sub[more].name+":</b><br/>"+gnsp.plot[step].sub[more].descr+"</div>";
     }
     tmpHtml = tmpHtml + "</div>";
     $("#plot").append(tmpHtml);
