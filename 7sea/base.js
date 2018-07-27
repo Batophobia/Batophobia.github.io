@@ -3,6 +3,22 @@ $(function() {
   $(document).on("click","#navHero",function(e){
     hideAll();
     $("#heroes").show();
+    $("#addHero").show();
+  });
+  $(document).on("click","#addHero",function(e){
+    $("#greyout").show();
+    var popupHtml = "";
+    popupHtml = popupHtml + "<div>";
+    popupHtml = popupHtml + "<select>";
+    popupHtml = popupHtml + "<option value=''>-- Select a Hero --</option>";
+    for(var h in gnsp.hero){
+      // TODO: check that hero not already in
+      popupHtml = popupHtml + "<option value='"+h+"'>"+gnsp.hero[h].name+"</option>";
+    }
+    popupHtml = popupHtml + "<select>";
+    popupHtml = popupHtml + "</select>";
+    popupHtml = popupHtml + "</div>";
+    $("#popup").html("<select></select>");
   });
   $(document).on("click","#navPlot",function(e){
     hideAll();
@@ -65,6 +81,7 @@ function hideAll(){
   $("#heroes").hide();
   $("#plot").hide();
   $("#search").hide();
+  $("#addHero").hide();
 }
 
 function capital(input){
