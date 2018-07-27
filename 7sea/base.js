@@ -9,14 +9,15 @@ $(function() {
     $("#greyout").show();
     var popupHtml = "";
     popupHtml = popupHtml + "<div>";
-    popupHtml = popupHtml + "<select>";
+    popupHtml = popupHtml + "<h1>Add Hero</h1>";
+    popupHtml = popupHtml + "<select id='ddlHeroes'>";
     popupHtml = popupHtml + "<option value=''>-- Select a Hero --</option>";
     for(var h in gnsp.hero){
       // TODO: check that hero not already in
       popupHtml = popupHtml + "<option value='"+h+"'>"+gnsp.hero[h].name+"</option>";
     }
-    popupHtml = popupHtml + "<select>";
     popupHtml = popupHtml + "</select>";
+    popupHtml = popupHtml + "<button id='btnAddHero'>Add</button>";
     popupHtml = popupHtml + "</div>";
     $(".popup").html(popupHtml);
   });
@@ -30,6 +31,12 @@ $(function() {
   });
   
   // Load heroes
+  $(document).on("click","#btnAddHero",function(e){
+    if($("#ddlHeroes").val()=="")
+      return false;
+    
+    addHero(gnsp.hero[$("#ddlHeroes").val()]);
+  });
   
   // Load plot
   
