@@ -63,7 +63,7 @@ button:hover{
 .hero{
   width: 20%;
   border: 1px solid #000000;
-  margin: 0 auto;
+  display: inline-block;
 } .hero .heroName{
     font-weight: bold;
     border-bottom: 1px dashed #000000;
