@@ -71,6 +71,46 @@ $(function() {
     $(this).parent().find(".morePlot").show();
   });
   
+  // Load NPC
+  for(var dude in gnsp.npc){
+    var tmpHtml = "<div class='npcGuy'>";
+    tmpHtml = tmpHtml + "<div class='npcName'>"+gnsp.npc[dude].name+"</div>";
+    for(var attr in gnsp.npc[dude]){
+      tmpHtml = tmpHtml + "<div class='npcDetails' for='"+attr+"'><i>"+capital(attr)+":</i> ";
+      if(typeof(gnsp.npc[dude][attr])==="object"){
+        if(attr=="advantage"){
+          for(var subAttr in gnsp.npc[dude][attr]){
+            tmpHtml = tmpHtml + "<br/>" + gnsp.npc[dude][attr][subAttr].name + " - <br/>";
+            tmpHtml = tmpHtml + gnsp.npc[dude][attr][subAttr].descr;
+          }
+        } else {
+          for(var subAttr in gnsp.npc[dude][attr]){
+            tmpHtml = tmpHtml + "<br/>" + subAttr + " - <br/>";
+            tmpHtml = tmpHtml + gnsp.npc[dude][attr][subAttr];
+          }
+        }
+      } else {
+        tmpHtml = tmpHtml + gnsp.npc[dude][attr];
+      }
+      tmpHtml = tmpHtml + "</div>";
+    }
+    tmpHtml = tmpHtml + "</div>";
+    $("#plot").append(tmpHtml);
+  }
+  $(document).on("click","#plot li", function(){
+    $(this).next().toggle();
+    if($(this).find(".arrow").hasClass("right")){
+      $(this).find(".arrow").removeClass("right");
+      $(this).find(".arrow").addClass("down");
+    } else {
+      $(this).find(".arrow").removeClass("down");
+      $(this).find(".arrow").addClass("right");
+    }
+  });
+  $(document).on("click",".btnMorePlot", function(){
+    $(this).parent().find(".morePlot").show();
+  });
+  
   // Search
   var srchTimer;
   $("#txtSearch").keyup(function(e){
