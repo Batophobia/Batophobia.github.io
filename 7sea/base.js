@@ -37,8 +37,19 @@ $(function() {
   addHero(gnsp.hero.nico);
   
   // Search
-  $(document).on("keyup","#txtSearch",function(e){
-    // timer searching
+  $("#txtSearch").keyup(function(e){
+    clearTimeout(srchTimer);
+    
+    srchTimer = setTimeout(function () {
+      if ($(inputElem).val() == "") {
+        elemResults.html("");
+        //elemResults.hide();
+        return false;
+      }
+      
+      var input=$(this).val();
+      
+    }, 300);
   });
 });
 
