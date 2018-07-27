@@ -23,7 +23,7 @@ var gnsp = {  // Adventure letters
       sub: {
         0: { name: "What Is and Should Never Be", descr: "The Heroes battle against the Monster animated by the ritual." }
       }
-    },
+    }
   },
   npc: {
     0:{
@@ -57,6 +57,15 @@ var gnsp = {  // Adventure letters
       virtueDescr: "Activate your Virtue to prevent any magical effect from affecting you.",
       hubris: "Proud",
       hubrisDescr: "You receive a Danger Point when your Villain refuses an offer aid.",
+    },
+    2: {
+      name: "What Was Once Lucrezia",
+      strength: "2[H]",
+      attrs: {
+        fearsome: "Gain a Rank of Fear, plus an additional Rank of Fear per 5 Strength. Spend a Danger Point to double your Fear Rank for 1 Round.",
+        powerful: "Spend a Danger Point to double the number of Wounds dealt by the monster after a successful attack against a Hero.",
+        swift: "Spend a Danger Point to take an Action immediately."
+      }
     }
   },
   place: {
