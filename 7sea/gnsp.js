@@ -188,6 +188,20 @@ var gnsp = {  // Adventure letters
           name: "Boxer",
           descr: "You gain 1 Bonus Die when you make a Brawling Risk to punch, kick, headbutt or otherwise injure another character using nothing but your own body."
         }
+      },
+      glamours: {
+        legend: {
+          type: "Major",
+          descr: "Activate this Glamour to add 2 dice to your Finesse for the rest of the Scene."
+        },
+        pain_is_temporary: {
+          type: "Minor",
+          descr: "Activate this Glamour to instantly heal 5 Wounds on yourself. You cannot heal Dramatic Wounds in this way."
+        },
+        heroic: {
+          type: "Minor",
+          descr: "Activate this Glamour after a Risk using your Resolve. You may re-roll up to 3 dice. You must keep the new value on any dice that you re-roll, even if they are lower."
+        }
       }
     },
     karahkwa: {
@@ -245,6 +259,16 @@ var gnsp = {  // Adventure letters
         5: {
           name: "Survivalist",
           descr: "If you are in the wilderness, you canforage or hunt and find enough food to for yourselfand up to five other people. Under extremeconditions - lost in the middle of a desert, orabandoned in the Iaka Et:serran tundra, forexample - you find enough food for yourself and upto two other people."
+        }
+      },
+      iethihsothokon: {
+        karonta:{
+          type: "tree",
+          descr: "Iáhthénen: While attuned to this Iethihsothókon your skin hardens to become like the bark of a tree. Whenever you are dealt Wounds, prevent 1 Wound.\n\nIónhnhe: Spend a Hero Point to heal 1 Dramatic Wound or Wounds equal to your Ranks in Resolve."
+        },
+        okwaho:{
+          type: "wolf",
+          descr: "Iáhthénen: While attuned to this Iethihsothókon you gain the agility of a wolf. When counting Raises during a Finesse Risk, count 1 additional Raise.\n\nIónhnhe: After an ally spends a Raise to take any Action, spend a Hero Point to immediately spend a single Raise to take any Action (even if it is not your Action)."
         }
       }
     },
