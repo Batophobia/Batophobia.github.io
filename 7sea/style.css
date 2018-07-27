@@ -36,7 +36,7 @@ body{
   padding: 5px;
   background-color: #3364A0;
   border: 1px solid #000000;
-  z-index: 9;
+  z-index: 10;
 }
 .popup:empty {
   display: none;
