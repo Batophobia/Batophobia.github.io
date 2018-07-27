@@ -1,12 +1,63 @@
 var gnsp = {  // Adventure letters
   title: "Good Night Sweet Prince",
   plot: {
-    0: { name:"Step 1", descr: "The Heroes witness the poisoning of the Avalonian envoy and investigate." },
-    1: { name:"Step 2", descr: "The Heroes attempt to thwart the Prince’s scheme." },
-    2: { name:"Goal", descr: "The Heroes confront the Prince and deal with the fallout of the completed ritual." },
+    0: {
+      name:"Step 1",
+      descr: "The Heroes witness the poisoning of the Avalonian envoy and investigate.",
+      sub: {
+        0: { name: "Death at a Funeral", descr: "The Heroes attend a funeral and witness and investigate the poisoning of the Avalonian envoy." },
+        1: { name: "Chase through the Streets", descr: "The Heroes track the poison to a local apothecary and must chase him for answers." }
+      }
+    },
+    1: {
+      name:"Step 2",
+      descr: "The Heroes attempt to thwart the Prince’s scheme.",
+      sub: {
+        0: { name: "Mad Alchemy", descr: "The Heroes confront Miguel Diaz and discover what Prince Caligari’s plan truly entails." },
+        1: { name: "Preventing Disaster", descr: "Knowing one of the reagents the Prince needs to complete his ritual successfully, the Heroes race to intercept it." }
+      }
+    },
+    2: {
+      name:"Goal",
+      descr: "The Heroes confront the Prince and deal with the fallout of the completed ritual.",
+      sub: {
+        0: { name: "What Is and Should Never Be", descr: "The Heroes battle against the Monster animated by the ritual." }
+      }
+    },
   },
   npc: {
-    
+    0:{
+      name:"Prince Vincenzo Caligari",
+      nation:"Vodacce",
+      strength: 5, 
+      influence: 10,
+      rank: 15,
+      advantage:{
+        0: { name: "Linguist", descr: "You speak, read, and write all Thean languages. Even the dead ones." },
+        1: { name: "Poison Immunity", descr: "Poison never affects you, aside from mild discomfort." },
+        2: { name: "Fencer", descr: "Gain 1 Bonus Die when you make a Risk using a rapier, dagger, cutlass or similar weapon in one hand." },
+        3: { name: "The Devil’s Own Luck", descr: "Spend a Danger Point after you take a Risk to Re-Roll any number of dice. You must keep the new roll. You can use this Advantage once per Scene." },
+      },
+      virtue: "Astute",
+      virtueDescr: "Activate your Virtue after a Hero spends Raises for an Action. That Action fails. The Hero still loses the Raises spent.",
+      hubris: "Manipulative",
+      hubrisDescr: "You receive a Danger Point when you try to get someone else to do your dirty work and it backfires.",
+    },
+    1:{
+      name:"Miguel Diaz de Felipe de Nollo",
+      nation:"Castille",
+      strength: 2, 
+      influence: 2,
+      rank: 4,
+      advantage:{
+        0: { name: "Alchemist", descr: "Spend a Danger Point (and a Raise during an Action or Dramatic Sequence) to produce an elixir or potion which provides an immediate benefit." },
+        1: { name: "Spark of Genius (Alchemy)", descr: "When you make a Risk and call on your field of study, spend a Danger Point to gain additional Raises equal to your Strength." },
+      },
+      virtue: "Temperate",
+      virtueDescr: "Activate your Virtue to prevent any magical effect from affecting you.",
+      hubris: "Proud",
+      hubrisDescr: "You receive a Danger Point when your Villain refuses an offer aid.",
+    }
   },
   place: {
     
