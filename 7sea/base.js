@@ -95,7 +95,7 @@ $(function() {
       tmpHtml = tmpHtml + "</div>";
     }
     tmpHtml = tmpHtml + "</div>";
-    $("#plot").append(tmpHtml);
+    $("#npc").append(tmpHtml);
   }
   $(document).on("click","#plot li", function(){
     $(this).next().toggle();
