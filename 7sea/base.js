@@ -43,7 +43,15 @@ $(function() {
   
   // Load plot
   for(var step in gnsp.plot){
-    $("#plot").append("<li for='"+step+"'><i class='arrow right' />"+gnsp.plot[step].name+"</li><div class='plotDetails' for='"+step+"'>"+gnsp.plot[step].descr+"</div>");
+    var tmpHtml = "";
+    tmpHtml = tmpHtml + "<li for='"+step+"'><i class='arrow right' />"+gnsp.plot[step].name+"</li>";
+    tmpHtml = tmpHtml + "<div class='plotDetails' for='"+step+"'>"+gnsp.plot[step].descr;
+    tmpHtml = tmpHtml + "<button class='btnMorePlot'>More</button>";
+    for(var more in gnsp.plot[step].sub){
+      tmpHtml = tmpHtml + "<div class='morePlot'>"+gnsp.plot[step].sub[more].name+"<br/>"+gnsp.plot[step].sub[more].descr+"</div>";
+    }
+    tmpHtml = tmpHtml + "</div>";
+    $("#plot").append(tmpHtml);
   }
   $(document).on("click","#plot li", function(){
     $(this).next().toggle();
@@ -54,6 +62,9 @@ $(function() {
       $(this).find(".arrow").removeClass("down");
       $(this).find(".arrow").addClass("right");
     }
+  });
+  $(document).on("click",".btnMorePlot", function(){
+    $(this).parent().find(".morePlot").show();
   });
   
   // Search
@@ -249,6 +260,7 @@ function hideAll(){
   $("#plot").hide();
   $("#search").hide();
   $("#addHero").hide();
+  $(".morePlot").hide();
 }
 
 function capital(input){
