@@ -43,7 +43,7 @@ $(function() {
   
   // Load plot
   for(var step in gnsp.plot){
-    $("#plot").append("<li>"+gnsp.plot[step].name+"</li>");
+    $("#plot").append("<li for='"+step+"'>"+gnsp.plot[step].name+"</li><div class='plotDetails' for='"+step+"'>"+gnsp.plot[step].descr+"</div>");
   }
   
   // Search
