@@ -36,6 +36,9 @@ $(function() {
       return false;
     
     addHero(gnsp.hero[$("#ddlHeroes").val()]);
+    
+    $(".popup").html("");
+    $("#greyout").hide();
   });
   
   // Load plot
