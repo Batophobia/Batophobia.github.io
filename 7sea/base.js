@@ -95,7 +95,7 @@ function addHero(objHero, varName){
   // Name
   heroHtml = heroHtml + '<div class="heroName">'+objHero.name+'</div>';
   // Virtue and Hubris
-  heroHtml = heroHtml + '<<div class="virtHubr"><span class="virtue" descr="'+objHero.virtueDescr+'">'+objHero.virtue+'</span><span class="hubris" descr="'+objHero.hubrisDescr+'">'+objHero.hubris+'</span></div>';
+  heroHtml = heroHtml + '<div class="virtHubr"><span class="virtue" descr="'+objHero.virtueDescr+'">'+objHero.virtue+'</span><span class="hubris" descr="'+objHero.hubrisDescr+'">'+objHero.hubris+'</span></div>';
   // Backgrounds
   heroHtml = heroHtml + '<div class="bgrounds">';
   for(var bgrnd in objHero.background){
