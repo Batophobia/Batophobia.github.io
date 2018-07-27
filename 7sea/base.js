@@ -61,6 +61,30 @@ $(function() {
       
     }, 300);
   });
+  
+  $(document).on("click",".hero span", function(e){
+    if($(this).attr("descr")+=null && $(this).attr("descr")!=""){
+      $("#greyout").show();
+      var popupHtml = "";
+      popupHtml = popupHtml + "<div>";
+      if($(this).hasClass("brawn"))
+        popupHtml = popupHtml + "<h1>Brawn</h1>";
+      else if($(this).hasClass("finesse"))
+        popupHtml = popupHtml + "<h1>Finesse</h1>";
+      else if($(this).hasClass("resolve"))
+        popupHtml = popupHtml + "<h1>Resolve</h1>";
+      else if($(this).hasClass("wits"))
+        popupHtml = popupHtml + "<h1>Wits</h1>";
+      else if($(this).hasClass("panache"))
+        popupHtml = popupHtml + "<h1>"+$(this).text()+"</h1>";
+      else
+        popupHtml = popupHtml + "<h1>Panache</h1>";
+      popupHtml = popupHtml + "<div class='popupInfo'>" + $(this).attr("descr") + "</div>";
+      popupHtml = popupHtml + "<button id='btnClose'>Close</button>";
+      popupHtml = popupHtml + "</div>";
+      $(".popup").html(popupHtml);
+    }
+  });
 });
 
 function addHero(objHero){
