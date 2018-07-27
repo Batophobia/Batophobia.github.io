@@ -109,7 +109,7 @@ function addHero(objHero, varName){
   heroHtml = heroHtml + '<span class="trait resolve t'+objHero.trait.resolve+'">R</span>';
   heroHtml = heroHtml + '<span class="trait wits t'+objHero.trait.wits+'">W</span>';
   heroHtml = heroHtml + '<span class="trait panache t'+objHero.trait.panache+'">P</span>';
-  heroHtml = heroHtml + +'</div>';
+  heroHtml = heroHtml + '</div>';
   // Skills
   heroHtml = heroHtml + '<div class="skills">';
   for(var skill in objHero.skill){
