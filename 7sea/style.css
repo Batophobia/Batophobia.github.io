@@ -203,6 +203,10 @@ i.arrow.down {
   -webkit-transform: rotate(45deg);
 }
 
+.search table td{
+  padding: 10px;
+}
+
 #greyout{
   display: none;
   position: fixed;
