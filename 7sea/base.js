@@ -13,8 +13,8 @@ $(function() {
     popupHtml = popupHtml + "<select id='ddlHeroes'>";
     popupHtml = popupHtml + "<option value=''>-- Select a Hero --</option>";
     for(var h in gnsp.hero){
-      // TODO: check that hero not already in
-      popupHtml = popupHtml + "<option value='"+h+"'>"+gnsp.hero[h].name+"</option>";
+      if($(".hero."+h).length<1)
+        popupHtml = popupHtml + "<option value='"+h+"'>"+gnsp.hero[h].name+"</option>";
     }
     popupHtml = popupHtml + "</select>";
     popupHtml = popupHtml + "<button id='btnAddHero'>Add</button>";
@@ -35,7 +35,7 @@ $(function() {
     if($("#ddlHeroes").val()=="")
       return false;
     
-    addHero(gnsp.hero[$("#ddlHeroes").val()]);
+    addHero(gnsp.hero[$("#ddlHeroes").val()], $("#ddlHeroes").val());
     
     $(".popup").html("");
     $("#greyout").hide();
@@ -92,8 +92,8 @@ $(function() {
   }
 });
 
-function addHero(objHero){
-  var heroHtml = '<div class="hero ' + objHero.gender.toLowerCase() + '  ' + objHero.nation + '">';
+function addHero(objHero, varName){
+  var heroHtml = '<div class="hero ' + varName + ' ' + objHero.gender.toLowerCase() + '  ' + objHero.nation + '">';
   // Name
   heroHtml = heroHtml + '<div class="heroName">'+objHero.name+'</div>';
   // Virtue and Hubris
