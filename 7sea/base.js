@@ -97,19 +97,6 @@ $(function() {
     tmpHtml = tmpHtml + "</div>";
     $("#npc").append(tmpHtml);
   }
-  $(document).on("click","#plot li", function(){
-    $(this).next().toggle();
-    if($(this).find(".arrow").hasClass("right")){
-      $(this).find(".arrow").removeClass("right");
-      $(this).find(".arrow").addClass("down");
-    } else {
-      $(this).find(".arrow").removeClass("down");
-      $(this).find(".arrow").addClass("right");
-    }
-  });
-  $(document).on("click",".btnMorePlot", function(){
-    $(this).parent().find(".morePlot").show();
-  });
   
   // Search
   var srchTimer;
