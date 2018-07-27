@@ -42,6 +42,9 @@ $(function() {
   });
   
   // Load plot
+  for(var step in gnsp.plot){
+    $("#plot").append("<li>"+gnsp.plot[step].name+"</li>");
+  }
   
   // Search
   $("#txtSearch").keyup(function(e){
