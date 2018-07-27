@@ -70,7 +70,7 @@ button:hover{
     cursor: pointer;
     display: inline-block;
   }
-  .hero .virtHubr span:hover, .hero .bgrounds span:hover, .hero .skills span:hover, .hero .advantages span:hover {
+  .hero .virtHubr span:hover, .hero .bgrounds span:hover, .hero .advantages span:hover {
     background-color: rgba(0,0,0,.1);
   }
   .hero .traits .trait {
