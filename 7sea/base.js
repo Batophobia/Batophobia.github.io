@@ -74,25 +74,67 @@ $(function() {
   });
   
   $(document).on("click",".hero span", function(e){
-    if($(this).attr("descr")==null || $(this).attr("descr")=="")
+    if(!$(this).hasClass("trait") && !$(this).hasClass("skill") && ($(this).attr("descr")==null || $(this).attr("descr")==""))
       return false;
     
     $("#greyout").show();
     var popupHtml = "";
     popupHtml = popupHtml + "<div>";
-    if($(this).hasClass("brawn"))
+    // Traits
+    if($(this).hasClass("brawn")){
       popupHtml = popupHtml + "<h1>Brawn</h1>";
-    else if($(this).hasClass("finesse"))
+      popupHtml = popupHtml + "<div class='popupInfo'>" + base.trait.brawn + "</div>";
+    } else if($(this).hasClass("finesse")) {
       popupHtml = popupHtml + "<h1>Finesse</h1>";
-    else if($(this).hasClass("resolve"))
+      popupHtml = popupHtml + "<div class='popupInfo'>" + base.trait.finesse + "</div>";
+    } else if($(this).hasClass("resolve")) {
       popupHtml = popupHtml + "<h1>Resolve</h1>";
-    else if($(this).hasClass("wits"))
+      popupHtml = popupHtml + "<div class='popupInfo'>" + base.trait.resolve + "</div>";
+    } else if($(this).hasClass("wits")) {
       popupHtml = popupHtml + "<h1>Wits</h1>";
-    else if($(this).hasClass("panache"))
+      popupHtml = popupHtml + "<div class='popupInfo'>" + base.trait.wits + "</div>";
+    } else if($(this).hasClass("panache")) {
       popupHtml = popupHtml + "<h1>Panache</h1>";
-    else
+      popupHtml = popupHtml + "<div class='popupInfo'>" + base.trait.panache + "</div>";
+    } else {
       popupHtml = popupHtml + "<h1>"+$(this).text()+"</h1>";
-    popupHtml = popupHtml + "<div class='popupInfo'>" + $(this).attr("descr") + "</div>";
+      // Skills
+      if($(this).hasClass("aim")){
+        popupHtml = popupHtml + "<div class='popupInfo'>" + base.skill.aim + "</div>";
+      } else if($(this).hasClass("athletics")){
+        popupHtml = popupHtml + "<div class='popupInfo'>" + base.skill.athletics + "</div>";
+      } else if($(this).hasClass("brawl")){
+        popupHtml = popupHtml + "<div class='popupInfo'>" + base.skill.brawl + "</div>";
+      } else if($(this).hasClass("convince")){
+        popupHtml = popupHtml + "<div class='popupInfo'>" + base.skill.convince + "</div>";
+      } else if($(this).hasClass("empathy")){
+        popupHtml = popupHtml + "<div class='popupInfo'>" + base.skill.empathy + "</div>";
+      } else if($(this).hasClass("hide")){
+        popupHtml = popupHtml + "<div class='popupInfo'>" + base.skill.hide + "</div>";
+      } else if($(this).hasClass("intimidate")){
+        popupHtml = popupHtml + "<div class='popupInfo'>" + base.skill.intimidate + "</div>";
+      } else if($(this).hasClass("notice")){
+        popupHtml = popupHtml + "<div class='popupInfo'>" + base.skill.notice + "</div>";
+      } else if($(this).hasClass("perform")){
+        popupHtml = popupHtml + "<div class='popupInfo'>" + base.skill.perform + "</div>";
+      } else if($(this).hasClass("ride")){
+        popupHtml = popupHtml + "<div class='popupInfo'>" + base.skill.ride + "</div>";
+      } else if($(this).hasClass("sailing")){
+        popupHtml = popupHtml + "<div class='popupInfo'>" + base.skill.sailing + "</div>";
+      } else if($(this).hasClass("scholarship")){
+        popupHtml = popupHtml + "<div class='popupInfo'>" + base.skill.scholarship + "</div>";
+      } else if($(this).hasClass("tempt")){
+        popupHtml = popupHtml + "<div class='popupInfo'>" + base.skill.tempt + "</div>";
+      } else if($(this).hasClass("theft")){
+        popupHtml = popupHtml + "<div class='popupInfo'>" + base.skill.theft + "</div>";
+      } else if($(this).hasClass("warfare")){
+        popupHtml = popupHtml + "<div class='popupInfo'>" + base.skill.warfare + "</div>";
+      } else if($(this).hasClass("weaponry")){
+        popupHtml = popupHtml + "<div class='popupInfo'>" + base.skill.weaponry + "</div>";
+      } else {
+        popupHtml = popupHtml + "<div class='popupInfo'>" + $(this).attr("descr") + "</div>";
+      }
+    }
     popupHtml = popupHtml + "<button id='btnClose'>Close</button>";
     popupHtml = popupHtml + "</div>";
     $(".popup").html(popupHtml);
@@ -103,6 +145,34 @@ $(function() {
     $("#greyout").hide();
   });
 });
+
+var base={
+  trait: {
+    brawn: "Brawn is a Hero’s strength and physical power.",
+    finesse: "Finesse measures a Hero’s coordination and agility.",
+    resolve: "Resolve is a Hero’s willpower and endurance.",
+    wits: "Wits measures how quickly a Hero thinks on his feet.",
+    panache: "Panache is a Hero’s charm and personal magnetism."
+  },
+  skill: {
+    aim: "Use Aim when you point a pistol at someone and pull the trigger. Use Aim when you throw a knife across a crowded room with pinpoint accuracy, whether your target is a person or an object.",
+    athletics: "Use Athletics to swing across a room on a chandelier, jump from rooftop-to-rooftop, or otherwise perform a dangerous physical stunt.",
+    brawl: "Use Brawl whenever you punch or kick someone in the face. Use Brawl when you grab someone and drag him down an alleyway.",
+    convince: "Use Convince when you appeal to another character’s better nature. Use Convince when you assure someone you’re being completely honest with her and she should trust you.",
+    empathy: "Use Empathy when you want to tell if someone is being genuine. Use Empathy when you determine someone’s general mental state—they’re afraid, they’re nervous, they’re angry.",
+    hide: "Use Hide when you sneak through a dark room without the guard on watch seeing you. Use Hide when you keep a weapon or other item hidden, and avoid it being found if you are searched. Use Hide to attack an unsuspecting victim with a weapon or your fists. Use Hide to construct a disguise or camouflage a location.",
+    intimidate: "Use Intimidate when you make someone do what you want under threat of some action from you, physical or otherwise.",
+    notice: "Use Notice when you investigate a crime scene or search a Villain’s study for clues. Use Notice when you want to pick out fine details at a glance.",
+    perform: "Use Perform when you try to captivate an audience with your showmanship. Use Perform to get across a particular message to your audience or to elicit a specific emotion from them through your performance—to make them laugh at your comedy, to make them weep at your tragedy, to rile them up with a motivational speech, etc.",
+    ride: "Use Ride when you engage in a high-speed carriage chase. Use Ride when you ride a horse through the forest at a gallop.",
+    sailing: "Use Sailing whenever you navigate your way through a ship’s rigging. Use Sailing when you attempt to steer a ship during a pitched battle at sea, or through a dangerously narrow channel.",
+    scholarship: "Use Scholarship when you wax ecstatic about a certain subject matter, either from personal experience or teachings. Use Scholarship when you consult your knowledge to fill in the details on a certain subject. Use Scholarship when you call upon your medical training to tend to an injury.",
+    tempt: "Use Tempt when you bribe someone to do something for you that she really shouldn’t agree to do. Use Tempt when you convince someone to give you a little 'alone time.'",
+    theft: "Use Theft when you swipe something from someone’s pocket without him noticing. Use Theft when you pick a lock, crack a safe, or something similar.",
+    warfare: "Use Warfare whenever you need tactical expertise, such as when you’re breaching a castle’s defense. Use Warfare when you lead an army in battle.",
+    weaponry: "Use Weaponry when you attack something with a sword, axe, hammer or knife in your hand."
+  }
+};
 
 function searchJson(needle, haystack){
   for(var k in haystack){
