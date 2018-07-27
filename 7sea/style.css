@@ -73,29 +73,40 @@ button:hover{
   .hero .traits > .trait ~ .trait{
     border-left: 1px solid #000000;
   }
-  .hero .traits .trait:hover, .hero .skills .skill:hover {
-    background-color: rgba(0,0,0,.1);
-    border-bottom-width: 3px; 
-  }
   .t1{
     border-bottom: 1px solid #6666FF;
-    background-color: #6666FF;
+    background-color: rgba(102,102,255,.5);;
   }
   .t2{
     border-bottom: 1px solid #00FF00;
-    background-color: #00FF00;
+    background-color: rgba(0,255,0,.5);
   }
   .t3{
     border-bottom: 1px solid #CCCC00;
-    background-color: #CCCC00;
+    background-color: rgba(204,204,0,.5);;
   }
   .t4{
     border-bottom: 1px solid #FF6600;
-    background-color: #FF6600;
+    background-color: rgba(255,102,0,.5);
   }
   .t5{
     border-bottom: 1px solid #FF0000;
-    background-color: #FF0000;
+    background-color: rgba(255,0,0,.5);
+  }
+  .t1:hover {
+    background-color: rgba(102,102,255,.75);;
+  }
+  .t2:hover {
+    background-color: rgba(0,255,0,.75);
+  }
+  .t3:hover {
+    background-color: rgba(204,204,0,.75);;
+  }
+  .t4:hover {
+    background-color: rgba(255,102,0,.75);
+  }
+  .t5:hover {
+    background-color: rgba(255,0,0,.75);
   }
   .hero .advantages .adv{
     text-align: center;
