@@ -95,7 +95,7 @@ $(function() {
 
 function searchJson(needle, haystack){
   for(var k in haystack){
-    if(typeof(haystack[k]){
+    if(typeof(haystack[k]) === 'object'){
        searchJson(needle, haystack[k]);
     }
   }
