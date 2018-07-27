@@ -94,7 +94,7 @@ button:hover{
     cursor: pointer;
     display: inline-block;
   }
-  .hero .virtHubr span:hover, .hero .bgrounds span:hover, .hero .advantages span:hover {
+  .hero .virtHubr span:hover, .hero .bgrounds span:hover, .hero .advantages span:hover, .hero .glamours span:hover, .hero .iethihsothokons span:hover {
     background-color: rgba(0,0,0,.1);
   }
   .hero .traits .trait {
@@ -142,6 +142,22 @@ button:hover{
     background-color: rgba(255,0,0,.75);
   }
   .hero .advantages .adv{
+    text-align: center;
+    cursor: pointer;
+    display: block;
+  }
+  .hero .glamours .glamour{
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+  }
+  .hero .glamours .glamour.Major{
+    width: 100%;
+  }
+  .hero .glamours .glamour.Minor{
+    width: 50%;
+  }
+  .hero .iethihsothokons .iethihsothokon{
     text-align: center;
     cursor: pointer;
     display: block;
