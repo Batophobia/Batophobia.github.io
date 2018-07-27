@@ -293,7 +293,7 @@ var gnsp = {  // Adventure letters
       advantage: {
         1: {
           name: "An Honest Misunderstanding",
-          descr: "Spend a HeroPoint to edit, redact, or otherwise alter somethingyou or another Hero just said, “reinterpreting” thewords into the kindest compliment."
+          descr: "Spend a HeroPoint to edit, redact, or otherwise alter something you or another Hero just said, “reinterpreting” the words into the kindest compliment."
         },
         2: {
           name: "Got It",
@@ -301,15 +301,15 @@ var gnsp = {  // Adventure letters
         },
         3: {
           name: "Opportunist",
-          descr: "When another Hero spends a Raiseto create an Opportunity, you can spend a HeroPoint to immediately activate the Opportunity foryourself."
+          descr: "When another Hero spends a Raise to create an Opportunity, you can spend a Hero Point to immediately activate the Opportunity for yourself."
         },
         4: {
           name: "Sniper",
-          descr: "You gain 1 Bonus Die when you make anAim Risk using a long-barrelled musket, longbow, orcrossbow."
+          descr: "You gain 1 Bonus Die when you make an Aim Risk using a long-barrelled musket, longbow, or crossbow."
         },
         5: {
           name: "Survivalist",
-          descr: "If you are in the wilderness, you canforage or hunt and find enough food to for yourselfand up to five other people. Under extremeconditions - lost in the middle of a desert, orabandoned in the Iaka Et:serran tundra, forexample - you find enough food for yourself and upto two other people."
+          descr: "If you are in the wilderness, you can forage or hunt and find enough food to for yourself and up to five other people. Under extreme conditions - lost in the middle of a desert, or abandoned in the Iaka Et:serran tundra, for example - you find enough food for yourself and up to two other people."
         }
       },
       iethihsothokon: {
