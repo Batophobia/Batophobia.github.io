@@ -55,7 +55,7 @@ $(function() {
       }
       
       var input=$(this).val();
-      
+      searchJson(input,gnsp);
     }, 300);
   });
   
@@ -90,6 +90,14 @@ $(function() {
   });
 });
 
+function searchJson(needle, haystack){
+  for(var k in haystack){
+    if(typeof(haystack[k]){
+       searchJson(needle, haystack[k]);
+    }
+  }
+}
+    
 function addHero(objHero, varName){
   var heroHtml = '<div class="hero ' + varName + ' ' + objHero.gender.toLowerCase() + '  ' + objHero.nation + '">';
   // Name
