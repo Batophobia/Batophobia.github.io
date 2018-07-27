@@ -82,22 +82,25 @@ $(function() {
     popupHtml = popupHtml + "<div>";
     // Traits
     if($(this).hasClass("brawn")){
-      popupHtml = popupHtml + "<h1>Brawn</h1>";
+      popupHtml = popupHtml + "<h1>Brawn - " + $(this).attr('lvl') + "</h1>";
       popupHtml = popupHtml + "<div class='popupInfo'>" + base.trait.brawn + "</div>";
     } else if($(this).hasClass("finesse")) {
-      popupHtml = popupHtml + "<h1>Finesse</h1>";
+      popupHtml = popupHtml + "<h1>Finesse - " + $(this).attr('lvl') + "</h1>";
       popupHtml = popupHtml + "<div class='popupInfo'>" + base.trait.finesse + "</div>";
     } else if($(this).hasClass("resolve")) {
-      popupHtml = popupHtml + "<h1>Resolve</h1>";
+      popupHtml = popupHtml + "<h1>Resolve - " + $(this).attr('lvl') + "</h1>";
       popupHtml = popupHtml + "<div class='popupInfo'>" + base.trait.resolve + "</div>";
     } else if($(this).hasClass("wits")) {
-      popupHtml = popupHtml + "<h1>Wits</h1>";
+      popupHtml = popupHtml + "<h1>Wits - " + $(this).attr('lvl') + "</h1>";
       popupHtml = popupHtml + "<div class='popupInfo'>" + base.trait.wits + "</div>";
     } else if($(this).hasClass("panache")) {
-      popupHtml = popupHtml + "<h1>Panache</h1>";
+      popupHtml = popupHtml + "<h1>Panache - " + $(this).attr('lvl') + "</h1>";
       popupHtml = popupHtml + "<div class='popupInfo'>" + base.trait.panache + "</div>";
     } else {
-      popupHtml = popupHtml + "<h1>"+$(this).text()+"</h1>";
+      if($(this).hasClass("skill")){
+        popupHtml = popupHtml + "<h1>"+$(this).text()+" - " + $(this).attr('lvl') + "</h1>";
+      else
+        popupHtml = popupHtml + "<h1>"+$(this).text()+"</h1>";
       // Skills
       if($(this).hasClass("aim")){
         popupHtml = popupHtml + "<div class='popupInfo'>" + base.skill.aim + "</div>";
@@ -196,16 +199,16 @@ function addHero(objHero, varName){
   heroHtml = heroHtml + '</div>';
   // Traits
   heroHtml = heroHtml + '<div class="traits">';
-  heroHtml = heroHtml + '<span class="trait brawn t'+objHero.trait.brawn+'">B</span>';
-  heroHtml = heroHtml + '<span class="trait finesse t'+objHero.trait.finesse+'">F</span>';
-  heroHtml = heroHtml + '<span class="trait resolve t'+objHero.trait.resolve+'">R</span>';
-  heroHtml = heroHtml + '<span class="trait wits t'+objHero.trait.wits+'">W</span>';
-  heroHtml = heroHtml + '<span class="trait panache t'+objHero.trait.panache+'">P</span>';
+  heroHtml = heroHtml + '<span lvl="'+objHero.trait.brawn+'" class="trait brawn t'+objHero.trait.brawn+'">B</span>';
+  heroHtml = heroHtml + '<span lvl="'+objHero.trait.finesse+'" class="trait finesse t'+objHero.trait.finesse+'">F</span>';
+  heroHtml = heroHtml + '<span lvl="'+objHero.trait.resolve+'" class="trait resolve t'+objHero.trait.resolve+'">R</span>';
+  heroHtml = heroHtml + '<span lvl="'+objHero.trait.wits+'" class="trait wits t'+objHero.trait.wits+'">W</span>';
+  heroHtml = heroHtml + '<span lvl="'+objHero.trait.panache+'" class="trait panache t'+objHero.trait.panache+'">P</span>';
   heroHtml = heroHtml + '</div>';
   // Skills
   heroHtml = heroHtml + '<div class="skills">';
   for(var skill in objHero.skill){
-    heroHtml = heroHtml + '<span class="skill '+skill+' t'+objHero.skill[skill]+'">'+capital(skill)+'</span>';
+    heroHtml = heroHtml + '<span lvl="'+objHero.skill[skill]+'" class="skill '+skill+' t'+objHero.skill[skill]+'">'+capital(skill)+'</span>';
   }
   heroHtml = heroHtml + '</div>';
   // Advantages
