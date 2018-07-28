@@ -54,7 +54,6 @@ $(function() {
     for(var more in gnsp.plot[step].sub){
       tmpHtml = tmpHtml + "<div class='morePlot'><b>"+gnsp.plot[step].sub[more].name+":</b><br/>"+gnsp.plot[step].sub[more].descr+"</div>";
       if(gnsp.plot[step].sub[more].sequence!==undefined){
-        tmpHtml = tmpHtml + "Sequence: ";
         for(var itm in gnsp.plot[step].sub[more].sequence){
           tmpHtml = tmpHtml + "<button class='morePlot btnSequence' for='"+itm+"' plot='"+step+"' sub='"+more+"'>"+capital(itm)+"</button>";
         }
