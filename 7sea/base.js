@@ -155,8 +155,10 @@ $(function() {
         return false;
       }
       
-      var input=$(this).val();
-      searchJson(input,gnsp);
+      var input=$(this).val().toLowerCase();
+      $(".searchInfo").hide();
+      $(".searchInfo[attr='"+input+"']").show();
+      $(".searchInfo[sub='"+input+"']").show();
     }, 300);
   });
   
