@@ -155,7 +155,7 @@ $(function() {
         return false;
       }
       
-      var input=$(inputElem).val().toLowerCase();
+      var input=$(inputElem).val().replace(/ /g,'_').toLowerCase();
       $(".searchInfo").hide();
       $(".searchInfo[attr='"+input+"']").show();
       $(".searchInfo[sub='"+input+"']").show();
