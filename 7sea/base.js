@@ -80,7 +80,7 @@ $(function() {
     var popupHtml = "";
     popupHtml = popupHtml + "<div>";
     popupHtml = popupHtml + gnsp.plot[$(this).attr("plot")].sub[$(this).attr("sub")].sequence[$(this).attr("for")];
-    popupHtml = popupHtml + "<button id='btnClose'>Close</button>";
+    popupHtml = popupHtml + "<br/><button id='btnClose'>Close</button>";
     popupHtml = popupHtml + "</div>";
     $(".popup").html(popupHtml);
   });
@@ -140,7 +140,7 @@ $(function() {
           popupHtml = popupHtml + base[$(this).attr("attr")][$(this).attr("sub")];
         break;
     }
-    popupHtml = popupHtml + "<button id='btnClose'>Close</button>";
+    popupHtml = popupHtml + "<br/><button id='btnClose'>Close</button>";
     popupHtml = popupHtml + "</div>";
     $(".popup").html(popupHtml);
   });
@@ -237,7 +237,7 @@ $(function() {
           popupHtml = popupHtml + "<div class='popupInfo'>Rank 3: Re-Roll a single die</div>";
       }
     }
-    popupHtml = popupHtml + "<button id='btnClose'>Close</button>";
+    popupHtml = popupHtml + "<br/><button id='btnClose'>Close</button>";
     popupHtml = popupHtml + "</div>";
     $(".popup").html(popupHtml);
   });
