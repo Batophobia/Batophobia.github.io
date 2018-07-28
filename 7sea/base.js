@@ -147,6 +147,7 @@ $(function() {
   var srchTimer;
   $("#txtSearch").keyup(function(e){
     clearTimeout(srchTimer);
+    var inputElem = this;
     
     srchTimer = setTimeout(function () {
       if ($(inputElem).val() == "") {
@@ -155,7 +156,7 @@ $(function() {
         return false;
       }
       
-      var input=$(this).val().toLowerCase();
+      var input=$(inputElem).val().toLowerCase();
       $(".searchInfo").hide();
       $(".searchInfo[attr='"+input+"']").show();
       $(".searchInfo[sub='"+input+"']").show();
