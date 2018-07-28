@@ -201,7 +201,7 @@ i.arrow.down {
 }
 
 .search table td{
-  padding: 10px;
+  padding: 5px 10px;
 }
 .lnk{
   text-decoration: underline;
@@ -213,6 +213,7 @@ i.arrow.down {
 }
 .searchInfo{
   padding: 3px;
+  display: inline-block;
 }
 
 #greyout{
