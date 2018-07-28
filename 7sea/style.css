@@ -211,6 +211,9 @@ i.arrow.down {
 .lnk:hover{
   text-decoration: none;
 }
+.searchInfo{
+  padding: 3px;
+}
 
 #greyout{
   display: none;
