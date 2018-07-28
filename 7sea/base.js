@@ -227,6 +227,16 @@ $(function() {
         popupHtml = popupHtml + "<div class='popupInfo'>" + $(this).attr("descr") + "</div>";
       }
     }
+    if($(this).attr('lvl')!==undefined){
+      switch($(this).attr('lvl')){
+        case '5':
+          popupHtml = popupHtml + "<div class='popupInfo'>Rank 5: 10s exxplode (+1 die)</div>";
+        case '4':
+          popupHtml = popupHtml + "<div class='popupInfo'>Rank 4: Sets of 15 = 2 Raises</div>";
+        case '3':
+          popupHtml = popupHtml + "<div class='popupInfo'>Rank 3: Re-Roll a single die</div>";
+      }
+    }
     popupHtml = popupHtml + "<button id='btnClose'>Close</button>";
     popupHtml = popupHtml + "</div>";
     $(".popup").html(popupHtml);
@@ -240,9 +250,10 @@ $(function() {
 
 var base={
   places: {
-    vodacce: "",
-    castille: "",
-    inismore: "",
+    vodacce: "The former cradle of civilization, now split between seven Merchant Princes whose complex schemes reach every corner of the world.",
+    castille: "Headquarters of the Vaticine church, this fertile Nation recently fought off an invasion—their western neighbor, Montaigne, wished to seize their rich farmlands and plentiful mines.",
+    avalon: "Green and enchanted, this union of three kingdoms has recently risen to the forefront of Théan politics.",
+    inismore: "The Emerald Isle is the rebellious, misbehaving little brother of Avalon, led by a king who may be immortal and is more than certainly mad.",
     alahnahquin: "",
     aksum: "",
     aragosta: ""
@@ -273,7 +284,9 @@ var base={
     weaponry: "Use Weaponry when you attack something with a sword, axe, hammer or knife in your hand."
   },
   glamours: "All Glamours require a Hero Point to activate. Major Glamours can be activated once per Episode, while Minor Glamours can be activated once per Scene.",
-  iethihsothokon: "At the beginning of each Scene you may attune your spirit to one Iethihsothókon you know at no cost. Until you attune to a different Iethihsothókon you have access to its associated Iáhthénen, and may activate its associated Iónhnhe by spending a Hero Point. At the beginning of each new Round, an Akwékon may freely attune to a different Iethihsothókon, gaining access to that Iethihsothókon’s Iáhthénen and Iónhnhe. Additionally, an Akwékon may attune to a different Iethihsothókon during a Scene by spending one Raise."
+  iethihsothokon: "At the beginning of each Scene you may attune your spirit to one Iethihsothókon you know at no cost. Until you attune to a different Iethihsothókon you have access to its associated Iáhthénen, and may activate its associated Iónhnhe by spending a Hero Point. At the beginning of each new Round, an Akwékon may freely attune to a different Iethihsothókon, gaining access to that Iethihsothókon’s Iáhthénen and Iónhnhe. Additionally, an Akwékon may attune to a different Iethihsothókon during a Scene by spending one Raise.",
+  death_spiral: "<img src='death_spiral.png' />",
+  damage: "<img src='death_spiral.png' />"
 };
 
 function searchJson(needle, haystack){
