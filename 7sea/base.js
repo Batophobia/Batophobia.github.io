@@ -151,8 +151,7 @@ $(function() {
     
     srchTimer = setTimeout(function () {
       if ($(inputElem).val() == "") {
-        elemResults.html("");
-        //elemResults.hide();
+        $(".searchInfo").show();
         return false;
       }
       
