@@ -203,6 +203,14 @@ i.arrow.down {
 .search table td{
   padding: 10px;
 }
+.lnk{
+  text-decoration: underline;
+  color: rgba(102,102,255,.75);
+  cursor: pointer;
+}
+.lnk:hover{
+  text-decoration: none;
+}
 
 #greyout{
   display: none;
