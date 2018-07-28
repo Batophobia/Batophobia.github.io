@@ -5,23 +5,66 @@ var gnsp = {  // Adventure letters
       name:"Step 1",
       descr: "The Heroes witness the poisoning of the Avalonian envoy and investigate.",
       sub: {
-        0: { name: "Death at a Funeral", descr: "The Heroes attend a funeral and witness and investigate the poisoning of the Avalonian envoy." },
-        1: { name: "Chase through the Streets", descr: "The Heroes track the poison to a local apothecary and must chase him for answers." }
+        0: {
+            name: "Death at a Funeral",
+            descr: "The Heroes attend a funeral and witness and investigate the poisoning of the Avalonian envoy.",
+            sequence: { type: "Dramatic",
+                       name: "Investigating the Funeral",
+                       approaches: "Chatting up the guests at the party to gain information on what happened is a bit more involved than calming everyone down. Physical Skills are unlikely to be helpful here, but as before, if a player comes up with a clever way to use the Skill, feel free to allow it.",
+                       opportunities: "For each Raise spent a Hero may ask the GM a question to learn the following:\n• No one else shows any sign of poisoning.\n• Poisoning is alarmingly common in Vodacce, but it typically isn’t a death outsiders have cause to fear. When this gets out, it will go poorly for Vodacce and their relations with Avalon.\n• The poison is called the Fool’s Kiss. It is often employed on the lips of the killer and delivered via a kiss, though this is not the only method of delivery.\n• Liam Cooper had no known enemies present. He wasn’t here in his official capacity as an envoy, and he was generally liked, or at least not disliked, by those he met.\n• Some of Prince Caligari’s enemies have met their ends with Fool’s Kiss in the past, though the Prince has always had an ironclad alibi.\n• Caligari claims that each of those events involved someone trying to besmirch his good name.\n• If you know who to ask, Fool’s Kiss can be purchased locally.\n• Cesario Ventili, a local apothecary, is known to sell the herbs necessary to create Fool’s Kiss.",
+                       consequences: "",
+                       outcomes: "Armed with the name of Cesario and where to find him, the Heroes have a clear course of action: find and question the apothecary. If they are unsure what to do and check in with Caligari, he will direct them to go and question this apothecary. One piece of information they can learn is potentially damning for Prince Caligari himself in regards to the fates of some of his rivals. If the Heroes confront Caligari about it, he is careful to remind them that he had no legal involvement in those deaths and that they are guests in his home, as well as the fact that one of his friends has just been murdered on his estate. He is in no mood to entertain garish allegations and responds poorly to this line of questioning."
+                      }
+           },
+        1: {
+          name: "Chase through the Streets",
+          descr: "The Heroes track the poison to a local apothecary and must chase him for answers.",
+          sequence: { type: "Action",
+                       name: "Make a Break for it!",
+                       approaches: "Finesse/Resolve+Athletics would work well for street-level parkour moves, leaping over obstacles and deftly weaving between pedestrians. Wits+Notice would keep Cesario in sight. A chase is a great chance for the Heroes to look awesome. Play that up and encourage the players to describe how their Heroes continue to dog their prey.",
+                       opportunities: "Each Round the Heroes must spend a Raise to keep Cesario in their sights as he ducks down alleyways in an attempt to get away.",
+                       consequences: "Cesario’s flight from the Heroes creates some chaos in the streets. He scatters contents of shop stalls and horse carts rear up as he dashes past them. Assign each Hero one chase complication to deal with. These constitute Strength ½[H] traps. If these traps go unresolved, they inflict [H] Wounds to the assigned Hero.",
+                       outcomes: "Once caught, Cesario isn’t willing to die for his secret. He is scared and was worried that the Heroes are here to kill him. He apologizes for running and promises that he’s never shared anything; the Prince doesn’t have to worry about him talking. When pressed, he’ll mention that he gave the poison to Miguel as he’d been directed. The apothecary also knows where to find Miguel, having given the alchemist supplies before."
+                      }
+        }
       }
     },
     1: {
       name:"Step 2",
       descr: "The Heroes attempt to thwart the Prince’s scheme.",
       sub: {
-        0: { name: "Mad Alchemy", descr: "The Heroes confront Miguel Diaz and discover what Prince Caligari’s plan truly entails." },
-        1: { name: "Preventing Disaster", descr: "Knowing one of the reagents the Prince needs to complete his ritual successfully, the Heroes race to intercept it." }
+        0: {
+          name: "Mad Alchemy",
+          descr: "The Heroes confront Miguel Diaz and discover what Prince Caligari’s plan truly entails.",
+          sequence: { type: "Action",
+                       name: "Infiltrating the Lab",
+                       approaches: "Most likely the Heroes will opt to either fight their way past the Brute Squad or to try and sneak past them. If opting for stealth, they may spend 1 Raise per guard to sneak by. If the Heroes spend Raises equal to the number of guards, then they have snuck past the outer guard entirely.",
+                       opportunities: "There are several potent alchemical concoctions in Diaz’s lab. A Hero may spend a Raise to hurl one of these at a Brute Squad, completing destroying it as the guards are covered in a caustic liquid.",
+                       consequences: "Diaz only chooses to fight the Heroes if they have elected to fight their way past his guards, hearing the fighting outside and coming to help. If the Heroes sneak past them, he has no wish to fight by himself and can easily be intimidated into not calling on the guards outside.",
+                       outcomes: "The Heroes have Diaz in their custody and can interrogate him about what’s going on. Any Hero interrogating Diaz needs to make an appropriate Risk (Wits+Convince, Brawn+Intimidate, etc.) and count Raises. Each Raise can be spent so the Hero may ask the GM a question to learn the following information: \n• I was the contact for the poison, but the coin to purchase it ultimately came from Vincenzio’s purse. \n• Liam had to die to protect the secret of the ritual Vincenzio is conducting to resurrect Lucrezia. \n• I have helped Vincenzio research the ritual and has provided him with what the Prince needs to complete it. \n• If the ritual is completed, it could destroy the veil between the worlds of the living and the dead. \n• I am uncertain what the totality of implications could be if this happens. \n• Vincenzio has yet to acquire the final thing he needs: crystalized blood from a Syrneth ruin. \n• It is being delivered to the Prince via courier so as not to rouse suspicion. I guess the Heroes could catch the courier, but they will have to leave immediately to do it (thus allowing Diaz to get away)."
+                      }
+        },
+        1: {
+          name: "Preventing Disaster",
+          descr: "Knowing one of the reagents the Prince needs to complete his ritual successfully, the Heroes race to intercept it."
+        }
       }
     },
     2: {
       name:"Goal",
       descr: "The Heroes confront the Prince and deal with the fallout of the completed ritual.",
       sub: {
-        0: { name: "What Is and Should Never Be", descr: "The Heroes battle against the Monster animated by the ritual." }
+        0: {
+          name: "What Is and Should Never Be",
+          descr: "The Heroes battle against the Monster animated by the ritual.",
+          sequence: { type: "Action",
+                       name: "The Prince's Folly",
+                       approaches: "It’s a knock-down, drag-out fight. Brawn/Finesse + Weaponry is the most obvious Approach here. However, in Caligari’s lab there are several items the Heroes could attempt to use to fight off the Monster. Wits+Scholarship could be used to identify/use something that might deal Wounds to the Monster, for example.",
+                       opportunities: "During the Sequence the Heroes can attempt to reach out to Caligari to obtain his help. The Heroes may spend [H] Raises to convince him to drop his blade while the Heroes destroy the monster, or 2[H] Raises to convince him to join their side against the monstrosity. Additionally, if the Heroes brought the blood from Syrneth ruin with them, a Hero can spend a Raise to break it against the monster’s body dealing a Dramatic Wound.",
+                       consequences: "As the monster goes on its rampage Caligari’s lab begins falling apart. Each Hero must spend a Raise to avoid falling debris; if a Hero has not done so by Raise 3 she takes [H] Wounds.",
+                       outcomes: "The Heroes defeat the Monster, and potentially the Prince as well. Or, they meet a tragic end and have been killed fighting the Monster."
+                      }
+        }
       }
     }
   },
@@ -65,7 +108,8 @@ var gnsp = {  // Adventure letters
         fearsome: "Gain a Rank of Fear, plus an additional Rank of Fear per 5 Strength. Spend a Danger Point to double your Fear Rank for 1 Round.",
         powerful: "Spend a Danger Point to double the number of Wounds dealt by the monster after a successful attack against a Hero.",
         swift: "Spend a Danger Point to take an Action immediately."
-      }
+      },
+      notes: "The Monster will lay waste to all around it. It isn’t simply out to destroy the villa, but also attacking the Heroes and the Prince as they get in its way."
     }
   },
   place: {
