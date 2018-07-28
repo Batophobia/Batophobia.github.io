@@ -117,6 +117,7 @@ $(function() {
     if(typeof(base[attr])==="object"){
       for(var sub in base[attr]){
         $("#searchResults").append("<span class='lnk searchInfo' obj='base' attr='"+attr+"' sub='"+sub+"'>"+capital(sub)+"</span>");
+      }
     } else{
       $("#searchResults").append("<span class='lnk searchInfo' obj='base' attr='"+attr+"'>"+capital(attr)+"</span>");
     }
