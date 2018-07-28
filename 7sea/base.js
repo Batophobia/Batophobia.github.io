@@ -53,6 +53,11 @@ $(function() {
     tmpHtml = tmpHtml + "<button class='btnMorePlot'>More</button>";
     for(var more in gnsp.plot[step].sub){
       tmpHtml = tmpHtml + "<div class='morePlot'><b>"+gnsp.plot[step].sub[more].name+":</b><br/>"+gnsp.plot[step].sub[more].descr+"</div>";
+      if(gnsp.plot[step].sub[more].sequence!==undefined){
+        for(var itm in gnsp.plot[step].sub[more].sequence){
+          tmpHtml = tmpHtml + "<button class='morePlot btnSequence' for='"+itm+"' plot='"+step+"' sub='"+more+"'>"+capital(itm)+"</button>";
+        }
+      }
     }
     tmpHtml = tmpHtml + "</div>";
     $("#plot").append(tmpHtml);
@@ -69,6 +74,15 @@ $(function() {
   });
   $(document).on("click",".btnMorePlot", function(){
     $(this).parent().find(".morePlot").show();
+  });
+  $(document).on("click",".btnSequence",function(){
+    $("#greyout").show();
+    var popupHtml = "";
+    popupHtml = popupHtml + "<div>";
+    popupHtml = popupHtml + gnsp.plot[$(this).attr("plot")].sub[$(this).attr("sub")].sequence[$(this).attr("for")];
+    popupHtml = popupHtml + "<button id='btnClose'>Close</button>";
+    popupHtml = popupHtml + "</div>";
+    $(".popup").html(popupHtml);
   });
   
   // Load NPC
