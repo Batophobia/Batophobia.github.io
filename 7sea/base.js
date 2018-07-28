@@ -113,6 +113,36 @@ $(function() {
   }
   
   // Search
+  for(var attr in base){
+    if(typeof(base[attr])==="object"){
+      for(var sub in base[attr]){
+        $("#searchResults").append("<span class='lnk searchInfo' obj='base' attr='"+attr+"' sub='"+sub+"'>"+capital(sub)+"</span>");
+    } else{
+      $("#searchResults").append("<span class='lnk searchInfo' obj='base' attr='"+attr+"'>"+capital(attr)+"</span>");
+    }
+  }
+  $(document).on("click",".searchInfo",function(){
+    $("#greyout").show();
+    var popupHtml = "";
+    popupHtml = popupHtml + "<div>";
+    switch($(this).attr("obj")){
+      case "gnsp":
+        if($(this).attr("sub")===undefined)
+          popupHtml = popupHtml + gnsp[$(this).attr("attr")];
+        else
+          popupHtml = popupHtml + gnsp[$(this).attr("attr")][$(this).attr("sub")];
+        break;
+      default:
+        if($(this).attr("sub")===undefined)
+          popupHtml = popupHtml + base[$(this).attr("attr")];
+        else
+          popupHtml = popupHtml + base[$(this).attr("attr")][$(this).attr("sub")];
+        break;
+    }
+    popupHtml = popupHtml + "<button id='btnClose'>Close</button>";
+    popupHtml = popupHtml + "</div>";
+    $(".popup").html(popupHtml);
+  });
   var srchTimer;
   $("#txtSearch").keyup(function(e){
     clearTimeout(srchTimer);
