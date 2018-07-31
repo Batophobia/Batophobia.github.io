@@ -255,8 +255,8 @@ var base={
     avalon: "Green and enchanted, this union of three kingdoms has recently risen to the forefront of Théan politics.",
     inismore: "The Emerald Isle is the rebellious, misbehaving little brother of Avalon, led by a king who may be immortal and is more than certainly mad.",
     alahnahquin: "",
-    aksum: "",
-    aragosta: ""
+    aksum: "In Aksum, there is a Church of the Prophet in Aksum which is fairly different from any of those found in Théah or the Crescent Empire, tempered as it is by a legacy of help from the Ifritian gods. In the distant past they worshipped many gods, including some who gifted them with advanced learning, but they converted to the teachings of the Second Prophet some centuries ago and now they are asserting their culture firmly. There are secret police, divine formulae, secret apochrypha, ancient evils, and a whole lot more in this mountainous region.",
+    aragosta: "Location: Northwest of the Atabean Sea, off the east coast of Nahuacan Alliance<br/>Landmarks: Claws and Lobster Bay, the Bucket o' Blood, the Forever Reef<br/>Governance: The Brotherhood of the Coast"
   },
   trait: {
     brawn: "Brawn is a Hero’s strength and physical power.",
