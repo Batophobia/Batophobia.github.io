@@ -258,6 +258,8 @@ var base={
     aksum: "In Aksum, there is a Church of the Prophet in Aksum which is fairly different from any of those found in Théah or the Crescent Empire, tempered as it is by a legacy of help from the Ifritian gods. In the distant past they worshipped many gods, including some who gifted them with advanced learning, but they converted to the teachings of the Second Prophet some centuries ago and now they are asserting their culture firmly. There are secret police, divine formulae, secret apochrypha, ancient evils, and a whole lot more in this mountainous region.",
     aragosta: "Location: Northwest of the Atabean Sea, off the east coast of Nahuacan Alliance<br/>Landmarks: Claws and Lobster Bay, the Bucket o' Blood, the Forever Reef<br/>Governance: The Brotherhood of the Coast"
   },
+  virtue: "You may only activate your Virtue once per Session. Activating your Virtue has no cost, but it may require specific circumstances: meeting a character, another Hero taking Wounds, etc.",
+  hubris: "You may only activate your Hero’s Hubris once per Session. Activating your Hubris gives you a Hero Point. The GM can offer a Hero Point to activate a Hero’s Hubris, but the player may refuse.",
   trait: {
     brawn: "Brawn is a Hero’s strength and physical power.",
     finesse: "Finesse measures a Hero’s coordination and agility.",
