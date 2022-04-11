@@ -370,13 +370,13 @@ function save(){
 		}
 		value=mpseed+value;
 		localStorage["clkcftmap"] = value;
-		var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
-		document.cookie="clkcftmap=" + c_value;
+		//var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+		//document.cookie="clkcftmap=" + c_value;
 	}
 	
 	strSave=strSave.substring(1);
 	localStorage["clkcrtsvfl"] = strSave;
-	setCookie(strSave);
+	//setCookie(strSave);
 	alert("Game Saved");
 }
 var saveTimer=setInterval("save()",1000*30);
@@ -3143,8 +3143,8 @@ function makeSeed(){
 		var exdays=365*4;
 		var exdate=new Date();
 		exdate.setDate(exdate.getDate() + exdays);
-		var c_value=escape(val2) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
-		document.cookie="clkcftmap=" + c_value;
+		//var c_value=escape(val2) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+		//document.cookie="clkcftmap=" + c_value;
 
 	return value;
 }
