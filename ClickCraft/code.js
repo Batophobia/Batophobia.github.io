@@ -2006,6 +2006,7 @@ var blnBtl=false;
 var intBtl=0;
 var mzX, mzY, arrMz, mzWid, mxHgt;
 function goPmd(input){
+	interestIdx = 1;
 	blnAdv=false;
 	
 	if(input==0){
@@ -2203,8 +2204,22 @@ function genMaz(x, y){
 	genMaz(x,y);
 }
 
+function hideInterest(){
+	switch(interestIdx){
+		case 2: goAwy(); break;
+		case 3: colChst(3); break;
+		default:
+			$("#plcPic").html("");
+			$("#plcBtn").html("");
+			$(".interest").hide();
+			break;
+	}
+	interestIdx = -1;
+}
+
 var numTms=0;
 function goDta(){
+	interestIdx = 2;
 	blnAdv=false;
 	
 	var base = Math.floor(Math.abs(Math.sin(mpseed+plyr.x+plyr.y)*10));
@@ -2215,6 +2230,7 @@ function goDta(){
 }
 
 function goCve(input){
+	interestIdx = 3;
 	intBtl=Math.floor(input/3);
 	if(intBtl<=0){
 		blnBtl=false;
@@ -2234,6 +2250,7 @@ function goCve(input){
 }
 
 function goTch(input){
+	interestIdx = 4;
 	blnAdv=false;
 	var tmpPic=$("#p4b").html();
 	$("#plcPic").html(tmpPic);
@@ -2264,6 +2281,7 @@ function goTch(input){
 }
 
 function goThs(input){
+	interestIdx = 6;
 	alert("Great View");
 	var tmpX=plyr.x, tmpY=plyr.y;
 	tmpX-=(input/2);
@@ -2292,7 +2310,8 @@ function goThs(input){
 }
 
 function goOth(){
-	$('#plcPic').html("Thanks for playing.<br/>This space is reserved for a future expansion.<br/>If you have comments or feedback, send an email to batophobiaGames@gmail.com");
+	interestIdx = 7;
+	$('#plcPic').html("Placeholder for future content. . .");
 	$('#plcBtn').html("");
 }
 
@@ -2362,6 +2381,7 @@ function rdCrt(input){
 	alert("Rode Minecart");
 }
 
+var interestIdx = -1;
 function explr(input){
 	for(i=0;i<mapCmplt.length;i++){
 		if(plyr.x==mapCmplt[i][0]&&plyr.y==mapCmplt[i][1]){
