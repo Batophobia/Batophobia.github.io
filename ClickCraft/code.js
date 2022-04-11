@@ -307,13 +307,16 @@ function load(){
 }
 
 function getSave(){
+	if('clkcrtsvfl' in localStorage){
+		return localStorage['clkcrtsvfl']
+	}
 	var i,x,y,arrCookies=document.cookie.split(";");
 	for (i=0;i<arrCookies.length;i++)
 	{
 		x=arrCookies[i].substr(0,arrCookies[i].indexOf("="));
 		y=arrCookies[i].substr(arrCookies[i].indexOf("=")+1);
 		x=x.replace(/^\s+|\s+$/g,"");
-
+		
 		if (x==cnm){
 			return unescape(y);
 		}
@@ -366,11 +369,13 @@ function save(){
 			}
 		}
 		value=mpseed+value;
+		localStorage["clkcftmap"] = value;
 		var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
 		document.cookie="clkcftmap=" + c_value;
 	}
 	
 	strSave=strSave.substring(1);
+	localStorage["clkcrtsvfl"] = strSave;
 	setCookie(strSave);
 	alert("Game Saved");
 }
@@ -3070,42 +3075,50 @@ function advMenu(){
 	}
 }
 
+function loadMap(mapData){
+	var tmp=mapData.split("_");
+	mpseed=parseInt(tmp[0]);
+	
+	var counter=1;
+	for(i=0;i<advMap[0].length;i++){
+		for(j=0;j<advMap.length;j++){
+			var tmpCod=parseInt(tmp[counter]);
+			tmpCod=tmpCod.toString(2);
+			while(tmpCod.length<5){
+				tmpCod="0"+tmpCod;
+			}
+			advMap[j][i]=tmpCod.charAt(4-j%5);
+			
+			if(j%5==4)
+				counter++;
+			
+			if(advMap[j][i]==1)
+				advMap[j][i]=true;
+			else
+				advMap[j][i]=false;
+			
+			if(advMap[j][i]){
+				$("#R"+(j+1)+"C"+(i+1)).text(getSqrHere(i, j));
+			}
+		}
+	}
+	return mpseed;
+}
+
 function getSeed(){
+	if('clkcftmap' in localStorage){
+		return loadMap(localStorage['clkcftmap']);
+	}
+
 	var h,x,y,arrCookies=document.cookie.split(";");
-	for (h=0;h<arrCookies.length;h++)
-	{
+	for (h=0;h<arrCookies.length;h++) {
 		x=arrCookies[h].substr(0,arrCookies[h].indexOf("="));
 		y=arrCookies[h].substr(arrCookies[h].indexOf("=")+1);
 		x=x.replace(/^\s+|\s+$/g,"");
 
 		if (x=="clkcftmap"){
 			var tmp=unescape(y);
-			tmp=tmp.split("_");
-			mpseed=parseInt(tmp[0]);
-			
-			var counter=1;
-			for(i=0;i<advMap[0].length;i++){
-				for(j=0;j<advMap.length;j++){
-					var tmpCod=parseInt(tmp[counter]);
-					tmpCod=tmpCod.toString(2);
-					while(tmpCod.length<5){
-						tmpCod="0"+tmpCod;
-					}
-					advMap[j][i]=tmpCod.charAt(4-j%5);
-					
-					if(j%5==4)
-						counter++;
-					
-					if(advMap[j][i]==1)
-						advMap[j][i]=true;
-					else
-						advMap[j][i]=false;
-					
-					if(advMap[j][i]){
-						$("#R"+(j+1)+"C"+(i+1)).text(getSqrHere(i, j));
-					}
-				}
-			}
+			mpseed=loadMap(tmp);
 			return mpseed;
 		}
 	}
@@ -3114,9 +3127,9 @@ function getSeed(){
 
 function makeSeed(){
 	var value="";
-	do{
+	do {
 		value=value+batman(0,9);
-	}while (value.length<10);
+	} while (value.length<10);
 	
 	
 		var val2="";
@@ -3126,6 +3139,7 @@ function makeSeed(){
 			}
 		}
 		val2=value+val2;
+		localStorage["clkcftmap"] = val2;
 		var exdays=365*4;
 		var exdate=new Date();
 		exdate.setDate(exdate.getDate() + exdays);
