@@ -200,69 +200,82 @@ var explore = {
 				$("#item8").addClass("canShow");
 				$("#item9").addClass("canShow");
 				$("#item13").addClass("canShow");
+				$('.area'+input).css({"color": "#A3FF00"});
 				break;
 			case 2:
 				$("#item8").addClass("canShow");
 				$("#item10").addClass("canShow");
 				$("#item14").addClass("canShow");
+				$('.area'+input).css({"color": "#FF9900"});
 				break;
 			case 3:
 				$("#item17").addClass("canShow");
 				$("#item18").addClass("canShow");
 				$("#item22").addClass("canShow");
+				$('.area'+input).css({"color": "#D5B75E"});
 				break;
 			case 4:
 				$("#item19").addClass("canShow");
 				$("#item20").addClass("canShow");
 				$("#item21").addClass("canShow");
 				$("#item23").addClass("canShow");
+				$('.area'+input).css({"color": "#CACA00"});
 				break;
 			case 5:
 				$("#item30").addClass("canShow");
 				$("#item39").addClass("canShow");
 				$("#item40").addClass("canShow");
 				$("#item41").addClass("canShow");
+				$('.area'+input).css({"color": "#00A60A"});
 				break;
 			case 6:
 				$("#item31").addClass("canShow");
 				$("#item42").addClass("canShow");
 				$("#item43").addClass("canShow");
 				$("#item44").addClass("canShow");
+				$('.area'+input).css({"color": "#0064FF"});
 				break;
 			case 7:
 				$("#item32").addClass("canShow");
 				$("#item46").addClass("canShow");
 				$("#item47").addClass("canShow");
 				$("#item48").addClass("canShow");
+				$('.area'+input).css({"color": "#0A8006"});
 				break;
 			case 8:
 			case 9:
 				$("#item33").addClass("canShow");
 				$("#item49").addClass("canShow");
+				$('.area'+input).css({"color": "#F42B3E"});
 				break;
 			case 10:
 				$("#item34").addClass("canShow");
+				$('.area'+input).css({"color": "#B07E65"});
 				break;
 			case 11:
 				$("#item35").addClass("canShow");
 				$("#item50").addClass("canShow");
 				$("#item51").addClass("canShow");
 				$("#item52").addClass("canShow");
+				$('.area'+input).css({"color": "#B3B3B3"});
 				break;
 			case 12:
 				$("#item36").addClass("canShow");
 				$("#item53").addClass("canShow");
 				$("#item54").addClass("canShow");
 				$("#item55").addClass("canShow");
+				$('.area'+input).css({"color": "#D9CEC3"});
 				break;
 			case 13:
 				$("#item37").addClass("canShow");
 				$("#item58").addClass("canShow");
 				$("#item59").addClass("canShow");
 				$("#item60").addClass("canShow");
+				$('.area'+input).css({"color": "#D233FF"});
 				break;
 			case 14:
 				$("#item38").addClass("canShow");
+				$('.area'+input).css({"color": "#EAD635"});
 				break;
 		}
 	},

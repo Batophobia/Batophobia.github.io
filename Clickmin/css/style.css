@@ -211,6 +211,9 @@ button:disabled {
 			display:none;
 			width: 690px;
 		}
+		.area0{
+			color: #FF0000;
+		}
 @media (min-width: 1111px){
     .mainBar{
         margin-left: auto;
