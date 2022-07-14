@@ -2,7 +2,7 @@ body {
 	background: #222;
 	font-family: monospace;
 	color: #CCC;
-	font-size: 14px;
+	font-size: 20px;
 }
 .everything {
 	width: 100%;
@@ -10,6 +10,12 @@ body {
 /* .main { } */
 .button {
 	border: 1px solid #CCC;
+	padding: 5px;
+	width: 200px;
+	margin: 10px;
+	background: #222;
+	color: #CCC;
+	font-size: 20px;
 }
 .button:hover {
 	background-color: #333;
@@ -17,7 +23,17 @@ body {
 #userInput {
 	background-color: #333;
 	color: #CCC;
+	font-size: 20px;
+	width: 90%;
 }
+#alerts {
+	
+}	#alerts .alert {
+		border-bottom: 1px dashed #333333;
+		text-align: center;
+	} #alerts:empty {
+		display:none;
+	}
 
 .version{
 	position: absolute;

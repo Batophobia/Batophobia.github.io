@@ -64,22 +64,27 @@ var ports = {
 
 	checkAnswer: function () {
 		let user = $("#userInput").val();
-		console.log({ user, curr: this.curr, promptType: this.promptType });
+
 		switch (this.promptType) {
 			case 1: // Port prompt
 				for (let p in this.curr.prots) {
-					if (p.toLowerCase() == user.toLowerCase())
+					if (this.curr.prots[p].toLowerCase() == user.toLowerCase()) {
+						main.alrt(`Correct.  Port(s) ${this.curr.ports.join(",")} are for ${this.curr.protocol}.`);
 						return true;
+					}
 				}
 				break;
 			case 2: // Protocol prompt
 				user = parseInt(user);
 				for (let p in this.curr.ports) {
-					if (p == user)
+					if (this.curr.ports[p] == user) {
+						main.alrt(`Correct.  Port(s) ${this.curr.ports.join(",")} are for ${this.curr.protocol}.`);
 						return true;
+					}
 				}
 				break;
 		}
+		main.alrt(`${user} is incorrect.`);
 		return false;
 	}
 };
