@@ -6,6 +6,7 @@ var main = {
 			const correct = ports.checkAnswer();
 			answerEvent(correct);
 			if (correct) {
+				$("#userInput").val("");
 				ports.getRandom();
 			}
 		});
