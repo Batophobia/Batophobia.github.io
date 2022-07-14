@@ -12,6 +12,7 @@ var main = {
 		});
 
 		$(".btnSkip").on('click', function () {
+			$("#userInput").val("");
 			main.alrt(`Port(s) ${ports.curr.ports.join(",")} are used for ${ports.curr.protocol}.`);
 			ports.getRandom();
 		});
