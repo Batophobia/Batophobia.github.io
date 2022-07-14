@@ -10,6 +10,11 @@ var main = {
 			}
 		});
 
+		$(".btnSkip").on('click', function () {
+			main.alrt(`Port(s) ${ports.curr.ports.join(",")} are used for ${ports.curr.protocol}.`);
+			ports.getRandom();
+		});
+
 		$(document).bind('keypress', function (e) {
 			if (e.keyCode == 13) {
 				$('.btnSumbit').trigger('click');
