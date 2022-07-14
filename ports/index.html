@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Common Ports Cards</title>
+  <meta name="description" content="Flash-card style tool for memorizing common ports">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/jquery.js"></script>
+  <script src="js/ports.js"></script>
+  <script src="js/main.js"></script>
+</head>
+
+<body>
+  <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+  <div class="everything">
+    <div class="main">
+      <h1 class="prompt"></h1>
+      <div class="answer"><input id="userInput" /></div>
+      <div class="button btnSumbit">Submit</div>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      main.init();
+    });
+  </script>
+
+  <div class="version">2022-07-13</div>
+</body>
+
+</html>

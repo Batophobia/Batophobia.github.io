@@ -1,0 +1,26 @@
+body {
+	background: #222;
+	font-family: monospace;
+	color: #CCC;
+	font-size: 14px;
+}
+.everything {
+	width: 100%;
+}
+/* .main { } */
+.button {
+	border: 1px solid #CCC;
+}
+.button:hover {
+	background-color: #333;
+}
+#userInput {
+	background-color: #333;
+	color: #CCC;
+}
+
+.version{
+	position: absolute;
+	right:15px;
+	bottom:15px;
+}
