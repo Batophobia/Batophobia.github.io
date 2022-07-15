@@ -1,20 +1,20 @@
 var main = {
 	init: function () {
-		ports.getRandom();
+		ports.getNext();
 
 		$(".btnSumbit").on('click', function () {
 			const correct = ports.checkAnswer();
 			answerEvent(correct);
 			if (correct) {
 				$("#userInput").val("");
-				ports.getRandom();
+				ports.getNext();
 			}
 		});
 
 		$(".btnSkip").on('click', function () {
 			$("#userInput").val("");
 			main.alrt(`Port(s) ${ports.curr.ports.join(", ")} are used for ${ports.curr.protocol}.`);
-			ports.getRandom();
+			ports.getNext();
 		});
 
 		$(document).bind('keypress', function (e) {

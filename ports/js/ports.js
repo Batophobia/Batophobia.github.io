@@ -45,6 +45,14 @@ var ports = {
 
 	curr: {},
 	promptType: 0,
+	idx: 0,
+
+	getNext: function () {
+		if ($("#random:checked").length)
+			this.getRandom();
+		else
+			this.getFollowing();
+	},
 
 	getRandom: function () {
 		const num = this.list.length - 1;
@@ -58,6 +66,30 @@ var ports = {
 			$(".prompt").text(`Port: ${this.curr.ports[rnd]}`);
 		} else {
 			this.promptType = 2;
+			$(".prompt").text(`Protocol: ${this.curr.protocol}`);
+		}
+	},
+
+	getFollowing: function () {
+		console.log("getFollowing");
+		if (!this.curr.protocol) {
+			this.idx = 0;
+			this.promptType = 1;
+		} else {
+			this.idx++;
+			if (this.idx >= this.list.length) {
+				this.idx = 0;
+				this.promptType++;
+				if (this.promptType > 2) this.promptType = 1;
+			}
+		}
+
+		this.curr = this.list[this.idx];
+
+		if (this.promptType == 1) {
+			rnd = batman(0, this.curr.ports.length - 1);
+			$(".prompt").text(`Port: ${this.curr.ports[rnd]}`);
+		} else {
 			$(".prompt").text(`Protocol: ${this.curr.protocol}`);
 		}
 	},
