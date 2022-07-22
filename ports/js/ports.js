@@ -29,7 +29,7 @@ var ports = {
 		//{ ports: [990], tcp: 1, udp: 0, sec: 1, prots: ["FTPS"], protocol: "FTPS - File Transfer Protocol Secure" },
 		{ ports: [993], tcp: 1, udp: 0, sec: 1, prots: ["IMAP4"], protocol: "IMAP4 with SSL/TLS - Internet Message Access Protocol" },
 		{ ports: [995], tcp: 1, udp: 0, sec: 1, prots: ["POP3"], protocol: "POP3 (SSL/TLS) - Post Office Protocol v3" },
-		{ ports: [1443], tcp: 1, udp: 0, prots: ["MSSQL", "MS-SQL-S"], protocol: "MS-SQL-S - Microsoft SQL Server" },
+		{ ports: [1433], tcp: 1, udp: 0, prots: ["MSSQL", "MS-SQL-S"], protocol: "MS-SQL-S - Microsoft SQL Server" },
 		{ ports: [1645], tcp: 0, udp: 1, prots: ["RADIUS"], protocol: "RADIUS (alt) - Remote Authentication Dial-In User Service authentication and authorization" },
 		{ ports: [1646], tcp: 0, udp: 1, prots: ["RADIUS"], protocol: "RADIUS (alt) - Remote Authentication Dial-In User Service accounting" },
 		{ ports: [1701], tcp: 0, udp: 1, prots: ["L2TP"], protocol: "L2TP - Layer 2 Tunnel Protocol" },
