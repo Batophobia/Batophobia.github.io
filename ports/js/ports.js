@@ -52,6 +52,7 @@ var ports = {
 			this.getRandom();
 		else
 			this.getFollowing();
+		$("#userInput").focus();
 	},
 
 	getRandom: function () {
