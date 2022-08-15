@@ -1,5 +1,7 @@
 var main = {
 	init: function () {
+		settings.init();
+
 		ports.getNext();
 
 		$(".btnSumbit").on('click', function () {

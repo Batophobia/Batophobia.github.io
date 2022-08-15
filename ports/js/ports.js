@@ -48,7 +48,7 @@ var ports = {
 	idx: 0,
 
 	getNext: function () {
-		if ($("#random:checked").length)
+		if (settings.options.randomize)
 			this.getRandom();
 		else
 			this.getFollowing();
@@ -61,6 +61,9 @@ var ports = {
 		this.curr = this.list[rnd];
 
 		rnd = batman(0, 10);
+		if (!settings.options.useNumbers && rnd < 5) rnd = 9;
+		if (!settings.options.useProtocols && rnd >= 5) rnd = 1;
+
 		if (rnd < 5) {
 			this.promptType = 1;
 			rnd = batman(0, this.curr.ports.length - 1);
@@ -72,7 +75,6 @@ var ports = {
 	},
 
 	getFollowing: function () {
-		console.log("getFollowing");
 		if (!this.curr.protocol) {
 			this.idx = 0;
 			this.promptType = 1;
@@ -84,6 +86,9 @@ var ports = {
 				if (this.promptType > 2) this.promptType = 1;
 			}
 		}
+
+		if (!settings.options.useNumbers && this.promptType == 1) this.promptType = 2;
+		if (!settings.options.useProtocols && this.promptType == 2) this.promptType = 1;
 
 		this.curr = this.list[this.idx];
 

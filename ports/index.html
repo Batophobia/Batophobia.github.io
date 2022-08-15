@@ -6,8 +6,10 @@
   <title>Common Ports Cards</title>
   <meta name="description" content="Flash-card style tool for memorizing common ports">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="js/jquery.js"></script>
   <script src="js/ports.js"></script>
+  <script src="js/settings.js"></script>
   <script src="js/main.js"></script>
 </head>
 
@@ -17,14 +19,26 @@
     <![endif]-->
   <div class="everything">
     <div class="main">
+      <i id="btnSettings" class="fa fa-gear" style="font-size:24px"></i>
       <h1 class="prompt"></h1>
       <div class="answer"><input id="userInput" /></div>
       <div class="buttons">
         <button class="button btnSumbit">Submit</button>
         <button class="button btnSkip">Skip</button>
-        Randomized <input id="random" type="checkbox" />
       </div>
       <div id="alerts"></div>
+      <div id="settings">
+        <div class="modalBody">
+          <div class="modalClose">x</div>
+          <div id="settingOptions">
+            <div>Randomize: <input type="checkbox" id="optionRandom" /></div>
+            <div>Use Numbers: <input type="checkbox" id="optionNumber" /></div>
+            <div>Use Protocols: <input type="checkbox" id="optionProtocol" /></div>
+            <div class="hide">Require Secure: <input type="checkbox" id="optionSecure" /></div>
+          </div>
+          <button class="button btnSaveSettings">Save</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -34,7 +48,7 @@
     });
   </script>
 
-  <div class="version">2022-08-01</div>
+  <div class="version">2022-08-15</div>
 </body>
 
 </html>
