@@ -107,7 +107,7 @@ var ports = {
 			case 1: // Port prompt
 				for (let p in this.curr.prots) {
 					if (this.curr.prots[p].toLowerCase() == user.toLowerCase()) {
-						main.alrt(correctString(curr));
+						main.alrt(correctString(this.curr));
 						return true;
 					}
 				}
@@ -116,7 +116,7 @@ var ports = {
 				user = parseInt(user);
 				for (let p in this.curr.ports) {
 					if (this.curr.ports[p] == user) {
-						main.alrt(correctString(curr));
+						main.alrt(correctString(this.curr));
 						return true;
 					}
 				}
