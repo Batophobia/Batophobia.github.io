@@ -107,7 +107,7 @@ var ports = {
 			case 1: // Port prompt
 				for (let p in this.curr.prots) {
 					if (this.curr.prots[p].toLowerCase() == user.toLowerCase()) {
-						main.alrt(`Correct.  Port(s) ${this.curr.ports.join(", ")} are used for ${this.curr.protocol}.`);
+						main.alrt(correctString(curr));
 						return true;
 					}
 				}
@@ -116,7 +116,7 @@ var ports = {
 				user = parseInt(user);
 				for (let p in this.curr.ports) {
 					if (this.curr.ports[p] == user) {
-						main.alrt(`Correct.  Port(s) ${this.curr.ports.join(", ")} are used for ${this.curr.protocol}.`);
+						main.alrt(correctString(curr));
 						return true;
 					}
 				}
@@ -126,6 +126,15 @@ var ports = {
 		return false;
 	}
 };
+
+function correctString(obj) {
+	let connType = '';
+	if (obj.tcp && obj.udp) connType = 'TCP/UDP';
+	else if (obj.tcp) connType = 'TCP';
+	else connType = 'UDP';
+
+	return `Correct.  Port(s) ${obj.ports.join(", ")} are used for ${obj.protocol} over ${connType}.`;
+}
 
 function batman(min, max) {
 	return Math.floor(Math.random() * (max + 1)) + min;
