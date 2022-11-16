@@ -1,6 +1,7 @@
 var main = {
 	init: function () {
 		settings.init();
+		assist.init();
 
 		cards.getNext();
 
@@ -9,12 +10,14 @@ var main = {
 			answerEvent(correct);
 			if (correct) {
 				$("#userInput").val("");
+				$("#suggestions").html("");
 				cards.getNext();
 			}
 		});
 
 		$(".btnSkip").on('click', function () {
 			$("#userInput").val("");
+			$("#suggestions").html("");
 			main.alrt(correctString(cards.curr));
 			cards.getNext();
 		});
@@ -47,4 +50,9 @@ function answerEvent(correct) {
 		$("#userInput").css('background-color', '#333')
 		, 500
 	);
+}
+
+function offerSuggestion() {
+	curWord = $("#userInput").val().split(" ");
+	curWord = curWord[curWord.length - 1];
 }
