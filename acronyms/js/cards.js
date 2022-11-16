@@ -419,7 +419,6 @@ var cards = {
 				}
 				break;
 			case 2: // Word prompt
-				user = parseInt(user);
 				if (this.curr.side2.toLowerCase() == user.toLowerCase()) {
 					main.alrt(correctString(this.curr));
 					return true;
