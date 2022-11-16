@@ -1,0 +1,71 @@
+body {
+	background: #222;
+	font-family: monospace;
+	color: #CCC;
+	font-size: 20px;
+}
+.everything {
+	width: 100%;
+}
+/* .main { } */
+.button {
+	border: 1px solid #CCC;
+	padding: 5px;
+	width: 200px;
+	margin: 10px;
+	background: #222;
+	color: #CCC;
+	font-size: 20px;
+}
+.button:hover {
+	background-color: #333;
+}
+#userInput {
+	background-color: #333;
+	color: #CCC;
+	font-size: 20px;
+	width: 90%;
+}
+
+#btnSettings {
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	cursor: pointer;
+}
+#settings {
+	position: fixed;
+	display: none;
+	width: 300px;
+	top: 40px;
+	right: 40px;
+	background: #222;
+	border: 1px solid #CCC;
+	padding: 5px;
+} .modalInside {
+		position: relative;
+  } .modalClose {
+		position: absolute;
+		top: 5px;
+		right: 5px;
+		cursor: pointer;
+  }
+
+#alerts {
+	
+}	#alerts .alert {
+		border-bottom: 1px dashed #333333;
+		text-align: center;
+	} #alerts:empty {
+		display:none;
+	}
+
+.version{
+	position: absolute;
+	right:15px;
+	bottom:15px;
+}
+
+.hide {
+	display: none;
+}
