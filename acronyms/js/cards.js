@@ -413,13 +413,13 @@ var cards = {
 
 		switch (this.promptType) {
 			case 1: // Acronym prompt
-				if (this.curr.side1.toLowerCase() == user.toLowerCase()) {
+				if (this.curr.side2.toLowerCase() == user.toLowerCase()) {
 					main.alrt(correctString(this.curr));
 					return true;
 				}
 				break;
 			case 2: // Word prompt
-				if (this.curr.side2.toLowerCase() == user.toLowerCase()) {
+				if (this.curr.side1.toLowerCase() == user.toLowerCase()) {
 					main.alrt(correctString(this.curr));
 					return true;
 				}
