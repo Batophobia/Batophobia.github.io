@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Security+ (601) Hashing and Cryptographic Algorithms</title>
+  <meta name="description"
+    content="Flash-card style tool for memorizing Hashing and Cryptographic Algorithms for Security+ (601)">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="js/jquery.js"></script>
+  <script src="js/cards.js"></script>
+  <script src="js/assist.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/main.js"></script>
+</head>
+
+<body>
+  <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+  <div class="everything">
+    <div class="main">
+      <i id="btnSettings" class="fa fa-gear" style="font-size:24px"></i>
+      <h1 class="prompt"></h1>
+      <div class="answer">
+        <select id="algoInput">
+          <option value="hashing">Hashing</option>
+          <option value="encryption">Encryption</option>
+        </select>
+        <input type="number" id="blockInput" />
+        <input type="number" id="sizeInput" />
+        <select id="typeInput">
+          <option value="stream">Stream</option>
+          <option value="block">Block</option>
+        </select>
+        <select id="symmetricInput">
+          <option value="1">Symmetric</option>
+          <option value="0">Asymmetric</option>
+        </select>
+      </div>
+      <div class="buttons">
+        <button class="button btnSumbit">Submit</button>
+        <button class="button btnSkip">Skip</button>
+      </div>
+      <div id="suggestions"></div>
+      <div id="alerts"></div>
+      <div id="settings">
+        <div class="modalBody">
+          <div class="modalClose">x</div>
+          <div id="settingOptions">
+            <div>Ask Symmetric: <input type="checkbox" id="option1" /></div>
+            <div>Ask Type: <input type="checkbox" id="option2" /></div>
+            <div>Ask Key Size: <input type="checkbox" id="option3" /></div>
+            <div>Ask Block Size: <input type="checkbox" id="option4" /></div>
+          </div>
+          <button class="button btnSaveSettings">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      main.init();
+    });
+  </script>
+
+  <div class="version">2022-11-16</div>
+</body>
+
+</html>
