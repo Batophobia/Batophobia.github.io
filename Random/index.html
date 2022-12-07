@@ -1,131 +1,154 @@
 <html>
+
 <head>
-  <title>Random Winner</title>
-  <script src="../jquery.js"></script>
-	
+	<title>Random Winner</title>
+	<script src="../jquery.js"></script>
+
 	<style>
-		textarea::placeholder{
-			color:#000000;
+		textarea::placeholder {
+			color: #000000;
 		}
-		body{
+
+		body {
 			background-color: #DAEBBF;
 			background-size: cover;
-			//background-image:url("1.jpg");
-			//background-image:url("2.jpg");
-			//background-image:url("3.jpg");
-			//background-image:url("4.jpg");
-			//background-image:url("5.jpg");
-			//background-image:url("6.jpg");
-			//background-image:url("7.jpeg");
-			//background-image:url("8.png");
-			background-image:url("9.JPG");
-			//background-image:url("10.jpg");
-			//background-image:url("11.jpg");
-			/*background-image:url("back.png");
-    	background-repeat:repeat;*/
+			background-image: url("back.png");
+			background-repeat: repeat;
 		}
+
 		@media screen and (orientation:portrait) {
-    	.main{
+			.main {
 				width: 300px;
 				margin-top: 50px;
-	    }@media (min-width: 301px){
-	      .main{
-	        margin-left: auto;
-	        margin-right: auto;
-      	}
-    	}
-			.left{
-	      width: 300px;
+			}
+
+			@media (min-width: 301px) {
+				.main {
+					margin-left: auto;
+					margin-right: auto;
+				}
+			}
+
+			.left {
+				width: 300px;
 				height: 250px;
 				margin-bottom: 20px;
-    	}
-			.right{
-	      width: 300px;
+			}
+
+			.right {
+				width: 300px;
 				max-height: 300px;
 				overflow: auto;
-    	} .right table{
+			}
+
+			.right table {
 				width: 100%;
 			}
-			hr{
+
+			hr {
 				width: 75%;
 			}
 		}
- 		@media screen and (orientation:landscape) {
-	    .main{
-	      width: 800px;
-	      height: 600px;
+
+		@media screen and (orientation:landscape) {
+			.main {
+				width: 800px;
+				height: 600px;
 				margin-top: 50px;
-	    }@media (min-width: 801px){
-	      .main{
-	        margin-left: auto;
-	        margin-right: auto;
-      	}
-    	}
-			.left{
-	      width: 300px;
+			}
+
+			@media (min-width: 801px) {
+				.main {
+					margin-left: auto;
+					margin-right: auto;
+				}
+			}
+
+			.left {
+				width: 300px;
 				height: 100%;
-	      display: inline-block;
+				display: inline-block;
 				float: left;
-    	}
-			.right{
-	      width: 500px;
+			}
+
+			.right {
+				width: 500px;
 				height: 100%;
-	      display: inline-block;
+				display: inline-block;
 				float: right;
 				overflow: auto;
-    	} #userList {
+			}
+
+			#userList {
 				float: right;
-			} .right table{
+			}
+
+			.right table {
 				width: 75%;
 			}
-			hr{
+
+			hr {
 				display: none;
 			}
- 		}
-    
-		button{
+		}
+
+		button {
 			color: #FFFFFF;
 			background-color: #47a3e2;
 			padding: 5px 10px;
 			border: 1px solid #333333;
 		}
-		button:hover{
+
+		button:hover {
 			background-color: 3364A0;
 		}
-		#winWrap{
+
+		#winWrap {
 			position: fixed;
 			top: 50%;
-			left: 50%; 
-  		width: 400px;
+			left: 50%;
+			width: 400px;
 			height: 120px;
 			margin-top: -60px;
 			margin-left: -200px;
 			background-color: #FFFFFF;
 			border: 1px solid #333333;
 			z-index: 10;
-		} #closeWin{
+		}
+
+		#closeWin {
 			position: absolute;
 			top: 2px;
 			right: 5px;
 		}
-    #alerts {
-    	position: absolute;
-    	top: 5px;
-    	right: 5px;
-    	padding: 5px;
-    	width: 300px;
-    }	#alerts .alert {
-  	  	border-bottom: 1px dashed #CCCCCC;
-  	  	text-align: center;
-				z-index: 99;
-  	  } #alerts .error {
-  	  	background-color: #FF877E;
-  	  } #alerts .success {
-  	  	background-color: #77BC1F;
-  	  } #alerts:empty {
-  	  	display:none;
-    }
-		#greyout{
+
+		#alerts {
+			position: absolute;
+			top: 5px;
+			right: 5px;
+			padding: 5px;
+			width: 300px;
+		}
+
+		#alerts .alert {
+			border-bottom: 1px dashed #CCCCCC;
+			text-align: center;
+			z-index: 99;
+		}
+
+		#alerts .error {
+			background-color: #FF877E;
+		}
+
+		#alerts .success {
+			background-color: #77BC1F;
+		}
+
+		#alerts:empty {
+			display: none;
+		}
+
+		#greyout {
 			display: none;
 			position: fixed;
 			top: 0;
@@ -135,28 +158,35 @@
 			height: 100%;
 			width: 100%;
 			z-index: 9;
-			background-color: rgba(0,0,0,.75);
+			background-color: rgba(0, 0, 0, .75);
 		}
-  </style>
+	</style>
 </head>
 
 <body>
-  <div class="main">
-    <div class="left">
-      <textarea id="txtPeople" placeholder="Enter names here, 1 name per line" style="width: 100%; height: 90%;background-color: rgba(255,255,255,.5);"></textarea>
-      <button id="btnUpdate" style="margin-top:2px;">Update</button>
-    </div>
+	<div class="main">
+		<div class="left">
+			<textarea id="txtPeople" placeholder="Enter names here, 1 name per line"
+				style="width: 100%; height: 90%;background-color: rgba(255,255,255,.5);"></textarea>
+			<button id="btnUpdate" style="margin-top:2px;">Update</button>
+		</div>
 		<hr />
-    <div class="right">
-      <table id="userList" style="background-color: rgba(255,255,255,.5);">
-        <thead><th>Name</th><th># Entries</th></thead>
-        <tbody id="tblBod">
-          <tr id="lastRow"><td><input id="txtSingle" placeholder="New Name" style="width: 100%;"/></td><td><button id="btnAdd">Add</button></td></tr>
-        </tbody>
-      </table>
-    </div>
+		<div class="right">
+			<table id="userList" style="background-color: rgba(255,255,255,.5);">
+				<thead>
+					<th>Name</th>
+					<th># Entries</th>
+				</thead>
+				<tbody id="tblBod">
+					<tr id="lastRow">
+						<td><input id="txtSingle" placeholder="New Name" style="width: 100%;" /></td>
+						<td><button id="btnAdd">Add</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 		<div style="clear: both; text-align: center;"><button id="btnPick">Pick Random</button></div>
-		
+
 		<div id="winWrap" style="display: none;">
 			<div style="position: relative; height: 100%; width: 100%;">
 				<span id="closeWin" style="color:#FFFFFF; cursor: pointer;">x</span>
@@ -164,95 +194,96 @@
 				<div style="color: #77BC1F; text-align: center; overflow: hidden; height: 80px;" id="winner"></div>
 			</div>
 		</div>
-    <div id="alerts"></div>
-  </div>
+		<div id="alerts"></div>
+	</div>
 	<div id="greyout"></div>
 </body>
 
 <script>
-  var userList = {};
-  $("#btnAdd").click(function(e){
-    addUser($("#txtSingle").val())
-  });
-	
-	$("#btnUpdate").click(function(e){
+	var userList = {};
+	$("#btnAdd").click(function (e) {
+		addUser($("#txtSingle").val())
+	});
+
+	$("#btnUpdate").click(function (e) {
 		var list = $("#txtPeople").val();
-		if($("#txtPeople").val()==""){
-			msgNote("error","Enter at least one person");
+		if ($("#txtPeople").val() == "") {
+			msgNote("error", "Enter at least one person");
 		}
 		list = list.split("\n")
-		
-		for(var i in list){
-			if(list[i]!=null)
+
+		for (var i in list) {
+			if (list[i] != null)
 				addUser(list[i]);
 		}
-  });
-	
-	$("#btnPick").click(function(e){
-		var ttl = 0, winScroll="";
-		$(".userRow").each(function(){
+	});
+
+	$("#btnPick").click(function (e) {
+		var ttl = 0, winScroll = "";
+		$(".userRow").each(function () {
 			var tmp = ttl;
-			ttl+=parseInt($(this).find(".numEntry").val());
-			userList[$(this).attr("for")] = {min: tmp, max: ttl};
+			ttl += parseInt($(this).find(".numEntry").val());
+			userList[$(this).attr("for")] = { min: tmp, max: ttl };
 		});
-		for(var cnt=Math.random() * 10 + 15; cnt > 0; cnt--){
+		for (var cnt = Math.random() * 10 + 15; cnt > 0; cnt--) {
 			var win = Math.random() * ttl;
-			for(var i in userList){
-				if(userList[i].max>=win && userList[i].min<=win){
-					winScroll = winScroll + "<h1>"+i+"</h1>";
+			for (var i in userList) {
+				if (userList[i].max >= win && userList[i].min <= win) {
+					winScroll = winScroll + "<h1>" + i + "</h1>";
 					break;
 				}
 			}
 		}
 		declareWinner(winScroll);
 	});
-	
-	$("#closeWin").click(function(e){
+
+	$("#closeWin").click(function (e) {
 		$("#winner").html("");
 		$("#winWrap").hide();
 		$("#greyout").hide();
 	});
-  
-	function addUser(name, num){
-		if(num===undefined || num==null){
-			num=1;
+
+	function addUser(name, num) {
+		if (num === undefined || num == null) {
+			num = 1;
 		}
-		
-		if(name===undefined || name==""){
-      msgNote("error","Enter a name to add");
-      return false;
-    } if(userList[name]!==undefined){
-      msgNote("error",name+" is already listed");
-      return false;
-    }
-		
-		if(name.split(":")[1]!==undefined){
+
+		if (name === undefined || name == "") {
+			msgNote("error", "Enter a name to add");
+			return false;
+		} if (userList[name] !== undefined) {
+			msgNote("error", name + " is already listed");
+			return false;
+		}
+
+		if (name.split(":")[1] !== undefined) {
 			num = parseInt(name.split(":")[1].trim());
 			name = name.split(":")[0].trim();
 		}
-		
-		userList[name] = {min: num, max: num};
-    var newRow = "<tr for='"+name+"' class='userRow'><td>"+name+"</td><td><input type='number' class='numEntry' for='"+name+"' value='"+num+"' /></td></tr>";
-    $(newRow).insertBefore("#lastRow");
+
+		userList[name] = { min: num, max: num };
+		var newRow = "<tr for='" + name + "' class='userRow'><td>" + name + "</td><td><input type='number' class='numEntry' for='" + name + "' value='" + num + "' /></td></tr>";
+		$(newRow).insertBefore("#lastRow");
 	}
-	
-	function declareWinner(name){
-		$("#winner").animate({scrollTop: 0 }, 1);
+
+	function declareWinner(name) {
+		$("#winner").animate({ scrollTop: 0 }, 1);
 		$("#winner").html(name);
 		$("#winWrap").show();
 		$("#greyout").show();
-		$("#winner").animate({scrollTop: $("#winner")[0].scrollHeight }, 10000);
+		$("#winner").animate({ scrollTop: $("#winner")[0].scrollHeight }, 10000);
 		//msgNote("success",name+" is the winner");
 	}
-	
-  function msgNote(type, input){
-		var alert = $("<div class='"+type+" alert'>" + input + "</div>");
+
+	function msgNote(type, input) {
+		var alert = $("<div class='" + type + " alert'>" + input + "</div>");
 		$('#alerts').append(alert);
-		setTimeout(function(){
-			alert.fadeOut('slow',function(){
+		setTimeout(function () {
+			alert.fadeOut('slow', function () {
 				$(this).remove();
 			});
-		},3000);
-}
+		}, 3000);
+	}
 </script>
+
 </html>
