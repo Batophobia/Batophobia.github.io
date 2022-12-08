@@ -1,10 +1,6 @@
 var settings = {
 	options: {
-		askBlock: true,
-		askKey: true,
-		askType: true,
-		askSymmetric: true,
-		randomize: true
+		//randomize: true
 	},
 
 	init: function () {
@@ -26,31 +22,26 @@ var settings = {
 	},
 
 	setVals: function () {
-		$("#optionRandom").prop('checked', this.options.randomize);
-		$("#option1").prop('checked', this.options.useAcronyms);
-		$("#option2").prop('checked', this.options.useWords);
+		// $("#optionRandom").prop('checked', this.options.randomize);
+		// $("#option1").prop('checked', this.options.useAcronyms);
+		// $("#option2").prop('checked', this.options.useWords);
 	},
 
 	saveVals: function () {
-		this.options.randomize = $("#optionRandom").prop('checked');
-		this.options.useAcronyms = $("#option1").prop('checked');
-		this.options.useWords = $("#option2").prop('checked');
-
-		if (!this.options.useAcronyms && !this.options.useWords) {
-			this.options.useWords = true;
-			main.alrt(`Acronyms or Words required.  Words has been enabled.`);
-		}
-
-		this.save();
+		//this.options.randomize = $("#optionRandom").prop('checked');
+		//this.options.useAcronyms = $("#option1").prop('checked');
+		//this.options.useWords = $("#option2").prop('checked');
+		//this.save();
 	},
 
+	storageName: "ToolsSave",
 	save: function () {
-		localStorage["AcronymSave"] = JSON.stringify(this.options);
+		localStorage[this.storageName] = JSON.stringify(this.options);
 	},
 
 	load: function () {
-		if ('AcronymSave' in localStorage) {
-			this.options = JSON.parse(localStorage['AcronymSave']);
+		if (this.storageName in localStorage) {
+			this.options = JSON.parse(localStorage[this.storageName]);
 		}
 	},
 };
