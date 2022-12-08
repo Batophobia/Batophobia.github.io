@@ -14,14 +14,15 @@ var cards = {
 		{ openSource: true, os: ["Linux"], type: "file", side1: "grep", side2: "Command-line utility for searching plain-text data sets for lines that match a regular expression or pattern" },
 		{ openSource: true, os: ["Linux"], type: "file", side1: "chmod", side2: "Command-line utility used to change the access permissions" },
 		{ openSource: true, os: ["Linux"], type: "file", side1: "logger", side2: "Easy way to add messages to the /var/log/syslog file from the command line or from other files" },
-		{ openSource: false, os: ["Windows", "Linux"], type: "arp", side1: "route", side2: "Utility that is used to view and manipulate the IP routing table on a host or server" },
-		{ openSource: true, os: ["Windows", "Linux"], type: "arp", side1: "curl", side2: "Command line tool to transfer data to or from a server" },
-		{ openSource: true, os: ["Windows", "Linux"], type: "arp", side1: "The Harvester", side2: "Python script that is used to gather email/subdomain/host/employee data/open ports/banners from public sources" },
-		{ openSource: false, os: ["Linux"], type: "arp", side1: "sn1per", side2: "Automated scanner used to enumerate and scan for vulnerabilities across a network" },
-		{ openSource: true, os: ["Windows", "Linux"], type: "arp", side1: "scanless", side2: "Utility used to create exploitation website that can perform Open port scans" },
-		{ openSource: true, os: ["Linux"], type: "arp", side1: "dnsenum", side2: "Utility used for DNS enumeration to locate all DNS servers/entries for given organization" },
-		{ openSource: false, os: ["Windows", "Linux"], type: "arp", side1: "Nessus", side2: "Vulnerability scanner that can remotely scan a computer or network" },
-		{ openSource: true, os: ["Windows", "Linux"], type: "arp", side1: "Cuckoo", side2: "Automating analysis of suspicious files" },
+		{ openSource: false, os: ["Windows", "Linux"], type: "network", side1: "arp", side2: "Utility for viewing and modifying the local Address Resolution Protocol (ARP) cache" },
+		{ openSource: false, os: ["Windows", "Linux"], type: "network", side1: "route", side2: "Utility that is used to view and manipulate the IP routing table on a host or server" },
+		{ openSource: true, os: ["Windows", "Linux"], type: "network", side1: "curl", side2: "Command line tool to transfer data to or from a server" },
+		{ openSource: true, os: ["Windows", "Linux"], type: "network", side1: "The Harvester", side2: "Python script that is used to gather email/subdomain/host/employee data/open ports/banners from public sources" },
+		{ openSource: false, os: ["Linux"], type: "network", side1: "sn1per", side2: "Automated scanner used to enumerate and scan for vulnerabilities across a network" },
+		{ openSource: true, os: ["Windows", "Linux"], type: "network", side1: "scanless", side2: "Utility used to create exploitation website that can perform Open port scans" },
+		{ openSource: true, os: ["Linux"], type: "network", side1: "dnsenum", side2: "Utility used for DNS enumeration to locate all DNS servers/entries for given organization" },
+		{ openSource: false, os: ["Windows", "Linux"], type: "network", side1: "Nessus", side2: "Vulnerability scanner that can remotely scan a computer or network" },
+		{ openSource: true, os: ["Windows", "Linux"], type: "network", side1: "Cuckoo", side2: "Automating analysis of suspicious files" },
 		{ openSource: true, os: ["Windows"], type: "network", side1: "tracert", side2: "network diagnostic command for displaying possible routes and measuring transit delays of packets" },
 		{ openSource: true, os: ["Linux"], type: "network", side1: "traceroute", side2: "network diagnostic command for displaying possible routes and measuring transit delays of packets" },
 		{ openSource: true, os: ["Windows"], type: "network", side1: "nslookup", side2: "Utility used to determine IP address associated with domain name, obtain mail server settings for domain, and other DNS info" },
@@ -55,17 +56,26 @@ var cards = {
 
 	getNext: function () {
 		this.getRandom();
-		$("#userInput").focus();
+		if (settings.options.useName) {
+			$("#typeInput").focus();
+		} else {
+			$("#userInput").focus();
+		}
 	},
 
 	getRandom: function () {
 		const num = this.list.length - 1;
 		let rnd = batman(0, num);
 		this.curr = this.list[rnd];
-		$(".prompt").text(`${this.curr.side2} for ${this.curr.os.join(' and ')} that is ${this.curr.openSource ? "open-source" : "proprietary"}`);
+		if (settings.options.useName)
+			$(".prompt").text(`${this.curr.side1}`);
+		else
+			$(".prompt").text(`${this.curr.side2} for ${this.curr.os.join(' and ')} that is ${this.curr.openSource ? "open-source" : "proprietary"}`);
 	},
 
 	checkAnswer: function () {
+		if (settings.options.useName) return this.checkAnswers();
+
 		let user = $("#userInput").val();
 
 		if (this.curr.side1.toLowerCase().trim() == user.toLowerCase().trim()) {
@@ -75,6 +85,32 @@ var cards = {
 
 		main.alrt(`${user} is incorrect.`);
 		return false;
+	},
+
+	checkAnswers: function () {
+		let type = $("#typeInput").val();
+		let os = $("#osInput").val();
+		let openSource = $("#openSourceInput").val();
+
+		if (this.curr.type != type) {
+			main.alrt(`Incorrect type.`);
+			return false;
+		}
+		if (this.curr.os.length > 1 && os != "both") {
+			main.alrt(`Incorrect Operating System.`);
+			return false;
+		}
+		if (this.curr.os.length == 1 && this.curr.os[0].toLowerCase() != os) {
+			main.alrt(`Incorrect Operating System.`);
+			return false;
+		}
+		if ((this.curr.openSource ? "1" : "0") != openSource) {
+			main.alrt(`Incorrect Licensing.`);
+			return false;
+		}
+
+		main.alrt(correctString(this.curr));
+		return true;
 	}
 };
 

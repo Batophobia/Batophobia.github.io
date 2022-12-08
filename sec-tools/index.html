@@ -22,7 +22,28 @@
     <div class="main">
       <i id="btnSettings" class="fa fa-gear" style="font-size:24px"></i>
       <h1 class="prompt"></h1>
-      <div class="answer"><input id="userInput" /></div>
+      <div class="answer">
+        <!-- Tool Name -->
+        <input class="side1" id="userInput" />
+        <!-- Tool Attributes -->
+        <select class="side2" id="typeInput">
+          <option value="exploitation">Exploitation</option>
+          <option value="file">File</option>
+          <option value="forensic">Forensic</option>
+          <option value="log">Log</option>
+          <option value="network">Network</option>
+          <option value="packet">Packet Capture</option>
+        </select>
+        <select class="side2" id="osInput">
+          <option value="windows">Windows</option>
+          <option value="linux">Linux</option>
+          <option value="both">Both</option>
+        </select>
+        <select class="side2" id="openSourceInput">
+          <option value="1">Open-Source</option>
+          <option value="0">Proprietary</option>
+        </select>
+      </div>
       <div class="buttons">
         <button class="button btnSumbit">Submit</button>
         <button class="button btnSkip">Skip</button>
@@ -33,7 +54,7 @@
         <div class="modalBody">
           <div class="modalClose">x</div>
           <div id="settingOptions">
-            No options for this
+            <div>Use Name: <input type="checkbox" id="option1" /></div>
           </div>
           <button class="button btnSaveSettings">Save</button>
         </div>

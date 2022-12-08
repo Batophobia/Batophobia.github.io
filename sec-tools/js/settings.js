@@ -1,6 +1,6 @@
 var settings = {
 	options: {
-		//randomize: true
+		useName: false
 	},
 
 	init: function () {
@@ -22,16 +22,13 @@ var settings = {
 	},
 
 	setVals: function () {
-		// $("#optionRandom").prop('checked', this.options.randomize);
-		// $("#option1").prop('checked', this.options.useAcronyms);
-		// $("#option2").prop('checked', this.options.useWords);
+		$("#option1").prop('checked', this.options.useName);
 	},
 
 	saveVals: function () {
-		//this.options.randomize = $("#optionRandom").prop('checked');
-		//this.options.useAcronyms = $("#option1").prop('checked');
-		//this.options.useWords = $("#option2").prop('checked');
-		//this.save();
+		this.options.useName = $("#option1").prop('checked');
+		this.updateUI();
+		this.save();
 	},
 
 	storageName: "ToolsSave",
@@ -43,5 +40,17 @@ var settings = {
 		if (this.storageName in localStorage) {
 			this.options = JSON.parse(localStorage[this.storageName]);
 		}
+		this.updateUI();
 	},
+
+	updateUI: function () {
+		if (this.options.useName) {
+			$(".side1").hide();
+			$(".side2").show();
+		} else {
+			$(".side2").hide();
+			$(".side1").show();
+		}
+		cards.getNext();
+	}
 };

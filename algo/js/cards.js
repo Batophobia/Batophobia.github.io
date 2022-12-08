@@ -47,7 +47,6 @@ var cards = {
 		let key = $("#sizeInput").val();
 		let type = $("#typeInput").val();
 		let symmetric = $("#symmetricInput").val();
-		console.log({ algo, block, key, type, symmetric })
 
 		if (this.curr.algo != algo) {
 			main.alrt(`Incorrect algorithm.`);
