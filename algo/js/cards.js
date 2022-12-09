@@ -75,7 +75,7 @@ var cards = {
 		}
 
 		if (settings.options.askSymmetric) {
-			if (this.curr.symmetric && (this.curr.symmetric ? "1" : "0") != symmetric) {
+			if (this.curr.hasOwnProperty("symmetric") && (this.curr.symmetric ? "1" : "0") != symmetric) {
 				main.alrt(`Incorrect symmetry.`);
 				return false;
 			}
