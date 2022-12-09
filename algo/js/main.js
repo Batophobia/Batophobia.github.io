@@ -6,7 +6,6 @@ var main = {
 
 		$(".btnSumbit").on('click', function () {
 			const correct = cards.checkAnswer();
-			console.log(correct);
 			answerEvent(correct);
 			if (correct) {
 				cards.getNext();
