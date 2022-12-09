@@ -71,7 +71,7 @@ var cards = {
 		const num = this.list.length - 1;
 		let rnd = batman(0, num);
 
-		setPrompt(rnd);
+		this.setPrompt(rnd);
 	},
 
 	getFollowing: function () {
@@ -84,7 +84,7 @@ var cards = {
 			}
 		}
 
-		setPrompt(this.idx);
+		this.setPrompt(this.idx);
 	},
 
 	setPrompt: function (idx) {
