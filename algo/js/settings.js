@@ -3,7 +3,8 @@ var settings = {
 		askBlock: true,
 		askKey: true,
 		askType: true,
-		askSymmetric: true
+		askSymmetric: true,
+		randomize: true
 	},
 
 	init: function () {
@@ -29,6 +30,7 @@ var settings = {
 		$("#option2").prop('checked', this.options.askType);
 		$("#option3").prop('checked', this.options.askKey);
 		$("#option4").prop('checked', this.options.askBlock);
+		$("#optionRandom").prop('checked', this.options.randomize);
 	},
 
 	saveVals: function () {
@@ -36,6 +38,7 @@ var settings = {
 		this.options.askType = $("#option2").prop('checked');
 		this.options.askKey = $("#option3").prop('checked');
 		this.options.askBlock = $("#option4").prop('checked');
+		this.options.randomize = $("#optionRandom").prop('checked');
 
 		this.updateUI();
 		this.save();

@@ -1,6 +1,7 @@
 var settings = {
 	options: {
-		useName: false
+		useName: false,
+		randomize: true
 	},
 
 	init: function () {
@@ -23,10 +24,12 @@ var settings = {
 
 	setVals: function () {
 		$("#option1").prop('checked', this.options.useName);
+		$("#optionRandom").prop('checked', this.options.randomize);
 	},
 
 	saveVals: function () {
 		this.options.useName = $("#option1").prop('checked');
+		this.options.randomize = $("#optionRandom").prop('checked');
 		this.updateUI();
 		this.save();
 	},

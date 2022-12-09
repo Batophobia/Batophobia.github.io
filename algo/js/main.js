@@ -1,7 +1,6 @@
 var main = {
 	init: function () {
 		settings.init();
-		assist.init();
 
 		cards.getNext();
 

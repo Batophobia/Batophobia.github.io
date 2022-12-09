@@ -29,15 +29,36 @@ var cards = {
 	idx: 0,
 
 	getNext: function () {
-		this.getRandom();
+		if (settings.options.randomize)
+			this.getRandom();
+		else
+			this.getFollowing();
 		$("#userInput").focus();
 	},
 
 	getRandom: function () {
 		const num = this.list.length - 1;
 		let rnd = batman(0, num);
-		this.curr = this.list[rnd];
 
+		setPrompt(rnd);
+	},
+
+	getFollowing: function () {
+		if (!this.curr.side1) {
+			this.idx = 0;
+		} else {
+			this.idx++;
+			if (this.idx >= this.list.length) {
+				this.idx = 0;
+			}
+		}
+
+		setPrompt(this.idx);
+	},
+
+	setPrompt: function (idx) {
+		this.idx = idx;
+		this.curr = this.list[idx];
 		$(".prompt").text(this.curr.side1);
 	},
 
