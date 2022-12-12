@@ -1,7 +1,7 @@
 var cards = {
 	list: [
 		{ openSource: true, os: ["Windows", "Linux"], type: "forensic", side1: "Autopsy", side2: "Digital forensics platform and graphical interface to The Sleuth Kit® and other digital forensics tools" },
-		{ openSource: true, os: ["Windows"], type: "forensic", side1: "FTK imager", side2: "Data preview and imaging tool, quickly assess electronic evidence to determine if further analysis needed" },
+		{ openSource: false, os: ["Windows"], type: "forensic", side1: "FTK imager", side2: "Data preview and imaging tool, quickly assess electronic evidence to determine if further analysis needed" },
 		{ openSource: false, os: ["Windows"], type: "forensic", side1: "WinHex", side2: "Commercial disk editor and universal hexadecimal editor" },
 		{ openSource: true, os: ["Linux"], type: "forensic", side1: "Memdump", side2: "Command line utility used to dump system memory" },
 		{ openSource: true, os: ["Linux"], type: "forensic", side1: "dd", side2: "Command line utility used to copy disk images using a bit by bit" },
