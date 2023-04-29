@@ -1,94 +1,108 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Puzzle</title>
-    <meta name="description" content="Puzzle for Stack Exchange">
-    <script src="encryption.js"></script>
-    <script src="jquery.js"></script>
-    <script src="main.js"></script>
-    <style>
-      body{
-        background-color: #222222;
-        color: #CCCCCC;
-      }
-      #everything{
-        font-family: "Consolas", Courier, monospace;
-        color: #FFFFFF;
-        background-color: #000000;
-        width: 300px;
-        height: 400px;
-        border: 20px solid #FEFE9A;
-        border-radius: 25px;
-        margin: 0 auto;
-        padding: 5px;
-        position: relative;
-      }
-      #locName{
-        margin: 15px 0 15px 0;
-        font-size: 30px;
-        border-bottom: 1px solid #FFFFFF;
-      }
-      #locText{
-        margin: 15px 0 40px 0;
-      }
-      #buttons{
-        position: absolute;
-        bottom: 60px;
-        left: 5px;
-      }
-      #dirButtons{
-        position: relative;
-      }
-      #dirButtons button{
-        position: absolute;
-        padding: 0;
-        width: 23px;
-      }
-      #westBtn{
-        left: 0;
-        top: 15px;
-      }
-      #northBtn{
-        left: 25px;
-        top: 0;
-      }
-      #southBtn{
-        left: 25px;
-        top: 30px;
-      }
-      #eastBtn{
-        left: 50px;
-        top: 15px;
-      }
-      #txtKey{
-        position: absolute;
-        bottom: 5px;
-        right: 5px;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="everything">
-      <div id="locName"></div>
-      <div id="locText"></div>
-      
-      <div id="buttons">
-        <div id="dirButtons">
-          <button dir="west" id="westBtn">W</button>
-          <button dir="north" id="northBtn">N</button>
-          <button dir="south" id="southBtn">S</button>
-          <button dir="east" id="eastBtn">E</button>
-        </div>
+
+<head>
+  <meta charset="utf-8">
+  <title>Puzzle</title>
+  <meta name="description" content="Puzzle for Stack Exchange">
+  <script src="encryption.js"></script>
+  <script src="jquery.js"></script>
+  <script src="main.js"></script>
+  <style>
+    body {
+      background-color: #222222;
+      color: #CCCCCC;
+    }
+
+    #everything {
+      font-family: "Consolas", Courier, monospace;
+      color: #FFFFFF;
+      background-color: #000000;
+      width: 300px;
+      height: 400px;
+      border: 20px solid #FEFE9A;
+      border-radius: 25px;
+      margin: 0 auto;
+      padding: 5px;
+      position: relative;
+    }
+
+    #locName {
+      margin: 15px 0 15px 0;
+      font-size: 30px;
+      border-bottom: 1px solid #FFFFFF;
+    }
+
+    #locText {
+      margin: 15px 0 40px 0;
+    }
+
+    #buttons {
+      position: absolute;
+      bottom: 60px;
+      left: 5px;
+    }
+
+    #dirButtons {
+      position: relative;
+    }
+
+    #dirButtons button {
+      position: absolute;
+      padding: 0;
+      width: 23px;
+    }
+
+    #westBtn {
+      left: 0;
+      top: 15px;
+    }
+
+    #northBtn {
+      left: 25px;
+      top: 0;
+    }
+
+    #southBtn {
+      left: 25px;
+      top: 30px;
+    }
+
+    #eastBtn {
+      left: 50px;
+      top: 15px;
+    }
+
+    #txtKey {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="everything">
+    <div id="locName"></div>
+    <div id="locText"></div>
+
+    <div id="buttons">
+      <div id="dirButtons">
+        <button dir="west" id="westBtn">W</button>
+        <button dir="north" id="northBtn">N</button>
+        <button dir="south" id="southBtn">S</button>
+        <button dir="east" id="eastBtn">E</button>
       </div>
-      
-      <input type="text" placeholder="ANSWER" id="txtKey" />
     </div>
-    
-    <script>
-      $(document).ready(function(){
-        main.init();
-      });
-    </script>
-  </body>
+
+    <input type="text" placeholder="KEY" />
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      main.init();
+    });
+  </script>
+</body>
+
 </html>
