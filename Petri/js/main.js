@@ -2,10 +2,15 @@ var main = {
 	init: function () {
 		this.load();
 		specimen.init();
+		player.init();
+		enemy.init();
 		items.init();
 		store.init();
+
+		main.timerID = window.setInterval(function () { main.tick() }, 100);
 	},
-	helpID: 0,
+	itemID: 0,
+	storeID: 0,
 	timerID: 0,
 	counter: 0,
 	keyDown: 0,
@@ -13,22 +18,23 @@ var main = {
 
 	tick: function () {
 		now = new Date();
-		var elapsedTime = (now.getTime() - main.lastTick.getTime());
-		var delay = 100;
+		//var elapsedTime = (now.getTime() - main.lastTick.getTime());
+		//var delay = 100;
 
-		if (elapsedTime > delay) {
-			for (var i = 0; i < Math.floor(elapsedTime / delay); i++) {
-				this.tickAction();
-			}
-		} else {
-			this.tickAction();
-		}
+		//if (elapsedTime > delay) {
+		//	for (var i = 0; i < Math.floor(elapsedTime / delay); i++) {
+		//		this.tickAction();
+		//	}
+		//} else {
+		this.tickAction();
+		//}
 		main.lastTick = new Date();
 	},
 
 	tickAction: function () {
 		store.tick();
-		specimen.tick();
+		player.tick();
+		enemy.tick();
 
 		this.updateDisplay();
 		this.save();
@@ -109,7 +115,7 @@ var main = {
 
 Object.size = function (obj) {
 	var size = 0, key;
-	for (key in obj) {
+	for (var key in obj) {
 		if (obj.hasOwnProperty(key)) size++;
 	}
 	return size;

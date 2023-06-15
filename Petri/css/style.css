@@ -105,11 +105,10 @@ button:disabled {
 }
 
 .topBar {
-	width: 650px;
-	height: 100px;
-	position: absolute;
-	top: 5px;
-	left: 250px;
+	width: 600px;
+	height: 30px;
+	margin-left: auto;
+	margin-right: auto;
 	-moz-user-select: none;
 	-webkit-user-select: none;
 	-ms-user-select: none;
@@ -122,6 +121,9 @@ button:disabled {
 .mainBar {
 	width: 600px;
 	height: 600px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5px;
 	-moz-user-select: none;
 	-webkit-user-select: none;
 	-ms-user-select: none;
@@ -147,9 +149,14 @@ button:disabled {
 	padding-bottom: 5px;
 }
 
+.mainBar .mainBarItem {
+	display: none;
+}
+
 .mainBar .dish {
 	cursor: default;
-	border: 1px solid #000;
+	border: 4px solid #bbf7ff;
+	background-color: #c8f9ff;
 	border-radius: 50%;
 	width: 100%;
 	height: 100%;
@@ -182,22 +189,6 @@ button:disabled {
 #playerSpecimen {
 	bottom: 2px;
 	left: 212px;
-}
-
-@media (min-width: 1111px) {
-	.mainBar {
-		margin-left: auto;
-		margin-right: auto;
-		margin-top: 110px;
-	}
-}
-
-@media (max-width: 1110px) {
-	.mainBar {
-		position: absolute;
-		top: 110px;
-		left: 210px;
-	}
 }
 
 pre {

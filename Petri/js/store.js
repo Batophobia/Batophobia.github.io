@@ -1,9 +1,14 @@
 var store = {
-	items: {
+	stock: {
 	},
 
 	init: function () {
-		// TODO
+		$("#btnStore").show();
+		$("#btnStore").on('click', function () {
+			$(".mainBarItem").hide();
+			$(".store").toggle();
+			main.storeID = "";
+		});
 	},
 
 	tick: function () {

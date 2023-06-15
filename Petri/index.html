@@ -9,8 +9,9 @@
   <script src="../ga.js"></script>
   <script src="js/jquery.js"></script>
   <script src="js/specimen.js"></script>
-  <script src="js/items.js"></script>
+  <script src="js/player.js"></script>
   <script src="js/enemy.js"></script>
+  <script src="js/items.js"></script>
   <script src="js/store.js"></script>
   <script src="js/main.js"></script>
 </head>
@@ -27,16 +28,27 @@
       Creature battles random others, mutating it's stats based on the opponent
     -->
     <div id="buttons" class="topBar">
+      <button id="btnDish">Dish</button>
       <button id="btnSpecimen">Specimen</button>
-      <button id="btnHelp">Help</button>
+      <button id="btnItems">Items</button>
+      <button id="btnStore">Store</button>
+      <!-- <button id="btnHelp">Help</button> -->
     </div>
     <div class="mainBar">
-      <div class="dish">
-        <button id="btnLeaveDish">Leave</button>
+      <div class="dish mainBarItem">
         <pre class="specimen" id="enemySpecimenT"></pre>
         <pre class="specimen" id="enemySpecimenL"></pre>
         <pre class="specimen" id="enemySpecimenR"></pre>
         <pre class="specimen" id="playerSpecimen"></pre>
+      </div>
+      <div class="specimen mainBarItem">
+        TODO: SPECIMEN
+      </div>
+      <div class="items mainBarItem">
+        TODO: ITEMS
+      </div>
+      <div class="store mainBarItem">
+        TODO: STORE
       </div>
     </div>
 
