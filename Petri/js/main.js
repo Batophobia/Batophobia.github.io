@@ -4,6 +4,7 @@ var main = {
 		specimen.init();
 		player.init();
 		enemy.init();
+		lab.init();
 		items.init();
 		store.init();
 
@@ -34,6 +35,7 @@ var main = {
 	tickAction: function () {
 		store.tick();
 		player.tick();
+		lab.tick();
 		enemy.tick();
 
 		this.updateDisplay();

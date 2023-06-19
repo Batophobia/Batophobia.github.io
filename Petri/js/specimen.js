@@ -98,12 +98,16 @@ var specimen = {
     return possibilities;
   },
 
+  getVisual: function () {
+    return this.visual.join('\n');
+  },
+
   updateDisplay: function () {
     switch (this.dishLoc) {
-      case 0: $('#enemySpecimenT').text(this.visual.join('\n')); break;
-      case 1: $('#enemySpecimenL').text(this.visual.join('\n')); break;
-      case 2: $('#enemySpecimenR').text(this.visual.join('\n')); break;
-      default: $('#playerSpecimen').text(this.visual.join('\n')); break;
+      case 0: $('#enemySpecimenT').text(this.getVisual()); break;
+      case 1: $('#enemySpecimenL').text(this.getVisual()); break;
+      case 2: $('#enemySpecimenR').text(this.getVisual()); break;
+      default: $('#playerSpecimen').text(this.getVisual()); break;
     }
   },
 };

@@ -11,6 +11,7 @@
   <script src="js/specimen.js"></script>
   <script src="js/player.js"></script>
   <script src="js/enemy.js"></script>
+  <script src="js/lab.js"></script>
   <script src="js/items.js"></script>
   <script src="js/store.js"></script>
   <script src="js/main.js"></script>
@@ -29,7 +30,7 @@
     -->
     <div id="buttons" class="topBar">
       <button id="btnDish">Dish</button>
-      <button id="btnSpecimen">Specimen</button>
+      <button id="btnLab">Lab</button>
       <button id="btnItems">Items</button>
       <button id="btnStore">Store</button>
       <!-- <button id="btnHelp">Help</button> -->
@@ -41,8 +42,15 @@
         <pre class="specimen" id="enemySpecimenR"></pre>
         <pre class="specimen" id="playerSpecimen"></pre>
       </div>
-      <div class="specimen mainBarItem">
-        TODO: SPECIMEN
+      <div class="lab mainBarItem">
+        <div id="labCritters">
+          <div id="slideBG">
+            <div id="leftSlide" class="slideArrow">&lt;</div>
+            <div id="rightSlide" class="slideArrow">&gt;</div>
+          </div>
+          <div id="microscope"></div>
+        </div>
+        <div id="labDishes"></div>
       </div>
       <div class="items mainBarItem">
         TODO: ITEMS

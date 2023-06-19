@@ -1,5 +1,5 @@
 body {
-	background: #FFFFFF;
+	background: #333333;
 	font-family: monospace;
 	color: #333333;
 	font-size: 14px;
@@ -165,6 +165,82 @@ button:disabled {
 
 .dish pre {
 	font: 12px/8px monospace;
+}
+
+#labCritters {
+	width: 100%;
+	height: 450px;
+}
+
+#slideBG {
+	position: absolute;
+	background-color: #c8f9ff;
+	width: 600px;
+	height: 200px;
+	top: 150px;
+	z-index: 1;
+}
+
+.slideArrow {
+	position: absolute;
+	font-size: 100px;
+	top: 30px;
+}
+
+.slideArrow:hover {
+	color: #6969EC
+}
+
+#leftSlide {
+	left: 25px;
+}
+
+#rightSlide {
+	right: 25px;
+}
+
+#microscope {
+	background-color: #c8f9ff;
+	border-radius: 50%;
+	border: 5px black solid;
+	width: 400px;
+	height: 400px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	position: relative;
+	z-index: 2;
+}
+
+#microscope .critter {
+	display: block;
+	unicode-bidi: embed;
+	font-family: monospace;
+	white-space: pre;
+	font: 18px/12px monospace;
+	margin-top: 50px;
+}
+
+.critter {
+	display: block;
+	unicode-bidi: embed;
+	font-family: monospace;
+	white-space: pre;
+	font: 12px/8px monospace;
+}
+
+#labDishes {
+	width: 100%;
+	height: 210px;
+}
+
+#labDishes .labDish {
+	border: 4px solid #bbf7ff;
+	background-color: #c8f9ff;
+	border-radius: 50%;
+	width: 200px;
+	height: 200px;
+	position: relative;
 }
 
 .specimen {
