@@ -6,5 +6,12 @@ var items = {
 			$(".items").toggle();
 			main.itemID = "";
 		});
+
+		this.updateDisplay();
 	},
+
+	updateDisplay: function () {
+		var htmlInv = "";
+		$("#inventory").html(htmlInv);
+	}
 };

@@ -112,6 +112,14 @@ button:disabled {
 	-moz-user-select: none;
 	-webkit-user-select: none;
 	-ms-user-select: none;
+	position: relative;
+}
+
+#money {
+	color: #CCCCCC;
+	position: absolute;
+	right: 0px;
+	top: 5px;
 }
 
 /* .topBar button {
@@ -241,6 +249,9 @@ button:disabled {
 	width: 200px;
 	height: 200px;
 	position: relative;
+	display: inline-block;
+	margin: 3px;
+	text-align: center;
 }
 
 .specimen {
@@ -272,6 +283,135 @@ pre {
 	-webkit-user-select: none;
 	-ms-user-select: none;
 	font: 4px/3px monospace;
+}
+
+#stock {
+	background-color: #111111;
+	width: 600px;
+	height: 500px;
+	overflow: auto;
+	padding: 5px;
+}
+
+.item {
+	padding-top: 10px;
+	height: 30px;
+	color: #EEEEEE;
+	border: 1px solid #CCCCCC;
+}
+
+.item:hover {
+	background-color: #333333;
+	;
+}
+
+.item.disabled {
+	background-color: #333333;
+}
+
+.item span {
+	display: inline-block;
+}
+
+.item .name {
+	width: 60%;
+}
+
+.item .price {
+	width: 30%;
+}
+
+.item .qty {
+	width: 10%;
+	text-align: center;
+}
+
+#questMap table {
+	width: 600px;
+	height: 600px;
+	background-color: #667274;
+	border-collapse: collapse;
+}
+
+#mazeGrid td {
+	width: 10%;
+}
+
+.bLeft.bRight.bTop.bBottom {
+	background-color: #111111;
+}
+
+td.hidden {
+	background-color: #111111;
+}
+
+.visited {
+	background-color: #c8f9ff;
+}
+
+.bLeft {
+	border-left: 1px solid #111111;
+}
+
+.bRight {
+	border-right: 1px solid #111111;
+}
+
+.bTop {
+	border-top: 1px solid #111111;
+}
+
+.bBottom {
+	border-bottom: 1px solid #111111;
+}
+
+td.bPlayer {
+	background-color: #f4eeba;
+}
+
+.bExit {
+	background-color: #b0e4b3;
+}
+
+#questButtons {
+	position: relative;
+	height: 66px;
+	width: 66px;
+	margin: auto;
+}
+
+.questDir {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	border: 1px solid #111;
+	background-color: #CCCCCC;
+	text-align: center;
+}
+
+#goLeft {
+	left: 0px;
+	top: 22px;
+}
+
+#goUp {
+	left: 22px;
+	top: 0px;
+}
+
+#goDown {
+	left: 22px;
+	bottom: 0px;
+}
+
+#goExit {
+	left: 22px;
+	top: 22px;
+}
+
+#goRight {
+	right: 0px;
+	top: 22px;
 }
 
 #alerts {

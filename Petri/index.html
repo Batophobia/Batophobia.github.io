@@ -12,6 +12,7 @@
   <script src="js/player.js"></script>
   <script src="js/enemy.js"></script>
   <script src="js/lab.js"></script>
+  <script src="js/quest.js"></script>
   <script src="js/items.js"></script>
   <script src="js/store.js"></script>
   <script src="js/main.js"></script>
@@ -31,9 +32,12 @@
     <div id="buttons" class="topBar">
       <button id="btnDish">Dish</button>
       <button id="btnLab">Lab</button>
+      <button id="btnQuest">Quest</button>
       <button id="btnItems">Items</button>
       <button id="btnStore">Store</button>
       <!-- <button id="btnHelp">Help</button> -->
+
+      <div id="money">$99999999</div>
     </div>
     <div class="mainBar">
       <div class="dish mainBarItem">
@@ -42,6 +46,8 @@
         <pre class="specimen" id="enemySpecimenR"></pre>
         <pre class="specimen" id="playerSpecimen"></pre>
       </div>
+
+      <!-- LAB -->
       <div class="lab mainBarItem">
         <div id="labCritters">
           <div id="slideBG">
@@ -52,11 +58,29 @@
         </div>
         <div id="labDishes"></div>
       </div>
-      <div class="items mainBarItem">
-        TODO: ITEMS
+
+      <!-- QUEST -->
+      <div class="quest mainBarItem">
+        <div id="questMap">
+          <table id="mazeGrid"></table>
+        </div>
+        <div id="questButtons">
+          <div class="questDir" dir="L" id="goLeft">&larr;</div>
+          <div class="questDir" dir="U" id="goUp">&uarr;</div>
+          <div class="questDir" dir="E" id="goExit">&#x2714;</div>
+          <div class="questDir" dir="D" id="goDown">&darr;</div>
+          <div class="questDir" dir="R" id="goRight">&rarr;</div> <!-- RAWR -->
+        </div>
       </div>
+
+      <!-- ITEMS -->
+      <div class="items mainBarItem">
+        <div id="inventory"></div>
+      </div>
+
+      <!-- STORE -->
       <div class="store mainBarItem">
-        TODO: STORE
+        <div id="stock"></div>
       </div>
     </div>
 

@@ -1,5 +1,9 @@
 var player = {
   spcmn: [],
+  money: 0,
+  payday: 1,
+  moneyTimer: 0,
+  moneyDelay: 10,
 
   init: function () {
     $("#btnDish").show();
@@ -34,6 +38,15 @@ var player = {
   },
 
   tick: function () {
-    // TODO
+    this.moneyTimer--;
+    if (this.moneyTimer < 0) {
+      this.moneyTimer = this.moneyDelay;
+      this.money += this.payday;
+      this.updateDisplay();
+    }
   },
+
+  updateDisplay: function () {
+    $("#money").text("$" + this.money);
+  }
 };

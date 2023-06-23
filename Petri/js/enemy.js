@@ -22,7 +22,7 @@ var enemy = {
 
 	spawn: function () {
 		if (this.spcmn.length >= this.maxEnemy) return;
-		this.spcmn.push(jQuery.extend(true, {}, player.spcmn));
+		this.spcmn.push(jQuery.extend(true, {}, player.spcmn[batman(0, player.spcmn.length - 1)]));
 		var idx = this.spcmn.length - 1;
 		this.spcmn[idx].dishLoc = idx;
 

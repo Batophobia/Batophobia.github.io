@@ -5,6 +5,7 @@ var main = {
 		player.init();
 		enemy.init();
 		lab.init();
+		quest.init();
 		items.init();
 		store.init();
 

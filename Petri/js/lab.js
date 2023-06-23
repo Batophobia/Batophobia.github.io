@@ -9,7 +9,7 @@ var lab = {
 			main.labID = "";
 		});
 		$(".slideArrow").on('click', function () {
-			console.log("TODO")
+			console.log("LAB SLIDE ARROW TODO")
 			// Get side
 			// Change specimen visual
 		});
