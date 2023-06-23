@@ -30,7 +30,6 @@
       Creature battles random others, mutating it's stats based on the opponent
     -->
     <div id="buttons" class="topBar">
-      <button id="btnDish">Dish</button>
       <button id="btnLab">Lab</button>
       <button id="btnQuest">Quest</button>
       <button id="btnItems">Items</button>
@@ -40,19 +39,12 @@
       <div id="money">$99999999</div>
     </div>
     <div class="mainBar">
-      <div class="dish mainBarItem">
-        <pre class="specimen" id="enemySpecimenT"></pre>
-        <pre class="specimen" id="enemySpecimenL"></pre>
-        <pre class="specimen" id="enemySpecimenR"></pre>
-        <pre class="specimen" id="playerSpecimen"></pre>
-      </div>
-
       <!-- LAB -->
       <div class="lab mainBarItem">
         <div id="labCritters">
           <div id="slideBG">
-            <div id="leftSlide" class="slideArrow">&lt;</div>
-            <div id="rightSlide" class="slideArrow">&gt;</div>
+            <div id="leftSlide" class="slideArrow" dir="-1">&lt;</div>
+            <div id="rightSlide" class="slideArrow" dir="1">&gt;</div>
           </div>
           <div id="microscope"></div>
         </div>
@@ -70,6 +62,14 @@
           <div class="questDir" dir="E" id="goExit">&#x2714;</div>
           <div class="questDir" dir="D" id="goDown">&darr;</div>
           <div class="questDir" dir="R" id="goRight">&rarr;</div> <!-- RAWR -->
+        </div>
+        <div id="questEncounter">
+          <div class="dish">
+            <pre class="specimen" id="enemySpecimenT"></pre>
+            <pre class="specimen" id="enemySpecimenL"></pre>
+            <pre class="specimen" id="enemySpecimenR"></pre>
+            <pre class="specimen" id="playerSpecimen"></pre>
+          </div>
         </div>
       </div>
 

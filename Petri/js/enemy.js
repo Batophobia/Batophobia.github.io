@@ -11,13 +11,13 @@ var enemy = {
 	},
 
 	tick: function () {
-		this.spawnTimer--;
-		if (this.spawnTimer < 0) {
-			this.spawnTimer = this.spawnDelaySeconds * 10;
-			if (this.spcmn.length >= this.maxEnemy) return;
-			main.alrt("A new enemy has spawned");
-			this.spawn();
-		}
+		//this.spawnTimer--;
+		//if (this.spawnTimer < 0) {
+		//	this.spawnTimer = this.spawnDelaySeconds * 10;
+		//	if (this.spcmn.length >= this.maxEnemy) return;
+		//	main.alrt("A new enemy has spawned");
+		//	this.spawn();
+		//}
 	},
 
 	spawn: function () {

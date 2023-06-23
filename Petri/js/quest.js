@@ -1,10 +1,17 @@
 var quest = {
 	maze: [],
 	plyrPos: { x: 0, y: 0 },
+	enemies: [],
+	maxSize: 10,
+	numEnemy: 4,
+	minPercent: 5,
+	maxPercent: 15,
 
 	init: function () {
 		$("#btnQuest").show();
 		$("#btnQuest").on('click', function () {
+			if (quest.maze.length < 1)
+				quest.initMaze();
 			$(".mainBarItem").hide();
 			$(".quest").toggle();
 		});
@@ -12,8 +19,6 @@ var quest = {
 		$(".questDir").on('click', function () {
 			quest.move($(this).attr('dir'))
 		});
-
-		this.initMaze(10, 10);
 	},
 
 	tick: function () {
@@ -21,10 +26,22 @@ var quest = {
 	},
 
 	initMaze: function (width, height) {
+		height = width = this.maxSize - player.getStat("wis");
+
+		/* Brains v Brawn */
+		// - intelligence: Fewer magic enemies
+		// - strength: Fewer physical enemies
+		/* Consideration vs Reflex*/
+		// * wisdom: Smaller dungeon size
+		// - dexterity: Faster movement
+		/* Structure vs Charm */
+		// - constitution: HP / Resistances
+		// - charisma: Chance to end encounter without combat
+
 		$("#mazeGrid").html("");
 
-		if (width < 2) width = 2;
-		if (height < 2) height = 2;
+		if (width < 3) width = 3;
+		if (height < 3) height = 3;
 
 		for (var x = 0; x < width; x++) {
 			this.maze[x] = [];
@@ -45,6 +62,7 @@ var quest = {
 
 		this.genMaze(0, height - 1);
 		this.makeExit();
+		this.addEnemies();
 		this.drawWalls();
 	},
 
@@ -161,6 +179,65 @@ var quest = {
 		this.updatePlayerDisplay();
 	},
 
+	addEnemies: function () {
+		this.enemies = [];
+		var enemyX = [];
+		for (var i = 0; i < this.numEnemy; i++) {
+			var tmp = batman(0, this.maze.length - i - 1);
+			while (enemyX.indexOf(tmp) > -1) {
+				tmp = (tmp + 1) % this.maze.length;
+			}
+			enemyX.push(tmp);
+		}
+		for (var i = 0; i < enemyX.length; i++) {
+			var newSpcmn = jQuery.extend(true, {}, player.getActiveSpcmn());
+			for (var j = newSpcmn.stats.level; j > 0; j--)
+				newSpcmn.mutate();
+
+			this.enemies.push({
+				x: enemyX[i],
+				y: batman(0, this.maze.length - 1),
+				spcmn: newSpcmn
+			});
+		}
+		this.randomizeEnemyStats();
+		this.updateEnemyDisplay();
+	},
+
+	randomizeEnemyStats: function () {
+		for (var i = 0; i < this.enemies.length; i++) {
+			var curEnemy = this.enemies[i].spcmn;
+			var percent = 1;
+			if (batman(0, 10) > 5)
+				percent += batman(this.minPercent, this.maxPercent) / 100;
+			else
+				percent -= batman(this.minPercent, this.maxPercent) / 100;
+			curEnemy.stats.level = Math.ceil(curEnemy.stats.level * percent);
+
+			if (batman(0, 10) < 5)
+				curEnemy.stats.intelligence = Math.ceil(curEnemy.stats.intelligence * percent);
+			else
+				curEnemy.stats.strength = Math.ceil(curEnemy.stats.strength * percent);
+
+			if (batman(0, 10) < 5)
+				curEnemy.stats.wisdom = Math.ceil(curEnemy.stats.wisdom * percent);
+			else
+				curEnemy.stats.dexterity = Math.ceil(curEnemy.stats.dexterity * percent);
+
+			if (batman(0, 10) < 5)
+				curEnemy.stats.constitution = Math.ceil(curEnemy.stats.constitution * percent);
+			else
+				curEnemy.stats.charisma = Math.ceil(curEnemy.stats.charisma * percent);
+		}
+	},
+
+	updateEnemyDisplay: function () {
+		for (var i = 0; i < this.enemies.length; i++) {
+			$("#mazeCell" + this.enemies[i].x + "-" + this.enemies[i].y).addClass("bEnemy");
+			$("#mazeCell" + this.enemies[i].x + "-" + this.enemies[i].y).text("@");
+		}
+	},
+
 	updatePlayerDisplay: function () {
 		$(".bPlayer").addClass("visited");
 		$(".bPlayer").removeClass("bPlayer");
@@ -221,6 +298,28 @@ var quest = {
 				this.initMaze(10, 10);
 				break;
 		}
+		this.updatePlayerDisplay();
+
+		for (var i = 0; i < this.enemies.length; i++) {
+			if (this.plyrPos.x == this.enemies[i].x
+				&& this.plyrPos.y == this.enemies[i].y)
+				this.startEncounter(i);
+		}
+	},
+
+	startEncounter: function (idx) {
+		$("#questEncounter").show();
+
+		$('#enemySpecimenT').text(this.enemies[idx].spcmn.getVisual());
+		//$('#enemySpecimenL').text(this.getVisual());
+		//$('#enemySpecimenR').text(this.getVisual());
+		$('#playerSpecimen').text(player.getVisual());
+
+		$(".questDir").hide();
+	},
+
+	endEncounter: function () {
+		$("#questEncounter").hide();
 		this.updatePlayerDisplay();
 	},
 

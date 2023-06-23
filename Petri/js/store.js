@@ -1,16 +1,17 @@
 var store = {
 	stock: {
-		dish: { name: "Petri Dish", qty: 1, cost: 10, unlocked: true, onBuy: function () { store.buyDish() } },
-		xray: { name: "X-Ray", qty: 1, cost: 100, unlocked: false, onBuy: function () { store.buyDish() } },
-		gamma: { name: "Gamma Ray", qty: 0, cost: 100, unlocked: true, onBuy: function () { store.buyDish() } },
+		dish: { name: "Petri Dish", qty: 1, cost: 100, unlocked: true, onBuy: function () { store.buyDish() } },
+		xray: { name: "X-Ray", qty: 1, cost: 100, unlocked: false, onBuy: function () { store.buyXRay() } },
+		gamma: { name: "Gamma Ray", qty: 0, cost: 100, unlocked: true, onBuy: function () { store.buyGRay() } },
+		clone: { name: "Clone", qty: 0, cost: 150, unlocked: false, onBuy: function () { store.buyClone() } },
 	},
 
 	init: function () {
 		$("#btnStore").show();
 		$("#btnStore").on('click', function () {
+			store.updateDisplay();
 			$(".mainBarItem").hide();
 			$(".store").toggle();
-			main.storeID = "";
 		});
 
 		$("#stock").on('click', '.item', function () {
@@ -24,10 +25,33 @@ var store = {
 		// TODO
 	},
 
+	addStock: function (itm) {
+		store.stock[itm].unlocked = true;
+		store.stock[itm].qty++;
+	},
+
 	buyDish: function () {
 		lab.addDish();
+		store.addStock("clone");
 		store.stock.dish.cost *= 2;
 		main.alrt("Purchased " + store.stock.dish.name);
+	},
+
+	buyXRay: function () {
+		store.stock.xray.cost *= 2;
+		main.alrt("Purchased " + store.stock.xray.name);
+	},
+
+	buyGRay: function () {
+		store.stock.xray.cost *= 2;
+		main.alrt("Purchased " + store.stock.xray.name);
+	},
+
+	buyClone: function () {
+		player.addSpecimen();
+		store.stock.clone.cost *= 2;
+		main.alrt("Purchased " + store.stock.clone.name);
+		lab.updateDisplay();
 	},
 
 	buy: function (itm) {

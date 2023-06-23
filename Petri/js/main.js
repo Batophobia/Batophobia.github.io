@@ -9,10 +9,10 @@ var main = {
 		items.init();
 		store.init();
 
+		$("#btnLab").click();
+
 		main.timerID = window.setInterval(function () { main.tick() }, 100);
 	},
-	itemID: 0,
-	storeID: 0,
 	timerID: 0,
 	counter: 0,
 	keyDown: 0,

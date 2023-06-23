@@ -29,6 +29,30 @@ var specimen = {
     // TODO
   },
 
+  getStat: function (statName) {
+    switch (statName) {
+      case "int":
+      case "intelligence":
+        return this.stats.intelligence;
+      case "str":
+      case "strength":
+        return this.stats.strength;
+      case "wis":
+      case "wisdom":
+        return this.stats.wisdom;
+      case "dex":
+      case "dexterity":
+        return this.stats.dexterity;
+      case "con":
+      case "constitution":
+        return this.stats.constitution;
+      case "cha":
+      case "charisma":
+        return this.stats.charisma;
+    }
+    return 0;
+  },
+
   mutate: function () {
     var positions = Object.values(this.getPositions());
     if (!positions.length) return;

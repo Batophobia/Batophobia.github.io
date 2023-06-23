@@ -5,11 +5,11 @@ var lab = {
 		$("#btnLab").show();
 		$("#btnLab").on('click', function () {
 			$(".mainBarItem").hide();
+			lab.updateDisplay();
 			$(".lab").toggle();
-			main.labID = "";
 		});
 		$(".slideArrow").on('click', function () {
-			console.log("LAB SLIDE ARROW TODO")
+			player.selectSpcmn(parseInt($(this).attr('dir')))
 			// Get side
 			// Change specimen visual
 		});
@@ -30,7 +30,6 @@ var lab = {
 			type: 0,
 			spcmn: ""
 		})
-
 		this.updateDisplay();
 	},
 
@@ -40,9 +39,9 @@ var lab = {
 
 	updateDisplay: function () {
 		var tmpCritters = "";
-		for (var s in player.spcmn) {
-			tmpCritters += "<div class='critter'>" + player.spcmn[s].getVisual() + "</div>"
-		}
+		//for (var s in player.spcmn) {
+		tmpCritters += "<div class='critter'>" + player.getVisual() + "</div>"
+		//}
 		$('#microscope').html(tmpCritters);
 
 		var tmpDishes = "";

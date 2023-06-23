@@ -326,6 +326,10 @@ pre {
 	text-align: center;
 }
 
+.quest {
+	position: relative;
+}
+
 #questMap table {
 	width: 600px;
 	height: 600px;
@@ -335,6 +339,9 @@ pre {
 
 #mazeGrid td {
 	width: 10%;
+	height: 10%;
+	text-align: center;
+	color: #111111;
 }
 
 .bLeft.bRight.bTop.bBottom {
@@ -412,6 +419,15 @@ td.bPlayer {
 #goRight {
 	right: 0px;
 	top: 22px;
+}
+
+#questEncounter {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 600px;
+	height: 600px;
 }
 
 #alerts {

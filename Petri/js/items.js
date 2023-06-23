@@ -4,7 +4,6 @@ var items = {
 		$("#btnItems").on('click', function () {
 			$(".mainBarItem").hide();
 			$(".items").toggle();
-			main.itemID = "";
 		});
 
 		this.updateDisplay();
