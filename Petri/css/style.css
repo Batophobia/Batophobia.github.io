@@ -258,6 +258,40 @@ button:disabled {
 	position: absolute;
 }
 
+.specimenWrapper {}
+
+.hpOuter {
+	width: 100px;
+	height: 10px;
+	border: 1px solid #111;
+	position: absolute;
+}
+
+.hpInner {
+	background-color: #FF0000;
+	height: 10px;
+}
+
+#enemyTopBar {
+	top: 212px;
+	left: 245px;
+}
+
+#enemyLeftBar {
+	left: 20px;
+	top: 187px;
+}
+
+#enemyRightBar {
+	right: 20px;
+	top: 187px;
+}
+
+#playerBar {
+	bottom: 212px;
+	left: 245px;
+}
+
 #enemySpecimenT {
 	top: 2px;
 	left: 212px;

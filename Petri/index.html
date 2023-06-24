@@ -23,12 +23,6 @@
       <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
   <div class="everything">
-    <!--
-      ------------  IDEA  ------------
-      Start with a basic creature
-      Creature ACII art mutates slowly over time
-      Creature battles random others, mutating it's stats based on the opponent
-    -->
     <div id="buttons" class="topBar">
       <button id="btnLab">Lab</button>
       <button id="btnQuest">Quest</button>
@@ -65,10 +59,30 @@
         </div>
         <div id="questEncounter">
           <div class="dish">
-            <pre class="specimen" id="enemySpecimenT"></pre>
-            <pre class="specimen" id="enemySpecimenL"></pre>
-            <pre class="specimen" id="enemySpecimenR"></pre>
-            <pre class="specimen" id="playerSpecimen"></pre>
+            <div class="specimenWrapper" id="enemyTop">
+              <div class="hpOuter" id="enemyTopBar">
+                <div class="hpInner" id="enemyHP-T"></div>
+              </div>
+              <pre class="specimen" id="enemySpecimenT"></pre>
+            </div>
+            <div class="specimenWrapper" id="enemyLeft">
+              <div class="hpOuter" id="enemyLeftBar">
+                <div class="hpInner" id="enemyHP-L"></div>
+              </div>
+              <pre class="specimen" id="enemySpecimenL"></pre>
+            </div>
+            <div class="specimenWrapper" id="enemyRight">
+              <div class="hpOuter" id="enemyRightBar">
+                <div class="hpInner" id="enemyHP-R"></div>
+              </div>
+              <pre class="specimen" id="enemySpecimenR"></pre>
+            </div>
+            <div class="specimenWrapper" id="playerBattle">
+              <div class="hpOuter" id="playerBar">
+                <div class="hpInner" id="playerHP"></div>
+              </div>
+              <pre class="specimen" id="playerSpecimen"></pre>
+            </div>
           </div>
         </div>
       </div>

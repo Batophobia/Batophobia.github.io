@@ -37,6 +37,7 @@ var main = {
 		store.tick();
 		player.tick();
 		lab.tick();
+		quest.tick();
 		enemy.tick();
 
 		this.updateDisplay();
@@ -106,6 +107,7 @@ var main = {
 	},
 
 	alrt: function (input) {
+		console.log(`ALERT: ${input}`);
 		var alert = $("<div class='alert'>" + input + "</div>");
 		$('#alerts').append(alert);
 		setTimeout(function () {

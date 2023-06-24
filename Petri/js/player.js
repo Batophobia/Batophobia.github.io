@@ -56,6 +56,12 @@ var player = {
     lab.updateDisplay();
   },
 
+  boost: function (enemy) {
+    console.log(enemy);
+    player.activeSpcmn().mutate()
+    //return player.spcmn[player.activeSpcmn].getStat(statName);
+  },
+
   getStat: function (statName) {
     return player.spcmn[player.activeSpcmn].getStat(statName);
   },

@@ -13,6 +13,8 @@ var specimen = {
     constitution: 1,
     charisma: 1,
   },
+  curHP: 1,
+  maxHP: 1,
   dishLoc: -1,
   visual: [],
   displayValues: [".',-ov", "_=^:;O8", "/\\|()[]", "{}@%#X$"],
@@ -22,6 +24,7 @@ var specimen = {
     if (!this.visual)
       this.visual = [];
 
+    this.updateHP();
     this.updateDisplay();
   },
 
@@ -71,6 +74,34 @@ var specimen = {
     this.visual[pos[0]] = this.visual[pos[0]].replaceAt(pos[1], char);
 
     this.updateDisplay();
+  },
+
+  updateHP: function () {
+    this.maxHP = 10 * Math.sqrt(this.stats.constitution)
+    this.curHP = this.maxHP;
+  },
+
+  takeDamage: function (amt, type) {
+    switch (type.toLowerCase()) {
+      case "p":
+      case "phy":
+      case "phys":
+      case "physical":
+        amt = amt * (1 - this.stats.strength / 10)
+        break;
+      case "m":
+      case "mag":
+      case "magic":
+      case "magical":
+        amt = amt * (1 - this.stats.intelligence / 10)
+        break;
+    }
+
+    this.curHP -= amt;
+  },
+
+  getPercentHP: function () {
+    return Math.ceil(100 * this.curHP / this.maxHP);
   },
 
   getPositions: function () {
