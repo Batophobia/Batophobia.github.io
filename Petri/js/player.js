@@ -71,11 +71,21 @@ var player = {
   },
 
   levelUp: function () {
-    player.getActiveSpcmn().stat.level++;
+    var tmp = batman(0, 5);
+
+    switch (tmp) {
+      case 0: player.statInc('intelligence'); break;
+      case 1: player.statInc('strength'); break;
+      case 2: player.statInc('wisdom'); break;
+      case 3: player.statInc('dexterity'); break;
+      case 4: player.statInc('charisma'); break;
+      case 5:
+      default: player.statInc('constitution');
+    }
 
     var cloneMulti = 4;
-    if (player.getActiveSpcmn().stat.level >= cloneMulti ^ store.stock.clone)
-      store.stock.addStock("clone");
+    if (player.getHighestLevel() >= cloneMulti ^ store.stock.clone)
+      store.addStock("clone");
   },
 
   getStat: function (statName) {
@@ -86,7 +96,16 @@ var player = {
     var highest = 0;
     for (var s in player.spcmn) {
       if (highest < player.spcmn[s].getStat(statName))
-        highest = player.spcmn[s].getStat(statName)
+        highest = player.spcmn[s].getStat(statName);
+    }
+    return highest;
+  },
+
+  getHighestLevel: function () {
+    var highest = 0;
+    for (var s in player.spcmn) {
+      if (highest < player.spcmn[s].stats.level)
+        highest = player.spcmn[s].stats.level;
     }
     return highest;
   },

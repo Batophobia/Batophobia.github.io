@@ -61,7 +61,7 @@ var store = {
 			sold: 0,
 			unlocked: false,
 			onBuy: function () { store.buyClone() },
-			setPrice: function () { this.cost = (this.sold + 5) ^ 4 }
+			setPrice: function () { this.cost = 150 * (this.sold + 5) ^ 4 }
 		},
 	},
 
@@ -152,6 +152,7 @@ var store = {
 	updateCosts: function () {
 		for (var itm in this.stock) {
 			this.stock[itm].setPrice();
+			this.stock[itm].cost = Math.round(this.stock[itm].cost);
 			var discount = 2 * Math.sqrt(player.getHighestStat("cha") - 1);
 			if (discount > 100) discount = 100;
 			this.stock[itm].cost -= this.stock[itm].cost * (discount / 100)

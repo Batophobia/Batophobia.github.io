@@ -93,6 +93,7 @@ var quest = {
 	},
 
 	initMaze: function (width, height) {
+		this.maze = [];
 		this.encounterIdx = -1;
 		var tmpSize = this.sizeFormula();
 		height = Math.floor(tmpSize);
@@ -191,13 +192,13 @@ var quest = {
 					break;
 				case 2:
 					if (this.maze[width - 1][0] != -1) {
-						this.maze[0][height - 1] += 16;
+						this.maze[width - 1][0] += 16;
 						hasExit = true;
 					}
 					break;
 				case 3:
 					if (this.maze[0][height - 1] != -1) {
-						this.maze[1][1] += 16;
+						this.maze[0][height - 1] += 16;
 						hasExit = true;
 					}
 					break;
@@ -278,7 +279,7 @@ var quest = {
 			// Add new enemy to list
 			this.enemies.push({
 				x: enemyX[i],
-				y: batman(0, this.maze.length - 1),
+				y: yVal,
 				spcmn: newSpcmn
 			});
 		}
