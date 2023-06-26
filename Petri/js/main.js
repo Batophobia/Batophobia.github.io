@@ -51,39 +51,51 @@ var main = {
 	},
 
 	save: function () {
-		var data = { 'items': {}, 'store': {} };
-		//for(var group in items.types){
-		//	if(group=="stuff"){
-		//		data['items'][group]={};
-		//		for(var thing in items.types[group]){
-		//			data['items'][group][thing]=(items.types[group][thing]);
-		//		}
-		//	}else if(group=="pellets"){
-		//		data['items'][group]={};
-		//		for(var thing in items.types.pellets){
-		//			data['items'][group][thing]={
-		//				num: items.types.pellets[thing].num
-		//			}
-		//		}
-		//	}else{
-		//		data['items'][group] = {
-		//			total : items.types[group].total
-		//		}
-		//	}
-		//}
+		var data = {
+			'items': {},
+			'store': {},
+			'player': { a: player.activeSpcmn, m: player.money, s: [] }
+		};
+
+		for (var p in items.pellets) {
+			data['items'][p] = items.pellets[p].num;
+		}
+		for (var i in store.stock) {
+			data['store'][i] = {
+				q: store.stock[i].qty,
+				s: store.stock[i].sold,
+				u: store.stock[i].unlocked,
+			};
+		}
+		for (var i in player.spcmn) {
+			data['player'].s.push({
+				v: player.spcmn[i].visual,
+				s: player.spcmn[i].stats,
+			});
+		}
+
 		localStorage["PetriSave"] = JSON.stringify(data);
 	},
 
 	load: function () {
 		if ('PetriSave' in localStorage) {
 			var data = JSON.parse(localStorage['PetriSave']);
-		} else {
-			//items.types.stuff[0]={
-			//	display: "Red Onion",
-			//	numNeeded: 0,
-			//	type: "onion"
-			//};
-			return;
+
+			for (var thing in data['items']) {
+				items.pellets[thing].num = data['items'][thing];
+			}
+
+			for (var thing in data['store']) {
+				store.stock[thing].qty = data['store'][thing].q;
+				store.stock[thing].sold = data['store'][thing].s;
+				store.stock[thing].unlocked = data['store'][thing].u;
+			}
+
+			for (var thing in data['player'].s) {
+				player.load(data['player'].s[thing]);
+			}
+			player.money = data['player'].m;
+			player.activeSpcmn = data['player'].a;
 		}
 		//for(var group in items.types){
 		//	if(group in data['items']){

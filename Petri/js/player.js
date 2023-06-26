@@ -7,7 +7,16 @@ var player = {
   moneyDelay: 10,
 
   init: function () {
+    if (this.spcmn.length < 1)
+      this.addSpecimen();
+  },
+
+  load: function (data) {
+    var idx = this.spcmn.length;
     this.addSpecimen();
+    this.spcmn[idx].visual = data.v;
+    this.spcmn[idx].stats = data.s;
+    this.spcmn[idx].updateDisplay();
   },
 
   tick: function () {
@@ -111,6 +120,7 @@ var player = {
   },
 
   getVisual: function () {
+    if (!player.activeSpcmn) player.activeSpcmn = 0;
     return player.spcmn[player.activeSpcmn].getVisual();
   },
 

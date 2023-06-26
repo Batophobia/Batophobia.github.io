@@ -66,6 +66,9 @@ var store = {
 	},
 
 	init: function () {
+		if (Object.entries(this.stock).filter(i => i[1].unlocked).length > 0)
+			$("#btnStore").show();
+
 		$("#btnStore").on('click', function () {
 			store.updateDisplay();
 			$(".mainBarItem").hide();
