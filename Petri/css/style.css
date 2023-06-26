@@ -509,7 +509,7 @@ td.bPlayer {
 #alerts {
 	background: #FFFFFF;
 	position: absolute;
-	top: 15px;
+	bottom: 15px;
 	left: 15px;
 	padding: 5px;
 	width: 300px;
