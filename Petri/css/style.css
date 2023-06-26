@@ -122,9 +122,9 @@ button:disabled {
 	top: 5px;
 }
 
-/* .topBar button {
+.topBar button {
 	display: none;
-} */
+}
 
 .mainBar {
 	width: 600px;
@@ -193,6 +193,7 @@ button:disabled {
 	position: absolute;
 	font-size: 100px;
 	top: 30px;
+	cursor: pointer;
 }
 
 .slideArrow:hover {
@@ -237,21 +238,62 @@ button:disabled {
 	font: 12px/8px monospace;
 }
 
-#labDishes {
+#labPellets {
 	width: 100%;
 	height: 210px;
+	text-align: center;
 }
 
-#labDishes .labDish {
-	border: 4px solid #bbf7ff;
-	background-color: #c8f9ff;
-	border-radius: 50%;
-	width: 200px;
-	height: 200px;
+.labFood {
+	border: 1px solid #111111;
+	border-radius: 25px;
+	width: 80px;
+	height: 25px;
 	position: relative;
 	display: inline-block;
 	margin: 3px;
+	padding-top: 5px;
+	cursor: pointer;
+}
+
+#labFeedBtn {
+	display: none;
+	border: 1px solid #111111;
+	background-color: #CCCCCC;
 	text-align: center;
+	width: 100px;
+	border-radius: 10px;
+	margin: auto;
+	cursor: pointer;
+}
+
+#labPellets .labFood.selected {
+	border: 1px solid #CCCCCC;
+	font-weight: bold;
+}
+
+[pType="alpha"] {
+	background-color: #a29bf9;
+}
+
+[pType="beta"] {
+	background-color: #FF6F6F;
+}
+
+[pType="gamma"] {
+	background-color: #48e855;
+}
+
+[pType="delta"] {
+	background-color: #ffeb3f;
+}
+
+[pType="epsilon"] {
+	background-color: #ffa938;
+}
+
+[pType="omega"] {
+	background-color: #ad65b7;
 }
 
 .specimen {

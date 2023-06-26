@@ -7,7 +7,7 @@ var enemy = {
 	spawnTimer: 0,
 
 	init: function () {
-		this.spawnTimer = this.spawnDelaySeconds * 10;
+		//this.spawnTimer = this.spawnDelaySeconds * 10;
 	},
 
 	tick: function () {

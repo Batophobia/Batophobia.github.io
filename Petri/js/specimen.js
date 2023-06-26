@@ -24,6 +24,24 @@ var specimen = {
     if (!this.visual)
       this.visual = [];
 
+    // Create visual
+    var temp = "";
+    for (var i = 0; i < speciminVisualSize; i++) {
+      temp += " ";
+    }
+    for (var i = 0; i < speciminVisualSize; i++) {
+      this.visual[i] = temp;
+    }
+    mid = Math.floor(speciminVisualSize / 2);
+    /*
+        /#\
+        #@#
+        \#/
+    */
+    this.visual[mid - 1] = this.visual[mid - 1].replaceAt(mid - 1, "/#\\");
+    this.visual[mid] = this.visual[mid - 1].replaceAt(mid - 1, "#@#");
+    this.visual[mid + 1] = this.visual[mid - 1].replaceAt(mid - 1, "\\#/");
+
     this.updateHP();
     this.updateDisplay();
   },
@@ -87,17 +105,21 @@ var specimen = {
       case "phy":
       case "phys":
       case "physical":
-        amt = amt * (1 - this.stats.strength / 10)
+        amt = this.damageFormula(amt, this.stats.strength);
         break;
       case "m":
       case "mag":
       case "magic":
       case "magical":
-        amt = amt * (1 - this.stats.intelligence / 10)
+        amt = this.damageFormula(amt, this.stats.intelligence);
         break;
     }
 
     this.curHP -= amt;
+  },
+
+  damageFormula: function (att, def) {
+    return 2 * (att + def) / def - 1;
   },
 
   getPercentHP: function () {

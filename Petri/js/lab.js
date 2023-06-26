@@ -1,5 +1,5 @@
 var lab = {
-	dishes: [],
+	selectedFood: "",
 
 	init: function () {
 		$("#btnLab").show();
@@ -8,14 +8,18 @@ var lab = {
 			lab.updateDisplay();
 			$(".lab").toggle();
 		});
+
 		$(".slideArrow").on('click', function () {
 			player.selectSpcmn(parseInt($(this).attr('dir')))
-			// Get side
-			// Change specimen visual
 		});
 
-		if (this.dishes.length <= 0)
-			this.addDish();
+		$("#labPellets").on('click', '.labFood', function () {
+			lab.selectFood(this);
+		});
+
+		$("#labFeedBtn").on('click', function () {
+			lab.feed();
+		});
 
 		this.updateDisplay();
 	},
@@ -24,17 +28,28 @@ var lab = {
 		// TODO
 	},
 
-	addDish: function () {
-		this.dishes.push({
-			food: 0,
-			type: 0,
-			spcmn: ""
-		})
-		this.updateDisplay();
+	selectFood: function (elem) {
+		$(".labFood").removeClass("selected");
+		if (items.pellets[$(elem).attr("pType")].num < 1) {
+			lab.selectedFood = "";
+			return;
+		}
+
+		$(elem).addClass("selected");
+		lab.selectedFood = $(elem).attr("pType");
+		$("#labFeedBtn").show();
 	},
 
-	getDishVisual: function (idx) {
-		return "DISH-" + idx
+	feed: function () {
+		if (!items.pellets[lab.selectedFood] || items.pellets[lab.selectedFood].num < 1) return;
+		items.usePellet(lab.selectedFood);
+
+		if (items.pellets[lab.selectedFood].num < 1) {
+			lab.selectedFood = "";
+			$(".labFood").removeClass("selected");
+			$("#labFeedBtn").hide();
+		}
+		this.updateDisplay();
 	},
 
 	updateDisplay: function () {
@@ -44,10 +59,11 @@ var lab = {
 		//}
 		$('#microscope').html(tmpCritters);
 
-		var tmpDishes = "";
-		for (var d in this.dishes) {
-			tmpDishes += "<div class='labDish'>" + this.getDishVisual(d) + "</div>"
+		var tmpFood = "";
+		for (var p in items.pellets) {
+			if (store.stock[p].unlocked)
+				tmpFood += "<div class='labFood' pType='" + p + "'>" + items.getPelletDisplay(p) + "</div>"
 		}
-		$('#labDishes').html(tmpDishes);
+		$('#labPellets').html(tmpFood);
 	},
 };

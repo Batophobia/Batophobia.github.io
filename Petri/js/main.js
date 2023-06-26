@@ -37,6 +37,7 @@ var main = {
 		store.tick();
 		player.tick();
 		lab.tick();
+		items.tick();
 		quest.tick();
 		enemy.tick();
 

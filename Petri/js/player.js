@@ -25,24 +25,6 @@ var player = {
     // Clone specimen template
     this.spcmn[idx] = jQuery.extend(true, {}, specimen);
     this.spcmn[idx].dishLoc = -1;
-
-    // Create visual
-    var temp = "";
-    for (var i = 0; i < speciminVisualSize; i++) {
-      temp += " ";
-    }
-    for (var i = 0; i < speciminVisualSize; i++) {
-      this.spcmn[idx].visual[i] = temp;
-    }
-    mid = Math.floor(speciminVisualSize / 2);
-    /*
-        /#\
-        #@#
-        \#/
-    */
-    this.spcmn[idx].visual[mid - 1] = this.spcmn[idx].visual[mid - 1].replaceAt(mid - 1, "/#\\");
-    this.spcmn[idx].visual[mid] = this.spcmn[idx].visual[mid - 1].replaceAt(mid - 1, "#@#");
-    this.spcmn[idx].visual[mid + 1] = this.spcmn[idx].visual[mid - 1].replaceAt(mid - 1, "\\#/");
     //}
     this.spcmn[idx].updateDisplay();
   },
@@ -57,13 +39,56 @@ var player = {
   },
 
   boost: function (enemy) {
-    console.log(enemy);
-    player.activeSpcmn().mutate()
-    //return player.spcmn[player.activeSpcmn].getStat(statName);
+    var plyr = player.getActiveSpcmn();
+    plyr.mutate();
+
+    // INCREASE OPPOSITE STATS
+    /* Brains v Brawn */
+    if (enemy.stats.strength > enemy.stats.intelligence) { this.statIncFormula(enemy.stats, plyr.stats, "intelligence") }
+    else { this.statIncFormula(enemy.stats, plyr.stats, "strength") }
+
+    /* Consideration vs Reflex*/
+    if (enemy.stats.wisdom > enemy.stats.dexterity) { this.statIncFormula(enemy.stats, plyr.stats, "dexterity") }
+    else { this.statIncFormula(enemy.stats, plyr.stats, "wisdom") }
+
+    /* Structure vs Charm */
+    if (enemy.stats.constitution > enemy.stats.charisma) { this.statIncFormula(enemy.stats, plyr.stats, "charisma") }
+    else { this.statIncFormula(enemy.stats, plyr.stats, "constitution") }
+  },
+
+  statIncFormula: function (enemyStats, playerStats, stat) {
+    //playerStats[stat]++;
+    // var diff = enemyStats[stat] - playerStats[stat];
+    // if (diff < 0) diff = 0;
+    // return diff / ((playerStats.level + enemyStats.level) / 2);
+  },
+
+  statInc: function (stat) {
+    var plyr = player.getActiveSpcmn();
+    plyr.mutate();
+    plyr.stats[stat]++;
+    plyr.stats.level++;
+  },
+
+  levelUp: function () {
+    player.getActiveSpcmn().stat.level++;
+
+    var cloneMulti = 4;
+    if (player.getActiveSpcmn().stat.level >= cloneMulti ^ store.stock.clone)
+      store.stock.addStock("clone");
   },
 
   getStat: function (statName) {
     return player.spcmn[player.activeSpcmn].getStat(statName);
+  },
+
+  getHighestStat: function (statName) {
+    var highest = 0;
+    for (var s in player.spcmn) {
+      if (highest < player.spcmn[s].getStat(statName))
+        highest = player.spcmn[s].getStat(statName)
+    }
+    return highest;
   },
 
   getVisual: function () {
