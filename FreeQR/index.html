@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Free QR</title>
+	<meta name="description" content="Free QR code generator">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="../ga.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+	<script src="js/main.js"></script>
+</head>
+
+<body>
+	<!--[if lt IE 7]>
+      <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+	<div id="everything">
+		<h1 class="ui">Free QR Code Generator</h1>
+		<input class="ui" id="qrText" placeholder="INSERT LINK HERE" />
+		<br />
+		<button class="ui" id="genCode" title="Generate new QR">CREATE</button>
+		<div id="qrCode"></div>
+		<button class="ui" id="btnSave" title="Save QR image">SAVE</button>
+	</div>
+
+	<button id="btnHide" title="Toggle UI">&lt;&lt;</button>
+
+	<script>
+		main.init();
+	</script>
+</body>
+
+</html>

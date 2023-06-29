@@ -1,0 +1,70 @@
+:root {
+	--theme-color: #CCCCCC;
+	--trace-size: 6%;
+	--trace-distance: 5%;
+}
+
+html,
+body {
+	height: 100%;
+	margin: 0;
+	overflow: hidden;
+}
+
+body {
+	background-color: var(--theme-color);
+}
+
+h1 {
+	font-family: Verdana, sans-serif;
+}
+
+button {
+	border: 1px solid #111111;
+	border-radius: 5px;
+}
+
+#btnHide {
+	padding: 20px;
+}
+
+#everything button {
+	padding: 5px 20px;
+}
+
+#qrText {
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+#btnSave {
+	display: none;
+}
+
+#everything {
+	position: absolute;
+	top: 50px;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: inherit;
+	transition: all 0.15s ease-out;
+	text-align: center;
+	width: 533px;
+}
+
+#qrCode {
+	margin: 10px;
+}
+
+#qrCode img {
+	background-color: inherit;
+	mix-blend-mode: darken;
+	image-rendering: pixelated;
+	transition: inherit;
+}
+
+#btnHide {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+}
