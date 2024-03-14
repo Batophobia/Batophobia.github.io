@@ -9,7 +9,7 @@ var main = {
   api: "SBzrCcZ0xcwv-3me2rMoUaZzjPkmTW2C6Ag7NRV",
 
   load: function () {
-    console.log("ver .0000001");
+    console.log("ver .001");
 
     $("#btnBegin").on("click", main.decrypt);
   },
