@@ -6,9 +6,12 @@ var main = {
   sheet: "683326268",
   key: "TODO",
   load: function () {
-    $("#btnBegin").on("click", main.decrypt);
+    $(document).on("click", "#btnBegin", main.decrypt);
   },
   decrypt: function () {
+    $("#passWrapper").hide();
+    $("#siteWrapper").show();
+
     console.log("Decrypting")
     this.key = $("#pass").val();
     this.spreadsheet = vigenere(this.spreadsheet, key);

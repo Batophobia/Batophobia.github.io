@@ -16,50 +16,8 @@ body {
   position: relative;
 }
 
-#locName {
-  margin: 15px 0 15px 0;
-  font-size: 30px;
-  border-bottom: 1px solid #FFFFFF;
-}
-
-#locText {
-  margin: 15px 0 40px 0;
-}
-
-#buttons {
-  position: absolute;
-  bottom: 60px;
-  left: 5px;
-}
-
-#dirButtons {
-  position: relative;
-}
-
-#dirButtons button {
-  position: absolute;
-  padding: 0;
-  width: 23px;
-}
-
-#westBtn {
-  left: 0;
-  top: 15px;
-}
-
-#northBtn {
-  left: 25px;
-  top: 0;
-}
-
-#southBtn {
-  left: 25px;
-  top: 30px;
-}
-
-#eastBtn {
-  left: 50px;
-  top: 15px;
+#siteWrapper {
+  display: none;
 }
 
 #txtKey {
