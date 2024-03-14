@@ -8,7 +8,10 @@ var main = {
 
   load: function () {
     console.log("ver .00000001");
-    $(document).on("click", "#btnBegin", (e) => { main.decrypt(); });
+    $(document).on("click", "#btnBegin", (e) => {
+      console.log("Button click")
+      main.decrypt();
+    });
   },
   decrypt: function () {
     $("#passWrapper").hide();
@@ -23,6 +26,7 @@ var main = {
     gapi.load('client', startGAPI);
   },
   startGAPI: function () {
+    console.log({ api: this.api, ss: this.spreadsheet, sheet: this.sheet })
     gapi.client.init({
       'apiKey': this.api,
       'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest']
