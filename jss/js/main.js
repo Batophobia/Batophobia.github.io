@@ -17,21 +17,21 @@ var main = {
 
     console.log("Decrypting")
     var key = $("#pass").val();
-    console.log({ key, api: this.api, ss: this.spreadsheet, sheet: this.sheet })
-    this.spreadsheet = vigenere(this.spreadsheet, key);
-    this.sheet = vigenere(this.sheet, key);
-    this.api = vigenere(this.api, key);
+    console.log({ key, api: main.api, ss: main.spreadsheet, sheet: main.sheet })
+    main.spreadsheet = vigenere(main.spreadsheet, key);
+    main.sheet = vigenere(main.sheet, key);
+    main.api = vigenere(main.api, key);
 
     gapi.load('client', main.startGAPI);
   },
   startGAPI: function () {
-    console.log({ api: this.api, ss: this.spreadsheet, sheet: this.sheet })
+    console.log({ api: main.api, ss: main.spreadsheet, sheet: main.sheet })
     gapi.client.init({
-      'apiKey': this.api,
+      'apiKey': main.api,
       'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest']
     }).then(function () {
       return gapi.client.sheets.spreadsheets.get({
-        spreadsheetId: this.spreadsheet,
+        spreadsheetId: main.spreadsheet,
       });
     }).then(function (response) {
       console.log(response.result);
