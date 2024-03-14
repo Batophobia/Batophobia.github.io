@@ -9,7 +9,7 @@ var main = {
   api: "SBzrCcZ0xcwv-3me2rMoUaZzjPkmTW2C6Ag7NRV",
 
   load: function () {
-    console.log("ver .00000008");
+    console.log("ver .00000009");
 
     $("#btnBegin").on("click", main.decrypt);
   },
@@ -27,7 +27,7 @@ var main = {
     gapi.load('client', main.startGAPI);
   },
   startGAPI: function () {
-    console.log({ api: main.api, ss: main.spreadsheet, sheet: main.sheet })
+    console.log({ api: main.api, ss: main.spreadsheet, id: main.clientID, cs: main.clientSecret })
     gapi.client.init({
       'apiKey': main.api,
       'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest']
