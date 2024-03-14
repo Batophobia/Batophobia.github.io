@@ -7,7 +7,7 @@ var main = {
   api: "TODO",
 
   load: function () {
-    console.log("ver .00000006");
+    console.log("ver .00000007");
 
     $("#btnBegin").on("click", main.decrypt);
   },
