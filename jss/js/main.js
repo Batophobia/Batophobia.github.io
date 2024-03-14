@@ -7,7 +7,7 @@ var main = {
   api: "TODO",
 
   load: function () {
-    console.log("ver .00000003");
+    console.log("ver .00000004");
   },
   decrypt: function () {
     $("#passWrapper").hide();
@@ -37,3 +37,8 @@ var main = {
     });
   }
 };
+
+$(document).on("click", "#btnBegin", (e) => {
+  console.log("Button click")
+  main.decrypt();
+});
