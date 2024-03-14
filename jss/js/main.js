@@ -9,7 +9,7 @@ var main = {
   api: "SBzrCcZ0xcwv-3me2rMoUaZzjPkmTW2C6Ag7NRV",
 
   load: function () {
-    console.log("ver .00000009");
+    console.log("ver .0000001");
 
     $("#btnBegin").on("click", main.decrypt);
   },
@@ -38,7 +38,7 @@ var main = {
     }).then(function (response) {
       console.log(response.result);
     }, function (reason) {
-      console.log('Error: ' + reason.result.error.message);
+      console.log({ reason });
     });
   }
 };
