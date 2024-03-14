@@ -4,7 +4,9 @@ var main = {
   },
   spreadsheet: "1A0j2R5sMb8_EClnbR2Pcm_5_UWHzT50f16yMXjO0MQS",
   sheet: "683326268",
-  api: "TODO",
+  clientID: "160556897237-k3l8icc4oc7fcbf04yx0h85tgjrwt682",
+  clientSecret: "YHCJZB-A-p8LCefXFvnwtOBK7-hkpZPbvU9",
+  api: "SBzrCcZ0xcwv-3me2rMoUaZzjPkmTW2C6Ag7NRV",
 
   load: function () {
     console.log("ver .00000007");
@@ -15,12 +17,12 @@ var main = {
     $("#passWrapper").hide();
     $("#siteWrapper").show();
 
-    console.log("Decrypting")
     var key = $("#pass").val();
-    console.log({ key, api: main.api, ss: main.spreadsheet, sheet: main.sheet })
-    main.spreadsheet = vigenere(main.spreadsheet, key);
-    main.sheet = vigenere(main.sheet, key);
+    main.clientID = vigenere(main.clientID, key);
+    main.clientID += ".apps.googleusercontent.com";
+    main.clientSecret = vigenere(main.clientSecret, key);
     main.api = vigenere(main.api, key);
+    main.spreadsheet = vigenere(main.spreadsheet, key);
 
     gapi.load('client', main.startGAPI);
   },
