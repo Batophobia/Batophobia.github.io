@@ -7,7 +7,7 @@ var main = {
   api: "TODO",
 
   load: function () {
-    console.log("ver .00000005");
+    console.log("ver .00000006");
 
     $("#btnBegin").on("click", main.decrypt);
   },
@@ -17,11 +17,12 @@ var main = {
 
     console.log("Decrypting")
     var key = $("#pass").val();
+    console.log({ key, api: this.api, ss: this.spreadsheet, sheet: this.sheet })
     this.spreadsheet = vigenere(this.spreadsheet, key);
     this.sheet = vigenere(this.sheet, key);
     this.api = vigenere(this.api, key);
 
-    gapi.load('client', startGAPI);
+    gapi.load('client', main.startGAPI);
   },
   startGAPI: function () {
     console.log({ api: this.api, ss: this.spreadsheet, sheet: this.sheet })
