@@ -33,10 +33,7 @@ var main = {
         'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest']
       });
 
-      const response = gapi.client.sheets.spreadsheets.get({
-        spreadsheetId: main.spreadsheet,
-      });
-      console.log({ response });
+      main.getData();
     } catch (error) {
       console.log({ error });
     };
@@ -44,7 +41,7 @@ var main = {
   getData: async function () {
     try {
       const response = await gapi.client.sheets.spreadsheets.values.batchGet({
-        spreadsheetId: spreadsheetId,
+        spreadsheetId: main.spreadsheetId,
         ranges: [], // An empty array will default to all ranges
       });
 
