@@ -9,7 +9,7 @@ var main = {
   api: "2=\u001b\u00138\u001c;\u0003\u0015\u001e\u0016\u0017FV\u001aRA\u00004\u0004>\u000f)E\u001f,\u0013\u001f((KjE7\u000eE>7<",
 
   load: function () {
-    console.log("ver .003");
+    console.log("ver .004");
 
     $("#btnBegin").on("click", main.decrypt);
   },
@@ -38,19 +38,19 @@ var main = {
       console.log({ error });
     };
   },
-  getData: async function () {
+  getData: function () {
     try {
-      const response = await gapi.client.sheets.spreadsheets.values.batchGet({
+      gapi.client.sheets.spreadsheets.values.batchGet({
         spreadsheetId: main.spreadsheetId,
         ranges: [], // An empty array will default to all ranges
-      });
-
-      console.log({ response });
-      var batchResult = response.result.valueRanges;
-      // Process the batchResult to access all the returned data
-      batchResult.forEach(function (valueRange) {
-        console.log(valueRange.range);
-        console.log(valueRange.values);
+      }).then(function (response) {
+        console.log({ response });
+        var batchResult = response.result.valueRanges;
+        // Process the batchResult to access all the returned data
+        batchResult.forEach(function (valueRange) {
+          console.log(valueRange.range);
+          console.log(valueRange.values);
+        });
       });
     } catch (error) {
       console.log({ error });
