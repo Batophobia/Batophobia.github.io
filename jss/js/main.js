@@ -28,20 +28,16 @@ var main = {
   },
   startGAPI: async function () {
     try {
-      console.log("test00")
       await gapi.client.init({
         'apiKey': main.api,
         'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest']
       });
 
-      console.log("test01")
       const response = gapi.client.sheets.spreadsheets.get({
         spreadsheetId: main.spreadsheet,
       });
-      console.log(response.result);
-
+      console.log(response);
     } catch (error) {
-      console.log("test04");
       console.log({ error });
     };
   }
