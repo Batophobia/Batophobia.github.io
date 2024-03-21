@@ -36,7 +36,7 @@ var main = {
       const response = gapi.client.sheets.spreadsheets.get({
         spreadsheetId: main.spreadsheet,
       });
-      console.log(response);
+      console.log({ response });
     } catch (error) {
       console.log({ error });
     };
