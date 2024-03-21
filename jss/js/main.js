@@ -40,5 +40,23 @@ var main = {
     } catch (error) {
       console.log({ error });
     };
+  },
+  getData: async function () {
+    try {
+      const response = await gapi.client.sheets.spreadsheets.values.batchGet({
+        spreadsheetId: spreadsheetId,
+        ranges: [], // An empty array will default to all ranges
+      });
+
+      console.log({ response });
+      var batchResult = response.result.valueRanges;
+      // Process the batchResult to access all the returned data
+      batchResult.forEach(function (valueRange) {
+        console.log(valueRange.range);
+        console.log(valueRange.values);
+      });
+    } catch (error) {
+      console.log({ error });
+    };
   }
 };
