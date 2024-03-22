@@ -27,7 +27,10 @@ var goog = {
       goog.tokenClient = await google.accounts.oauth2.initTokenClient({
         client_id: goog.clientID,
         scope: 'https://www.googleapis.com/auth/spreadsheets.readonly',
-        callback: (tokenResp) => { goog.getData(); },
+        callback: (tokenResp) => {
+          console.log("initTokenClient callback")
+          goog.getData();
+        },
       });
       //await gapi.client.init({
       //  apiKey: goog.api,
