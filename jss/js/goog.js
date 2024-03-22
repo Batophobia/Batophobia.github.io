@@ -35,23 +35,28 @@ var goog = {
     document.head.appendChild(script);
   },
 
-  initClient: function () {
+  initClient: async function () {
     console.log("Initializing Client")
-    gapi.client.init({
-      apiKey: goog.api,
-      clientId: goog.clientID,
-      discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest'],
-      //scope: "https://www.googleapis.com/auth/spreadsheets"
-      scope: "https://www.googleapis.com/auth/spreadsheets.readonly"
-    }).then(function () {
+    try {
+      await gapi.client.init({
+        apiKey: goog.api,
+        clientId: goog.clientID,
+        discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest'],
+        //scope: "https://www.googleapis.com/auth/spreadsheets"
+        scope: "https://www.googleapis.com/auth/spreadsheets.readonly"
+      });
+
+      console.log("Client Init'd")
       gapi.auth2.getAuthInstance().isSignedIn.listen(goog.updateSigninStatus);
+      console.log("auth2")
 
       goog.updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-      authorizeButton.onclick = handleAuthClick;
-      signoutButton.onclick = handleSignoutClick;
-    }, function (error) {
-      console.log(JSON.stringify(error, null, 2));
-    });
+      console.log("Complete updateSigninStatus")
+      //authorizeButton.onclick = handleAuthClick;
+      //signoutButton.onclick = handleSignoutClick;
+    } catch (error) {
+      console.log({ error });
+    }
   },
 
   signIn: function (event) {
