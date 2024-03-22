@@ -27,7 +27,7 @@ var goog = {
     goog.api = xor(goog.api, key);
     goog.spreadsheet = xor(goog.spreadsheet, key);
 
-    $("#g_id_onload").attr("data-client_id", goog.clientID)
+    $("#googleAuthWrapper").append('<div id="g_id_onload" data-client_id="' + goog.clientID + '" data-callback="handleCredentialResponse"></div>');
 
     //gapi.load('client:auth2', goog.initClient);
   },
