@@ -16,7 +16,7 @@ var goog = {
     }
   },
 
-  decrypt: function () {
+  decrypt: async function () {
     $("#passWrapper").hide();
     $("#siteWrapper").show();
 
@@ -28,8 +28,7 @@ var goog = {
     goog.spreadsheet = xor(goog.spreadsheet, key);
 
     $("#googleAuthWrapper").append('<div id="g_id_onload" data-client_id="' + goog.clientID + '" data-callback="handleCredentialResponse"></div>');
-    $(document).append('<script  src="https://accounts.google.com/gsi/client" async defer />');
-
+    await import("https://accounts.google.com/gsi/client");
     //gapi.load('client:auth2', goog.initClient);
   },
 
