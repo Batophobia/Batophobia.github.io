@@ -27,7 +27,7 @@ var goog = {
       goog.tokenClient = await google.accounts.oauth2.initTokenClient({
         client_id: goog.clientID,
         scope: 'https://www.googleapis.com/auth/spreadsheets.readonly',
-        callback: (tokenResp) => { console.log(tokenResp.access_token) },
+        callback: (tokenResp) => { goog.getData(); },
       });
       //await gapi.client.init({
       //  apiKey: goog.api,
@@ -36,11 +36,6 @@ var goog = {
       //  //scope: "https://www.googleapis.com/auth/spreadsheets"
       //  scope: "https://www.googleapis.com/auth/spreadsheets.readonly"
       //});
-
-      console.log("Client Init'd")
-      console.log({ tokenClient: goog.tokenClient })
-      goog.accessToken = await goog.tokenClient.requestAccessToken({ prompt: '' });
-      console.log({ accessToken: goog.accessToken })
     } catch (error) {
       console.log({ error });
     }
@@ -48,7 +43,8 @@ var goog = {
 
   getData: function () {
     gapi.load('client', () => {
-      gapi.client.setToken({ access_token: goog.accessToken });
+      //gapi.client.setApiKey(goog.api);
+      //gapi.client.setToken({ access_token: goog.accessToken });
 
       gapi.client.load('sheets', 'v4', () => {
         gapi.client.sheets.spreadsheets.values.batchGet({
