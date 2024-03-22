@@ -6,6 +6,7 @@ var goog = {
   api: "2=\u001b\u00138\u001c;\u0003\u0015\u001e\u0016\u0017FV\u001aRA\u00004\u0004>\u000f)E\u001f,\u0013\u001f((KjE7\u000eE>7<",
 
   updateSigninStatus: function (isSignedIn) {
+    console.log("Signin Status Change")
     if (isSignedIn) {
       $("#btnSignIn").hide();
       $("#btnSignOut").show();
@@ -37,9 +38,11 @@ var goog = {
   },
 
   onScriptLoad: function () {
+    console.log("Script Loaded")
     gapi.load('client:auth2', goog.initClient);
   },
   initClient: function () {
+    console.log("Initializing Client")
     gapi.client.init({
       apiKey: goog.api,
       clientId: goog.clientID,
@@ -58,10 +61,12 @@ var goog = {
   },
 
   signIn: function (event) {
+    console.log("Sign In")
     gapi.auth2.getAuthInstance().signIn();
   },
 
   signOut: function (event) {
+    console.log("Sign Out")
     gapi.auth2.getAuthInstance().signOut();
   },
 
@@ -77,6 +82,7 @@ var goog = {
   //   };
   // },
   getData: function () {
+    console.log("Attempt Get Data")
     try {
       gapi.client.sheets.spreadsheets.values.batchGet({
         spreadsheetId: goog.spreadsheet,
