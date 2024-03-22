@@ -29,7 +29,6 @@ var goog = {
     goog.spreadsheet = xor(goog.spreadsheet, key);
 
     $("#googleAuthWrapper").append('<div id="g_id_onload" data-client_id="' + goog.clientID + '" data-callback="handleCredentialResponse"></div>');
-
     var script = document.createElement("script");
     script.src = "https://accounts.google.com/gsi/client";
     document.head.appendChild(script);
@@ -38,20 +37,26 @@ var goog = {
   initClient: async function () {
     console.log("Initializing Client")
     try {
-      await gapi.client.init({
-        apiKey: goog.api,
-        clientId: goog.clientID,
-        discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest'],
-        //scope: "https://www.googleapis.com/auth/spreadsheets"
-        scope: "https://www.googleapis.com/auth/spreadsheets.readonly"
+      goog.tokenClient = await google.accounts.oauth2.initTokenClient({
+        client_id: goog.clientID,
+        scope: 'https://www.googleapis.com/auth/spreadsheets.readonly',
+        //callback: '', // Define your callback function here
       });
+      //await gapi.client.init({
+      //  apiKey: goog.api,
+      //  clientId: goog.clientID,
+      //  discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest'],
+      //  //scope: "https://www.googleapis.com/auth/spreadsheets"
+      //  scope: "https://www.googleapis.com/auth/spreadsheets.readonly"
+      //});
 
       console.log("Client Init'd")
-      gapi.auth2.getAuthInstance().isSignedIn.listen(goog.updateSigninStatus);
-      console.log("auth2")
+      goog.tokenClient.requestAccessToken({ prompt: '' });
+      //gapi.auth2.getAuthInstance().isSignedIn.listen(goog.updateSigninStatus);
+      //console.log("auth2")
 
-      goog.updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-      console.log("Complete updateSigninStatus")
+      //goog.updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+      //console.log("Complete updateSigninStatus")
       //authorizeButton.onclick = handleAuthClick;
       //signoutButton.onclick = handleSignoutClick;
     } catch (error) {
