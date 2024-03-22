@@ -40,7 +40,7 @@ var goog = {
       goog.tokenClient = await google.accounts.oauth2.initTokenClient({
         client_id: goog.clientID,
         scope: 'https://www.googleapis.com/auth/spreadsheets.readonly',
-        //callback: '', // Define your callback function here
+        //callback: (tokenResp) => { console.log(tokenResp.access_token) },
       });
       //await gapi.client.init({
       //  apiKey: goog.api,
@@ -51,7 +51,9 @@ var goog = {
       //});
 
       console.log("Client Init'd")
+      console.log({ tokenClient: goog.tokenClient })
       goog.tokenClient.requestAccessToken({ prompt: '' });
+      console.log({ tokenClient: goog.tokenClient })
       //gapi.auth2.getAuthInstance().isSignedIn.listen(goog.updateSigninStatus);
       //console.log("auth2")
 
@@ -75,6 +77,22 @@ var goog = {
   },
 
   getData: function () {
+    gapi.load('client', () => {
+      gapi.client.setToken({ access_token: goog.tokenClient });
+
+      gapi.client.load('sheets', 'v4', () => {
+        gapi.client.sheets.spreadsheets.values.batchGet({
+          spreadsheetId: goog.spreadsheet,
+          ranges: [],
+        }).then((response) => {
+          console.log({ response })
+        }, (reason) => {
+          console.error({ reason });
+        });
+      });
+    });
+  },
+  getData_old: function () {
     console.log("Attempt Get Data")
     try {
       gapi.client.sheets.spreadsheets.values.batchGet({
