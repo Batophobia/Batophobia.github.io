@@ -41,9 +41,7 @@ var goog = {
     console.log("Script Loaded")
     //gapi.load('client:auth2', goog.initClient);
   },
-  handleCredentialResponse: function () {
-    console.log("Cred Response")
-  },
+
   initClient: function () {
     console.log("Initializing Client")
     gapi.client.init({
@@ -93,3 +91,8 @@ var goog = {
     };
   }
 };
+
+window.handleCredentialResponse = function (response) {
+  console.log("Cred Response")
+  console.log({ response })
+}
