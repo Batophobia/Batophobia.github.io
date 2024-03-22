@@ -39,7 +39,7 @@ var goog = {
 
   onScriptLoad: function () {
     console.log("Script Loaded")
-    gapi.load('client:auth2', goog.initClient);
+    //gapi.load('client:auth2', goog.initClient);
   },
   initClient: function () {
     console.log("Initializing Client")
