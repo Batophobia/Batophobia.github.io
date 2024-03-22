@@ -41,7 +41,7 @@ var main = {
   getData: function () {
     try {
       gapi.client.sheets.spreadsheets.values.batchGet({
-        spreadsheetId: main.spreadsheetId,
+        spreadsheetId: main.spreadsheet,
         ranges: [], // An empty array will default to all ranges
       }).then(function (response) {
         console.log({ response });
