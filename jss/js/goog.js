@@ -25,13 +25,14 @@ var goog = {
   initClient: async function () {
     console.log("initClient START")
     try {
-      goog.tokenClient = await google.accounts.oauth2.initTokenClient({
+      goog.client = await google.accounts.oauth2.initTokenClient({
         client_id: goog.clientID,
         scope: 'https://www.googleapis.com/auth/spreadsheets.readonly',
         callback: (tokenResp) => {
           console.log("initTokenClient callback")
           goog.getData();
         },
+        error_callback: (resp) => { console.log({ resp }) }
       });
       //await gapi.client.init({
       //  apiKey: goog.api,
