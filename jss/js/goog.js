@@ -31,6 +31,8 @@ var goog = {
 
     var script = document.createElement("script");
     script.src = "https://accounts.google.com/gsi/client";
+    script.onreadystatechange = goog.initClient;
+    script.onload = goog.initClient;
     document.head.appendChild(script);
     //await import("https://accounts.google.com/gsi/client");
     //gapi.load('client:auth2', goog.initClient);
