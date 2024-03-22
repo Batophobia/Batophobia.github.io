@@ -3,7 +3,7 @@ var main = {
     this.load();
   },
   load: function () {
-    console.log("ver .01");
+    console.log("ver .02");
 
     $("#btnBegin").on("click", goog.decrypt);
     $("#btnSignIn").on("click", goog.signIn);

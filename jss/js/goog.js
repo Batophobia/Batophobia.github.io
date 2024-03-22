@@ -5,18 +5,6 @@ var goog = {
   clientSecret: '4;"!;=Tp^\u000cY!(\u000b\u000fg;\u0010\u0014\u0005\u0008 !~DY\u0011\u0000\u001b,?K\u000b7X',
   api: "2=\u001b\u00138\u001c;\u0003\u0015\u001e\u0016\u0017FV\u001aRA\u00004\u0004>\u000f)E\u001f,\u0013\u001f((KjE7\u000eE>7<",
 
-  updateSigninStatus: function (isSignedIn) {
-    console.log("Signin Status Change")
-    if (isSignedIn) {
-      $("#btnSignIn").hide();
-      $("#btnSignOut").show();
-      goog.getData();
-    } else {
-      $("#btnSignOut").hide();
-      $("#btnSignIn").show();
-    }
-  },
-
   decrypt: async function () {
     $("#passWrapper").hide();
     $("#siteWrapper").show();
@@ -35,12 +23,11 @@ var goog = {
   },
 
   initClient: async function () {
-    console.log("Initializing Client")
     try {
       goog.tokenClient = await google.accounts.oauth2.initTokenClient({
         client_id: goog.clientID,
         scope: 'https://www.googleapis.com/auth/spreadsheets.readonly',
-        //callback: (tokenResp) => { console.log(tokenResp.access_token) },
+        callback: (tokenResp) => { console.log(tokenResp.access_token) },
       });
       //await gapi.client.init({
       //  apiKey: goog.api,
@@ -52,33 +39,16 @@ var goog = {
 
       console.log("Client Init'd")
       console.log({ tokenClient: goog.tokenClient })
-      goog.tokenClient.requestAccessToken({ prompt: '' });
-      console.log({ tokenClient: goog.tokenClient })
-      //gapi.auth2.getAuthInstance().isSignedIn.listen(goog.updateSigninStatus);
-      //console.log("auth2")
-
-      //goog.updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-      //console.log("Complete updateSigninStatus")
-      //authorizeButton.onclick = handleAuthClick;
-      //signoutButton.onclick = handleSignoutClick;
+      goog.accessToken = await goog.tokenClient.requestAccessToken({ prompt: '' });
+      console.log({ accessToken: goog.accessToken })
     } catch (error) {
       console.log({ error });
     }
   },
 
-  signIn: function (event) {
-    console.log("Sign In")
-    gapi.auth2.getAuthInstance().signIn();
-  },
-
-  signOut: function (event) {
-    console.log("Sign Out")
-    gapi.auth2.getAuthInstance().signOut();
-  },
-
   getData: function () {
     gapi.load('client', () => {
-      gapi.client.setToken({ access_token: goog.tokenClient });
+      gapi.client.setToken({ access_token: goog.accessToken });
 
       gapi.client.load('sheets', 'v4', () => {
         gapi.client.sheets.spreadsheets.values.batchGet({
