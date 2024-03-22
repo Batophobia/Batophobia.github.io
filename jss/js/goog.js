@@ -28,7 +28,7 @@ var goog = {
     goog.api = xor(goog.api, key);
     goog.spreadsheet = xor(goog.spreadsheet, key);
 
-    $("#googleAuthWrapper").append('<div id="g_id_onload" data-client_id="' + goog.clientID + '" data-callback="handleCredentialResponse"></div>');
+    $("#googleAuthWrapper").append('<div id="g_id_onload" data-client_id="' + goog.clientID + '" data-callback="goog.handleCredentialResponse"></div>');
 
     var script = document.createElement("script");
     script.src = "https://accounts.google.com/gsi/client";
@@ -40,6 +40,9 @@ var goog = {
   onScriptLoad: function () {
     console.log("Script Loaded")
     //gapi.load('client:auth2', goog.initClient);
+  },
+  handleCredentialResponse: function () {
+    console.log("Cred Response")
   },
   initClient: function () {
     console.log("Initializing Client")
@@ -70,17 +73,6 @@ var goog = {
     gapi.auth2.getAuthInstance().signOut();
   },
 
-  // startGAPI: async function () {
-  //   try {
-  //     await gapi.client.init({
-  //       'apiKey': goog.api,
-  //       'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest']
-  //     });
-  //     goog.getData();
-  //   } catch (error) {
-  //     console.log({ error });
-  //   };
-  // },
   getData: function () {
     console.log("Attempt Get Data")
     try {
