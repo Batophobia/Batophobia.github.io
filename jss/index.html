@@ -20,8 +20,13 @@
     </div>
     <div id="siteWrapper">
       <div class="buttonWrapper">
-        <button id="btnSignIn" class="button">Sign In</button>
-        <button id="btnSignOut" class="button">Sign Out</button>
+        <script src="https://accounts.google.com/gsi/client" async defer></script>
+        <div id="g_id_onload" data-client_id="YOUR_CLIENT_ID" data-callback="handleCredentialResponse">
+        </div>
+        <div class="g_id_signin" data-type="standard"></div>
+
+        <!-- <button id="btnSignIn" class="button">Sign In</button>
+        <button id="btnSignOut" class="button">Sign Out</button> -->
       </div>
     </div>
   </div>

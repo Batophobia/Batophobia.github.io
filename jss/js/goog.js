@@ -27,7 +27,9 @@ var goog = {
     goog.api = xor(goog.api, key);
     goog.spreadsheet = xor(goog.spreadsheet, key);
 
-    gapi.load('client:auth2', goog.initClient);
+    $("#g_id_onload").attr("data-client_id", goog.clientID)
+
+    //gapi.load('client:auth2', goog.initClient);
   },
 
   initClient: function () {
@@ -35,6 +37,7 @@ var goog = {
       apiKey: goog.api,
       clientId: goog.clientID,
       discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest'],
+      //scope: "https://www.googleapis.com/auth/spreadsheets"
       scope: "https://www.googleapis.com/auth/spreadsheets.readonly"
     }).then(function () {
       gapi.auth2.getAuthInstance().isSignedIn.listen(goog.updateSigninStatus);
