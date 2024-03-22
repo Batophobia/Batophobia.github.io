@@ -16,7 +16,8 @@ body {
   position: relative;
 }
 
-#siteWrapper {
+#siteWrapper,
+.googleAuthWrapper {
   display: none;
 }
 

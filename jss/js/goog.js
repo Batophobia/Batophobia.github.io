@@ -32,14 +32,7 @@ var goog = {
 
     var script = document.createElement("script");
     script.src = "https://accounts.google.com/gsi/client";
-    script.onreadystatechange = goog.onScriptLoad;
-    script.onload = goog.onScriptLoad;
     document.head.appendChild(script);
-  },
-
-  onScriptLoad: function () {
-    console.log("Script Loaded")
-    //gapi.load('client:auth2', goog.initClient);
   },
 
   initClient: function () {
@@ -93,6 +86,7 @@ var goog = {
 };
 
 window.handleCredentialResponse = function (response) {
-  console.log("Cred Response")
-  console.log({ response })
+  console.log("Cred Response");
+  console.log({ response });
+  gapi.load('client', goog.initClient);
 }
