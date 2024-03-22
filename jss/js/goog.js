@@ -31,13 +31,14 @@ var goog = {
 
     var script = document.createElement("script");
     script.src = "https://accounts.google.com/gsi/client";
-    script.onreadystatechange = goog.initClient;
-    script.onload = goog.initClient;
+    script.onreadystatechange = goog.onScriptLoad;
+    script.onload = goog.onScriptLoad;
     document.head.appendChild(script);
-    //await import("https://accounts.google.com/gsi/client");
-    //gapi.load('client:auth2', goog.initClient);
   },
 
+  onScriptLoad: function () {
+    gapi.load('client:auth2', goog.initClient);
+  },
   initClient: function () {
     gapi.client.init({
       apiKey: goog.api,
