@@ -23,6 +23,7 @@ var goog = {
   },
 
   initClient: async function () {
+    console.log("initClient START")
     try {
       goog.tokenClient = await google.accounts.oauth2.initTokenClient({
         client_id: goog.clientID,
@@ -83,7 +84,5 @@ var goog = {
 };
 
 window.handleCredentialResponse = function (response) {
-  console.log("Cred Response");
-  console.log({ response });
   gapi.load('client', goog.initClient);
 }
