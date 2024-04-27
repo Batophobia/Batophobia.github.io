@@ -88,5 +88,5 @@ var goog = {
 };
 
 window.handleCredentialResponse = function (response) {
-  gapi.load('client', goog.initClient);
+  gapi.load('client:auth2', goog.initClient);
 }
