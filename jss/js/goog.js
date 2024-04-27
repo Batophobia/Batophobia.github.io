@@ -5,7 +5,13 @@ var goog = {
   clientSecret: '4;"!;=Tp^\u000cY!(\u000b\u000fg;\u0010\u0014\u0005\u0008 !~DY\u0011\u0000\u001b,?K\u000b7X',
   api: "2=\u001b\u00138\u001c;\u0003\u0015\u001e\u0016\u0017FV\u001aRA\u00004\u0004>\u000f)E\u001f,\u0013\u001f((KjE7\u000eE>7<",
   discoveryDoc: 'https://sheets.googleapis.com/$discovery/rest?version=v4',
+  gapiInited: false,
+  gisInited: false,
 
+  init: function () {
+    document.getElementById('authorize_button').style.visibility = 'hidden';
+    document.getElementById('signout_button').style.visibility = 'hidden';
+  },
 
   decrypt: async function () {
     $("#passWrapper").hide();
@@ -19,18 +25,14 @@ var goog = {
     goog.spreadsheet = xor(goog.spreadsheet, key);
 
     gapi.load('client', goog.initializeGapiClient);
-    tokenClient = google.accounts.oauth2.initTokenClient({
+    goog.client = google.accounts.oauth2.initTokenClient({
       client_id: goog.clientID,
       scope: "https://www.googleapis.com/auth/spreadsheets",
-      callback: (tokenResp) => {
-        console.log("initTokenClient callback")
-        goog.getData();
-      },
-      error_callback: (resp) => {
-        console.log("initTokenClient error_callback")
-        console.log({ resp })
-      }
+      callback: '', // defined later
     });
+    goog.gisInited = true;
+    goog.enableButtons();
+
 
     //google.accounts.id.initialize({
     //  client_id: goog.clientID,
@@ -51,14 +53,7 @@ var goog = {
       goog.client = await google.accounts.oauth2.initTokenClient({
         client_id: goog.clientID,
         scope: 'https://www.googleapis.com/auth/spreadsheets',
-        callback: (tokenResp) => {
-          console.log("initTokenClient callback")
-          goog.getData();
-        },
-        error_callback: (resp) => {
-          console.log("initTokenClient error_callback")
-          console.log({ resp })
-        }
+        callback: '', // defined later
       });
 
       // DEPRICATED
@@ -107,46 +102,76 @@ var goog = {
       apiKey: goog.api,
       discoveryDocs: [goog.discoveryDoc],
     });
-    //gapiInited = true;
-    //maybeEnableButtons();
+    goog.gapiInited = true;
+    goog.enableButtons();
   },
 
 
-  getData: function () {
-    gapi.load('client', () => {
-      //gapi.client.setApiKey(goog.api);
-      //gapi.client.setToken({ access_token: goog.accessToken });
-
-      gapi.client.load('sheets', 'v4', () => {
-        gapi.client.sheets.spreadsheets.values.batchGet({
-          spreadsheetId: goog.spreadsheet,
-          ranges: [],
-        }).then((response) => {
-          console.log({ response })
-        }, (reason) => {
-          console.error({ reason });
-        });
-      });
-    });
+  enableButtons: function () {
+    if (goog.gapiInited && goog.gisInited) {
+      document.getElementById('authorize_button').style.visibility = 'visible';
+    }
   },
-  getData_old: function () {
-    console.log("Attempt Get Data")
-    try {
-      gapi.client.sheets.spreadsheets.values.batchGet({
-        spreadsheetId: goog.spreadsheet,
-        ranges: [], // An empty array will default to all ranges
-      }).then(function (response) {
-        console.log({ response });
-        var batchResult = response.result.valueRanges;
-        // Process the batchResult to access all the returned data
-        batchResult.forEach(function (valueRange) {
-          console.log(valueRange.range);
-          console.log(valueRange.values);
-        });
-      });
-    } catch (error) {
-      console.log({ error });
+
+
+  handleAuthClick: function () {
+    goog.client.callback = async (resp) => {
+      if (resp.error !== undefined) {
+        throw (resp);
+      }
+      document.getElementById('signout_button').style.visibility = 'visible';
+      document.getElementById('authorize_button').innerText = 'Refresh';
+      await getData();
     };
+
+    if (gapi.client.getToken() === null) {
+      // Prompt the user to select a Google Account and ask for consent to share their data
+      // when establishing a new session.
+      goog.client.requestAccessToken({ prompt: 'consent' });
+    } else {
+      // Skip display of account chooser and consent dialog for an existing session.
+      goog.client.requestAccessToken({ prompt: '' });
+    }
+  },
+
+  /**
+   *  Sign out the user upon button click.
+   */
+  handleSignoutClick: function () {
+    const token = gapi.client.getToken();
+    if (token !== null) {
+      google.accounts.oauth2.revoke(token.access_token);
+      gapi.client.setToken('');
+      document.getElementById('content').innerText = '';
+      document.getElementById('authorize_button').innerText = 'Authorize';
+      document.getElementById('signout_button').style.visibility = 'hidden';
+    }
+  },
+
+
+  getData: async function () {
+    let response;
+    try {
+      // Fetch first 10 files
+      response = await gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: goog.spreadsheet,
+        range: 'Class Data!A2:E',
+      });
+    } catch (err) {
+      document.getElementById('content').innerText = err.message;
+      return;
+    }
+    const range = response.result;
+    if (!range || !range.values || range.values.length == 0) {
+      document.getElementById('content').innerText = 'No values found.';
+      return;
+    }
+    // Flatten to string to display
+    const output = range.values.reduce(
+      (str, row) => `${str}${row[0]}, ${row[4]}\n`,
+      'Name, Major:\n');
+    document.getElementById('content').innerText = output;
+
   }
 };
 

@@ -1,9 +1,10 @@
 var main = {
   init: function () {
+    goog.init();
     this.load();
   },
   load: function () {
-    console.log("ver .055");
+    console.log("ver .056");
 
     //var urlParams = new URLSearchParams(window.location.search);
     //p = urlParams.get('p')
@@ -11,7 +12,7 @@ var main = {
     //goog.decrypt();
 
     $("#btnBegin").on("click", goog.decrypt);
-    $("#btnSignIn").on("click", goog.signIn);
-    $("#btnSignOut").on("click", goog.signOut);
+    // $("#btnSignIn").on("click", goog.signIn);
+    // $("#btnSignOut").on("click", goog.signOut);
   }
 };

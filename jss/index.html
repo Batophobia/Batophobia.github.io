@@ -23,12 +23,10 @@
       <button id="btnBegin" class="button">Enter</button>
     </div>
     <div id="siteWrapper">
-      <div id="googleAuthWrapper">
-        <div class="g_id_signin" data-type="standard"></div>
-      </div>
+      <button id="authorize_button" onclick="goog.handleAuthClick()">Authorize</button>
+      <button id="signout_button" onclick="goog.handleSignoutClick()">Sign Out</button>
 
-      <!-- <button id="btnSignIn" class="button">Sign In</button>
-        <button id="btnSignOut" class="button">Sign Out</button> -->
+      <pre id="content" style="white-space: pre-wrap;"></pre>
     </div>
   </div>
   </div>
