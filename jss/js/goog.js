@@ -29,7 +29,7 @@ var goog = {
       debugger;
       goog.client = await window.google.accounts.oauth2.initTokenClient({
         client_id: goog.clientID,
-        scope: 'https://www.googleapis.com/auth/spreadsheets.readonly',
+        scope: 'https://www.googleapis.com/auth/spreadsheets',
         callback: (tokenResp) => {
           console.log("initTokenClient callback")
           goog.getData();
