@@ -38,7 +38,7 @@ var goog = {
           console.log("initTokenClient error_callback")
           console.log({ resp })
         }
-      });
+      }).requestAcessToken({ prompt: 'consent' });
       //await gapi.client.init({
       //  apiKey: goog.api,
       //  clientId: goog.clientID,
