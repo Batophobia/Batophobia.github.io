@@ -4,6 +4,8 @@ var goog = {
   clientID: "BBQG^SA\nDFREF\u0016J@K\u001d\r\u0001_\u000e\u001c\u0004\u001d\u001e\u0003\u001d[Q\u0016GC\u001eYG\t\u000b\u0013R\u001e\u0004WJY",
   clientSecret: '4;"!;=Tp^\u000cY!(\u000b\u000fg;\u0010\u0014\u0005\u0008 !~DY\u0011\u0000\u001b,?K\u000b7X',
   api: "2=\u001b\u00138\u001c;\u0003\u0015\u001e\u0016\u0017FV\u001aRA\u00004\u0004>\u000f)E\u001f,\u0013\u001f((KjE7\u000eE>7<",
+  discoveryDoc: 'https://sheets.googleapis.com/$discovery/rest?version=v4',
+
 
   decrypt: async function () {
     $("#passWrapper").hide();
@@ -16,10 +18,30 @@ var goog = {
     goog.api = xor(goog.api, key);
     goog.spreadsheet = xor(goog.spreadsheet, key);
 
-    $("#googleAuthWrapper").append('<div id="g_id_onload" data-client_id="' + goog.clientID + '" data-callback="handleCredentialResponse"></div>');
-    var script = document.createElement("script");
-    script.src = "https://accounts.google.com/gsi/client";
-    document.head.appendChild(script);
+    gapi.load('client', goog.initializeGapiClient);
+    tokenClient = google.accounts.oauth2.initTokenClient({
+      client_id: goog.clientID,
+      scope: "https://www.googleapis.com/auth/spreadsheets",
+      callback: (tokenResp) => {
+        console.log("initTokenClient callback")
+        goog.getData();
+      },
+      error_callback: (resp) => {
+        console.log("initTokenClient error_callback")
+        console.log({ resp })
+      }
+    });
+
+    //google.accounts.id.initialize({
+    //  client_id: goog.clientID,
+    //  callback: handleCredentialResponse
+    //});
+    //google.accounts.id.prompt();
+
+    // $("#googleAuthWrapper").append('<div id="g_id_onload" data-client_id="' + goog.clientID + '" data-callback="handleCredentialResponse"></div>');
+    // var script = document.createElement("script");
+    // script.src = "https://accounts.google.com/gsi/client";
+    // document.head.appendChild(script);
   },
 
   initClient: async function () {
@@ -64,6 +86,31 @@ var goog = {
       console.log({ error });
     }
   },
+
+  gapiLoaded: function () {
+    console.log("gapiLoaded")
+    //gapi.load('client', initializeGapiClient);
+  },
+  gisLoaded: function () {
+    console.log("gisLoaded")
+    //tokenClient = google.accounts.oauth2.initTokenClient({
+    //  client_id: CLIENT_ID,
+    //  scope: SCOPES,
+    //  callback: '', // defined later
+    //});
+    //gisInited = true;
+    //maybeEnableButtons();
+  },
+  initializeGapiClient: async function () {
+    console.log("initializeGapiClient")
+    await gapi.client.init({
+      apiKey: goog.api,
+      discoveryDocs: [goog.discoveryDoc],
+    });
+    //gapiInited = true;
+    //maybeEnableButtons();
+  },
+
 
   getData: function () {
     gapi.load('client', () => {
