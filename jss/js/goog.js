@@ -26,6 +26,7 @@ var goog = {
     console.log("initClient START")
     try {
       console.log("initClient try")
+      debugger
       goog.client = await gapi.auth2.init({
         client_id: goog.clientID,
         scope: 'https://www.googleapis.com/auth/spreadsheets'
