@@ -121,7 +121,7 @@ var goog = {
       }
       document.getElementById('signout_button').style.visibility = 'visible';
       document.getElementById('authorize_button').innerText = 'Refresh';
-      await getData();
+      await goog.getData();
     };
 
     if (gapi.client.getToken() === null) {
