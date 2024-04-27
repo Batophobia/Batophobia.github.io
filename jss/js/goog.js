@@ -16,10 +16,11 @@ var goog = {
     goog.api = xor(goog.api, key);
     goog.spreadsheet = xor(goog.spreadsheet, key);
 
-    $("#googleAuthWrapper").append('<div id="g_id_onload" data-client_id="' + goog.clientID + '" data-callback="handleCredentialResponse"></div>');
-    var script = document.createElement("script");
-    script.src = "https://accounts.google.com/gsi/client";
-    document.head.appendChild(script);
+    goog.initClient();
+    //$("#googleAuthWrapper").append('<div id="g_id_onload" data-client_id="' + goog.clientID + '" data-callback="handleCredentialResponse"></div>');
+    //var script = document.createElement("script");
+    //script.src = "https://accounts.google.com/gsi/client";
+    //document.head.appendChild(script);
   },
 
   initClient: async function () {
