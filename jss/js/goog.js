@@ -16,29 +16,26 @@ var goog = {
     goog.api = xor(goog.api, key);
     goog.spreadsheet = xor(goog.spreadsheet, key);
 
-    goog.initClient();
-    //$("#googleAuthWrapper").append('<div id="g_id_onload" data-client_id="' + goog.clientID + '" data-callback="handleCredentialResponse"></div>');
-    //var script = document.createElement("script");
-    //script.src = "https://accounts.google.com/gsi/client";
-    //document.head.appendChild(script);
+    $("#googleAuthWrapper").append('<div id="g_id_onload" data-client_id="' + goog.clientID + '" data-callback="handleCredentialResponse"></div>');
+    var script = document.createElement("script");
+    script.src = "https://accounts.google.com/gsi/client";
+    document.head.appendChild(script);
   },
 
   initClient: async function () {
     console.log("initClient START")
     try {
       console.log("initClient try")
-      goog.client = await google.accounts.oauth2.initTokenClient({
+      goog.client = await gapi.auth2.init({
         client_id: goog.clientID,
-        scope: 'https://www.googleapis.com/auth/spreadsheets',
-        callback: (tokenResp) => {
-          console.log("initTokenClient callback")
-          goog.getData();
-        },
-        error_callback: (resp) => {
-          console.log("initTokenClient error_callback")
-          console.log({ resp })
+        scope: 'https://www.googleapis.com/auth/spreadsheets'
+      }).then(() => {
+        console.log("gapi.auth2.init callback")
+      },
+        (err) => {
+          console.log("gapi.auth2.init error")
         }
-      }).requestAcessToken({ prompt: 'consent' });
+      )
       //await gapi.client.init({
       //  apiKey: goog.api,
       //  clientId: goog.clientID,
