@@ -25,14 +25,18 @@ var goog = {
   initClient: async function () {
     console.log("initClient START")
     try {
-      goog.client = await google.accounts.oauth2.initTokenClient({
+      console.log("initClient try")
+      goog.client = await window.google.accounts.oauth2.initTokenClient({
         client_id: goog.clientID,
         scope: 'https://www.googleapis.com/auth/spreadsheets.readonly',
         callback: (tokenResp) => {
           console.log("initTokenClient callback")
           goog.getData();
         },
-        error_callback: (resp) => { console.log({ resp }) }
+        error_callback: (resp) => {
+          console.log("initTokenClient error_callback")
+          console.log({ resp })
+        }
       });
       //await gapi.client.init({
       //  apiKey: goog.api,
@@ -42,6 +46,7 @@ var goog = {
       //  scope: "https://www.googleapis.com/auth/spreadsheets.readonly"
       //});
     } catch (error) {
+      console.log("initClient catch")
       console.log({ error });
     }
   },
