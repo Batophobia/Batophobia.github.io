@@ -3,7 +3,7 @@ var main = {
     this.load();
   },
   load: function () {
-    console.log("ver .063");
+    console.log("ver .062");
 
     //var urlParams = new URLSearchParams(window.location.search);
     //p = urlParams.get('p')
