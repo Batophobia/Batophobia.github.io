@@ -26,7 +26,7 @@ var goog = {
     console.log("initClient START")
     try {
       console.log("initClient try")
-      goog.client = await window.google.accounts.oauth2.initTokenClient({
+      goog.client = await google.accounts.oauth2.initTokenClient({
         client_id: goog.clientID,
         scope: 'https://www.googleapis.com/auth/spreadsheets',
         callback: (tokenResp) => {
@@ -37,11 +37,6 @@ var goog = {
           console.log("initTokenClient error_callback")
           console.log({ resp })
         }
-      }).then(() => {
-        console.log("initTokenClient then")
-      }, (err) => {
-        console.log("initTokenClient err")
-        console.log({ err })
       });
 
       // DEPRICATED
