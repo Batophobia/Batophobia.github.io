@@ -26,17 +26,37 @@ var goog = {
     console.log("initClient START")
     try {
       console.log("initClient try")
-      debugger
-      goog.client = await gapi.auth2.init({
+      goog.client = await google.accounts.oauth2.initTokenClient({
         client_id: goog.clientID,
-        scope: 'https://www.googleapis.com/auth/spreadsheets'
-      }).then(() => {
-        console.log("gapi.auth2.init callback")
-      },
-        (err) => {
-          console.log("gapi.auth2.init error")
+        scope: 'https://www.googleapis.com/auth/spreadsheets',
+        callback: (tokenResp) => {
+          console.log("initTokenClient callback")
+          goog.getData();
+        },
+        error_callback: (resp) => {
+          console.log("initTokenClient error_callback")
+          console.log({ resp })
         }
-      )
+      }).then(() => {
+        console.log("initTokenClient then")
+      }, (err) => {
+        console.log("initTokenClient err")
+        console.log({ err })
+      });
+
+      // DEPRICATED
+      //goog.client = await gapi.auth2.init({
+      //  client_id: goog.clientID,
+      //  scope: 'https://www.googleapis.com/auth/spreadsheets'
+      //}).then(() => {
+      //  console.log("gapi.auth2.init callback")
+      //},
+      //  (err) => {
+      //    console.log("gapi.auth2.init error")
+      //  }
+      //)
+
+      // DEPRICATED
       //await gapi.client.init({
       //  apiKey: goog.api,
       //  clientId: goog.clientID,
@@ -89,5 +109,5 @@ var goog = {
 };
 
 window.handleCredentialResponse = function (response) {
-  gapi.load('client:auth2', goog.initClient);
+  gapi.load('client', goog.initClient);
 }
