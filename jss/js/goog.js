@@ -26,6 +26,7 @@ var goog = {
     console.log("initClient START")
     try {
       console.log("initClient try")
+      debugger;
       goog.client = await window.google.accounts.oauth2.initTokenClient({
         client_id: goog.clientID,
         scope: 'https://www.googleapis.com/auth/spreadsheets.readonly',
