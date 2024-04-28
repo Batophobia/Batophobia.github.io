@@ -10,16 +10,29 @@ var sheet = {
         range: sheet.sheetName,
       });
     } catch (err) {
-      document.getElementById('content').innerText = err.message;
+      $('#content').text(err.message);
       return;
     }
 
     sheet.data = response.result;
     if (!sheet.data || !sheet.data.values || sheet.data.values.length == 0) {
-      document.getElementById('content').innerText = 'No values found.';
+      $('#content').text('No values found.');
       return;
     }
 
-    console.log({ data: sheet.data });
+    sheet.data.values = sheet.data.values.filter(arr => arr.length && arr[1] != "9" && arr[1] != "")
+    sheet.updateDisplay()
   },
+
+  updateDisplay: function () {
+    let tmpHtml = "<table>"
+    for (let idx in sheet.data.values) {
+      tmpHtml += "<tr class='" + sheet.data.values[idx][2] + "'>"
+      tmpHtml += "<td><input type='checkbox' id='row" + idx.toString() + "'></td>"
+      tmpHtml += "<td>" + sheet.data.values[idx][2] + "</td>"
+      tmpHtml += "<td>" + sheet.data.values[idx][3] + "</td>"
+      tmpHtml += "</tr>"
+    }
+    tmpHtml += "</table>"
+  }
 };
