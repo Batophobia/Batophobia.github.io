@@ -6,10 +6,10 @@ body {
 #everything {
   font-family: "Consolas", Courier, monospace;
   color: #000000;
-  background-color: #a76868;
+  background-color: #cc8d8d;
   width: 1500px;
   height: 900px;
-  border: 20px solid #cc8d8d;
+  border: 20px solid #a76868;
   border-radius: 25px;
   margin: 0 auto;
   padding: 5px;

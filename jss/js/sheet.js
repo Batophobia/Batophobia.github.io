@@ -3,7 +3,9 @@ var sheet = {
   sheetName: "Cricut",
 
   init: function () {
-    $(".rowBox").on("change", sheet.rowClick);
+    $("#content").on("change", ".rowBox", () => {
+      sheet.rowClick(this);
+    });
   },
 
   getData: async function () {
@@ -41,8 +43,8 @@ var sheet = {
     $('#content').html(tmpHtml);
   },
 
-  rowClick: function () {
-    console.log(this);
-    console.log($(this).attr('id'));
+  rowClick: function (elem) {
+    console.log(elem);
+    console.log($(elem).attr('id'));
   }
 };
