@@ -5,7 +5,7 @@ var sheet = {
   init: function () {
     $("#content").on("change", ".rowBox", (e) => {
       console.log({ e });
-      sheet.rowClick(this);
+      sheet.rowClick(e.target);
     });
   },
 
@@ -23,7 +23,8 @@ var sheet = {
 
     sheet.data = response.result;
     if (!sheet.data || !sheet.data.values || sheet.data.values.length == 0) {
-      $('#content').hmtl('No values found.');
+      sheet.data = { values: [] }
+      sheet.updateDisplay()
       return;
     }
 
@@ -40,6 +41,11 @@ var sheet = {
       tmpHtml += "<td>" + sheet.data.values[idx][3] + "</td>"
       tmpHtml += "</tr>"
     }
+    tmpHtml += "<tr class='addEntry'>"
+    tmpHtml += "<td>ADD</td>"
+    tmpHtml += "<td>DROPDOWN</td>"
+    tmpHtml += "<td>NAME</td>"
+    tmpHtml += "</tr>"
     tmpHtml += "</table>"
     $('#content').html(tmpHtml);
   },
