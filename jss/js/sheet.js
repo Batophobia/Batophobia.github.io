@@ -2,6 +2,10 @@ var sheet = {
   data: {},
   sheetName: "Cricut",
 
+  init: function () {
+    $(".rowBox").on("click", sheet.rowClick);
+  },
+
   getData: async function () {
     let response;
     try {
@@ -28,12 +32,17 @@ var sheet = {
     let tmpHtml = "<table>"
     for (let idx in sheet.data.values) {
       tmpHtml += "<tr class='" + sheet.data.values[idx][2] + "'>"
-      tmpHtml += "<td><input type='checkbox' id='row" + idx.toString() + "'></td>"
+      tmpHtml += "<td><input type='checkbox' class='rowBox' id='row" + idx.toString() + "'></td>"
       tmpHtml += "<td>" + sheet.data.values[idx][2] + "</td>"
       tmpHtml += "<td>" + sheet.data.values[idx][3] + "</td>"
       tmpHtml += "</tr>"
     }
     tmpHtml += "</table>"
     $('#content').html(tmpHtml);
+  },
+
+  rowClick: function (e) {
+    console.log(e);
+    console.log(this);
   }
 };
