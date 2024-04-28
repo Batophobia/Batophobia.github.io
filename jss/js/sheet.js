@@ -41,8 +41,8 @@ var sheet = {
     $('#content').html(tmpHtml);
   },
 
-  rowClick: function (e) {
-    console.log(e);
+  rowClick: function () {
     console.log(this);
+    console.log($(this).attr('id'));
   }
 };
