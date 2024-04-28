@@ -10,13 +10,13 @@ var sheet = {
         range: sheet.sheetName,
       });
     } catch (err) {
-      $('#content').text(err.message);
+      $('#content').hmtl(err.message);
       return;
     }
 
     sheet.data = response.result;
     if (!sheet.data || !sheet.data.values || sheet.data.values.length == 0) {
-      $('#content').text('No values found.');
+      $('#content').hmtl('No values found.');
       return;
     }
 
@@ -34,5 +34,6 @@ var sheet = {
       tmpHtml += "</tr>"
     }
     tmpHtml += "</table>"
+    $('#content').html(tmpHtml);
   }
 };

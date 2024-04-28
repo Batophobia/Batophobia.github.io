@@ -9,8 +9,8 @@ var goog = {
   gisInited: false,
 
   init: function () {
-    document.getElementById('authorize_button').style.visibility = 'hidden';
-    document.getElementById('signout_button').style.visibility = 'hidden';
+    $('#authorize_button').hide();
+    $('#signout_button').hide();
   },
 
   decrypt: async function () {
@@ -51,7 +51,7 @@ var goog = {
 
   enableButtons: function () {
     if (goog.gapiInited && goog.gisInited) {
-      document.getElementById('authorize_button').style.visibility = 'visible';
+      $('#authorize_button').show();
       goog.handleAuthClick();
     }
   },
@@ -61,8 +61,8 @@ var goog = {
       if (resp.error !== undefined) {
         throw (resp);
       }
-      document.getElementById('signout_button').style.visibility = 'visible';
-      document.getElementById('authorize_button').innerText = 'Refresh';
+      $('#signout_button').show();
+      $('#authorize_button').text('Refresh');
       await sheet.getData();
     };
 
@@ -81,9 +81,9 @@ var goog = {
     if (token !== null) {
       google.accounts.oauth2.revoke(token.access_token);
       gapi.client.setToken('');
-      document.getElementById('content').innerText = '';
-      document.getElementById('authorize_button').innerText = 'Authorize';
-      document.getElementById('signout_button').style.visibility = 'hidden';
+      $('#content').text('');
+      $('#authorize_button').text('Authorize');
+      $('#signout_button').hide();
     }
   }
 };

@@ -1,14 +1,14 @@
 body {
-  background-color: #222222;
-  color: #CCCCCC;
+  background-color: #b67e7e;
+  color: #000000;
 }
 
 #everything {
   font-family: "Consolas", Courier, monospace;
-  color: #FFFFFF;
-  background-color: #000000;
-  width: 300px;
-  height: 400px;
+  color: #000000;
+  background-color: #a76868;
+  width: 1500px;
+  height: 900px;
   border: 20px solid #FEFE9A;
   border-radius: 25px;
   margin: 0 auto;
