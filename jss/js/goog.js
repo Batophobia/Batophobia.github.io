@@ -32,72 +32,27 @@ var goog = {
     });
     goog.gisInited = true;
     goog.enableButtons();
-
-
-    //google.accounts.id.initialize({
-    //  client_id: goog.clientID,
-    //  callback: handleCredentialResponse
-    //});
-    //google.accounts.id.prompt();
-
-    // $("#googleAuthWrapper").append('<div id="g_id_onload" data-client_id="' + goog.clientID + '" data-callback="handleCredentialResponse"></div>');
-    // var script = document.createElement("script");
-    // script.src = "https://accounts.google.com/gsi/client";
-    // document.head.appendChild(script);
   },
 
   initClient: async function () {
-    console.log("initClient START")
     try {
-      console.log("initClient try")
       goog.client = await google.accounts.oauth2.initTokenClient({
         client_id: goog.clientID,
         scope: 'https://www.googleapis.com/auth/spreadsheets',
         callback: '', // defined later
       });
-
-      // DEPRICATED
-      //goog.client = await gapi.auth2.init({
-      //  client_id: goog.clientID,
-      //  scope: 'https://www.googleapis.com/auth/spreadsheets'
-      //}).then(() => {
-      //  console.log("gapi.auth2.init callback")
-      //},
-      //  (err) => {
-      //    console.log("gapi.auth2.init error")
-      //  }
-      //)
-
-      // DEPRICATED
-      //await gapi.client.init({
-      //  apiKey: goog.api,
-      //  clientId: goog.clientID,
-      //  discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest'],
-      //  //scope: "https://www.googleapis.com/auth/spreadsheets"
-      //  scope: "https://www.googleapis.com/auth/spreadsheets.readonly"
-      //});
     } catch (error) {
-      console.log("initClient catch")
       console.log({ error });
     }
   },
 
   gapiLoaded: function () {
     console.log("gapiLoaded")
-    //gapi.load('client', initializeGapiClient);
   },
   gisLoaded: function () {
     console.log("gisLoaded")
-    //tokenClient = google.accounts.oauth2.initTokenClient({
-    //  client_id: CLIENT_ID,
-    //  scope: SCOPES,
-    //  callback: '', // defined later
-    //});
-    //gisInited = true;
-    //maybeEnableButtons();
   },
   initializeGapiClient: async function () {
-    console.log("initializeGapiClient")
     await gapi.client.init({
       apiKey: goog.api,
       discoveryDocs: [goog.discoveryDoc],
@@ -110,6 +65,7 @@ var goog = {
   enableButtons: function () {
     if (goog.gapiInited && goog.gisInited) {
       document.getElementById('authorize_button').style.visibility = 'visible';
+      goog.handleAuthClick();
     }
   },
 
@@ -155,12 +111,13 @@ var goog = {
       // Fetch first 10 files
       response = await gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: goog.spreadsheet,
-        range: 'Sheet2',
+        range: 'Cricut',
       });
     } catch (err) {
       document.getElementById('content').innerText = err.message;
       return;
     }
+
     const range = response.result;
     if (!range || !range.values || range.values.length == 0) {
       document.getElementById('content').innerText = 'No values found.';
