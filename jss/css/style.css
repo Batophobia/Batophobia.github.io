@@ -35,10 +35,35 @@ body {
 }
 
 #content table {
+  padding-top: 20px;
   border-collapse: collapse;
   width: 100%;
 }
 
 #content tr {
   border-bottom: 1pt solid black;
+}
+
+#content tr.Info {
+  background-color: #99F;
+}
+
+#content tr.High {
+  background-color: #F99;
+}
+
+#content tr.Normal {
+  background-color: #FF9;
+}
+
+#content tr.Low {
+  background-color: #9F9;
+}
+
+#content tr.White {
+  background-color: #FFF;
+}
+
+#content tr.Clear {
+  background-color: #CCC;
 }

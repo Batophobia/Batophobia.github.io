@@ -4,7 +4,6 @@ var sheet = {
 
   init: function () {
     $("#content").on("change", ".rowBox", (e) => {
-      console.log({ e });
       sheet.rowClick(e.target);
     });
   },
@@ -51,7 +50,9 @@ var sheet = {
   },
 
   rowClick: function (elem) {
-    console.log(elem);
-    console.log($(elem).attr('id'));
+    const rowIdx = parseInt($(elem).attr('id').slice(3))
+    const isChecked = $(elem).is(":checked")
+    console.log({ rowIdx, isChecked })
+    // TODO, update sheet
   }
 };
