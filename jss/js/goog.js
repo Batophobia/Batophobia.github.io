@@ -63,7 +63,7 @@ var goog = {
       }
       document.getElementById('signout_button').style.visibility = 'visible';
       document.getElementById('authorize_button').innerText = 'Refresh';
-      await goog.getData();
+      await sheet.getData();
     };
 
     if (gapi.client.getToken() === null) {
@@ -85,25 +85,5 @@ var goog = {
       document.getElementById('authorize_button').innerText = 'Authorize';
       document.getElementById('signout_button').style.visibility = 'hidden';
     }
-  },
-
-  getData: async function () {
-    let response;
-    try {
-      response = await gapi.client.sheets.spreadsheets.values.get({
-        spreadsheetId: goog.spreadsheet,
-        range: 'Cricut',
-      });
-    } catch (err) {
-      document.getElementById('content').innerText = err.message;
-      return;
-    }
-
-    const range = response.result;
-    if (!range || !range.values || range.values.length == 0) {
-      document.getElementById('content').innerText = 'No values found.';
-      return;
-    }
-    sheet.data.load(range.values);
   }
 };
