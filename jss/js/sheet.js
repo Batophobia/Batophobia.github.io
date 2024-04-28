@@ -3,7 +3,8 @@ var sheet = {
   sheetName: "Cricut",
 
   init: function () {
-    $("#content").on("change", ".rowBox", () => {
+    $("#content").on("change", ".rowBox", (e) => {
+      console.log({ e });
       sheet.rowClick(this);
     });
   },
