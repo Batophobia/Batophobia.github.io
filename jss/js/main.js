@@ -4,7 +4,7 @@ var main = {
     this.load();
   },
   load: function () {
-    console.log("ver .06");
+    console.log("ver .065");
 
     //var urlParams = new URLSearchParams(window.location.search);
     //p = urlParams.get('p')

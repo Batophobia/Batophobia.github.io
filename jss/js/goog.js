@@ -155,7 +155,7 @@ var goog = {
       // Fetch first 10 files
       response = await gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: goog.spreadsheet,
-        range: 'Class Data!A2:E',
+        range: 'Sheet2',
       });
     } catch (err) {
       document.getElementById('content').innerText = err.message;
@@ -166,12 +166,12 @@ var goog = {
       document.getElementById('content').innerText = 'No values found.';
       return;
     }
+    console.log(range.values)
     // Flatten to string to display
-    const output = range.values.reduce(
-      (str, row) => `${str}${row[0]}, ${row[4]}\n`,
-      'Name, Major:\n');
-    document.getElementById('content').innerText = output;
-
+    //const output = range.values.reduce(
+    //  (str, row) => `${str}${row[0]}, ${row[4]}\n`,
+    //  'Name, Major:\n');
+    //document.getElementById('content').innerText = output;
   }
 };
 
