@@ -3,7 +3,7 @@ var sheet = {
   sheetName: "Cricut",
 
   init: function () {
-    $(".rowBox").on("click", sheet.rowClick);
+    $(".rowBox").on("change", sheet.rowClick);
   },
 
   getData: async function () {
