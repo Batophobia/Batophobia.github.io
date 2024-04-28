@@ -34,18 +34,6 @@ var goog = {
     goog.enableButtons();
   },
 
-  initClient: async function () {
-    try {
-      goog.client = await google.accounts.oauth2.initTokenClient({
-        client_id: goog.clientID,
-        scope: 'https://www.googleapis.com/auth/spreadsheets',
-        callback: '', // defined later
-      });
-    } catch (error) {
-      console.log({ error });
-    }
-  },
-
   gapiLoaded: function () {
     console.log("gapiLoaded")
   },
@@ -61,14 +49,12 @@ var goog = {
     goog.enableButtons();
   },
 
-
   enableButtons: function () {
     if (goog.gapiInited && goog.gisInited) {
       document.getElementById('authorize_button').style.visibility = 'visible';
       goog.handleAuthClick();
     }
   },
-
 
   handleAuthClick: function () {
     goog.client.callback = async (resp) => {
@@ -90,9 +76,6 @@ var goog = {
     }
   },
 
-  /**
-   *  Sign out the user upon button click.
-   */
   handleSignoutClick: function () {
     const token = gapi.client.getToken();
     if (token !== null) {
@@ -104,11 +87,9 @@ var goog = {
     }
   },
 
-
   getData: async function () {
     let response;
     try {
-      // Fetch first 10 files
       response = await gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: goog.spreadsheet,
         range: 'Cricut',
@@ -123,15 +104,6 @@ var goog = {
       document.getElementById('content').innerText = 'No values found.';
       return;
     }
-    console.log(range.values)
-    // Flatten to string to display
-    //const output = range.values.reduce(
-    //  (str, row) => `${str}${row[0]}, ${row[4]}\n`,
-    //  'Name, Major:\n');
-    //document.getElementById('content').innerText = output;
+    sheet.data.load(range.values);
   }
 };
-
-window.handleCredentialResponse = function (response) {
-  gapi.load('client', goog.initClient);
-}
