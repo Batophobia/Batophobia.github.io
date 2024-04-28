@@ -1,11 +1,20 @@
 var sheet = {
   data: {},
   sheetName: "Cricut",
+  options: [
+    "Info",
+    "High",
+    "Normal",
+    "Low",
+    "White",
+    "Clear",
+  ],
 
   init: function () {
     $("#content").on("change", ".rowBox", (e) => {
       sheet.rowClick(e.target);
     });
+    $("#content").on("change", "#btnAddRow", sheet.addRow);
   },
 
   getData: async function () {
@@ -41,9 +50,13 @@ var sheet = {
       tmpHtml += "</tr>"
     }
     tmpHtml += "<tr class='addEntry'>"
-    tmpHtml += "<td>ADD</td>"
-    tmpHtml += "<td>DROPDOWN</td>"
-    tmpHtml += "<td>NAME</td>"
+    tmpHtml += "<td><button id='btnAddRow'>ADD</button></td>"
+    tmpHtml += "<td><select id='addRowPriority'>"
+    for (let idx in sheet.options) {
+      tmpHtml += "<option>" + sheet.options[idx] + "</option>"
+    }
+    tmpHtml += "</select></td>"
+    tmpHtml += "<td><input id='addRowProduct' type='text' placeholder='Product'/></td>"
     tmpHtml += "</tr>"
     tmpHtml += "</table>"
     $('#content').html(tmpHtml);
@@ -54,5 +67,11 @@ var sheet = {
     const isChecked = $(elem).is(":checked")
     console.log({ rowIdx, isChecked })
     // TODO, update sheet
+  },
+
+  addRow: function () {
+    console.log($("#addRowPriority").val())
+    console.log($("#addRowProduct").val())
+    console.log($("#addRowProduct").text())
   }
 };
