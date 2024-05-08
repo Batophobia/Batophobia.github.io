@@ -90,7 +90,7 @@ var sheet = {
         spreadsheetId: goog.spreadsheet,
         resource: {
           data: {
-            range: `${sheet.sheetName}A${origIdx}:D`,
+            range: `${sheet.sheetName}!A${origIdx}:D`,
             values: sheet.data.values
           },
           valueInputOption: "USER_ENTERED"
