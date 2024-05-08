@@ -38,7 +38,7 @@ var sheet = {
       return;
     }
 
-    sheet.data.values = sheet.data.values.filter(arr => arr.length && arr[1] != "9" && arr[1] != "")
+    sheet.data.values = sheet.data.values.filter(arr => arr.length && arr[1] != "9" && arr[1] != "").sort((a, b) => a[1] > b[1])
     sheet.updateDisplay()
   },
 
@@ -95,6 +95,7 @@ var sheet = {
       });
 
       sheet.data.values.push(newRow)
+      sheet.data.values = sheet.data.values.sort((a, b) => a[1] > b[1])
       $("#toDoTable").append(sheet.data.values.length - 1)
       console.log(response)
     } catch (err) {
