@@ -14,7 +14,9 @@ var sheet = {
     $("#content").on("change", ".rowBox", (e) => {
       sheet.rowClick(e.target);
     });
-    $("#content").on("change", "#btnAddRow", sheet.addRow);
+    $("#content").on("change", "#btnAddRow", (e) => {
+      sheet.addRow()
+    });
   },
 
   getData: async function () {
