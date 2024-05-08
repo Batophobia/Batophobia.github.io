@@ -5,7 +5,7 @@ var main = {
     this.load();
   },
   load: function () {
-    console.log("ver .40");
+    console.log("ver .42");
 
     $("#btnBegin").on("click", goog.decrypt);
   }

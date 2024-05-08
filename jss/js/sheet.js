@@ -82,7 +82,7 @@ var sheet = {
 
     $(elem).closest("tr").toggleClass("completed", isChecked)
 
-    origIdx = (rowIdx + sheet.offset).toString()
+    origIdx = sheet.offset.toString()
 
     try {
 
