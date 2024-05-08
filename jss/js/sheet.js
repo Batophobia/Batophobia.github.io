@@ -9,6 +9,7 @@ var sheet = {
     "Normal",
     "Low",
   ],
+  offset: 0,
 
   init: function () {
     $("#content").on("change", ".rowBox", (e) => {
@@ -37,6 +38,8 @@ var sheet = {
       sheet.updateDisplay()
       return;
     }
+
+    sheet.offset = sheet.data.values.findIndex(v => v[1] != "9" && v[1] != "")
 
     sheet.data.values = sheet.data.values.filter(arr => arr.length && arr[1] != "9" && arr[1] != "").sort((a, b) => a[1] > b[1])
     sheet.updateDisplay()
@@ -74,6 +77,11 @@ var sheet = {
     const rowIdx = parseInt($(elem).attr('id').slice(3))
     const isChecked = $(elem).is(":checked")
     console.log({ rowIdx, isChecked })
+
+    sheet.data.values[rowIdx][0] = isChecked ? "TRUE" : "FALSE"
+    sheet.data.values[rowIdx][1] = isChecked ? "8" : sheet.options.indexOf(sheet.data.values[rowIdx][2]).toString()
+
+    $(elem).closest("tr").toggleClass("completed", isChecked)
     // TODO, update sheet
   },
 
