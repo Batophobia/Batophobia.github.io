@@ -73,16 +73,35 @@ var sheet = {
     return retVal
   },
 
-  rowClick: function (elem) {
+  rowClick: async function (elem) {
     const rowIdx = parseInt($(elem).attr('id').slice(3))
     const isChecked = $(elem).is(":checked")
-    console.log({ rowIdx, isChecked })
 
     sheet.data.values[rowIdx][0] = isChecked ? "TRUE" : "FALSE"
     sheet.data.values[rowIdx][1] = isChecked ? "8" : sheet.options.indexOf(sheet.data.values[rowIdx][2]).toString()
 
     $(elem).closest("tr").toggleClass("completed", isChecked)
-    // TODO, update sheet
+
+    origIdx = (rowIdx + sheet.offset).toString()
+
+    try {
+
+      response = await gapi.client.sheets.spreadsheets.values.batchUpdate({
+        spreadsheetId: goog.spreadsheet,
+        resource: {
+          data: {
+            range: `${sheet.sheetName}A${origIdx}:D`,
+            values: sheet.data.values
+          },
+          valueInputOption: "USER_ENTERED"
+        }
+      });
+
+      console.log(response)
+    } catch (err) {
+      $('#content').hmtl(err.message);
+      return;
+    }
   },
 
   addRow: async function () {
