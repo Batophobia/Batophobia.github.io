@@ -87,7 +87,8 @@ var sheet = {
     origIdx = sheet.offset.toString()
 
     try {
-      //TODO: Update entire table (remove empty rows)
+      sheet.deleteEmptyRows()
+
       response = await gapi.client.sheets.spreadsheets.values.batchUpdate({
         spreadsheetId: goog.spreadsheet,
         resource: {
@@ -112,6 +113,8 @@ var sheet = {
     newRow = ["FALSE", sheet.bColFormula(sheet.origLength + 1), priorityVal, productName]
 
     try {
+      sheet.deleteEmptyRows()
+
       response = await gapi.client.sheets.spreadsheets.values.append({
         spreadsheetId: goog.spreadsheet,
         range: sheet.sheetName,
@@ -135,5 +138,31 @@ var sheet = {
 
   bColFormula: function (idx) {
     return sheet.bColVal.replaceAll("***", idx.toString())
+  },
+
+  deleteEmptyRows: async function () {
+    try {
+      //TODO: Update entire table (remove empty rows)
+      response = await gapi.client.sheets.spreadsheets.batchUpdate({
+        spreadsheetId: goog.spreadsheet,
+        resource: {
+          "requests": [
+            {
+              "deleteDimension": {
+                "range": {
+                  "sheetId": sheet.sheetName,
+                  "dimension": "ROWS",
+                  "startIndex": sheet.offset + sheet.data.values.length,
+                  "endIndex": sheet.origLength
+                }
+              }
+            }
+          ]
+        }
+      })
+    } catch (err) {
+      $('#content').hmtl(err.message);
+      return;
+    }
   }
 };
