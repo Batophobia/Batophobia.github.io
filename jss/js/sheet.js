@@ -71,9 +71,25 @@ var sheet = {
     // TODO, update sheet
   },
 
-  addRow: function () {
-    console.log($("#addRowPriority").val())
-    console.log($("#addRowProduct").val())
-    console.log($("#addRowProduct").text())
+  addRow: async function () {
+    priorityVal = $("#addRowPriority").val()
+    productName = $("#addRowProduct").val()
+
+    try {
+      response = await gapi.client.sheets.spreadsheets.values.append({
+        spreadsheetId: goog.spreadsheet,
+        range: sheet.sheetName,
+        valueInputOption: 'USER_ENTERED',
+        insertDataOption: 'INSERT_ROWS',
+        resource: {
+          "majorDimension": "ROWS",
+          "values": [["", "8", priorityVal, productName]]
+        },
+      });
+      console.log(response)
+    } catch (err) {
+      $('#content').hmtl(err.message);
+      return;
+    }
   }
 };
