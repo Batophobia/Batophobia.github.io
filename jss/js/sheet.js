@@ -10,6 +10,7 @@ var sheet = {
     "Low",
   ],
   offset: 0,
+  bColVal: '=IF(A10,8,IF(C10="High",3,IF(C10="Normal",4,IF(C10="Low",5,IF(C10="Info",0,IF(C10="White",1,IF(C10="Clear",2,9)))))))',
 
   init: function () {
     $("#content").on("change", ".rowBox", (e) => {
@@ -107,7 +108,7 @@ var sheet = {
   addRow: async function () {
     priorityVal = $("#addRowPriority").val()
     productName = $("#addRowProduct").val()
-    newRow = ["FALSE", sheet.options.indexOf(priorityVal).toString(), priorityVal, productName]
+    newRow = ["FALSE", sheet.bColVal, priorityVal, productName]
 
     try {
       response = await gapi.client.sheets.spreadsheets.values.append({
@@ -121,6 +122,7 @@ var sheet = {
         },
       });
 
+      newRow[1] = sheet.options.indexOf(priorityVal).toString()
       sheet.data.values.push(newRow)
       sheet.data.values = sheet.data.values.sort((a, b) => a[1] > b[1])
       sheet.updateDisplay()
