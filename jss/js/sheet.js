@@ -39,8 +39,7 @@ var sheet = {
       return;
     }
 
-    sheet.offset = sheet.data.values.findIndex(v => v[1] != "9" && v[1] != "")
-    sheet.debug = sheet.data.values
+    sheet.offset = sheet.data.values.findIndex(v => v.length && v[1] != "9" && v[1] != "")
 
     sheet.data.values = sheet.data.values.filter(arr => arr.length && arr[1] != "9" && arr[1] != "").sort((a, b) => a[1] > b[1])
     sheet.updateDisplay()
