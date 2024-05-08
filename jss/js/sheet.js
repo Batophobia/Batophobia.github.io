@@ -10,7 +10,7 @@ var sheet = {
     "Low",
   ],
   offset: 0,
-  bColVal: '=IF(A***,8,IF(C10="High",3,IF(C10="Normal",4,IF(C10="Low",5,IF(C10="Info",0,IF(C10="White",1,IF(C10="Clear",2,9)))))))',
+  bColVal: '=IF(A***,8,IF(C***="High",3,IF(C***="Normal",4,IF(C***="Low",5,IF(C***="Info",0,IF(C***="White",1,IF(C***="Clear",2,9)))))))',
 
   init: function () {
     $("#content").on("change", ".rowBox", (e) => {
@@ -93,7 +93,7 @@ var sheet = {
         resource: {
           data: {
             range: `${sheet.sheetName}!A${origIdx}:D`,
-            values: sheet.data.values
+            values: sheet.data.values.map((v, i) => [v[0], sheet.bColFormula(sheet.offset + i), v[2], v[3]])
           },
           valueInputOption: "USER_ENTERED"
         }
@@ -109,7 +109,7 @@ var sheet = {
   addRow: async function () {
     priorityVal = $("#addRowPriority").val()
     productName = $("#addRowProduct").val()
-    newRow = ["FALSE", sheet.bColVal.replace("***", sheet.origLength.toString()), priorityVal, productName]
+    newRow = ["FALSE", sheet.bColFormula(sheet.origLength.toString()), priorityVal, productName]
 
     try {
       response = await gapi.client.sheets.spreadsheets.values.append({
@@ -131,5 +131,9 @@ var sheet = {
       $('#content').hmtl(err.message);
       return;
     }
+  },
+
+  bColFormula: function (idx) {
+    return sheet.bColVal.replaceAll("***", idx)
   }
 };
