@@ -80,7 +80,7 @@ var sheet = {
   addRow: async function () {
     priorityVal = $("#addRowPriority").val()
     productName = $("#addRowProduct").val()
-    newRow = ["FALSE", "8", priorityVal, productName]
+    newRow = ["FALSE", sheet.options.indexOf(priorityVal).toString(), priorityVal, productName]
 
     try {
       response = await gapi.client.sheets.spreadsheets.values.append({
