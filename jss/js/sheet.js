@@ -61,7 +61,7 @@ var sheet = {
   },
 
   makeRowHtml: function (idx) {
-    retVal = "<tr class='" + sheet.data.values[idx][2] + sheet.data.values[idx][0] == "TRUE" ? " completed" : "" + "'>"
+    retVal = "<tr class='" + sheet.data.values[idx][2] + (sheet.data.values[idx][0] == "TRUE" ? " completed" : "") + "'>"
     retVal += "<td><input type='checkbox' class='rowBox' id='row" + idx.toString() + "'></td>"
     retVal += "<td>" + sheet.data.values[idx][2] + "</td>"
     retVal += "<td>" + sheet.data.values[idx][3] + "</td>"
