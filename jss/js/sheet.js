@@ -96,8 +96,7 @@ var sheet = {
 
       sheet.data.values.push(newRow)
       sheet.data.values = sheet.data.values.sort((a, b) => a[1] > b[1])
-      $("#toDoTable").append(sheet.data.values.length - 1)
-      console.log(response)
+      sheet.updateDisplay()
     } catch (err) {
       $('#content').hmtl(err.message);
       return;
