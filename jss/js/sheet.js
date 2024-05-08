@@ -87,7 +87,7 @@ var sheet = {
     origIdx = sheet.offset.toString()
 
     try {
-
+      //TODO: Update entire table (remove empty rows)
       response = await gapi.client.sheets.spreadsheets.values.batchUpdate({
         spreadsheetId: goog.spreadsheet,
         resource: {
@@ -109,7 +109,7 @@ var sheet = {
   addRow: async function () {
     priorityVal = $("#addRowPriority").val()
     productName = $("#addRowProduct").val()
-    newRow = ["FALSE", sheet.bColFormula(sheet.origLength.toString()), priorityVal, productName]
+    newRow = ["FALSE", sheet.bColFormula(sheet.origLength + 1), priorityVal, productName]
 
     try {
       response = await gapi.client.sheets.spreadsheets.values.append({
@@ -134,6 +134,6 @@ var sheet = {
   },
 
   bColFormula: function (idx) {
-    return sheet.bColVal.replaceAll("***", idx)
+    return sheet.bColVal.replaceAll("***", idx.toString())
   }
 };
