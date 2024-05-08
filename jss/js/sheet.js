@@ -3,11 +3,11 @@ var sheet = {
   sheetName: "Cricut",
   options: [
     "Info",
+    "White",
+    "Clear",
     "High",
     "Normal",
     "Low",
-    "White",
-    "Clear",
   ],
 
   init: function () {
@@ -43,13 +43,9 @@ var sheet = {
   },
 
   updateDisplay: function () {
-    let tmpHtml = "<table>"
+    let tmpHtml = "<table id='toDoTable'>"
     for (let idx in sheet.data.values) {
-      tmpHtml += "<tr class='" + sheet.data.values[idx][2] + "'>"
-      tmpHtml += "<td><input type='checkbox' class='rowBox' id='row" + idx.toString() + "'></td>"
-      tmpHtml += "<td>" + sheet.data.values[idx][2] + "</td>"
-      tmpHtml += "<td>" + sheet.data.values[idx][3] + "</td>"
-      tmpHtml += "</tr>"
+      tmpHtml += sheet.makeRowHtml(idx)
     }
     tmpHtml += "<tr class='addEntry'>"
     tmpHtml += "<td><button id='btnAddRow'>ADD</button></td>"
@@ -64,6 +60,16 @@ var sheet = {
     $('#content').html(tmpHtml);
   },
 
+  makeRowHtml: function (idx) {
+    retVal = "<tr class='" + sheet.data.values[idx][2] + sheet.data.values[idx][0] == "TRUE" ? " completed" : "" + "'>"
+    retVal += "<td><input type='checkbox' class='rowBox' id='row" + idx.toString() + "'></td>"
+    retVal += "<td>" + sheet.data.values[idx][2] + "</td>"
+    retVal += "<td>" + sheet.data.values[idx][3] + "</td>"
+    retVal += "</tr>"
+
+    return retVal
+  },
+
   rowClick: function (elem) {
     const rowIdx = parseInt($(elem).attr('id').slice(3))
     const isChecked = $(elem).is(":checked")
@@ -74,6 +80,7 @@ var sheet = {
   addRow: async function () {
     priorityVal = $("#addRowPriority").val()
     productName = $("#addRowProduct").val()
+    newRow = ["FALSE", "8", priorityVal, productName]
 
     try {
       response = await gapi.client.sheets.spreadsheets.values.append({
@@ -83,9 +90,12 @@ var sheet = {
         insertDataOption: 'INSERT_ROWS',
         resource: {
           "majorDimension": "ROWS",
-          "values": [["", "8", priorityVal, productName]]
+          "values": [newRow]
         },
       });
+
+      sheet.data.values.push(newRow)
+      $("#toDoTable").append(sheet.data.values.length - 1)
       console.log(response)
     } catch (err) {
       $('#content').hmtl(err.message);

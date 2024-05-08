@@ -67,3 +67,7 @@ body {
 #content tr.Clear {
   background-color: #CCC;
 }
+
+#content tr.completed {
+  text-decoration: line-through;
+}
