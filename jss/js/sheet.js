@@ -150,7 +150,7 @@ var sheet = {
             {
               "deleteDimension": {
                 "range": {
-                  "sheetId": sheet.sheetName,
+                  "sheetId": goog.sheet,
                   "dimension": "ROWS",
                   "startIndex": sheet.offset + sheet.data.values.length,
                   "endIndex": sheet.origLength
