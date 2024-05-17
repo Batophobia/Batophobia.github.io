@@ -58,16 +58,22 @@ var site = {
   convertProduct: function (row) {
     const prodName = row[0].trim();
     const extra = row.filter((v, i) => i > 0 && i < row.length - 3)
+    let priority = sheet.options.indexOf("Low")
 
     let isSticker = false;
-    if (prodName.indexOf("Sticker Sheet") ||
+    if (
+      prodName.indexOf("Sticker Sheet") ||
       (extra.length && /: (White Matte|Transparent)/.test(extra[0]))
-    )
+    ) {
       isSticker = true;
+    }
 
-    if (isSticker)
-      console.log("It's a sticker")
+    if (isSticker) {
+      priority = sheet.options.indexOf("White")
+      if (extra.length && extra[0].indexOf("Transparent") > 0)
+        priority = sheet.options.indexOf("Clear")
+    }
 
-    console.log({ prodName, extra, isSticker })
+    console.log({ prodName, extra, priority, isSticker })
   }
 };
