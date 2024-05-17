@@ -115,6 +115,7 @@ var sheet = {
     try {
       sheet.deleteEmptyRows()
 
+      console.log("Append row")
       response = await gapi.client.sheets.spreadsheets.values.append({
         spreadsheetId: goog.spreadsheet,
         range: sheet.sheetName,
@@ -125,6 +126,7 @@ var sheet = {
           "values": [newRow]
         },
       });
+      console.log("Row appended")
 
       newRow[1] = sheet.options.indexOf(priorityVal).toString()
       sheet.data.values.push(newRow)
@@ -143,24 +145,25 @@ var sheet = {
   deleteEmptyRows: async function () {
     try {
       //TODO: Update entire table (remove empty rows)
+      console.log("Try delete empty rows")
       response = await gapi.client.sheets.spreadsheets.batchUpdate({
         spreadsheetId: goog.spreadsheet,
         resource: {
-          "requests": [
-            {
-              "deleteDimension": {
-                "range": {
-                  "sheetId": goog.sheet,
-                  "dimension": "ROWS",
-                  "startIndex": sheet.offset + sheet.data.values.length,
-                  "endIndex": sheet.origLength
-                }
+          requests: [{
+            deleteDimension: {
+              range: {
+                sheetId: goog.sheet,
+                dimension: "ROWS",
+                startIndex: sheet.offset + sheet.data.values.length,
+                endIndex: sheet.origLength
               }
             }
-          ]
+          }]
         }
       })
+      console.log("End delete empty rows")
     } catch (err) {
+      console.log({ err })
       $('#content').hmtl(err.message);
       return;
     }
