@@ -9,13 +9,13 @@ var site = {
   startImportOrder: function () {
     let tmpHtml = "<textarea id='importOrder'></textarea><button id='btnImportOrderData'>Add</button>"
     $('#content').html(tmpHtml);
-    $('.btnWrapper .table').hide();
+    $('.btnWrapper .sheet').hide();
     $('.btnWrapper .import').show();
   },
 
   cancelImportOrder: function () {
     $('.btnWrapper .import').hide();
-    $('.btnWrapper .table').show();
+    $('.btnWrapper .sheet').show();
     sheet.updateDisplay();
   },
 

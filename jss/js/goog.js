@@ -65,7 +65,7 @@ var goog = {
       $('#authorize_button').text('Refresh');
 
       $('.btnWrapper .goog').hide();
-      $('.btnWrapper .table').show();
+      $('.btnWrapper .sheet').show();
       await sheet.getData();
     };
 
