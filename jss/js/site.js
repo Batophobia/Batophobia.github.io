@@ -39,7 +39,7 @@ var site = {
     while (orderData[idx] != "Payment info") {
       let orderEnd = idx;
       for (; !/\$\d+.\d\d/.test(orderData[orderEnd]); orderEnd++) { }
-      orderEnd++;
+      orderEnd += 2;
 
       console.log(orderData.filter((v, i) => i >= idx && i <= orderEnd))
       /*

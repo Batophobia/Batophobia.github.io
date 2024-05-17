@@ -11,6 +11,11 @@ var goog = {
   init: function () {
     $('#authorize_button').hide();
     $('#signout_button').hide();
+
+    $("#pass").on("keypress", (e) => {
+      if (e.which == 13) //Enter key
+        $("#btnBegin").click();
+    })
   },
 
   decrypt: async function () {
