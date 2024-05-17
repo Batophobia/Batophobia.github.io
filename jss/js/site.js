@@ -38,11 +38,16 @@ var site = {
 
     while (orderData[idx] != "Payment info") {
       let orderEnd = idx;
-      for (; /\$\d+.\d\d/.test(orderData[orderEnd]); orderEnd++) { }
+      for (; !/\$\d+.\d\d/.test(orderData[orderEnd]); orderEnd++) { }
       orderEnd++;
 
       console.log(orderData.filter((v, i) => i >= idx && i <= orderEnd))
       /*
+      6: "Bubbles - Sticker Sheeth"
+      7: "Choose One: White Matte"
+      8: "$4.00"
+      9: "X 2"
+      10: "$8.00"
       */
       idx = orderEnd + 1;
     }
