@@ -2,7 +2,7 @@ var site = {
 
   init: function () {
     $("#content").on("click", "#btnImportOrderData", (e) => {
-      site.convertRows();
+      site.importOrder();
     });
   },
 
@@ -19,7 +19,7 @@ var site = {
     sheet.updateDisplay();
   },
 
-  convertRows: function () {
+  importOrder: function () {
     orderData = $("#importOrder").val()
     if (orderData == "") return;
 
@@ -41,7 +41,7 @@ var site = {
       for (; !/\$\d+.\d\d/.test(orderData[orderEnd]); orderEnd++) { }
       orderEnd += 2;
 
-      console.log(orderData.filter((v, i) => i >= idx && i <= orderEnd))
+      site.convertProduct(orderData.filter((v, i) => i >= idx && i <= orderEnd))
       /*
       6: "Bubbles - Sticker Sheeth"
       7: "Choose One: White Matte"
@@ -54,4 +54,20 @@ var site = {
 
     console.log({ orderNum, numItems, idx })
   },
+
+  convertProduct: function (row) {
+    const prodName = row[0].trim();
+    const extra = row.filter((v, i) => i > 0 && i < row.length - 3)
+
+    let isSticker = false;
+    if (prodName.indexOf("Sticker Sheet") ||
+      (extra.length && /: (White Matte|Transparent)/.test(extra[0]))
+    )
+      isSticker = true;
+
+    if (isSticker)
+      console.log("It's a sticker")
+
+    console.log({ prodName, extra, isSticker })
+  }
 };
