@@ -99,8 +99,6 @@ var sheet = {
           valueInputOption: "USER_ENTERED"
         }
       });
-
-      console.log(response)
     } catch (err) {
       $('#content').hmtl(err.message);
       return;
@@ -115,7 +113,6 @@ var sheet = {
     try {
       sheet.deleteEmptyRows()
 
-      console.log("Append row")
       response = await gapi.client.sheets.spreadsheets.values.append({
         spreadsheetId: goog.spreadsheet,
         range: sheet.sheetName,
@@ -126,7 +123,6 @@ var sheet = {
           "values": [newRow]
         },
       });
-      console.log("Row appended")
 
       newRow[1] = sheet.options.indexOf(priorityVal).toString()
       sheet.data.values.push(newRow)
@@ -138,14 +134,16 @@ var sheet = {
     }
   },
 
+  clearDone: function () {
+    //TODO
+  },
+
   bColFormula: function (idx) {
     return sheet.bColVal.replaceAll("***", idx.toString())
   },
 
   deleteEmptyRows: async function () {
     try {
-      //TODO: Update entire table (remove empty rows)
-      console.log("Try delete empty rows")
       response = await gapi.client.sheets.spreadsheets.batchUpdate({
         spreadsheetId: goog.spreadsheet,
         resource: {
@@ -161,9 +159,7 @@ var sheet = {
           }]
         }
       })
-      console.log("End delete empty rows")
     } catch (err) {
-      console.log({ err })
       $('#content').hmtl(err.message);
       return;
     }

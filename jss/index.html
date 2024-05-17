@@ -29,6 +29,12 @@
         <button id="signout_button" onclick="goog.handleSignoutClick()">Sign Out</button>
       </div>
 
+      <div id="tableButtons">
+        <button id="btnRefreshTable" onclick="sheet.getData()">Refresh</button>
+        <button id="btnClearDone" onclick="sheet.clearDone()">Clean</button>
+        <button id="btnAddList" onclick="site.startImportOrder()">Add Order</button>
+      </div>
+
       <pre id="content" style="white-space: pre-wrap;"></pre>
     </div>
   </div>

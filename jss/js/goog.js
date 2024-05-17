@@ -63,6 +63,9 @@ var goog = {
       }
       $('#signout_button').show();
       $('#authorize_button').text('Refresh');
+
+      $('.btnWrapper').hide();
+      $('#tableButtons').show();
       await sheet.getData();
     };
 
