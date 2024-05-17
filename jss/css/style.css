@@ -27,7 +27,9 @@ body {
   right: 5px;
 }
 
-#tableButtons {
+.import,
+.sheet,
+.goog {
   display: none;
 }
 

@@ -4,14 +4,19 @@ var site = {
     $("#content").on("click", "#btnImportOrderData", (e) => {
       site.convertRows();
     });
-    $("#content").on("click", "#btnImportCancel", (e) => {
-      sheet.updateDisplay();
-    });
   },
 
   startImportOrder: function () {
-    let tmpHtml = "<textarea id='importOrder'></textarea><button id='btnImportOrderData'>Add</button><button id='btnImportCancel'>Cancel</button>"
+    let tmpHtml = "<textarea id='importOrder'></textarea><button id='btnImportOrderData'>Add</button>"
     $('#content').html(tmpHtml);
+    $('.btnWrapper .table').hide();
+    $('.btnWrapper .import').show();
+  },
+
+  cancelImportOrder: function () {
+    $('.btnWrapper .import').hide();
+    $('.btnWrapper .table').show();
+    sheet.updateDisplay();
   },
 
   convertRows: function () {

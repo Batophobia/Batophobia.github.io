@@ -25,14 +25,14 @@
     </div>
     <div id="siteWrapper">
       <div class="btnWrapper">
-        <button id="authorize_button" onclick="goog.handleAuthClick()">Authorize</button>
-        <button id="signout_button" onclick="goog.handleSignoutClick()">Sign Out</button>
-      </div>
+        <button class="goog" id="authorize_button" onclick="goog.handleAuthClick()">Authorize</button>
+        <button class="goog" id="signout_button" onclick="goog.handleSignoutClick()">Sign Out</button>
 
-      <div id="tableButtons">
-        <button id="btnRefreshTable" onclick="sheet.getData()">Refresh</button>
-        <button id="btnClearDone" onclick="sheet.clearDone()">Clean</button>
-        <button id="btnAddList" onclick="site.startImportOrder()">Add Order</button>
+        <button class="sheet" id="btnRefreshTable" onclick="sheet.getData()">Refresh</button>
+        <button class="sheet" id="btnClearDone" onclick="sheet.clearDone()">Clean</button>
+        <button class="sheet" id="btnAddList" onclick="site.startImportOrder()">Add Order</button>
+
+        <button class="import" id="btnImportCancel" onclick="site.cancelImportOrder()">Cancel</button>
       </div>
 
       <pre id="content" style="white-space: pre-wrap;"></pre>
