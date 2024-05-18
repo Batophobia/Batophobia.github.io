@@ -74,7 +74,7 @@ var sheet = {
     if (prodName.length > 1) {
       prodName = prodName[0] + "\n<i>" + prodName.filter((v, i) => i > 0).join("</i>\n<i>")
     }
-    retVal += "<td>" + prodName[0] + "</td>"
+    retVal += "<td>" + prodName + "</td>"
     retVal += "<td>" + sheet.data.values[idx][3] + "</td>"
     retVal += "<td>x" + sheet.data.values[idx][4] + "</td>"
     retVal += "</tr>"
