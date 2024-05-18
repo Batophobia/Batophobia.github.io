@@ -110,7 +110,8 @@ var sheet = {
   addRow: async function () {
     priorityVal = $("#addRowPriority").val()
     productName = $("#addRowProduct").val()
-    newRow = ["FALSE", sheet.bColFormula(sheet.origLength + 1), priorityVal, productName]
+    productNum = parseInt($("#addRowProductNum").val()) || 1
+    newRow = ["FALSE", sheet.bColFormula(sheet.origLength + 1), priorityVal, productName, productNum.toString()]
 
     try {
       sheet.deleteEmptyRows()
