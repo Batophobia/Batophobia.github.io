@@ -30,7 +30,7 @@ var sheet = {
         range: sheet.sheetName,
       });
     } catch (err) {
-      $('#content').hmtl(err.message);
+      console.error(err);
       return;
     }
 
@@ -108,7 +108,7 @@ var sheet = {
         }
       });
     } catch (err) {
-      $('#content').hmtl(err.message);
+      console.error(err);
       return;
     }
   },
@@ -137,7 +137,7 @@ var sheet = {
       sheet.data.values.push(newRow)
       sheet.sortTable()
     } catch (err) {
-      $('#content').hmtl(err.message);
+      console.error(err);
       return;
     }
   },
@@ -237,7 +237,7 @@ var sheet = {
         }
       })
     } catch (err) {
-      $('#content').hmtl(err.message);
+      console.error(err);
       return;
     }
   },
