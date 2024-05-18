@@ -110,6 +110,9 @@ var site = {
         || prodName.indexOf("Storage")) {
         priority = sheet.options.indexOf("Normal")
       }
+      console.log(prodName)
+      console.log(extras.join("\n"))
+      console.log("\n" + extras.join("\n"))
       if (extras.length)
         prodName += "\n" + extras.join("\n")
     }
