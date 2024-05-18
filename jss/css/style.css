@@ -74,6 +74,10 @@ body {
   background-color: #CCC;
 }
 
+#content tr.Diecut {
+  background-color: #FC9;
+}
+
 #content tr.completed {
   background-color: #999 !important;
   text-decoration: line-through;

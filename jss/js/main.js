@@ -6,8 +6,9 @@ var main = {
     this.load();
   },
   load: function () {
-    console.log("ver .66");
+    console.log("ver .67");
 
     $("#btnBegin").on("click", goog.decrypt);
+    $("#pass").focus();
   }
 };

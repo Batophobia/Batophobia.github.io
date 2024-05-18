@@ -5,12 +5,13 @@ var sheet = {
     "Info",
     "White",
     "Clear",
+    "Diecut",
     "High",
     "Normal",
     "Low",
   ],
   offset: 0,
-  bColVal: '=IF(A***,8,IF(C***="High",3,IF(C***="Normal",4,IF(C***="Low",5,IF(C***="Info",0,IF(C***="White",1,IF(C***="Clear",2,9)))))))',
+  bColVal: '=IF(A***,8,IF(C***="High",4,IF(C***="Normal",5,IF(C***="Low",6,IF(C***="Info",0,IF(C***="White",1,IF(C***="Clear",2,IF(C***="Diecut",3,9))))))))',
 
   init: function () {
     $("#content").on("change", ".rowBox", (e) => {
