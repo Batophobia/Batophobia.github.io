@@ -146,7 +146,12 @@ var sheet = {
   clearDone: function () {
     sheet.data.values = sheet.data.values.sort((a, b) => a[1] > b[1]).filter(v => v[1] != "8")
     sheet.updateDisplay()
-    sheet.fullUpdate()
+    sheet.deleteEmptyRows()
+  },
+
+  sortTable: function () {
+    sheet.data.values = sheet.data.values.sort((a, b) => a[1] > b[1])
+    sheet.updateDisplay()
   },
 
   addProduct: function (prodName, priority, num, extra) {
