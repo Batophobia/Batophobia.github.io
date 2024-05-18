@@ -168,6 +168,45 @@ var sheet = {
     }
   },
 
+  fullUpdate: function () {
+    let newLength = sheet.offset + sheet.data.values.length;
+
+    try {
+      if (newLength > sheet.origLength) {
+        response = sheets.spreadsheets.batchUpdate({
+          spreadsheetId: goog.spreadsheet,
+          resource: {
+            [{
+              updateSheetProperties: {
+                properties: {
+                  sheetId: goog.sheet,
+                  gridProperties: {
+                    rowCount: newLength
+                  }
+                },
+                fields: 'gridProperties(rowCount)'
+              }
+            }]
+          }
+        });
+      }
+
+      response = await gapi.client.sheets.spreadsheets.update({
+        spreadsheetId: goog.spreadsheet,
+        range: `${sheet.sheetName}!A${sheet.offset + 1}:${String.fromCharCode(65 + sheet.data.values.length[0] - 1)}${newLength}`,
+        valueInputOption: 'USER_ENTERED',
+        resource: {
+          values: sheet.data.values
+        }
+      });
+
+      sheet.deleteEmptyRows();
+    } catch (err) {
+      $('#content').hmtl(err.message);
+      return;
+    }
+  },
+
   bColFormula: function (idx) {
     return sheet.bColVal.replaceAll("***", idx.toString())
   },
