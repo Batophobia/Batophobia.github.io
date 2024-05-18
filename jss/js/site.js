@@ -62,10 +62,10 @@ var site = {
   },
 
   convertProduct: function (row) {
-    console.log(row)
     var prodName = row[0].trim();
     var extra = row.filter((v, i) => i > 0 && i < row.length - 3)
     var num = parseInt(row[row.length - 2].substring(1).trim()) || 1;
+    console.log({ num, r: row[row.length - 2], s: row[row.length - 2].substring(1), t: row[row.length - 2].substring(1).trim() })
     let priority = sheet.options.indexOf("Low")
 
     let isSticker = false;
