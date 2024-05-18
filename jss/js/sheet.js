@@ -191,7 +191,7 @@ var sheet = {
         });
       }
 
-      response = await gapi.client.sheets.spreadsheets.update({
+      response = await gapi.client.sheets.spreadsheets.values.update({
         spreadsheetId: goog.spreadsheet,
         range: `${sheet.sheetName}!A${sheet.offset + 1}:${String.fromCharCode(65 + sheet.data.values.length[0] - 1)}${newLength}`,
         valueInputOption: 'USER_ENTERED',
