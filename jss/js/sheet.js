@@ -202,7 +202,7 @@ var sheet = {
 
       sheet.deleteEmptyRows();
     } catch (err) {
-      $('#content').hmtl(err.message);
+      console.error(err);
       return;
     }
   },

@@ -19,12 +19,11 @@ var site = {
     sheet.updateDisplay();
   },
 
-  importOrder: function () {
+  importOrder: async function () {
     orderData = $("#importOrder").val()
     if (orderData == "") return;
 
     orderData = orderData.substring(orderData.indexOf("Order #"), orderData.indexOf("Delivery method")).split('\n')
-    console.log(orderData)
     let idx = 0;
 
     const orderNum = orderData[0].split("#")[1];
@@ -55,9 +54,9 @@ var site = {
     }
 
     if (sanityCheck != numItems) console.log(`Expected ${numItems} items, but made ${sanityCheck}`)
-    console.log({ orderNum, numItems, sanityCheck })
+
     sheet.updateOrderNum(orderNum)
-    //TODO: sheet.batchUpdate
+    await sheet.fullUpdate();
     site.cancelImportOrder();
   },
 
@@ -65,7 +64,7 @@ var site = {
     var prodName = row[0].trim();
     var extra = row.filter((v, i) => i > 0 && i < row.length - 3)
     var num = parseInt(row[row.length - 2].substring(1).trim()) || 1;
-    console.log({ num, r: row[row.length - 2], s: row[row.length - 2].substring(1), t: row[row.length - 2].substring(1).trim() })
+
     let priority = sheet.options.indexOf("Low")
 
     let isSticker = false;
