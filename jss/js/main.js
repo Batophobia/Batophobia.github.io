@@ -7,7 +7,7 @@ var main = {
     this.load();
   },
   load: function () {
-    console.log("ver .84");
+    console.log("ver .85");
 
     $("#btnBegin").on("click", goog.decrypt);
     $("#pass").focus();

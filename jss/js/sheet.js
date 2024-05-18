@@ -44,9 +44,9 @@ var sheet = {
     sheet.offset = sheet.data.values.findIndex(v => v.length && v[1] != "9" && v[1] != "")
     sheet.origLength = sheet.data.values.length
 
-    sheet.data.values = sheet.data.values.filter(arr => arr.length && arr[1] != "9" && arr[1] != "").sort((a, b) => a[1] > b[1])
+    sheet.data.values = sheet.data.values.filter(arr => arr.length && arr[1] != "9" && arr[1] != "")
     sheet.data.maxOrder = parseInt(sheet.data.values[0][3].split("#")[1]) || 0
-    sheet.updateDisplay()
+    sheet.sortTable()
   },
 
   updateDisplay: function () {
@@ -135,8 +135,7 @@ var sheet = {
 
       newRow[1] = sheet.options.indexOf(priorityVal).toString()
       sheet.data.values.push(newRow)
-      sheet.data.values = sheet.data.values.sort((a, b) => a[1] > b[1])
-      sheet.updateDisplay()
+      sheet.sortTable()
     } catch (err) {
       $('#content').hmtl(err.message);
       return;
@@ -144,13 +143,13 @@ var sheet = {
   },
 
   clearDone: function () {
-    sheet.data.values = sheet.data.values.sort((a, b) => a[1] > b[1]).filter(v => v[1] != "8")
-    sheet.updateDisplay()
+    sheet.data.values = sheet.data.values.filter(v => v[1] != "8")
+    sheet.sortTable()
     sheet.deleteEmptyRows()
   },
 
   sortTable: function () {
-    sheet.data.values = sheet.data.values.sort((a, b) => a[1] > b[1])
+    sheet.data.values = sheet.data.values.sort((a, b) => a[3] > b[3]).sort((a, b) => a[1] > b[1])
     sheet.updateDisplay()
   },
 
@@ -177,7 +176,7 @@ var sheet = {
 
   fullUpdate: async function () {
     let newLength = sheet.offset + sheet.data.values.length;
-    sheet.data.values = sheet.data.values.sort((a, b) => a[1] > b[1])
+    sheet.sortTable()
     updateData = sheet.data.values.map((v, i) => sheet.getFormulaRow(v, sheet.offset + 1 + i))
 
     try {
