@@ -139,7 +139,7 @@ var sheet = {
   },
 
   addProduct: function (prodName, priority, num, extra) {
-    console.log({ prodName, extra, priority, num, isSticker })
+    console.log({ prodName, extra, priority, num })
   },
 
   bColFormula: function (idx) {

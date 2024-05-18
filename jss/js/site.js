@@ -74,6 +74,8 @@ var site = {
       priority = sheet.options.indexOf("White")
       if (extra.length && extra[0].indexOf("Transparent") > 0)
         priority = sheet.options.indexOf("Clear")
+      //} else if() {
+
     }
 
     sheet.addProduct(prodName, priority, num, extra)
