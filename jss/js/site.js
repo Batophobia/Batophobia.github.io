@@ -64,7 +64,6 @@ var site = {
   convertProduct: function (row) {
     var prodName = row[0].trim();
     var extra = row.filter((v, i) => i > 0 && i < row.length - 3)
-    console.log({ row, prodName, extra })
     var num = parseInt(row[row.length - 2].substring(1).trim()) || 1;
     let priority = sheet.options.indexOf("Low")
 
@@ -100,7 +99,7 @@ var site = {
     } else {
       // High block
       if (prodName.indexOf("Contact Cards")) {
-        num *= parseInt(extra[0].split(":").trim() || 1)
+        num *= parseInt(extra[0].split(":")[1].trim() || 1)
         priority = sheet.options.indexOf("High")
       } else if (prodName.indexOf("Custom") == 0
         || prodName.indexOf("Cover")
