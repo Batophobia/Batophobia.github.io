@@ -144,7 +144,9 @@ var sheet = {
   },
 
   clearDone: function () {
-    //TODO
+    sheet.data.values = sheet.data.values.sort((a, b) => a[1] > b[1]).filter(v => v[1] != "8")
+    sheet.updateDisplay()
+    //TODO: Update sheet
   },
 
   addProduct: function (prodName, priority, num, extra) {
@@ -170,6 +172,7 @@ var sheet = {
 
   fullUpdate: async function () {
     let newLength = sheet.offset + sheet.data.values.length;
+    sheet.data.values = sheet.data.values.sort((a, b) => a[1] > b[1])
 
     try {
       if (newLength > sheet.origLength) {
