@@ -70,7 +70,11 @@ var sheet = {
   makeRowHtml: function (idx) {
     retVal = "<tr class='" + sheet.data.values[idx][2] + (sheet.data.values[idx][0] == "TRUE" ? " completed" : "") + "'>"
     retVal += "<td><input type='checkbox' class='rowBox' id='row" + idx.toString() + "' " + (sheet.data.values[idx][0] == "TRUE" ? "checked" : "") + "></td>"
-    retVal += "<td>" + sheet.data.values[idx][2] + "</td>"
+    let prodName = sheet.data.values[idx][2].split("\n")
+    if (prodName.length > 1) {
+      prodName = prodName[0] + "\n<i>" + prodName.filter((v, i) => i > 0).join("</i>\n<i>")
+    }
+    retVal += "<td>" + prodName[0] + "</td>"
     retVal += "<td>" + sheet.data.values[idx][3] + "</td>"
     retVal += "<td>x" + sheet.data.values[idx][4] + "</td>"
     retVal += "</tr>"
@@ -143,7 +147,6 @@ var sheet = {
   },
 
   addProduct: function (prodName, priority, num, extra) {
-    console.log({ prodName, extra, priority, num })
     let existingIdx = sheet.data.values.map(v => v[3]).indexOf(prodName)
     if (existingIdx < 0)
       sheet.data.values.push(["FALSE", priority.toString(), sheet.options[priority], prodName, num])

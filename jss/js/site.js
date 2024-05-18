@@ -90,7 +90,6 @@ var site = {
       isSticker = true;
     }
 
-    console.log({ num })
     // Sticker block
     if (isSticker) {
       priority = sheet.options.indexOf("White")
@@ -99,7 +98,7 @@ var site = {
       else if (prodName.toLowerCase().indexOf("die cut") > 0 || prodName.indexOf("diecut") > 0)
         priority = sheet.options.indexOf("Diecut")
     } else {
-      console.log({ num })
+
       // High block
       if (prodName.indexOf("Contact Cards") > -1) {
         num *= parseInt(extra[0].split(":")[1].trim() || 1)
@@ -114,11 +113,7 @@ var site = {
         priority = sheet.options.indexOf("Normal")
       }
 
-      console.log({ num })
       if (extra.length) {
-        console.log(prodName)
-        console.log(extra.join("\n"))
-        console.log("\n" + extra.join("\n"))
         prodName += "\n" + extra.join("\n")
       }
     }
