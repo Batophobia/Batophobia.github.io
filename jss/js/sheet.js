@@ -92,7 +92,7 @@ var sheet = {
 
     $(elem).closest("tr").toggleClass("completed", isChecked)
 
-    origIdx = sheet.offset.toString()
+    origIdx = (sheet.offset + 1).toString()
 
     try {
       //sheet.deleteEmptyRows()
