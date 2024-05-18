@@ -138,6 +138,10 @@ var sheet = {
     //TODO
   },
 
+  addProduct: function (prodName, priority, num, extra) {
+    console.log({ prodName, extra, priority, num, isSticker })
+  },
+
   bColFormula: function (idx) {
     return sheet.bColVal.replaceAll("***", idx.toString())
   },

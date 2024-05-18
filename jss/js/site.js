@@ -53,11 +53,13 @@ var site = {
     }
 
     console.log({ orderNum, numItems, idx })
+    //TODO: sheet.batchUpdate
   },
 
   convertProduct: function (row) {
     const prodName = row[0].trim();
     const extra = row.filter((v, i) => i > 0 && i < row.length - 3)
+    const num = row[0].trim(row.length - 2);
     let priority = sheet.options.indexOf("Low")
 
     let isSticker = false;
@@ -74,6 +76,6 @@ var site = {
         priority = sheet.options.indexOf("Clear")
     }
 
-    console.log({ prodName, extra, priority, isSticker })
+    sheet.addProduct(prodName, priority, num, extra)
   }
 };
