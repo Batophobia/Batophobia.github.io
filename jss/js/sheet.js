@@ -70,13 +70,13 @@ var sheet = {
   makeRowHtml: function (idx) {
     retVal = "<tr class='" + sheet.data.values[idx][2] + (sheet.data.values[idx][0] == "TRUE" ? " completed" : "") + "'>"
     retVal += "<td><input type='checkbox' class='rowBox' id='row" + idx.toString() + "' " + (sheet.data.values[idx][0] == "TRUE" ? "checked" : "") + "></td>"
-    let prodName = sheet.data.values[idx][2].split("\n")
+    retVal += "<td>" + sheet.data.values[idx][2] + "</td>"
+    let prodName = sheet.data.values[idx][3].split("\n")
     console.log(prodName)
     if (prodName.length > 1) {
       prodName = prodName[0] + "\n<i>" + prodName.filter((v, i) => i > 0).join("</i>\n<i>")
     }
     retVal += "<td>" + prodName + "</td>"
-    retVal += "<td>" + sheet.data.values[idx][3] + "</td>"
     retVal += "<td>x" + sheet.data.values[idx][4] + "</td>"
     retVal += "</tr>"
 
