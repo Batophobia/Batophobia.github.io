@@ -110,11 +110,13 @@ var site = {
         || prodName.indexOf("Storage")) {
         priority = sheet.options.indexOf("Normal")
       }
-      console.log(prodName)
-      console.log(extras.join("\n"))
-      console.log("\n" + extras.join("\n"))
-      if (extras.length)
+
+      if (extras.length) {
+        console.log(prodName)
+        console.log(extras.join("\n"))
+        console.log("\n" + extras.join("\n"))
         prodName += "\n" + extras.join("\n")
+      }
     }
 
     sheet.addProduct(prodName, priority, num, extra)
