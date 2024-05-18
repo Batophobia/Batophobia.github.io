@@ -168,15 +168,15 @@ var sheet = {
     }
   },
 
-  fullUpdate: function () {
+  fullUpdate: async function () {
     let newLength = sheet.offset + sheet.data.values.length;
 
     try {
       if (newLength > sheet.origLength) {
-        response = sheets.spreadsheets.batchUpdate({
+        response = await gapi.client.sheets.spreadsheets.batchUpdate({
           spreadsheetId: goog.spreadsheet,
           resource: {
-            [{
+            requests: [{
               updateSheetProperties: {
                 properties: {
                   sheetId: goog.sheet,
