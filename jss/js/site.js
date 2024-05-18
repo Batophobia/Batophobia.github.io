@@ -69,10 +69,10 @@ var site = {
 
     let isSticker = false;
     if (
-      prodName.toLowerCase().indexOf("sticker sheet") ||
-      prodName.toLowerCase().indexOf("micro sheet") ||
-      prodName.toLowerCase().indexOf("die cut") ||
-      prodName.toLowerCase().indexOf("diecut") ||
+      prodName.toLowerCase().indexOf("sticker sheet") > -1 ||
+      prodName.toLowerCase().indexOf("micro sheet") > -1 ||
+      prodName.toLowerCase().indexOf("die cut") > -1 ||
+      prodName.toLowerCase().indexOf("diecut") > -1 ||
       (extra.length && /: (White Matte|Transparent)/.test(extra[0]))
     ) {
       let type = prodName.split("-");
@@ -94,7 +94,7 @@ var site = {
       priority = sheet.options.indexOf("White")
       if (extra.length && extra[0].indexOf("Transparent") > 0)
         priority = sheet.options.indexOf("Clear")
-      else if (prodName.toLowerCase().indexOf("die cut") || prodName.indexOf("diecut"))
+      else if (prodName.toLowerCase().indexOf("die cut") > 0 || prodName.indexOf("diecut") > 0)
         priority = sheet.options.indexOf("Diecut")
     } else {
       // High block
