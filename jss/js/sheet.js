@@ -61,7 +61,7 @@ var sheet = {
     }
     tmpHtml += "</select></td>"
     tmpHtml += "<td><input id='addRowProduct' type='text' placeholder='Product'/></td>"
-    tmpHtml += "<td><input id='addRowProductNum' type='text' value='1'/></td>"
+    tmpHtml += "<td><input id='addRowProductNum' type='number' value='1'/></td>"
     tmpHtml += "</tr>"
     tmpHtml += "</table>"
     $('#content').html(tmpHtml);

@@ -60,18 +60,30 @@ var site = {
   },
 
   convertProduct: function (row) {
-    const prodName = row[0].trim();
-    const extra = row.filter((v, i) => i > 0 && i < row.length - 3)
-    const num = parseInt(row[row.length - 2].substring(1).trim()) || 1;
+    var prodName = row[0].trim();
+    var extra = row.filter((v, i) => i > 0 && i < row.length - 3)
+    var num = parseInt(row[row.length - 2].substring(1).trim()) || 1;
     let priority = sheet.options.indexOf("Low")
 
     let isSticker = false;
     if (
       prodName.toLowerCase().indexOf("sticker sheet") ||
+      prodName.toLowerCase().indexOf("micro sheet") ||
       prodName.toLowerCase().indexOf("die cut") ||
-      prodName.indexOf("diecut") ||
+      prodName.toLowerCase().indexOf("diecut") ||
       (extra.length && /: (White Matte|Transparent)/.test(extra[0]))
     ) {
+      let type = prodName.split("-");
+      prodName = type[0].trim();
+      if (type.length > 1) {
+        type = type[1].trim().toLowerCase();
+        if (type.indexOf("micro") > -1)
+          prodName += " (micro)"
+        else if (type.indexOf("mini") > -1)
+          prodName += " (mini)"
+        else if (type.indexOf("die cut") > -1 || type.indexOf("diecut") > -1)
+          prodName += " (diecut)"
+      }
       isSticker = true;
     }
 
@@ -82,19 +94,21 @@ var site = {
         priority = sheet.options.indexOf("Clear")
       else if (prodName.toLowerCase().indexOf("die cut") || prodName.indexOf("diecut"))
         priority = sheet.options.indexOf("Diecut")
-    }
-    // High block
-    else if (prodName.indexOf("Contact Cards")) {
-      num *= parseInt(extra[0].split(":").trim() || 1)
-      priority = sheet.options.indexOf("High")
-    } else if (prodName.indexOf("Custom") == 0) {
-      priority = sheet.options.indexOf("High")
-    } else if (prodName.indexOf("Cover") || prodName.indexOf("Cover")) {
-      priority = sheet.options.indexOf("High")
-    }
-    // Normal block
-    else if (prodName.indexOf("Vellum")) {
-      priority = sheet.options.indexOf("Normal")
+    } else {
+      // High block
+      if (prodName.indexOf("Contact Cards")) {
+        num *= parseInt(extra[0].split(":").trim() || 1)
+        priority = sheet.options.indexOf("High")
+      } else if (prodName.indexOf("Custom") == 0
+        || prodName.indexOf("Cover")
+        || prodName.indexOf("Bundle")) {
+        priority = sheet.options.indexOf("High")
+      }
+      else if (prodName.indexOf("Vellum")
+        || prodName.indexOf("Storage")) {
+        priority = sheet.options.indexOf("Normal")
+      }
+      //TODO: extras
     }
 
     sheet.addProduct(prodName, priority, num, extra)
