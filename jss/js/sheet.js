@@ -150,7 +150,7 @@ var sheet = {
   },
 
   addProduct: function (prodName, priority, num, extra) {
-    let existingIdx = sheet.data.values.filter(v => v[1] == priority.toString()).map(v => v[3]).indexOf(prodName)
+    let existingIdx = sheet.data.values.findIndex(v => v[1] == priority.toString() && v[3] == prodName)
     if (existingIdx < 0)
       sheet.data.values.push(["FALSE", priority.toString(), sheet.options[priority], prodName, num])
     else
