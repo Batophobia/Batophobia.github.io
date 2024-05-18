@@ -146,10 +146,11 @@ var sheet = {
   clearDone: function () {
     sheet.data.values = sheet.data.values.sort((a, b) => a[1] > b[1]).filter(v => v[1] != "8")
     sheet.updateDisplay()
-    //TODO: Update sheet
+    sheet.fullUpdate()
   },
 
   addProduct: function (prodName, priority, num, extra) {
+    console.log({ prodName, priority, num, extra })
     let existingIdx = sheet.data.values.findIndex(v => v[1] == priority.toString() && v[3] == prodName)
     if (existingIdx < 0)
       sheet.data.values.push(["FALSE", priority.toString(), sheet.options[priority], prodName, num])
