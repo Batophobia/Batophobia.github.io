@@ -178,6 +178,7 @@ var sheet = {
   fullUpdate: async function () {
     let newLength = sheet.offset + sheet.data.values.length;
     sheet.data.values = sheet.data.values.sort((a, b) => a[1] > b[1])
+    updateData = sheet.data.values.map((v, i) => [v[0], sheet.bColFormula(sheet.offset + 1 + i), v[2], v[3], v[4]])
 
     try {
       if (newLength > sheet.origLength) {
@@ -204,7 +205,7 @@ var sheet = {
         range: `${sheet.sheetName}!A${sheet.offset + 1}:${String.fromCharCode(65 + sheet.data.values.length[0] - 1)}${newLength}`,
         valueInputOption: 'USER_ENTERED',
         resource: {
-          values: sheet.data.values
+          values: updateData
         }
       });
 
