@@ -101,7 +101,7 @@ var sheet = {
         spreadsheetId: goog.spreadsheet,
         resource: {
           data: {
-            range: `${sheet.sheetName}!A${origIdx}:D`,
+            range: `${sheet.sheetName}!A${origIdx}:E`,
             values: sheet.data.values.map((v, i) => sheet.getFormulaRow(v, sheet.offset + 1 + i))
           },
           valueInputOption: "USER_ENTERED"
