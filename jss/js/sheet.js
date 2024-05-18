@@ -36,7 +36,7 @@ var sheet = {
 
     sheet.data = response.result;
     if (!sheet.data || !sheet.data.values || sheet.data.values.length == 0) {
-      sheet.data = { values: [] }
+      sheet.data = { maxOrder: 0, values: [] }
       sheet.updateDisplay()
       return;
     }
@@ -45,6 +45,7 @@ var sheet = {
     sheet.origLength = sheet.data.values.length
 
     sheet.data.values = sheet.data.values.filter(arr => arr.length && arr[1] != "9" && arr[1] != "").sort((a, b) => a[1] > b[1])
+    sheet.data.maxOrder = parseInt(sheet.data.values[0][3].split("#")[1]) || 0
     sheet.updateDisplay()
   },
 
@@ -72,7 +73,6 @@ var sheet = {
     retVal += "<td><input type='checkbox' class='rowBox' id='row" + idx.toString() + "' " + (sheet.data.values[idx][0] == "TRUE" ? "checked" : "") + "></td>"
     retVal += "<td>" + sheet.data.values[idx][2] + "</td>"
     let prodName = sheet.data.values[idx][3].split("\n")
-    console.log(prodName)
     if (prodName.length > 1) {
       prodName = prodName[0] + "\n<i>" + prodName.filter((v, i) => i > 0).join("</i>\n<i>")
     }
@@ -153,6 +153,19 @@ var sheet = {
       sheet.data.values.push(["FALSE", priority.toString(), sheet.options[priority], prodName, num])
     else
       sheet.data.values[existingIdx][4] = parseInt(sheet.data.values[existingIdx][4]) + parseInt(num)
+  },
+
+  updateOrderNum: function (orderNum) {
+    let orderInt = parseInt(orderNum);
+    if (isNaN(orderInt)) {
+      console.log(`Invalid order number ${orderNum}`)
+      return;
+    }
+
+    if (orderInt > sheet.data.maxOrder) {
+      sheet.data.maxOrder = orderInt
+      sheet.data.values[0][3] = `Up to order #${orderInt.toString()}`
+    }
   },
 
   bColFormula: function (idx) {

@@ -56,7 +56,7 @@ var site = {
 
     if (sanityCheck != numItems) console.log(`Expected ${numItems} items, but made ${sanityCheck}`)
     console.log({ orderNum, numItems, sanityCheck })
-    //TODO: sheet.updateOrderNum(orderNum)
+    sheet.updateOrderNum(orderNum)
     //TODO: sheet.batchUpdate
     site.cancelImportOrder();
   },
