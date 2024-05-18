@@ -146,7 +146,7 @@ var sheet = {
     console.log({ prodName, extra, priority, num })
     let existingIdx = sheet.data.values.map(v => v[3]).indexOf(prodName)
     if (existingIdx < 0)
-      sheet.data.values.push(["FALSE", sheet.options.indexOf(priority).toString(), priority, prodName, num])
+      sheet.data.values.push(["FALSE", priority, sheet.options.indexOf(priority).toString(), prodName, num])
     else
       sheet.data.values[existingIdx][4] = parseInt(sheet.data.values[existingIdx][4]) + parseInt(num)
   },
