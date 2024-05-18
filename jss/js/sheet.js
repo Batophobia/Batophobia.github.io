@@ -95,14 +95,14 @@ var sheet = {
     origIdx = sheet.offset.toString()
 
     try {
-      sheet.deleteEmptyRows()
+      //sheet.deleteEmptyRows()
 
       response = await gapi.client.sheets.spreadsheets.values.batchUpdate({
         spreadsheetId: goog.spreadsheet,
         resource: {
           data: {
             range: `${sheet.sheetName}!A${origIdx}:D`,
-            values: sheet.data.values.map((v, i) => [v[0], sheet.bColFormula(sheet.offset + i), v[2], v[3]])
+            values: sheet.data.values.map((v, i) => sheet.getFormulaRow(v, sheet.offset + 1 + i))
           },
           valueInputOption: "USER_ENTERED"
         }
@@ -178,7 +178,7 @@ var sheet = {
   fullUpdate: async function () {
     let newLength = sheet.offset + sheet.data.values.length;
     sheet.data.values = sheet.data.values.sort((a, b) => a[1] > b[1])
-    updateData = sheet.data.values.map((v, i) => [v[0], sheet.bColFormula(sheet.offset + 1 + i), v[2], v[3], v[4]])
+    updateData = sheet.data.values.map((v, i) => sheet.getFormulaRow(v, sheet.offset + 1 + i))
 
     try {
       if (newLength > sheet.origLength) {
@@ -241,5 +241,9 @@ var sheet = {
       $('#content').hmtl(err.message);
       return;
     }
+  },
+
+  getFormulaRow: function (row, idx) {
+    return [row[0], sheet.bColFormula(idx), row[2], row[3], row[4]]
   }
 };
