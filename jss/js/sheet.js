@@ -144,7 +144,11 @@ var sheet = {
 
   addProduct: function (prodName, priority, num, extra) {
     console.log({ prodName, extra, priority, num })
-    //sheet.data.values.push(["FALSE", sheet.options.indexOf(priorityVal).toString(), priority, num])
+    let existingIdx = sheet.data.values.map(v => v[3]).indexOf(prodName)
+    if (existingIdx < 0)
+      sheet.data.values.push(["FALSE", sheet.options.indexOf(priorityVal).toString(), priorityVal, prodName, num])
+    else
+      sheet.data.values[existingIdx][4] = parseInt(sheet.data.values[existingIdx][4]) + parseInt(num)
   },
 
   bColFormula: function (idx) {

@@ -55,8 +55,10 @@ var site = {
     }
 
     if (sanityCheck != numItems) console.log(`Expected ${numItems} items, but made ${sanityCheck}`)
-    console.log({ orderNum, numItems, sanityCheck, idx })
+    console.log({ orderNum, numItems, sanityCheck })
+    //TODO: sheet.updateOrderNum(orderNum)
     //TODO: sheet.batchUpdate
+    sheet.updateDisplay();
   },
 
   convertProduct: function (row) {
@@ -108,7 +110,8 @@ var site = {
         || prodName.indexOf("Storage")) {
         priority = sheet.options.indexOf("Normal")
       }
-      //TODO: extras
+      if (extras.length)
+        prodName += "\n" + extras.join("\n")
     }
 
     sheet.addProduct(prodName, priority, num, extra)
