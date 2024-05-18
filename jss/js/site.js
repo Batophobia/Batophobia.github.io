@@ -111,11 +111,11 @@ var site = {
         priority = sheet.options.indexOf("Normal")
       }
 
-      if (extras.length) {
+      if (extra.length) {
         console.log(prodName)
-        console.log(extras.join("\n"))
-        console.log("\n" + extras.join("\n"))
-        prodName += "\n" + extras.join("\n")
+        console.log(extra.join("\n"))
+        console.log("\n" + extra.join("\n"))
+        prodName += "\n" + extra.join("\n")
       }
     }
 
