@@ -58,7 +58,7 @@ var site = {
     console.log({ orderNum, numItems, sanityCheck })
     //TODO: sheet.updateOrderNum(orderNum)
     //TODO: sheet.batchUpdate
-    sheet.updateDisplay();
+    site.cancelImportOrder();
   },
 
   convertProduct: function (row) {
