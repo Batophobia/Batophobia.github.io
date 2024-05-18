@@ -60,6 +60,7 @@ var sheet = {
     }
     tmpHtml += "</select></td>"
     tmpHtml += "<td><input id='addRowProduct' type='text' placeholder='Product'/></td>"
+    tmpHtml += "<td><input id='addRowProductNum' type='text' value='1'/></td>"
     tmpHtml += "</tr>"
     tmpHtml += "</table>"
     $('#content').html(tmpHtml);
@@ -70,6 +71,7 @@ var sheet = {
     retVal += "<td><input type='checkbox' class='rowBox' id='row" + idx.toString() + "' " + (sheet.data.values[idx][0] == "TRUE" ? "checked" : "") + "></td>"
     retVal += "<td>" + sheet.data.values[idx][2] + "</td>"
     retVal += "<td>" + sheet.data.values[idx][3] + "</td>"
+    retVal += "<td>x" + sheet.data.values[idx][4] + "</td>"
     retVal += "</tr>"
 
     return retVal
@@ -140,6 +142,7 @@ var sheet = {
 
   addProduct: function (prodName, priority, num, extra) {
     console.log({ prodName, extra, priority, num })
+    //sheet.data.values.push(["FALSE", sheet.options.indexOf(priorityVal).toString(), priority, num])
   },
 
   bColFormula: function (idx) {

@@ -59,7 +59,7 @@ var site = {
   convertProduct: function (row) {
     const prodName = row[0].trim();
     const extra = row.filter((v, i) => i > 0 && i < row.length - 3)
-    const num = row[0].trim(row.length - 2);
+    const num = row[row.length - 2].trim();
     let priority = sheet.options.indexOf("Low")
 
     let isSticker = false;
