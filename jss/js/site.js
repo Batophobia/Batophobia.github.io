@@ -64,6 +64,7 @@ var site = {
   convertProduct: function (row) {
     var prodName = row[0].trim();
     var extra = row.filter((v, i) => i > 0 && i < row.length - 3)
+    console.log({ row, prodName, extra })
     var num = parseInt(row[row.length - 2].substring(1).trim()) || 1;
     let priority = sheet.options.indexOf("Low")
 
