@@ -93,19 +93,29 @@ body {
 }
 
 #content table .colBox {
-  width: 10%;
+  width: 5%;
 }
 
 #content table .colType {
-  width: 20%;
-}
-
-#content table .colItem {
-  width: 60%;
+  width: 5%;
 }
 
 #content table .colNum {
-  width: 10%;
+  width: 5%;
+  text-align: center;
+}
+
+#content table .colItem {
+  width: 85%;
+}
+
+#addRowProductNum {
+  width: 90%;
+}
+
+#addRowProduct {
+  margin-left: 10px;
+  width: 95%;
 }
 
 #content #importOrder {
