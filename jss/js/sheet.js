@@ -12,11 +12,12 @@ var sheet = {
   ],
   offset: 0,
   bColVal: '=IF(A***,8,IF(C***="High",4,IF(C***="Normal",5,IF(C***="Low",6,IF(C***="Info",0,IF(C***="White",1,IF(C***="Clear",2,IF(C***="Diecut",3,9))))))))',
+  updateTimeout: null,
 
   init: function () {
-    $("#content").on("change", ".rowBox", (e) => {
-      sheet.rowClick(e.target);
-    });
+    //$("#content").on("change", ".rowBox", (e) => {
+    //  sheet.rowClick(e.target);
+    //});
     $("#content").on("click", "#btnAddRow", (e) => {
       sheet.addRow()
     });
@@ -50,7 +51,7 @@ var sheet = {
   },
 
   updateDisplay: function () {
-    let tmpHtml = "<div id='upToOrder'>" + sheet.data.values[0][4] + "</div>"
+    let tmpHtml = "<div id='upToOrder'>" + sheet.data.values[0][3] + "</div>"
     tmpHtml += "<table id='toDoTable'>"
     for (let idx = 1; idx < sheet.data.values.length; idx++) {
       tmpHtml += sheet.makeRowHtml(idx)
