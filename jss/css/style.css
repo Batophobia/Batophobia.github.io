@@ -41,6 +41,13 @@ body {
   overflow: auto;
 }
 
+#content #upToOrder {
+  background-color: #CC6;
+  font-weight: bold;
+  padding: 5px;
+  text-align: center;
+}
+
 #content table {
   border-collapse: collapse;
   width: 100%;

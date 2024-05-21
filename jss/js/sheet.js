@@ -15,9 +15,9 @@ var sheet = {
   updateTimeout: null,
 
   init: function () {
-    //$("#content").on("change", ".rowBox", (e) => {
-    //  sheet.rowClick(e.target);
-    //});
+    $("#content").on("change", ".rowBox", (e) => {
+      sheet.rowClick(e.target);
+    });
     $("#content").on("click", "#btnAddRow", (e) => {
       sheet.addRow()
     });
@@ -96,23 +96,23 @@ var sheet = {
 
     origIdx = (sheet.offset + 1).toString()
 
-    try {
-      //sheet.deleteEmptyRows()
+    // try {
+    //   //sheet.deleteEmptyRows()
 
-      response = await gapi.client.sheets.spreadsheets.values.batchUpdate({
-        spreadsheetId: goog.spreadsheet,
-        resource: {
-          data: {
-            range: `${sheet.sheetName}!A${origIdx}:E`,
-            values: sheet.data.values.map((v, i) => sheet.getFormulaRow(v, sheet.offset + 1 + i))
-          },
-          valueInputOption: "USER_ENTERED"
-        }
-      });
-    } catch (err) {
-      console.error(err);
-      return;
-    }
+    //   response = await gapi.client.sheets.spreadsheets.values.batchUpdate({
+    //     spreadsheetId: goog.spreadsheet,
+    //     resource: {
+    //       data: {
+    //         range: `${sheet.sheetName}!A${origIdx}:E`,
+    //         values: sheet.data.values.map((v, i) => sheet.getFormulaRow(v, sheet.offset + 1 + i))
+    //       },
+    //       valueInputOption: "USER_ENTERED"
+    //     }
+    //   });
+    // } catch (err) {
+    //   console.error(err);
+    //   return;
+    // }
   },
 
   addRow: async function () {
