@@ -50,8 +50,9 @@ var sheet = {
   },
 
   updateDisplay: function () {
-    let tmpHtml = "<table id='toDoTable'>"
-    for (let idx in sheet.data.values) {
+    let tmpHtml = "<div id='upToOrder'>" + sheet.data.values[0][4] + "</div>"
+    tmpHtml += "<table id='toDoTable'>"
+    for (let idx = 1; idx < sheet.data.values.length; idx++) {
       tmpHtml += sheet.makeRowHtml(idx)
     }
     tmpHtml += "<tr class='addEntry'>"
