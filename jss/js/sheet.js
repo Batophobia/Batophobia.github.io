@@ -99,7 +99,7 @@ var sheet = {
 
     origIdx = (sheet.offset + 1).toString()
 
-    sheet.updateTimeout = setTimeout(() => sheet.fullUpdate(), 15000); // 15 second delay
+    sheet.updateTimeout = setTimeout(() => sheet.fullUpdate(), 10000); // 10 second delay
     // try {
     //   //sheet.deleteEmptyRows()
 
