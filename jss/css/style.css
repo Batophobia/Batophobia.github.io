@@ -92,19 +92,19 @@ body {
   text-decoration: line-through;
 }
 
-#content table .col1 {
+#content table .colBox {
   width: 10%;
 }
 
-#content table .col2 {
+#content table .colType {
   width: 20%;
 }
 
-#content table .col3 {
+#content table .colItem {
   width: 60%;
 }
 
-#content table .col4 {
+#content table .colNum {
   width: 10%;
 }
 
