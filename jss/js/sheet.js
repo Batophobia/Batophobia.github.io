@@ -86,6 +86,9 @@ var sheet = {
   },
 
   rowClick: async function (elem) {
+    if (sheet.updateTimeout)
+      clearTimeout(sheet.updateTimeout)
+
     const rowIdx = parseInt($(elem).attr('id').slice(3))
     const isChecked = $(elem).is(":checked")
 
@@ -96,6 +99,7 @@ var sheet = {
 
     origIdx = (sheet.offset + 1).toString()
 
+    sheet.updateTimeout = setTimeout(() => sheet.fullUpdate(), 15000); // 15 second delay
     // try {
     //   //sheet.deleteEmptyRows()
 
