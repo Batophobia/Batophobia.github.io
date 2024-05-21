@@ -57,14 +57,14 @@ var sheet = {
       tmpHtml += sheet.makeRowHtml(idx)
     }
     tmpHtml += "<tr class='addEntry'>"
-    tmpHtml += "<td><button id='btnAddRow'>ADD</button></td>"
-    tmpHtml += "<td><select id='addRowPriority'>"
+    tmpHtml += "<td class='col1'><button id='btnAddRow'>ADD</button></td>"
+    tmpHtml += "<td class='col2'><select id='addRowPriority'>"
     for (let idx in sheet.options) {
       tmpHtml += "<option>" + sheet.options[idx] + "</option>"
     }
     tmpHtml += "</select></td>"
-    tmpHtml += "<td><input id='addRowProduct' type='text' placeholder='Product'/></td>"
-    tmpHtml += "<td><input id='addRowProductNum' type='number' value='1'/></td>"
+    tmpHtml += "<td class='col3'><input id='addRowProduct' type='text' placeholder='Product'/></td>"
+    tmpHtml += "<td class='col4'><input id='addRowProductNum' type='number' value='1'/></td>"
     tmpHtml += "</tr>"
     tmpHtml += "</table>"
     $('#content').html(tmpHtml);
@@ -72,14 +72,14 @@ var sheet = {
 
   makeRowHtml: function (idx) {
     retVal = "<tr class='" + sheet.data.values[idx][2] + (sheet.data.values[idx][0] == "TRUE" ? " completed" : "") + "'>"
-    retVal += "<td><input type='checkbox' class='rowBox' id='row" + idx.toString() + "' " + (sheet.data.values[idx][0] == "TRUE" ? "checked" : "") + "></td>"
-    retVal += "<td>" + sheet.data.values[idx][2] + "</td>"
+    retVal += "<td class='col1'><input type='checkbox' class='rowBox' id='row" + idx.toString() + "' " + (sheet.data.values[idx][0] == "TRUE" ? "checked" : "") + "></td>"
+    retVal += "<td class='col2'>" + sheet.data.values[idx][2] + "</td>"
     let prodName = sheet.data.values[idx][3].split("\n")
     if (prodName.length > 1) {
       prodName = prodName[0] + "\n<i>" + prodName.filter((v, i) => i > 0).join("</i>\n<i>")
     }
-    retVal += "<td>" + prodName + "</td>"
-    retVal += "<td>x" + sheet.data.values[idx][4] + "</td>"
+    retVal += "<td class='col3'>" + prodName + "</td>"
+    retVal += "<td class='col4'>x" + sheet.data.values[idx][4] + "</td>"
     retVal += "</tr>"
 
     return retVal

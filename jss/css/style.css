@@ -92,6 +92,22 @@ body {
   text-decoration: line-through;
 }
 
+#content table .col1 {
+  width: 10%;
+}
+
+#content table .col2 {
+  width: 20%;
+}
+
+#content table .col3 {
+  width: 60%;
+}
+
+#content table .col4 {
+  width: 10%;
+}
+
 #content #importOrder {
   width: 99%;
   height: 95%;
