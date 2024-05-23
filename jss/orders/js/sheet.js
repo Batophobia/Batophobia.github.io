@@ -1,6 +1,7 @@
 var sheet = {
   data: {},
   sheetName: "Cricut",
+  id: "683326268",
   options: [
     "Info",
     "White",
@@ -193,7 +194,7 @@ var sheet = {
             requests: [{
               updateSheetProperties: {
                 properties: {
-                  sheetId: goog.sheet,
+                  sheetId: sheet.id,
                   gridProperties: {
                     rowCount: newLength
                   }
@@ -233,7 +234,7 @@ var sheet = {
           requests: [{
             deleteDimension: {
               range: {
-                sheetId: goog.sheet,
+                sheetId: sheet.id,
                 dimension: "ROWS",
                 startIndex: sheet.offset + sheet.data.values.length,
                 endIndex: sheet.origLength
