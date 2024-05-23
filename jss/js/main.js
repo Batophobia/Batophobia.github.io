@@ -3,7 +3,6 @@ var main = {
     goog.init();
     sheet.init();
     site.init();
-    csv.init();
     this.load();
   },
   load: function () {

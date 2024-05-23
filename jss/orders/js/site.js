@@ -1,6 +1,8 @@
 var site = {
 
   init: function () {
+    csv.init();
+
     $("#content").on("click", "#btnImportOrderData", (e) => {
       site.importOrder();
     });
