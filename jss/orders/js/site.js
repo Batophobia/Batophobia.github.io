@@ -63,6 +63,8 @@ var site = {
   },
 
   convertProduct: function (row) {
+    if(row[0].trim()=="")
+      row = row.slice(1)
     var prodName = row[0].trim();
     var extra = row.filter((v, i) => i > 0 && i < row.length - 3)
     var num = parseInt(row[row.length - 2].substring(1).trim()) || 1;
