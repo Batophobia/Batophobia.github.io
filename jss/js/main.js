@@ -6,7 +6,7 @@ var main = {
     this.load();
   },
   load: function () {
-    console.log("ver 1.001");
+    console.log("ver 1.1");
 
     $("#btnBegin").on("click", goog.decrypt);
     $("#pass").focus();
