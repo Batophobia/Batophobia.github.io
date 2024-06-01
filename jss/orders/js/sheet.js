@@ -32,7 +32,9 @@ var sheet = {
         range: sheet.sheetName,
       });
     } catch (err) {
+      goog.handleAuthClick();
       console.error(err);
+      alert("Session timed out, try again")
       return;
     }
 
@@ -144,7 +146,9 @@ var sheet = {
       sheet.data.values.push(newRow)
       sheet.sortTable()
     } catch (err) {
+      goog.handleAuthClick();
       console.error(err);
+      alert("Session timed out, try again")
       return;
     }
   },
@@ -217,7 +221,9 @@ var sheet = {
 
       //sheet.deleteEmptyRows();
     } catch (err) {
+      goog.handleAuthClick();
       console.error(err);
+      alert("Session timed out, try again")
       return;
     }
   },
@@ -244,7 +250,9 @@ var sheet = {
         }
       })
     } catch (err) {
+      goog.handleAuthClick();
       console.error(err);
+      alert("Session timed out, try again")
       return;
     }
   },
