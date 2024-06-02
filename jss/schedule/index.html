@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <title>Just Starkey Tools</title>
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="css/schedule.css">
   <script src="../js/encryption.js"></script>
   <script src="../js/goog.js"></script>
   <script src="js/sheet.js"></script>
@@ -32,6 +33,41 @@
         <button class="sheet" id="btnRefreshTable" onclick="sheet.getData()">Refresh</button>
         <button class="sheet" id="btnSortTable" onclick="sheet.sortTable()">Sort</button>
       </div>
+
+      <table id='toDoTable'>
+        <tr>
+          <td class='dayCell' id='day0'>
+            <div class="dayHeader">Sunday</div>
+            <div class="dayTasks" ondrop="site.onDrop(event)" ondragover="site.allowDrop(event)">
+              <div id="task0001" draggable="true" ondragstart="site.onDrag(event)">Test Drag Element</div>
+            </div>
+          </td>
+          <td class='dayCell' id='day1'>
+            <div class="dayHeader">Monday</div>
+            <div class="dayTasks" ondrop="site.onDrop(event)" ondragover="site.allowDrop(event)"></div>
+          </td>
+          <td class='dayCell' id='day2'>
+            <div class="dayHeader">Tuesday</div>
+            <div class="dayTasks" ondrop="site.onDrop(event)" ondragover="site.allowDrop(event)"></div>
+          </td>
+          <td class='dayCell' id='day3'>
+            <div class="dayHeader">Wednesday</div>
+            <div class="dayTasks" ondrop="site.onDrop(event)" ondragover="site.allowDrop(event)"></div>
+          </td>
+          <td class='dayCell' id='day4'>
+            <div class="dayHeader">Thursday</div>
+            <div class="dayTasks" ondrop="site.onDrop(event)" ondragover="site.allowDrop(event)"></div>
+          </td>
+          <td class='dayCell' id='day5'>
+            <div class="dayHeader">Friday</div>
+            <div class="dayTasks" ondrop="site.onDrop(event)" ondragover="site.allowDrop(event)"></div>
+          </td>
+          <td class='dayCell' id='day6'>
+            <div class="dayHeader">Saturday</div>
+            <div class="dayTasks" ondrop="site.onDrop(event)" ondragover="site.allowDrop(event)"></div>
+          </td>
+        </tr>
+      </table>
 
       <pre id="content" style="white-space: pre-wrap;"></pre>
     </div>

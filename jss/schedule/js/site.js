@@ -26,4 +26,17 @@ var site = {
     // });
   },
 
+  allowDrop: function (event) {
+    event.preventDefault();
+  },
+
+  onDrop: function (event) {
+    event.preventDefault();
+    var data = event.dataTransfer.getData("text");
+    event.target.appendChild(document.getElementById(data));
+  },
+
+  onDrag: function (event) {
+    event.dataTransfer.setData("text", event.target.id);
+  },
 };

@@ -40,7 +40,10 @@ var sheet = {
 
   updateDisplay: function () {
     let tmpHtml = ""
-    tmpHtml += "<table id='toDoTable'>"
+    tmpHtml += "<table id='toDoTable'><tr>"
+    for (let i = 0; i < 7; i++) {
+      tmpHtml += "<td class='dayCell' id='day" + i + "'></td>"
+    }
     for (let idx = 1; idx < sheet.data.values.length; idx++) {
       tmpHtml += sheet.makeRowHtml(idx)
     }
@@ -49,13 +52,13 @@ var sheet = {
   },
 
   makeRowHtml: function (idx) {
-    retVal = "<tr class='" + sheet.data.values[idx][0] + (sheet.data.values[idx][4].toLowerCase() == "x" ? " completed" : "") + "'>"
+    //retVal = "<tr class='" + sheet.data.values[idx][1] + (sheet.data.values[idx][0].toLowerCase() == "x" ? " completed" : "") + "'>"
     retVal += "<td>" + sheet.data.values[idx][0] + "></td>"
     retVal += "<td>" + sheet.data.values[idx][1] + "</td>"
     retVal += "<td>" + sheet.data.values[idx][2] + "</td>"
     retVal += "<td>" + sheet.data.values[idx][3] + "</td>"
     retVal += "<td>" + sheet.data.values[idx][4] + "</td>"
-    retVal += "</tr>"
+    //retVal += "</tr>"
 
     return retVal
   },
