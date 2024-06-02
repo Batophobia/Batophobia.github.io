@@ -1,4 +1,6 @@
 var main = {
+  ver: " 1.3",
+
   init: function () {
     goog.init();
     sheet.init();
@@ -6,7 +8,8 @@ var main = {
     this.load();
   },
   load: function () {
-    console.log("ver 1.2");
+    console.log(main.ver);
+    $("#version").text(`Version ${main.ver}`);
 
     $("#btnBegin").on("click", goog.decrypt);
     $("#pass").focus();
