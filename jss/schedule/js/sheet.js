@@ -59,14 +59,14 @@ var sheet = {
     retVal = `<div id='task-${idx}' draggable="true" ondragstart="site.onDrag(event)"`
     retVal += ` class='task ${sheet.data.values[idx][1]}${(sheet.data.values[idx][0].toLowerCase() == 'x') ? " complete" : ""}'`
     retVal += `>${sheet.data.values[idx][1]} ${sheet.data.values[idx][2]}`
-    retVal += `<div class='taskX'>X<div>`
+    retVal += `<div class='taskX'>X</div>`
     retVal += `</div>`
 
     return retVal
   },
 
   toggleTask: async function (elem) {
-    console.log(elem)
+    console.log($(elem).parent(".task").attr("id"))
     return
     if (sheet.updateTimeout)
       clearTimeout(sheet.updateTimeout)
