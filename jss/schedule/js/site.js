@@ -49,6 +49,7 @@ var site = {
   },
 
   onDrop: function (event) {
+    console.log(event)
     event.preventDefault();
     var data = event.dataTransfer.getData("text");
     event.target.appendChild(document.getElementById(data));
