@@ -39,7 +39,6 @@ var sheet = {
   },
 
   getTasksForDate: function (date, day) {
-    sheet.makeTaskHtml()
     tempTasks = sheet.data.values.map((v, i) => {
       if (
         (v[3].toLowerCase() == "weekly" && v[4] == day)
@@ -53,6 +52,7 @@ var sheet = {
     for (var i in tempTasks) {
       retVal += sheet.makeTaskHtml(tempTasks[i])
     }
+    return retVal
   },
 
   makeTaskHtml: function (idx) {
