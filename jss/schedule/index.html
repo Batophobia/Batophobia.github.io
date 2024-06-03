@@ -36,11 +36,9 @@
 
       <table id='toDoTable'>
         <tr>
-          <td class='dayCell' id='day0'>
+          <td class='dayTasks' id='day0' ondrop="site.onDrop(event)" ondragover="site.allowDrop(event)">
             <div class="dayHeader">Sunday</div>
-            <div class="dayTasks" ondrop="site.onDrop(event)" ondragover="site.allowDrop(event)">
-              <div id="task0001" draggable="true" ondragstart="site.onDrag(event)">Test Drag Element</div>
-            </div>
+            <div id="task0001" draggable="true" ondragstart="site.onDrag(event)">Test Drag Element</div>
           </td>
           <td class='dayCell' id='day1'>
             <div class="dayHeader">Monday</div>

@@ -28,11 +28,13 @@ var site = {
   },
 
   updateDisplay: function () {
-    weekStart = new Date(site.selected)
-    weekStart.setDate(weekStart.getDate() - site.dayOffset)
+    loopDate = new Date(site.selected)
+    loopDate.setDate(loopDate.getDate() - site.dayOffset)
     for (i = 0; i < 7; i++) {
-      $(`#day${i}`).html(sheet.getTasksForDate(weekStart, i))
-      weekStart.setDate(weekStart.getDate() + 1)
+      tasksHtml = `<div class="dayHeader">${site.days[i]} - ${loopDate.getDate()}</div>`
+      tasksHtml += sheet.getTasksForDate(loopDate, i)
+      $(`#day${i}`).html(tasksHtml)
+      loopDate.setDate(loopDate.getDate() + 1)
     }
 
     if (site.selected.toDateString() == site.today.toDateString()) { // Current week

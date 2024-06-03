@@ -1,12 +1,40 @@
 #toDoTable {
   width: 100%;
   height: 700px;
+  margin-top: 20px;
 }
 
-.dayTasks {
-  width: 100px;
+#toDoTable .today {
+  background-color: #d89c9c;
+}
+
+#toDoTable .dayTasks {
+  border: 1px solid #a76868;
+  padding: 5px;
+  width: 14%;
+}
+
+
+.task {
+  width: 150px;
   height: 35px;
-  margin: 10px;
+  margin: 5px;
   padding: 10px;
-  border: 1px solid black;
+  border: 1px solid #777777;
+}
+
+.TIKTOK {
+  background-color: #CCCCCC;
+}
+
+.YOUTUBE {
+  background-color: #FF8888;
+}
+
+.INSTAGRAM {
+  background-color: #DD88FF;
+}
+
+.FACBOOK {
+  background-color: #8888FF;
 }
