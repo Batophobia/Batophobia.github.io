@@ -20,6 +20,7 @@ var goog = {
   decrypt: async function () {
     $("#passWrapper").hide();
     $("#siteWrapper").show();
+    $("#loading").show();
 
     var key = $("#pass").val();
     goog.clientID = xor(goog.clientID, key);
@@ -71,6 +72,7 @@ var goog = {
       $('.btnWrapper .goog').hide();
       $('.btnWrapper .sheet').show();
       await sheet.getData();
+      $("#loading").hide();
     };
 
     if (gapi.client.getToken() === null) {
