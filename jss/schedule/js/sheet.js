@@ -29,7 +29,7 @@ var sheet = {
     sheet.data = response.result;
     if (!sheet.data || !sheet.data.values || sheet.data.values.length == 0) {
       sheet.data = { values: [] }
-      sheet.updateDisplay()
+      site.updateDisplay()
       return;
     }
 
@@ -38,27 +38,27 @@ var sheet = {
     sheet.sortTable()
   },
 
-  updateDisplay: function () {
-    let tmpHtml = ""
-    tmpHtml += "<table id='toDoTable'><tr>"
-    for (let i = 0; i < 7; i++) {
-      tmpHtml += "<td class='dayCell' id='day" + i + "'></td>"
+  getTasksForDate: function (date, day) {
+    sheet.makeTaskHtml()
+    tempTasks = sheet.data.values.map((v, i) => {
+      if (
+        (v[3].toLowerCase() == "weekly" && v[4] == day)
+        || (v[3].toLowerCase() == "monthly" && v[4] == date.getDate())
+        || (v[3].toLowerCase() == "monthly" && v[4].toLowerCase() == `sp${Math.floor(date.getDate() / 7)}.${day}`)
+      )
+        return i
+    }).filter(v => v)
+
+    retVal = ""
+    for (var i in tempTasks) {
+      retVal += sheet.makeTaskHtml(tempTasks[i])
     }
-    for (let idx = 1; idx < sheet.data.values.length; idx++) {
-      tmpHtml += sheet.makeRowHtml(idx)
-    }
-    tmpHtml += "</table>"
-    $('#content').html(tmpHtml);
   },
 
-  makeRowHtml: function (idx) {
-    //retVal = "<tr class='" + sheet.data.values[idx][1] + (sheet.data.values[idx][0].toLowerCase() == "x" ? " completed" : "") + "'>"
-    retVal += "<td>" + sheet.data.values[idx][0] + "></td>"
-    retVal += "<td>" + sheet.data.values[idx][1] + "</td>"
-    retVal += "<td>" + sheet.data.values[idx][2] + "</td>"
-    retVal += "<td>" + sheet.data.values[idx][3] + "</td>"
-    retVal += "<td>" + sheet.data.values[idx][4] + "</td>"
-    //retVal += "</tr>"
+  makeTaskHtml: function (idx) {
+    retVal = `<div id='task-${idx}' draggable="true" ondragstart="site.onDrag(event)"`
+    retVal += ` class='task ${sheet.data.values[idx][1]}${(sheet.data.values[idx][0].toLowerCase() == 'x') ? " complete" : ""}'`
+    retVal += `>${sheet.data.values[idx][1]} ${sheet.data.values[idx][2]}</div>`
 
     return retVal
   },
@@ -111,7 +111,7 @@ var sheet = {
 
   sortTable: function () {
     sheet.data.values = sheet.data.values.sort((a, b) => a[0] > b[0]).sort((a, b) => a[3] > b[3])
-    sheet.updateDisplay()
+    site.updateDisplay()
   },
 
   addProduct: function (prodName, priority, num, extra) {
