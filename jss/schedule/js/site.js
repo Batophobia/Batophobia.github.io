@@ -22,7 +22,6 @@ var site = {
 
   init: function () {
     site.dayOffset = site.today.getDay()
-    site.updateDisplay()
     // $("#content").on("click", "#btnImportOrderData", (e) => {
     //   site.importOrder();
     // });
