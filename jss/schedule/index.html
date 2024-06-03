@@ -31,14 +31,14 @@
         <button class="goog" id="signout_button" onclick="goog.handleSignoutClick()">Sign Out</button>
 
         <button class="sheet" id="btnRefreshTable" onclick="sheet.getData()">Refresh</button>
-        <button class="sheet" id="btnSortTable" onclick="sheet.sortTable()">Sort</button>
+        <button class="sheet" id="btnResetTasks" onclick="sheet.resetTasks()">Reset</button>
+        <button class="sheet" id="btnAddTask" onclick="sheet.addTask()">Add</button>
       </div>
 
       <table id='toDoTable'>
         <tr>
           <td class='dayTasks' id='day0' ondrop="site.onDrop(event)" ondragover="site.allowDrop(event)">
             <div class="dayHeader">Sunday</div>
-            <div id="task0001" draggable="true" ondragstart="site.onDrag(event)">Test Drag Element</div>
           </td>
           <td class='dayTasks' id='day1' ondrop="site.onDrop(event)" ondragover="site.allowDrop(event)">
             <div class="dayHeader">Monday</div>

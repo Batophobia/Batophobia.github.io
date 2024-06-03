@@ -6,12 +6,12 @@ var sheet = {
   updateTimeout: null,
 
   init: function () {
-    //$("#content").on("change", ".rowBox", (e) => {
+    //$(".dayTasks ").on("change", ".rowBox", (e) => {
     //  sheet.rowClick(e.target);
     //});
-    //$("#content").on("click", "#btnAddRow", (e) => {
-    //  sheet.addRow()
-    //});
+    $(".dayTasks ").on("click", ".taskX", (e) => {
+      sheet.toggleTask(e.target)
+    });
   },
 
   getData: async function () {
@@ -58,29 +58,39 @@ var sheet = {
   makeTaskHtml: function (idx) {
     retVal = `<div id='task-${idx}' draggable="true" ondragstart="site.onDrag(event)"`
     retVal += ` class='task ${sheet.data.values[idx][1]}${(sheet.data.values[idx][0].toLowerCase() == 'x') ? " complete" : ""}'`
-    retVal += `>${sheet.data.values[idx][1]} ${sheet.data.values[idx][2]}</div>`
+    retVal += `>${sheet.data.values[idx][1]} ${sheet.data.values[idx][2]}`
+    retVal += `<div class='taskX'>X<div>`
+    retVal += `</div>`
 
     return retVal
   },
 
-  rowClick: async function (elem) {
-    // if (sheet.updateTimeout)
-    //   clearTimeout(sheet.updateTimeout)
+  toggleTask: async function (elem) {
+    console.log(elem)
+    return
+    if (sheet.updateTimeout)
+      clearTimeout(sheet.updateTimeout)
 
-    // const rowIdx = parseInt($(elem).attr('id').slice(3))
-    // const isChecked = $(elem).is(":checked")
+    const elemIdx = parseInt($(elem).attr('id').slice(3))
+    const isChecked = $(elem).is(":checked")
 
-    // sheet.data.values[rowIdx][0] = isChecked ? "TRUE" : "FALSE"
-    // sheet.data.values[rowIdx][1] = isChecked ? "8" : sheet.options.indexOf(sheet.data.values[rowIdx][2]).toString()
+    sheet.data.values[elemIdx][0] = isChecked ? "TRUE" : "FALSE"
+    sheet.data.values[elemIdx][1] = isChecked ? "8" : sheet.options.indexOf(sheet.data.values[elemIdx][2]).toString()
 
-    // $(elem).closest("tr").toggleClass("completed", isChecked)
+    $(elem).closest("tr").toggleClass("completed", isChecked)
 
-    // origIdx = (sheet.offset + 1).toString()
+    origIdx = (sheet.offset + 1).toString()
 
-    // sheet.updateTimeout = setTimeout(() => sheet.fullUpdate(), 10000); // 10 second delay
+    sheet.updateTimeout = setTimeout(() => sheet.fullUpdate(), 10000); // 10 second delay
   },
 
-  addRow: async function () {
+  resetTasks: async function () {
+    //TODO: Consider only resetting tasks on current view
+    sheet.data.values = sheet.data.values.map(v => ["", ...v.slice(1)])
+    sheet.fullUpdate()
+  },
+
+  btnAddTask: async function () {
     // priorityVal = $("#addRowPriority").val()
     // productName = $("#addRowProduct").val()
     // productNum = parseInt($("#addRowProductNum").val()) || 1
@@ -114,15 +124,8 @@ var sheet = {
     site.updateDisplay()
   },
 
-  addProduct: function (prodName, priority, num, extra) {
-    //let existingIdx = sheet.data.values.findIndex(v => v[1] == priority.toString() && v[3] == prodName)
-    //if (existingIdx < 0)
-    //  sheet.data.values.push(["FALSE", priority.toString(), sheet.options[priority], prodName, num])
-    //else
-    //  sheet.data.values[existingIdx][4] = parseInt(sheet.data.values[existingIdx][4]) + parseInt(num)
-  },
-
   fullUpdate: async function () {
+    $("#loading").show();
     let newLength = sheet.offset + sheet.data.values.length;
     sheet.sortTable()
     updateData = sheet.data.values.map((v, i) => sheet.getFormulaRow(v, sheet.offset + 1 + i))

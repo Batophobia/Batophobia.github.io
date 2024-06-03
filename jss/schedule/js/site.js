@@ -42,6 +42,8 @@ var site = {
     } else {
       $(`#day${site.selected.getDay()}`).removeClass("today")
     }
+
+    $("#loading").hide();
   },
 
   allowDrop: function (event) {
