@@ -129,7 +129,7 @@ var sheet = {
     newRow = ["FALSE", sheet.bColFormula(sheet.origLength + 1), priorityVal, productName, productNum.toString()]
 
     try {
-      sheet.deleteEmptyRows()
+      //sheet.deleteEmptyRows()
 
       response = await gapi.client.sheets.spreadsheets.values.append({
         spreadsheetId: goog.spreadsheet,
