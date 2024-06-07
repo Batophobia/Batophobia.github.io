@@ -85,6 +85,21 @@ var goog = {
     }
   },
 
+  handleError: function (err) {
+    console.error(err);
+
+    switch (err.status) {
+      case 401:
+      case 403:
+        goog.handleAuthClick();
+        alert("Session timed out, try again");
+        break;
+      default:
+        alert(err.result.error.message);
+        break;
+    }
+  },
+
   handleSignoutClick: function () {
     const token = gapi.client.getToken();
     if (token !== null) {

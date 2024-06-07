@@ -1,5 +1,5 @@
 var main = {
-  ver: "1.46",
+  ver: "1.47",
 
   init: function () {
     goog.init();

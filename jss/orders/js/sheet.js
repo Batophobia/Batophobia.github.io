@@ -32,9 +32,7 @@ var sheet = {
         range: sheet.sheetName,
       });
     } catch (err) {
-      goog.handleAuthClick();
-      console.error(err);
-      alert("Session timed out, try again")
+      goog.handleError(err)
       return;
     }
 
