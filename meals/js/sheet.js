@@ -56,9 +56,9 @@ var sheet = {
       if (i % 2 == 1) {
         time = Math.floor((i - 1) / 2)
         retVal += `<div class="dayTime day${sheet.times[time]}">${sheet.times[time]}`
-        retVal += `<div class="forD" id='task-${idx}' draggable="true" ondragstart="site.onDrag(event)">${sheet.data.values[day][i]}</div>`
+        retVal += `<div class="meal forD" id='task-${day}.${i}' draggable="true" ondragstart="site.onDrag(event)">${sheet.data.values[day][i]}</div>`
       } else {
-        retVal += `<div class="forC" id='task-${idx}' draggable="true" ondragstart="site.onDrag(event)">${sheet.data.values[day][i]}</div>`
+        retVal += `<div class="meal forC" id='task-${day}.${i}' draggable="true" ondragstart="site.onDrag(event)">${sheet.data.values[day][i]}</div>`
         retVal += `</div>`
       }
     }
