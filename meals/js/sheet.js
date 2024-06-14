@@ -36,7 +36,7 @@ var sheet = {
   },
 
   getPlan: async function () {
-    sheet.data = sheet.getSheetData(0);
+    sheet.data = await sheet.getSheetData(0);
     console.log(sheet.data)
     return;
     if (!sheet.data || !sheet.data.values || sheet.data.values.length == 0) {
@@ -51,7 +51,7 @@ var sheet = {
   },
 
   getOptions: async function () {
-    sheet.options = sheet.getSheetData(1);
+    sheet.options = await sheet.getSheetData(1);
     console.log(sheet.data)
     return;
     site.updateOptions()
