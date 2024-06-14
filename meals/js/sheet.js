@@ -26,6 +26,7 @@ var sheet = {
       response = await gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: goog.spreadsheet,
         range: sheet.sheetNames[idx],
+        majorDimension: idx == 0 ? "COLUMNS" : "ROWS",
       });
     } catch (err) {
       console.error(err);
