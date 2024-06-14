@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Meal Plan</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/encryption.js"></script>
+  <script src="js/goog.js"></script>
+  <script src="js/sheet.js"></script>
+  <script src="js/site.js"></script>
+  <script src="../jquery.js"></script>
+  <script src="js/main.js"></script>
+  <script async defer src="https://apis.google.com/js/api.js" onload="goog.gapiLoaded()"></script>
+  <script async defer src="https://accounts.google.com/gsi/client" onload="goog.gisLoaded()"></script>
+
+  <!-- <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://apis.google.com https://accounts.google.com; style-src 'self' 'unsafe-inline' https://accounts.google.com; connect-src 'self' https://accounts.google.com; frame-src 'self' https://accounts.google.com;"> -->
+</head>
+
+<body>
+  <div id="everything">
+    <div id="passWrapper">
+      <input id="pass" type="password" placeholder="PASSWORD" />
+      <button id="btnBegin" class="button">Enter</button>
+    </div>
+    <div id="siteWrapper">
+      <div class="btnWrapper">
+        <button class="goog" id="authorize_button" onclick="goog.handleAuthClick()">Authorize</button>
+        <button class="goog" id="signout_button" onclick="goog.handleSignoutClick()">Sign Out</button>
+
+        <button class="sheet" id="btnRefreshTable" onclick="sheet.getData()">Refresh</button>
+        <button class="sheet" id="btnResetTasks" onclick="sheet.resetTasks()">Reset</button>
+        <button class="sheet" id="btnAddTask" onclick="sheet.addTask()">Add</button>
+      </div>
+
+      <table id='toDoTable'>
+        <tr>
+          <td class='dayTasks' id='day0' ondrop="site.onDrop(event)" ondragover="site.allowDrop(event)">
+            <div class="dayHeader">Sunday</div>
+          </td>
+          <td class='dayTasks' id='day1' ondrop="site.onDrop(event)" ondragover="site.allowDrop(event)">
+            <div class="dayHeader">Monday</div>
+          </td>
+          <td class='dayTasks' id='day2' ondrop="site.onDrop(event)" ondragover="site.allowDrop(event)">
+            <div class="dayHeader">Tuesday</div>
+          </td>
+          <td class='dayTasks' id='day3' ondrop="site.onDrop(event)" ondragover="site.allowDrop(event)">
+            <div class="dayHeader">Wednesday</div>
+          </td>
+          <td class='dayTasks' id='day4' ondrop="site.onDrop(event)" ondragover="site.allowDrop(event)">
+            <div class="dayHeader">Thursday</div>
+          </td>
+          <td class='dayTasks' id='day5' ondrop="site.onDrop(event)" ondragover="site.allowDrop(event)">
+            <div class="dayHeader">Friday</div>
+          </td>
+          <td class='dayTasks' id='day6' ondrop="site.onDrop(event)" ondragover="site.allowDrop(event)">
+            <div class="dayHeader">Saturday</div>
+          </td>
+        </tr>
+      </table>
+
+      <pre id="content" style="white-space: pre-wrap;"></pre>
+    </div>
+
+    <div id="loading">
+      <img id="loadingIcon" src="images/load.jpg">
+    </div>
+
+    <div id="version"></div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      main.init();
+    });
+  </script>
+</body>
+
+</html>
