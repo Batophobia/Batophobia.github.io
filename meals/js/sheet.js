@@ -68,7 +68,8 @@ var sheet = {
 
   makeOptionHtml: function (idx) {
     retVal = `<div id='option-${idx}' draggable="true" ondragstart="site.onDrag(event)"`
-    retVal += ` class='meal for${sheet.options.values[idx][4]}'`
+    // retVal += ` class='meal for${sheet.options.values[idx][4]}'`
+    retVal += ` class='mealOption'`
     retVal += `>${sheet.options.values[idx][0]}`
     retVal += `</div>`
 

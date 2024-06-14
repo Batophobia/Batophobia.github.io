@@ -37,6 +37,8 @@ var site = {
     let sanityCheck = 0;
 
     idx += 2;
+    while (orderData[idx].trim() == "")
+      idx++;
 
     while (orderData[idx] != "Payment info") {
       let orderEnd = idx;
@@ -63,7 +65,7 @@ var site = {
   },
 
   convertProduct: function (row) {
-    if(row[0].trim()=="")
+    if (row[0].trim() == "")
       row = row.slice(1)
     var prodName = row[0].trim();
     var extra = row.filter((v, i) => i > 0 && i < row.length - 3)
