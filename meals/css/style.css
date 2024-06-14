@@ -70,6 +70,10 @@ body {
   -webkit-animation: rotation 2s infinite linear;
 }
 
+#mealOptions {
+  border: 1px solid #a76868;
+}
+
 #toDoTable {
   width: 100%;
   height: 400px;
@@ -101,6 +105,7 @@ body {
   margin: 10px 5px;
   border-radius: 5px;
   width: 165px;
+  display: inline-block;
 }
 
 .forC {
@@ -111,6 +116,15 @@ body {
 .forD {
   background-color: #63ff63;
   border: 2px solid #005e00;
+}
+
+.mealOption {
+  border: 1px solid black;
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.meal .mealOption {
+  border: none;
 }
 
 @-webkit-keyframes rotation {
