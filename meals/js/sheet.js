@@ -5,6 +5,7 @@ var sheet = {
   id: "2089227185",
   offset: 1,
   updateTimeout: null,
+  times: ["Breakfast", "Lunch", "Dinner"],
 
   init: function () {
     //$(".dayTasks ").on("change", ".rowBox", (e) => {
@@ -38,50 +39,29 @@ var sheet = {
 
   getPlan: async function () {
     sheet.data = await sheet.getSheetData(0);
-    console.log(sheet.data)
-    return;
     if (!sheet.data || !sheet.data.values || sheet.data.values.length == 0) {
       sheet.data = { values: [] }
-      site.updateDisplay()
-      return;
     }
-
-    sheet.origLength = sheet.data.values.length
-    sheet.data.values = sheet.data.values.slice(sheet.offset)
-    sheet.sortTable()
+    site.updateDisplay()
   },
 
   getOptions: async function () {
     sheet.options = await sheet.getSheetData(1);
-    console.log(sheet.options)
-    return;
-    site.updateOptions()
+    sheet.sortOptions()
   },
 
-  getTasksForDate: function (date, day) {
-    tempTasks = sheet.data.values.map((v, i) => {
-      if (
-        (v[3].toLowerCase() == "weekly" && v[4] == day)
-        || (v[3].toLowerCase() == "monthly" && v[4] == date.getDate())
-        || (v[3].toLowerCase() == "monthly" && v[4].toLowerCase() == `sp${Math.floor(date.getDate() / 7)}.${day}`)
-      )
-        return i
-    }).filter(v => v)
-
+  getMealsForDate: function (date, day) {
     retVal = ""
-    for (var i in tempTasks) {
-      retVal += sheet.makeMealHtml(tempTasks[i])
+    for (var i = 1; i < sheet.data.values[day].length; i++) {
+      if (i % 2 == 1) {
+        time = Math.floor((i - 1) / 2)
+        retVal += `<div class="dayTime day${sheet.times[time]}">${sheet.times[time]}`
+        retVal += `<div class="forD" id='task-${idx}' draggable="true" ondragstart="site.onDrag(event)">${sheet.data.values[day][i]}</div>`
+      } else {
+        retVal += `<div class="forC" id='task-${idx}' draggable="true" ondragstart="site.onDrag(event)">${sheet.data.values[day][i]}</div>`
+        retVal += `</div>`
+      }
     }
-    return retVal
-  },
-
-  makeMealHtml: function (idx) {
-    retVal = `<div id='task-${idx}' draggable="true" ondragstart="site.onDrag(event)"`
-    retVal += ` class='task ${sheet.data.values[idx][1]}${(sheet.data.values[idx][0].toLowerCase() == 'x') ? " complete" : ""}'`
-    retVal += `>${sheet.data.values[idx][1]} ${sheet.data.values[idx][2]}`
-    retVal += `<div class='taskX'>X</div>`
-    retVal += `</div>`
-
     return retVal
   },
 
@@ -93,25 +73,6 @@ var sheet = {
     retVal += `</div>`
 
     return retVal
-  },
-
-  toggleTask: async function (elem) {
-    console.log($(elem).parent(".task").attr("id"))
-    return
-    if (sheet.updateTimeout)
-      clearTimeout(sheet.updateTimeout)
-
-    const elemIdx = parseInt($(elem).attr('id').slice(3))
-    const isChecked = $(elem).is(":checked")
-
-    sheet.data.values[elemIdx][0] = isChecked ? "TRUE" : "FALSE"
-    sheet.data.values[elemIdx][1] = isChecked ? "8" : sheet.options.indexOf(sheet.data.values[elemIdx][2]).toString()
-
-    $(elem).closest("tr").toggleClass("completed", isChecked)
-
-    origIdx = (sheet.offset + 1).toString()
-
-    sheet.updateTimeout = setTimeout(() => sheet.fullUpdate(), 10000); // 10 second delay
   },
 
   resetMeals: async function () {
@@ -149,8 +110,8 @@ var sheet = {
     // }
   },
 
-  sortTable: function () {
-    sheet.data.values = sheet.data.values.sort((a, b) => a[0] > b[0]).sort((a, b) => a[3] > b[3])
+  sortOptions: function () {
+    sheet.options.values = sheet.options.values.sort((a, b) => a[0] > b[0]).sort((a, b) => a[4] > b[4])
     site.updateDisplay()
   },
 

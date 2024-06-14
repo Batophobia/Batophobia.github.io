@@ -93,6 +93,10 @@ body {
   text-align: center;
 }
 
+.dayTime {
+  height: 200px;
+}
+
 .task {
   width: 150px;
   height: 35px;
@@ -113,28 +117,12 @@ body {
   text-decoration: line-through;
 }
 
-.TIKTOK {
-  background-color: #CCCCCC;
+.forC {
+  background-color: #ad90ad;
 }
 
-.YOUTUBE {
-  background-color: #FF8888;
-}
-
-.INSTAGRAM {
-  background-color: #e099ff;
-}
-
-.FACBOOK {
-  background-color: #a9a9ff;
-}
-
-.PATREON {
-  background-color: #FF9944;
-}
-
-.OTHER {
-  background-color: #ccffcc;
+.forD {
+  background-color: #b9d4b9;
 }
 
 @-webkit-keyframes rotation {

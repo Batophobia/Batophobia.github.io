@@ -1,21 +1,4 @@
 var site = {
-  types: [
-    "FACBOOK",
-    "INSTAGRAM",
-    "YOUTUBE",
-    "TIKTOK",
-    "EMAIL",
-    "OTHER"
-  ],
-  days: [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ],
   today: new Date(),
   selected: new Date(),
   dayOffset: 0,
@@ -30,9 +13,9 @@ var site = {
   updateDisplay: function () {
     loopDate = new Date(site.selected)
     loopDate.setDate(loopDate.getDate() - site.dayOffset)
-    for (i = 0; i < 7; i++) {
-      tasksHtml = `<div class="dayHeader">${site.days[i]} - ${loopDate.getDate()}</div>`
-      tasksHtml += sheet.getTasksForDate(loopDate, i)
+    for (i = 1; i < 8; i++) {
+      tasksHtml = `<div class="dayHeader">${sheet.data.values[i][0]} - ${loopDate.getDate()}</div>`
+      tasksHtml += sheet.getMealsForDate(loopDate, i)
       $(`#day${i}`).html(tasksHtml)
       loopDate.setDate(loopDate.getDate() + 1)
     }
