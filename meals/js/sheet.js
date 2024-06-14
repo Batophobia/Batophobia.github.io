@@ -53,12 +53,16 @@ var sheet = {
   getMealsForDate: function (date, day) {
     retVal = ""
     for (var i = 1; i < sheet.data.values[day].length; i++) {
+      var mealName = sheet.data.values[day][i];
+      if (mealName == "")
+        mealName = "UNSET"
+
       if (i % 2 == 1) {
         time = Math.floor((i - 1) / 2)
         retVal += `<div class="dayTime day${sheet.times[time]}">${sheet.times[time]}`
-        retVal += `<div class="meal forD" id='task-${day}.${i}' draggable="true" ondragstart="site.onDrag(event)">${sheet.data.values[day][i]}</div>`
+        retVal += `<div class="meal forD" id='task-${day}.${i}' draggable="true" ondragstart="site.onDrag(event)">${mealName}</div>`
       } else {
-        retVal += `<div class="meal forC" id='task-${day}.${i}' draggable="true" ondragstart="site.onDrag(event)">${sheet.data.values[day][i]}</div>`
+        retVal += `<div class="meal forC" id='task-${day}.${i}' draggable="true" ondragstart="site.onDrag(event)">${mealName}</div>`
         retVal += `</div>`
       }
     }

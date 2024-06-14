@@ -16,7 +16,7 @@ var site = {
     for (i = 1; i < 8; i++) {
       tasksHtml = `<div class="dayHeader">${sheet.data.values[i][0]} - ${loopDate.getDate()}</div>`
       tasksHtml += sheet.getMealsForDate(loopDate, i)
-      $(`#day${i}`).html(tasksHtml)
+      $(`#day${(i - 1)}`).html(tasksHtml)
       loopDate.setDate(loopDate.getDate() + 1)
     }
 
