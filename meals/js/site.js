@@ -31,7 +31,7 @@ var site = {
 
   updateOptions: function () {
     var optionsHtml = ""
-    for (i = 0; i < sheet.options.values; i++) {
+    for (i = 0; i < sheet.options.values.length; i++) {
       optionsHtml += sheet.makeOptionHtml(i)
     }
     $("#mealOptions").html(optionsHtml)
