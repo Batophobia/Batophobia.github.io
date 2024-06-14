@@ -14,9 +14,9 @@ var site = {
     loopDate = new Date(site.selected)
     loopDate.setDate(loopDate.getDate() - site.dayOffset)
     for (i = 1; i < 8; i++) {
-      tasksHtml = `<div class="dayHeader">${sheet.data.values[i][0]} - ${loopDate.getDate()}</div>`
-      tasksHtml += sheet.getMealsForDate(loopDate, i)
-      $(`#day${(i - 1)}`).html(tasksHtml)
+      var mealHtml = `<div class="dayHeader">${sheet.data.values[i][0]} - ${loopDate.getDate()}</div>`
+      mealHtml += sheet.getMealsForDate(loopDate, i)
+      $(`#day${(i - 1)}`).html(mealHtml)
       loopDate.setDate(loopDate.getDate() + 1)
     }
 
@@ -25,6 +25,16 @@ var site = {
     } else {
       $(`#day${site.selected.getDay()}`).removeClass("today")
     }
+
+    $("#loading").hide();
+  },
+
+  updateOptions: function () {
+    var optionsHtml = ""
+    for (i = 0; i < sheet.options.values; i++) {
+      optionsHtml += sheet.makeOptionHtml(i)
+    }
+    $("#mealOptions").html(optionsHtml)
 
     $("#loading").hide();
   },
@@ -41,6 +51,7 @@ var site = {
   },
 
   onDrag: function (event) {
+    console.log(event)
     event.dataTransfer.setData("text", event.target.id);
   },
 };

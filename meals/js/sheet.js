@@ -70,19 +70,12 @@ var sheet = {
   },
 
   makeOptionHtml: function (idx) {
-    retVal = `<div id='task-${idx}' draggable="true" ondragstart="site.onDrag(event)"`
-    retVal += ` class='task ${sheet.data.values[idx][1]}${(sheet.data.values[idx][0].toLowerCase() == 'x') ? " complete" : ""}'`
-    retVal += `>${sheet.data.values[idx][1]} ${sheet.data.values[idx][2]}`
-    retVal += `<div class='taskX'>X</div>`
+    retVal = `<div id='option-${idx}' draggable="true" ondragstart="site.onDrag(event)"`
+    retVal += ` class='meal for${sheet.data.values[idx][4]}'`
+    retVal += `>${sheet.options.values[idx][0]}`
     retVal += `</div>`
 
     return retVal
-  },
-
-  resetMeals: async function () {
-    //TODO: Consider only resetting tasks on current view
-    sheet.data.values = sheet.data.values.map(v => ["", ...v.slice(1)])
-    sheet.fullUpdate()
   },
 
   btnAddMeal: async function () {
@@ -116,7 +109,7 @@ var sheet = {
 
   sortOptions: function () {
     sheet.options.values = sheet.options.values.sort((a, b) => a[0] > b[0]).sort((a, b) => a[4] > b[4])
-    site.updateDisplay()
+    site.updateOptions()
   },
 
   fullUpdate: async function () {
