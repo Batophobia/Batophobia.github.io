@@ -49,9 +49,9 @@ var sheet = {
 
   getMealsForDate: function (date, day) {
     retVal = ""
-    for (var i = 1; i < sheet.data.values[day].length; i++) {
+    for (var i = 1; i < 7; i++) {
       var mealName = sheet.data.values[day][i];
-      if (mealName == "")
+      if (mealName == undefined || mealName == "")
         mealName = "UNSET"
 
       if (i % 2 == 1) {
