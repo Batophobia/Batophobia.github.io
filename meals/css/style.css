@@ -80,7 +80,7 @@ body {
   background-color: #d89c9c;
 }
 
-#toDoTable .dayTasks {
+#toDoTable .dayMeals {
   border: 1px solid #a76868;
   padding: 5px;
   width: 14%;
@@ -96,30 +96,11 @@ body {
   height: 140px;
 }
 
-.task {
-  width: 150px;
-  height: 35px;
-  margin: 5px;
-  padding: 10px;
-  border: 1px solid #777777;
-  border-radius: 10px;
-  position: relative;
-}
-
-.taskX {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-}
-
-.complete {
-  text-decoration: line-through;
-}
-
 .meal {
   padding: 10px;
   margin: 10px 5px;
   border-radius: 5px;
+  width: 165px;
 }
 
 .forC {
