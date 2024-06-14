@@ -52,7 +52,7 @@ var sheet = {
 
   getOptions: async function () {
     sheet.options = await sheet.getSheetData(1);
-    console.log(sheet.data)
+    console.log(sheet.options)
     return;
     site.updateOptions()
   },
