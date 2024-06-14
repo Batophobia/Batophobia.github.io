@@ -117,18 +117,19 @@ body {
 }
 
 .meal {
-  padding: 10px;
+  padding: 20px 10px;
+  margin: 10px 5px;
   border-radius: 5px;
 }
 
 .forC {
   background-color: #ff9dff;
-  border-color: #7a1f7a;
+  border: 2px solid #7a1f7a;
 }
 
 .forD {
   background-color: #63ff63;
-  border-color: #005e00;
+  border: 2px solid #005e00;
 }
 
 @-webkit-keyframes rotation {
