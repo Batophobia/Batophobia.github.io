@@ -72,7 +72,11 @@ var sheet = {
   },
 
   makeRowHtml: function (idx) {
-    retVal = "<tr class='" + sheet.data.values[idx][2] + (sheet.data.values[idx][0] == "TRUE" ? " completed" : "") + "'>"
+    let numItem = parseInt(sheet.data.values[idx][4]);
+    if (numItem == NaN || numItem == null)
+      numItem = 1;
+
+    retVal = "<tr class='" + sheet.data.values[idx][2] + (sheet.data.values[idx][0] == "TRUE" ? " completed" : "") + (numItem > 2 ? " multiPrint" : "") + "'>"
     retVal += "<td class='colBox'><input type='checkbox' class='rowBox' id='row" + idx.toString() + "' " + (sheet.data.values[idx][0] == "TRUE" ? "checked" : "") + "></td>"
     retVal += "<td class='colType'>" + sheet.data.values[idx][2] + "</td>"
     retVal += "<td class='colNum'>x" + sheet.data.values[idx][4] + "</td>"
