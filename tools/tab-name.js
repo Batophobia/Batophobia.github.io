@@ -1,9 +1,9 @@
 document.head = document.head || document.getElementsByTagName('head')[0];
-const faviconElem = document.getElementById('favicon');
 
 function updateTab() {
-  let titleInput = document.getElementById("tabTitle");
-  let faviconInput = document.getElementById("tabFavicon");
+  const titleInput = document.getElementById("tabTitle");
+  const faviconInput = document.getElementById("tabFavicon");
+  const faviconElem = document.getElementById('favicon');
   document.title = titleInput.value;
 
   const reader = new FileReader();
