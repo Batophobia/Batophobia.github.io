@@ -1,5 +1,3 @@
-document.head = document.head || document.getElementsByTagName('head')[0];
-
 function updateTab() {
   const titleInput = document.getElementById("tabTitle");
   const faviconInput = document.getElementById("tabFavicon");
