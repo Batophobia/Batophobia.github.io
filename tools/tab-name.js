@@ -8,8 +8,7 @@ function updateTab() {
 
   const reader = new FileReader();
   reader.onload = function (e) {
-    const faviconLink = document.getElementById('favicon');
-    faviconLink.href = e.target.result;
+    faviconElem.href = e.target.result;
   };
   reader.readAsDataURL(faviconInput.files[0]);
 }
