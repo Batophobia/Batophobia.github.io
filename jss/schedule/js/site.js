@@ -4,6 +4,7 @@ var site = {
     "INSTAGRAM",
     "YOUTUBE",
     "TIKTOK",
+    "TWITCH",
     "EMAIL",
     "OTHER"
   ],
