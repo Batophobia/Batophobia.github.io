@@ -53,7 +53,7 @@
         if (isSignedIn) {
           authorizeButton.style.display = 'none';
           signoutButton.style.display = 'block';
-          listMajors();
+          getData();
         } else {
           authorizeButton.style.display = 'block';
           signoutButton.style.display = 'none';
@@ -74,41 +74,32 @@
         gapi.auth2.getAuthInstance().signOut();
       }
 
-      /**
-       * Append a pre element to the body containing the given message
-       * as its text node. Used to display the results of the API call.
-       *
-       * @param {string} message Text to be placed in pre element.
-       */
-      function appendPre(message) {
-        var pre = document.getElementById('content');
-        var textContent = document.createTextNode(message + '\n');
-        pre.appendChild(textContent);
+      function appendHeader() {
+        var table = document.getElementById('content');
+        table.appendChild(`<tr class='headerRow'><th>Quote</th><th>Source</th><th>Notes</th></tr>`);
+      }
+      function appendRow(rowData) {
+        var table = document.getElementById('content');
+        table.appendChild(`<tr class='quoteRow'><td class='quote'>${rowData[0]} ${rowData[1]}:${rowData[2]} - ${rowData[3]}:${rowData[4]}</td><td class='source'>${row[5]} ${row[6]}:${row[7]} - ${row[8]}:${row[9]}</td><td class='notes'>${row[10]}</td></tr>`);
       }
 
-      /**
-       * Print the names and majors of students in a sample spreadsheet:
-       * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
-       */
-      function listMajors() {
+      function getData() {
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1Br9L7s8RTBEz5fPw2novkTX14e_2u8s41xCCn_J-bgY',
           range: 'Data!A2:K',
         }).then(function(response) {
           var range = response.result;
           if (range.values.length > 0) {
-            appendPre('Quotes:');
+            appendHeader();
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
-              // Print columns A and E, which correspond to indices 0 and 4.
-              appendPre(`${row[0]} ${row[1]}:${row[2]} - ${row[3]}:${row[4]} quoted from ${row[5]} ${row[6]}:${row[7]} - ${row[8]}:${row[9]}`);
-              appendPre(`-- Notes --\n${row[10]}\n===========`);
+              appendRow(row);
             }
           } else {
-            appendPre('No data found.');
+            appendRow('No data found.');
           }
         }, function(response) {
-          appendPre('Error: ' + response.result.error.message);
+          appendRow('Error: ' + response.result.error.message);
         });
       }
 
