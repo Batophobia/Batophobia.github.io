@@ -92,16 +92,17 @@
        */
       function listMajors() {
         gapi.client.sheets.spreadsheets.values.get({
-          spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
-          range: 'Class Data!A2:E',
+          spreadsheetId: '1Br9L7s8RTBEz5fPw2novkTX14e_2u8s41xCCn_J-bgY',
+          range: 'Class Data!A2:K',
         }).then(function(response) {
           var range = response.result;
           if (range.values.length > 0) {
-            appendPre('Name, Major:');
+            appendPre('Quotes:');
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
               // Print columns A and E, which correspond to indices 0 and 4.
-              appendPre(row[0] + ', ' + row[4]);
+              appendPre(`${row[0]} ${row[1]}:${row[2]} - ${row[3]}:${row[4]} quoted from ${row[5]} ${row[6]}:${row[7]} - ${row[8]}:${row[9]}`);
+              appendPre(`-- Notes --\n${row[10]}\n===========`);
             }
           } else {
             appendPre('No data found.');
