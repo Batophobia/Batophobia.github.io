@@ -96,10 +96,10 @@
               appendRow(row);
             }
           } else {
-            appendRow('No data found.');
+            console.error('No data found.');
           }
         }, function(response) {
-          appendRow('Error: ' + response.result.error.message);
+          console.error('Error: ' + response.result.error.message);
         });
       }
 
