@@ -91,10 +91,14 @@ function appendRow(rowData) {
 
 let sheetData = [];
 function getData() {
+  console.log("Start getData")
   gapi.client.sheets.spreadsheets.values.get({
     spreadsheetId: '1Br9L7s8RTBEz5fPw2novkTX14e_2u8s41xCCn_J-bgY',
     range: 'Data!A2:K',
   }).then(function(response) {
+    console.log("got data")
+    console.log(response.result)
+    console.log(response)
     var range = response.result;
     if (range.values.length > 0) {
       sheetData = range.values;
