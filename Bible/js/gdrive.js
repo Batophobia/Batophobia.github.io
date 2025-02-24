@@ -92,7 +92,7 @@ function appendRow(rowData) {
   console.log("Row end")
 }
 
-let sheetData = [];
+var sheetData = [];
 function getData() {
   gapi.client.sheets.spreadsheets.values.get({
     spreadsheetId: '1Br9L7s8RTBEz5fPw2novkTX14e_2u8s41xCCn_J-bgY',
@@ -103,6 +103,7 @@ function getData() {
     console.log({range})
     if (range.values.length > 0) {
       sheetData = range.values;
+      console.log({sheetData})
       updateDisplay();
     } else {
       console.error('No data found.');
@@ -116,6 +117,7 @@ function updateDisplay() {
   appendHeader();
   for (i = 0; i < sheetData.length; i++) {
     var row = sheetData[i];
+    console.log({row})
     appendRow(row);
   }
 }
