@@ -9,7 +9,7 @@ function onSignIn(user) {
 }
 
 function getBibles(){
-  $.get(`https://bible-api.com/Genesis+1:1?translation=nasb`)
+  $.get(`https://bible-api.com/Genesis+1:1?translation=asv`)
   .done(function(data){
     $("#passageText").html(data);
   });
