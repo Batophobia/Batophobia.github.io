@@ -1,11 +1,14 @@
-#mainWindow{
-  margin: 0 auto;
-  max-width: 800px;
-  min-width: 500px;
-}
 .BibleOption{
   border: 1px solid #000;
 }
+
+#content {
+  width: 100%;
+}
+#content th {
+  background-color: #CCC;
+}
+
 #version {
   position: absolute;
   bottom: 5px;
