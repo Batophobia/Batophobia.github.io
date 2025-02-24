@@ -9,7 +9,7 @@ function onSignIn(user) {
 }
 
 function getBibles(){
-  $.get("https://www.biblegateway.com/passage",{search: "Genesis 1", version: "NASB"})
+  $.get(`https://bible-api.com/Genesis+1:1?translation=nasb`)
   .done(function(data){
     $("#passageText").html(data);
   });
