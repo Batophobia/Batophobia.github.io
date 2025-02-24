@@ -79,6 +79,7 @@ function clearTable() {
   table.innerHTML="";
 }
 function appendHeader() {
+  console.log(document.getElementById('content'))
   var table = document.getElementById('content');
   table.appendChild(`<tr class='headerRow'><th>Quote</th><th>Source</th><th>Notes</th></tr>`);
 }
