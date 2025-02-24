@@ -79,10 +79,8 @@ function clearTable() {
   table.innerHTML="";
 }
 function appendHeader() {
-  console.log("Header start")
   var table = document.getElementById('content');
   table.insertAdjacentHTML( 'beforeend', `<tr class='headerRow'><th>Quote</th><th>Source</th><th>Notes</th></tr>` );
-  console.log("Header end")
 }
 function appendRow(rowData) {
   console.log("Row start")
@@ -98,12 +96,9 @@ function getData() {
     spreadsheetId: '1Br9L7s8RTBEz5fPw2novkTX14e_2u8s41xCCn_J-bgY',
     range: 'Data!A2:K',
   }).then(function(response) {
-    console.log({response})
     var range = response.result;
-    console.log({range})
     if (range.values.length > 0) {
       sheetData = range.values;
-      console.log({sheetData})
       updateDisplay();
     } else {
       console.error('No data found.');
@@ -117,7 +112,6 @@ function updateDisplay() {
   appendHeader();
   for (i = 0; i < sheetData.length; i++) {
     var row = sheetData[i];
-    console.log({row})
     appendRow(row);
   }
 }
