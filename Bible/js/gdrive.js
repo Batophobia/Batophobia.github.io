@@ -81,14 +81,14 @@ function clearTable() {
 function appendHeader() {
   console.log("Header start")
   var table = document.getElementById('content');
-  table.appendChild(`<tr class='headerRow'><th>Quote</th><th>Source</th><th>Notes</th></tr>`);
+  table.insertAdjacentHTML( 'beforeend', `<tr class='headerRow'><th>Quote</th><th>Source</th><th>Notes</th></tr>` );
   console.log("Header end")
 }
 function appendRow(rowData) {
   console.log("Row start")
   console.log({rowData})
   var table = document.getElementById('content');
-  table.appendChild(`<tr class='quoteRow'><td class='quote'>${rowData[0]} ${rowData[1]}:${rowData[2]} - ${rowData[3]}:${rowData[4]}</td><td class='source'>${row[5]} ${row[6]}:${row[7]} - ${row[8]}:${row[9]}</td><td class='notes'>${row[10]}</td></tr>`);
+  table.insertAdjacentHTML( 'beforeend', `<tr class='quoteRow'><td class='quote'>${rowData[0]} ${rowData[1]}:${rowData[2]} - ${rowData[3]}:${rowData[4]}</td><td class='source'>${row[5]} ${row[6]}:${row[7]} - ${row[8]}:${row[9]}</td><td class='notes'>${row[10]}</td></tr>`);
   console.log("Row end")
 }
 
