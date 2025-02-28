@@ -6,11 +6,46 @@ $(function () {
   });
 
   $("#saveQuote").on("click", (e) => {
-    console.log({
-      quote: $("#addQuoteVerse")[0].value,
-      source: $("#addSourceVerse")[0].value,
-      notes: $("#addNotes")[0].value
-    })
+    const quote = $("#addQuoteVerse")[0].value;
+    const source = $("#addSourceVerse")[0].value;
+    const notes = $("#addNotes")[0].value;
+    console.log({ quote, source, notes });
+
+    const quoteBook = quote.split(/\d/)[0].trim();
+    const quoteStartChapter = quote.split(":")[0].replace(/\D/g, '');
+    const quoteStartVerse = quote.split(":")[1].split('-')[0].trim();
+
+    let quoteEndChapter = quoteStartChapter;
+    let quoteEndVerse = quoteStartVerse;
+    if (quote.indexOf('-') > 0) {
+      //TODO
+    }
+
+    const sourceBook = source.split(/\d/)[0].trim();
+    const sourceStartChapter = source.split(":")[0].replace(/\D/g, '');
+    const sourceStartVerse = source.split(":")[1].split('-')[0].trim();
+
+    let sourceEndChapter = sourceStartChapter;
+    let sourceEndVerse = sourceStartVerse;
+    if (quote.indexOf('-') > 0) {
+      //TODO
+    }
+
+    appendData(
+      quoteBook,
+      quoteStartChapter,
+      quoteStartVerse,
+      quoteEndChapter,
+      quoteEndVerse,
+
+      sourceBook,
+      sourceStartChapter,
+      sourceStartVerse,
+      sourceEndChapter,
+      sourceEndVerse,
+
+      notes
+    )
     $("#quotePopup").hide();
   });
 
