@@ -1,5 +1,10 @@
+body {
+  background-color: #333;
+  color: #CCC;
+}
+
 .BibleOption {
-  border: 1px solid #000;
+  border: 1px solid #999;
 }
 
 #content {
@@ -7,7 +12,7 @@
 }
 
 #content th {
-  background-color: #CCC;
+  background-color: #222;
 }
 
 .verseLink {
@@ -16,8 +21,8 @@
 }
 
 #quotePopup {
-  background-color: #FFF;
-  border: 1px solid #333;
+  background-color: #333;
+  border: 1px solid #111;
   width: 75%;
   margin: auto;
   padding: 5px;
