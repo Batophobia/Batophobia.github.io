@@ -7,9 +7,9 @@ $(function () {
 
   $("#saveQuote").on("click", (e) => {
     console.log({
-      quote: $("#addQuoteVerse").value(),
-      source: $("#addSourceVerse").value(),
-      notes: $("#addNotes").value()
+      quote: $("#addQuoteVerse")[0].value(),
+      source: $("#addSourceVerse")[0].value(),
+      notes: $("#addNotes")[0].value()
     })
     $("#quotePopup").hide();
   });
@@ -40,8 +40,8 @@ function getBibles() {
   $.get(`https://bible-api.com/data`)
     .done(function (data) {
       console.log(data);
-      for (translation in data.translations) {
-        console.log(translation);
+      for (idx in data.translations) {
+        console.log(data.translations[idx]);
       }
       // $("#passageText").html(data.text);
     });

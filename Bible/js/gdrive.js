@@ -83,10 +83,8 @@ function appendHeader() {
   table.insertAdjacentHTML('beforeend', `<tr class='headerRow'><th>Quote</th><th>Source</th><th>Notes</th></tr>`);
 }
 function appendRow(rowData) {
-  console.log("Row start")
   var table = document.getElementById('content');
   table.insertAdjacentHTML('beforeend', `<tr class='quoteRow'><td class='quote'><div class='verseLink'>${rowData[0]} ${rowData[1]}:${rowData[2]} - ${rowData[3]}:${rowData[4]}</div></td><td class='source'><div class='verseLink'>${rowData[5]} ${rowData[6]}:${rowData[7]} - ${rowData[8]}:${rowData[9]}</div></td><td class='notes'>${rowData[10]}</td></tr>`);
-  console.log("Row end")
 }
 
 var sheetData = [];
