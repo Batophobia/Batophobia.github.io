@@ -30,6 +30,6 @@ function getBibles() {
 function getVerses(elem, book, start, end) {
   $.get(`https://bible-api.com/${book}+${start}-${end}?translation=asv`)
     .done(function (data) {
-      $(elem).append(data.text);
+      $(elem).parent().append(data.text);
     });
 }
