@@ -7,9 +7,9 @@ $(function () {
 
   $("#saveQuote").on("click", (e) => {
     console.log({
-      quote: $("#addQuoteVerse")[0].value(),
-      source: $("#addSourceVerse")[0].value(),
-      notes: $("#addNotes")[0].value()
+      quote: $("#addQuoteVerse")[0].value,
+      source: $("#addSourceVerse")[0].value,
+      notes: $("#addNotes")[0].value
     })
     $("#quotePopup").hide();
   });
