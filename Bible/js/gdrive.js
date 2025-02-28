@@ -108,6 +108,7 @@ function getData() {
 }
 
 function updateDisplay() {
+  $("#tableButtons").show();
   appendHeader();
   for (i = 0; i < sheetData.length; i++) {
     var row = sheetData[i];

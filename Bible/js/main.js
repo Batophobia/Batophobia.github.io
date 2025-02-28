@@ -5,6 +5,15 @@ $(function () {
     $("#quotePopup").show();
   });
 
+  $("#saveQuote").on("click", (e) => {
+    console.log({
+      quote: $("#addQuoteVerse").value(),
+      source: $("#addSourceVerse").value(),
+      notes: $("#addNotes").value()
+    })
+    $("#quotePopup").hide();
+  });
+
   $("#closePopup").on("click", (e) => {
     $("#quotePopup").hide();
   });
@@ -31,7 +40,10 @@ function getBibles() {
   $.get(`https://bible-api.com/data`)
     .done(function (data) {
       console.log(data);
-      $("#passageText").html(data.text);
+      for (translation in data.translations) {
+        console.log(translation);
+      }
+      // $("#passageText").html(data.text);
     });
 }
 
