@@ -4,8 +4,12 @@ $(function () {
   document.addEventListener("click", function (e) {
     const target = e.target.closest(".verseLink");
     if (target) {
-      console.log({ target })
-      getVerses(target, "Genesis", "1:30", "2:2");
+      const verses = target.textContent.split(' - ');
+      const book = verses[0].split(' ')[0];
+      const start = verses[0].split(' ')[1];
+      const end = verses[1];
+      console.log({ verses, book, start, end, target: target.textContent })
+      getVerses(target, book, start, end);
     }
   });
 });
