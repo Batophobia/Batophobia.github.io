@@ -86,7 +86,7 @@ function appendRow(rowData) {
   console.log("Row start")
   console.log({ rowData })
   var table = document.getElementById('content');
-  table.insertAdjacentHTML('beforeend', `<tr class='quoteRow'><td class='quote verseLink'>${rowData[0]} ${rowData[1]}:${rowData[2]} - ${rowData[3]}:${rowData[4]}</td><td class='source verseLink'>${rowData[5]} ${rowData[6]}:${rowData[7]} - ${rowData[8]}:${rowData[9]}</td><td class='notes'>${rowData[10]}</td></tr>`);
+  table.insertAdjacentHTML('beforeend', `<tr class='quoteRow'><td class='quote'><div class='verseLink'>${rowData[0]} ${rowData[1]}:${rowData[2]} - ${rowData[3]}:${rowData[4]}</div></td><td class='source'><div class='verseLink'>${rowData[5]} ${rowData[6]}:${rowData[7]} - ${rowData[8]}:${rowData[9]}</div></td><td class='notes'>${rowData[10]}</td></tr>`);
   console.log("Row end")
 }
 
