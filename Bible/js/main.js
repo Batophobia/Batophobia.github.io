@@ -1,6 +1,14 @@
 $(function () {
   getBibles();
 
+  $("#addQuote").on("click", (e) => {
+    $("#quotePopup").show();
+  });
+
+  $("#closePopup").on("click", (e) => {
+    $("#quotePopup").hide();
+  });
+
   document.addEventListener("click", function (e) {
     const target = e.target.closest(".verseLink");
     if (target) {
@@ -22,6 +30,7 @@ function onSignIn(user) {
 function getBibles() {
   $.get(`https://bible-api.com/data`)
     .done(function (data) {
+      console.log(data);
       $("#passageText").html(data.text);
     });
 }
