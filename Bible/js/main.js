@@ -8,7 +8,6 @@ $(function () {
       const book = verses[0].split(' ')[0];
       const start = verses[0].split(' ')[1];
       const end = verses[1];
-      console.log({ verses, book, start, end, target: target.textContent })
       getVerses(target, book, start, end);
     }
   });
@@ -30,6 +29,7 @@ function getBibles() {
 function getVerses(elem, book, start, end) {
   $.get(`https://bible-api.com/${book}+${start}-${end}?translation=asv`)
     .done(function (data) {
+      console.log({ data })
       $(elem).parent().append(data.text);
     });
 }
