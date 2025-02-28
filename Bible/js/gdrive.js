@@ -110,7 +110,7 @@ function appendData(quoteBook, quoteStartChapter, quoteStartVerse, quoteEndChapt
 
   gapi.client.sheets.spreadsheets.values.append({
     spreadsheetId: '1Br9L7s8RTBEz5fPw2novkTX14e_2u8s41xCCn_J-bgY',
-    range: 'Data!A2:K',
+    range: 'Data',
     valueInputOption: 'USER_ENTERED',
     insertDataOption: 'INSERT_ROWS',
     resource: {
