@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Scripture Quotes</title>
-    <meta charset='utf-8' />
-    <link rel="stylesheet" href="css/style.css">
-    <script async defer src="https://apis.google.com/js/api.js"
-      onload="this.onload=function(){};handleClientLoad()"
-      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+
+<head>
+  <title>Scripture Quotes</title>
+  <meta charset='utf-8' />
+  <link rel="stylesheet" href="css/style.css">
+  <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()"
+    onreadystatechange="if (this.readyState === 'complete') this.onload()">
     </script>
-    <script src="../jquery.js"></script>
-    <script src="js/gdrive.js"></script>
-    <script src="js/main.js"></script>
-  </head>
-  <body>
-    <p>Scripture Quotes</p>
+  <script src="../jquery.js"></script>
+  <script src="js/gdrive.js"></script>
+  <script src="js/main.js"></script>
+</head>
 
-    <!--Add buttons to initiate auth sequence and sign out-->
-    <button id="authorize-button" style="display: none;">Authorize</button>
-    <button id="signout-button" style="display: none;">Sign Out</button>
+<body>
+  <p>Scripture Quotes</p>
 
-    <table id="content"></table>
-    
-    <div id="quotePopup">
-      <div id="passageText"></div>
-    </div>
-    
-    <div id="version">v0.47</div>
-  </body>
+  <!--Add buttons to initiate auth sequence and sign out-->
+  <button id="authorize-button" style="display: none;">Authorize</button>
+  <button id="signout-button" style="display: none;">Sign Out</button>
+
+  <table id="content"></table>
+
+  <div id="quotePopup">
+    <div id="passageText"></div>
+  </div>
+
+  <div id="version">v0.5.0</div>
+</body>
+
 </html>

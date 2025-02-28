@@ -12,7 +12,7 @@ var SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
 var authorizeButton;
 var signoutButton;
 
-function init_gDrive(){
+function init_gDrive() {
   authorizeButton = document.getElementById('authorize-button');
   signoutButton = document.getElementById('signout-button');
 }
@@ -76,17 +76,17 @@ function handleSignoutClick(event) {
 
 function clearTable() {
   var table = document.getElementById('content');
-  table.innerHTML="";
+  table.innerHTML = "";
 }
 function appendHeader() {
   var table = document.getElementById('content');
-  table.insertAdjacentHTML( 'beforeend', `<tr class='headerRow'><th>Quote</th><th>Source</th><th>Notes</th></tr>` );
+  table.insertAdjacentHTML('beforeend', `<tr class='headerRow'><th>Quote</th><th>Source</th><th>Notes</th></tr>`);
 }
 function appendRow(rowData) {
   console.log("Row start")
-  console.log({rowData})
+  console.log({ rowData })
   var table = document.getElementById('content');
-  table.insertAdjacentHTML( 'beforeend', `<tr class='quoteRow'><td class='quote'>${rowData[0]} ${rowData[1]}:${rowData[2]} - ${rowData[3]}:${rowData[4]}</td><td class='source'>${rowData[5]} ${rowData[6]}:${rowData[7]} - ${rowData[8]}:${rowData[9]}</td><td class='notes'>${rowData[10]}</td></tr>`);
+  table.insertAdjacentHTML('beforeend', `<tr class='quoteRow'><td class='quote verseLink'>${rowData[0]} ${rowData[1]}:${rowData[2]} - ${rowData[3]}:${rowData[4]}</td><td class='source verseLink'>${rowData[5]} ${rowData[6]}:${rowData[7]} - ${rowData[8]}:${rowData[9]}</td><td class='notes'>${rowData[10]}</td></tr>`);
   console.log("Row end")
 }
 
@@ -95,7 +95,7 @@ function getData() {
   gapi.client.sheets.spreadsheets.values.get({
     spreadsheetId: '1Br9L7s8RTBEz5fPw2novkTX14e_2u8s41xCCn_J-bgY',
     range: 'Data!A2:K',
-  }).then(function(response) {
+  }).then(function (response) {
     var range = response.result;
     if (range.values.length > 0) {
       sheetData = range.values;
@@ -103,7 +103,7 @@ function getData() {
     } else {
       console.error('No data found.');
     }
-  }, function(response) {
+  }, function (response) {
     console.error('Error: ' + response.result.error.message);
   });
 }
@@ -116,6 +116,6 @@ function updateDisplay() {
   }
 }
 
-$(function(){
+$(function () {
   init_gDrive();
 });

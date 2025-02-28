@@ -1,12 +1,18 @@
-.BibleOption{
+.BibleOption {
   border: 1px solid #000;
 }
 
 #content {
   width: 100%;
 }
+
 #content th {
   background-color: #CCC;
+}
+
+.verseLink {
+  color: #99F;
+  text-decoration: underline;
 }
 
 #quotePopup {
