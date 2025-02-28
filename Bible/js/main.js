@@ -20,7 +20,7 @@ function onSignIn(user) {
 }
 
 function getBibles() {
-  $.get(`https://bible-api.com/Genesis+1:1?translation=asv`)
+  $.get(`https://bible-api.com/data`)
     .done(function (data) {
       $("#passageText").html(data.text);
     });
