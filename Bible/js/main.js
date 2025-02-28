@@ -18,7 +18,8 @@ $(function () {
     let quoteEndChapter = quoteStartChapter;
     let quoteEndVerse = quoteStartVerse;
     if (quote.indexOf('-') > 0) {
-      //TODO
+      quoteEndChapter = quote.split('-')[1].trim().split(":")[0].trim();
+      quoteEndVerse = quote.split('-')[1].trim().split(":")[1].trim();
     }
 
     const sourceBook = source.split(/\d/)[0].trim();
@@ -27,8 +28,9 @@ $(function () {
 
     let sourceEndChapter = sourceStartChapter;
     let sourceEndVerse = sourceStartVerse;
-    if (quote.indexOf('-') > 0) {
-      //TODO
+    if (source.indexOf('-') > 0) {
+      sourceEndChapter = source.split('-')[1].trim().split(":")[0].trim();
+      sourceEndVerse = source.split('-')[1].trim().split(":")[1].trim();
     }
 
     appendData(
@@ -75,7 +77,7 @@ function getBibles() {
   $.get(`https://bible-api.com/data`)
     .done(function (data) {
       console.log(data);
-      for (idx in data.translations) {
+      for (idx in data.translations.filter((v) => v.language_code == "eng")) {
         console.log(data.translations[idx]);
       }
       // $("#passageText").html(data.text);
