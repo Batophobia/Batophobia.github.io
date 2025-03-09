@@ -106,9 +106,7 @@ function getData() {
 }
 
 async function appendData(quoteBook, quoteStartChapter, quoteStartVerse, quoteEndChapter, quoteEndVerse, sourceBook, sourceStartChapter, sourceStartVerse, sourceEndChapter, sourceEndVerse, notes) {
-  console.log({ quoteBook, quoteStartChapter, quoteStartVerse, quoteEndChapter, quoteEndVerse, sourceBook, sourceStartChapter, sourceStartVerse, sourceEndChapter, sourceEndVerse, notes })
-
-  await gapi.client.sheets.spreadsheets.values.append({
+  let appendResp = await gapi.client.sheets.spreadsheets.values.append({
     spreadsheetId: '1Br9L7s8RTBEz5fPw2novkTX14e_2u8s41xCCn_J-bgY',
     range: 'Data',
     valueInputOption: 'USER_ENTERED',
@@ -118,6 +116,8 @@ async function appendData(quoteBook, quoteStartChapter, quoteStartVerse, quoteEn
       "values": [[quoteBook, quoteStartChapter, quoteStartVerse, quoteEndChapter, quoteEndVerse, sourceBook, sourceStartChapter, sourceStartVerse, sourceEndChapter, sourceEndVerse, notes]]
     },
   })
+
+  console.log({ appendResp })
 }
 
 function updateDisplay() {

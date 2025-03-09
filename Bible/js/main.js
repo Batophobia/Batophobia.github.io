@@ -9,11 +9,24 @@ $(function () {
     const quote = $("#addQuoteVerse")[0].value;
     const source = $("#addSourceVerse")[0].value;
     const notes = $("#addNotes")[0].value;
+
+    // Check inputs have value
+    if (quote == null || source == null || quote == "" || source == "") {
+      alert("Quote and Source values are required");
+      throw new Error("Missing value for Quote or Source");
+    }
+
     console.log({ quote, source, notes });
 
     const quoteBook = quote.split(/\d/)[0].trim();
     const quoteStartChapter = quote.split(":")[0].replace(/\D/g, '');
     const quoteStartVerse = quote.split(":")[1].split('-')[0].trim();
+
+    // Check quote input
+    if (quoteBook.length < 1 || quoteStartChapter.length < 1 || quoteStartVerse.length < 1) {
+      alert("Quote input invalid");
+      throw new Error("Invalid value for Quote");
+    }
 
     let quoteEndChapter = quoteStartChapter;
     let quoteEndVerse = quoteStartVerse;
@@ -22,15 +35,33 @@ $(function () {
       quoteEndVerse = quote.split('-')[1].trim().split(":")[1].trim();
     }
 
+    // Check quote ending input
+    if (quoteEndChapter.length < 1 || quoteEndVerse.length < 1) {
+      alert("Quote input invalid");
+      throw new Error("Invalid value for Quote");
+    }
+
     const sourceBook = source.split(/\d/)[0].trim();
     const sourceStartChapter = source.split(":")[0].replace(/\D/g, '');
     const sourceStartVerse = source.split(":")[1].split('-')[0].trim();
+
+    // Check source input
+    if (sourceBook.length < 1 || sourceStartChapter.length < 1 || sourceStartVerse.length < 1) {
+      alert("Source input invalid");
+      throw new Error("Invalid value for Source");
+    }
 
     let sourceEndChapter = sourceStartChapter;
     let sourceEndVerse = sourceStartVerse;
     if (source.indexOf('-') > 0) {
       sourceEndChapter = source.split('-')[1].trim().split(":")[0].trim();
       sourceEndVerse = source.split('-')[1].trim().split(":")[1].trim();
+    }
+
+    // Check source ending input
+    if (sourceEndChapter.length < 1 || sourceEndVerse.length < 1) {
+      alert("Source input invalid");
+      throw new Error("Invalid value for Source");
     }
 
     appendData(
