@@ -105,10 +105,10 @@ function getData() {
   });
 }
 
-function appendData(quoteBook, quoteStartChapter, quoteStartVerse, quoteEndChapter, quoteEndVerse, sourceBook, sourceStartChapter, sourceStartVerse, sourceEndChapter, sourceEndVerse, notes) {
+async function appendData(quoteBook, quoteStartChapter, quoteStartVerse, quoteEndChapter, quoteEndVerse, sourceBook, sourceStartChapter, sourceStartVerse, sourceEndChapter, sourceEndVerse, notes) {
   console.log({ quoteBook, quoteStartChapter, quoteStartVerse, quoteEndChapter, quoteEndVerse, sourceBook, sourceStartChapter, sourceStartVerse, sourceEndChapter, sourceEndVerse, notes })
 
-  gapi.client.sheets.spreadsheets.values.append({
+  await gapi.client.sheets.spreadsheets.values.append({
     spreadsheetId: '1Br9L7s8RTBEz5fPw2novkTX14e_2u8s41xCCn_J-bgY',
     range: 'Data',
     valueInputOption: 'USER_ENTERED',
