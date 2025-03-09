@@ -117,7 +117,8 @@ async function appendData(quoteBook, quoteStartChapter, quoteStartVerse, quoteEn
     },
   })
 
-  console.log({ appendResp })
+  sheetData.push([quoteBook, quoteStartChapter, quoteStartVerse, quoteEndChapter, quoteEndVerse, sourceBook, sourceStartChapter, sourceStartVerse, sourceEndChapter, sourceEndVerse, notes]);
+  updateDisplay();
 }
 
 function updateDisplay() {
