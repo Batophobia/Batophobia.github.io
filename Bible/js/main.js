@@ -21,14 +21,16 @@ $(function () {
     let quoteBook;
     let quoteStartChapter;
     let quoteStartVerse;
-    let quoteEndChapter = quoteStartChapter;
-    let quoteEndVerse = quoteStartVerse;
+    let quoteEndChapter;
+    let quoteEndVerse;
 
     try {
       quoteBook = quote.split(/\d/)[0].trim();
       quoteStartChapter = quote.split(":")[0].replace(/\D/g, '');
       quoteStartVerse = quote.split(":")[1].split('-')[0].trim();
 
+      quoteEndChapter = quoteStartChapter
+      quoteEndVerse = quoteStartVerse
       if (quote.indexOf('-') > 0) {
         quoteEndChapter = quote.split('-')[1].trim().split(":")[0].trim();
         quoteEndVerse = quote.split('-')[1].trim().split(":")[1].trim();
@@ -42,14 +44,16 @@ $(function () {
     let sourceBook;
     let sourceStartChapter;
     let sourceStartVerse;
+    let sourceEndChapter;
+    let sourceEndVerse;
 
     try {
       sourceBook = source.split(/\d/)[0].trim();
       sourceStartChapter = source.split(":")[0].replace(/\D/g, '');
       sourceStartVerse = source.split(":")[1].split('-')[0].trim();
 
-      let sourceEndChapter = sourceStartChapter;
-      let sourceEndVerse = sourceStartVerse;
+      sourceEndChapter = sourceStartChapter
+      sourceEndVerse = sourceStartVerse
       if (source.indexOf('-') > 0) {
         sourceEndChapter = source.split('-')[1].trim().split(":")[0].trim();
         sourceEndVerse = source.split('-')[1].trim().split(":")[1].trim();
