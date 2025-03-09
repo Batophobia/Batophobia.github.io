@@ -122,6 +122,7 @@ async function appendData(quoteBook, quoteStartChapter, quoteStartVerse, quoteEn
 }
 
 function updateDisplay() {
+  clearTable();
   $("#tableButtons").show();
   appendHeader();
   for (i = 0; i < sheetData.length; i++) {
