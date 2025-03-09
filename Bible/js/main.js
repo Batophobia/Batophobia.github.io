@@ -18,49 +18,45 @@ $(function () {
 
     console.log({ quote, source, notes });
 
-    const quoteBook = quote.split(/\d/)[0].trim();
-    const quoteStartChapter = quote.split(":")[0].replace(/\D/g, '');
-    const quoteStartVerse = quote.split(":")[1].split('-')[0].trim();
-
-    // Check quote input
-    if (quoteBook.length < 1 || quoteStartChapter.length < 1 || quoteStartVerse.length < 1) {
-      alert("Quote input invalid");
-      throw new Error("Invalid value for Quote");
-    }
-
+    let quoteBook;
+    let quoteStartChapter;
+    let quoteStartVerse;
     let quoteEndChapter = quoteStartChapter;
     let quoteEndVerse = quoteStartVerse;
-    if (quote.indexOf('-') > 0) {
-      quoteEndChapter = quote.split('-')[1].trim().split(":")[0].trim();
-      quoteEndVerse = quote.split('-')[1].trim().split(":")[1].trim();
-    }
 
-    // Check quote ending input
-    if (quoteEndChapter.length < 1 || quoteEndVerse.length < 1) {
-      alert("Quote input invalid");
+    try {
+      quoteBook = quote.split(/\d/)[0].trim();
+      quoteStartChapter = quote.split(":")[0].replace(/\D/g, '');
+      quoteStartVerse = quote.split(":")[1].split('-')[0].trim();
+
+      if (quote.indexOf('-') > 0) {
+        quoteEndChapter = quote.split('-')[1].trim().split(":")[0].trim();
+        quoteEndVerse = quote.split('-')[1].trim().split(":")[1].trim();
+      }
+    } catch (e) {
+      alert("Quote value invalid");
+      console.error(e);
       throw new Error("Invalid value for Quote");
     }
 
-    const sourceBook = source.split(/\d/)[0].trim();
-    const sourceStartChapter = source.split(":")[0].replace(/\D/g, '');
-    const sourceStartVerse = source.split(":")[1].split('-')[0].trim();
+    let sourceBook;
+    let sourceStartChapter;
+    let sourceStartVerse;
 
-    // Check source input
-    if (sourceBook.length < 1 || sourceStartChapter.length < 1 || sourceStartVerse.length < 1) {
-      alert("Source input invalid");
-      throw new Error("Invalid value for Source");
-    }
+    try {
+      sourceBook = source.split(/\d/)[0].trim();
+      sourceStartChapter = source.split(":")[0].replace(/\D/g, '');
+      sourceStartVerse = source.split(":")[1].split('-')[0].trim();
 
-    let sourceEndChapter = sourceStartChapter;
-    let sourceEndVerse = sourceStartVerse;
-    if (source.indexOf('-') > 0) {
-      sourceEndChapter = source.split('-')[1].trim().split(":")[0].trim();
-      sourceEndVerse = source.split('-')[1].trim().split(":")[1].trim();
-    }
-
-    // Check source ending input
-    if (sourceEndChapter.length < 1 || sourceEndVerse.length < 1) {
-      alert("Source input invalid");
+      let sourceEndChapter = sourceStartChapter;
+      let sourceEndVerse = sourceStartVerse;
+      if (source.indexOf('-') > 0) {
+        sourceEndChapter = source.split('-')[1].trim().split(":")[0].trim();
+        sourceEndVerse = source.split('-')[1].trim().split(":")[1].trim();
+      }
+    } catch (e) {
+      alert("Source value invalid");
+      console.error(e);
       throw new Error("Invalid value for Source");
     }
 
