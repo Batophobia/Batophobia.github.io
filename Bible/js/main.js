@@ -6,6 +6,12 @@ $(function () {
   });
 
   $("#saveQuote").on("click", (e) => {
+    /* Exmaple:
+Galatians 5:13-14 TLV
+[13] Brothers and sisters, you were called to freedom—only do not let your freedom become an opportunity for the flesh, but through love serve one another. [14] For the whole Torah can be summed up in a single saying: “Love your neighbor as yourself.”
+
+https://bible.com/bible/314/gal.5.13-14.TLV
+    */
     const quote = $("#addQuoteVerse")[0].value;
     const source = $("#addSourceVerse")[0].value;
     const notes = $("#addNotes")[0].value;
@@ -18,6 +24,20 @@ $(function () {
 
     console.log({ quote, source, notes });
 
+    let passageLoc;
+    let passageText;
+    let passageLink;
+
+    try {
+      passageLoc = quote.split(/\n/)[0].trim();
+      passageText = quote.split(/\n/)[1].trim();
+      passageLink = quote.split(/\n/)[3].trim();
+    } catch (e) {
+      alert("Quote value invalid");
+      console.error(e);
+      throw new Error("Invalid value for Quote");
+    }
+
     let quoteBook;
     let quoteStartChapter;
     let quoteStartVerse;
@@ -25,15 +45,15 @@ $(function () {
     let quoteEndVerse;
 
     try {
-      quoteBook = quote.split(/\d/)[0].trim();
-      quoteStartChapter = quote.split(":")[0].replace(/\D/g, '');
-      quoteStartVerse = quote.split(":")[1].split('-')[0].trim();
+      quoteBook = passageLoc.split(/\d/)[0].trim();
+      quoteStartChapter = passageLoc.split(":")[0].replace(/\D/g, '');
+      quoteStartVerse = passageLoc.split(":")[1].split('-')[0].trim();
 
       quoteEndChapter = quoteStartChapter
       quoteEndVerse = quoteStartVerse
-      if (quote.indexOf('-') > 0) {
-        quoteEndChapter = quote.split('-')[1].trim().split(":")[0].trim();
-        quoteEndVerse = quote.split('-')[1].trim().split(":")[1].trim();
+      if (passageLoc.indexOf('-') > 0) {
+        quoteEndChapter = passageLoc.split('-')[1].trim().split(":")[0].trim();
+        quoteEndVerse = passageLoc.split('-')[1].trim().split(":")[1].trim();
       }
     } catch (e) {
       alert("Quote value invalid");
