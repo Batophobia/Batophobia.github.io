@@ -38,6 +38,8 @@ https://bible.com/bible/314/gal.5.13-14.TLV
       throw new Error("Invalid value for Quote");
     }
 
+    console.log({ passageLoc, passageText, passageLink });
+
     let quoteBook;
     let quoteStartChapter;
     let quoteStartVerse;
@@ -56,7 +58,7 @@ https://bible.com/bible/314/gal.5.13-14.TLV
         quoteEndVerse = passageLoc.split('-')[1].trim().split(":")[1].trim();
       }
     } catch (e) {
-      alert("Quote value invalid");
+      alert("Quote location value invalid");
       console.error(e);
       throw new Error("Invalid value for Quote");
     }
