@@ -45,6 +45,7 @@ https://bible.com/bible/314/gal.5.13-14.TLV
     let quoteStartVerse;
     let quoteEndChapter;
     let quoteEndVerse;
+    let quoteVersion;
 
     try {
       quoteBook = passageLoc.split(/\d/)[0].trim();
@@ -54,9 +55,16 @@ https://bible.com/bible/314/gal.5.13-14.TLV
       quoteEndChapter = quoteStartChapter
       quoteEndVerse = quoteStartVerse
       if (passageLoc.indexOf('-') > 0) {
-        quoteEndChapter = passageLoc.split('-')[1].trim().split(":")[0].trim();
-        quoteEndVerse = passageLoc.split('-')[1].trim().split(":")[1].trim();
+        quoteEndChapter = passageLoc.split('-')[1].split(' ')[0].trim().split(":")[0].trim();
+        quoteEndVerse = passageLoc.split('-')[1].split(' ')[0].trim().split(":")[1].trim();
+        quoteVersion = passageLoc.split('-')[1].split(' ')[1].trim();
+      } else {
+        quoteVersion = quoteStartVerse.split(" ")[1].trim();
+        quoteStartVerse = quoteStartVerse.split(" ")[0].trim();
       }
+
+      console.log({ quoteBook, quoteStartChapter, quoteStartVerse, quoteVersion, quoteEndChapter, quoteEndVerse })
+
     } catch (e) {
       alert("Quote location value invalid");
       console.error(e);
