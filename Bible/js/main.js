@@ -48,23 +48,14 @@ https://bible.com/bible/314/gal.5.13-14.TLV
     let quoteVersion;
 
     try {
-      quoteBook = passageLoc.split(/\d/)[0].trim();
-      quoteStartChapter = passageLoc.split(":")[0].replace(/\D/g, '');
-      quoteStartVerse = passageLoc.split(":")[1].split('-')[0].trim();
-
-      quoteEndChapter = quoteStartChapter
-      quoteEndVerse = quoteStartVerse
-      if (passageLoc.indexOf('-') > 0) {
-        quoteEndChapter = passageLoc.split('-')[1].split(' ')[0].trim().split(":")[0].trim();
-        quoteEndVerse = passageLoc.split('-')[1].split(' ')[0].trim().split(":")[1].trim();
-        quoteVersion = passageLoc.split('-')[1].split(' ')[1].trim();
-      } else {
-        quoteVersion = quoteStartVerse.split(" ")[1].trim();
-        quoteStartVerse = quoteStartVerse.split(" ")[0].trim();
-      }
-
-      console.log({ quoteBook, quoteStartChapter, quoteStartVerse, quoteVersion, quoteEndChapter, quoteEndVerse })
-
+      let parsedQuote = parseScriptureInput(passageLoc);
+      console.log(parsedQuote)
+      quoteBook = parsedQuote.book;
+      quoteStartChapter = parsedQuote.startChapter;
+      quoteStartVerse = parsedQuote.startVerse;
+      quoteVersion = parsedQuote.version;
+      quoteEndChapter = parsedQuote.endChapter;
+      quoteEndVerse = parsedQuote.endVerse;
     } catch (e) {
       alert("Quote location value invalid");
       console.error(e);
@@ -76,18 +67,17 @@ https://bible.com/bible/314/gal.5.13-14.TLV
     let sourceStartVerse;
     let sourceEndChapter;
     let sourceEndVerse;
+    let sourceVersion;
 
     try {
-      sourceBook = source.split(/\d/)[0].trim();
-      sourceStartChapter = source.split(":")[0].replace(/\D/g, '');
-      sourceStartVerse = source.split(":")[1].split('-')[0].trim();
-
-      sourceEndChapter = sourceStartChapter
-      sourceEndVerse = sourceStartVerse
-      if (source.indexOf('-') > 0) {
-        sourceEndChapter = source.split('-')[1].trim().split(":")[0].trim();
-        sourceEndVerse = source.split('-')[1].trim().split(":")[1].trim();
-      }
+      let parsedSource = parseScriptureInput(passageLoc);
+      console.log(parsedSource)
+      sourceBook = parsedSource.book;
+      sourceStartChapter = parsedSource.startChapter;
+      sourceStartVerse = parsedSource.startVerse;
+      sourceVersion = parsedSource.version;
+      sourceEndChapter = parsedSource.endChapter;
+      sourceEndVerse = parsedSource.endVerse;
     } catch (e) {
       alert("Source value invalid");
       console.error(e);
@@ -127,6 +117,44 @@ https://bible.com/bible/314/gal.5.13-14.TLV
     }
   });
 });
+
+function parseScriptureInput(inpt) {
+  /* EXAMPLE:
+John 17:22-23 TLV
+[22] The glory that You have given to Me I have given to them, that they may be one just as We are one— [23] I in them and You in Me—that they may be perfected in unity, so that the world may know that You sent Me and loved them as You loved Me. 
+
+https://bible.com/bible/314/jhn.17.22-23.TLV
+  */
+
+  let book;
+  let startChapter;
+  let startVerse;
+  let endChapter;
+  let endVerse;
+  let version;
+
+  book = inpt.split(/\d/)[0].trim();
+  startChapter = inpt.split(":")[0].replace(/\D/g, '');
+  startVerse = inpt.split(":")[1].split('-')[0].trim();
+
+  endChapter = startChapter;
+  endVerse = startVerse;
+  if (inpt.indexOf('-') > 0) {
+    if (inpt.split('-')[1].split(' ')[0].trim().indexOf(':') > -1) {
+      endChapter = inpt.split('-')[1].split(' ')[0].trim().split(":")[0].trim();
+      endVerse = inpt.split('-')[1].split(' ')[0].trim().split(":")[1].trim();
+    } else {
+      endVerse = inpt.split('-')[1].split(' ')[0].trim();
+    }
+
+    version = inpt.split('-')[1].split(' ')[1].trim();
+  } else {
+    version = startVerse.split(" ")[1].trim();
+    startVerse = startVerse.split(" ")[0].trim();
+  }
+
+  return { book, startChapter, startVerse, version, endChapter, endVerse }
+}
 
 function onSignIn(user) {
   var profile = user.getBasicProfile();
