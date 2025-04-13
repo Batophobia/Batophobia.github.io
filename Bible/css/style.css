@@ -37,6 +37,11 @@ body {
   display: none;
 }
 
+#quotePopup textarea {
+  height: 200px;
+  width: 500px;
+}
+
 #closePopup {
   cursor: pointer;
   position: absolute;
