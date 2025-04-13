@@ -84,7 +84,12 @@ function appendHeader() {
 }
 function appendRow(rowData) {
   var table = document.getElementById('content');
-  table.insertAdjacentHTML('beforeend', `<tr class='quoteRow'><td class='quote'><div class='verseLink'>${rowData[0]} ${rowData[1]}:${rowData[2]} - ${rowData[3]}:${rowData[4]}</div></td><td class='source'><div class='verseLink'>${rowData[5]} ${rowData[6]}:${rowData[7]} - ${rowData[8]}:${rowData[9]}</div></td><td class='notes'>${rowData[10]}</td></tr>`);
+  let rowText = `<tr class='quoteRow'><td class='quote'><div class='verseLink'>${rowData[0]} ${rowData[1]}:${rowData[2]} - ${rowData[3]}:${rowData[4]} (${rowData[5]})</div>`
+  rowText += `<div class='verseText'>${rowData[6]}</div>`;
+  rowText += `</td><td class='source'><div class='verseLink'>${rowData[7]} ${rowData[8]}:${rowData[9]} - ${rowData[10]}:${rowData[11]} (${rowData[12]})</div>`;
+  rowText += `<div class='verseText'>${rowData[13]}</div>`;
+  rowText += `</td><td class='notes'>${rowData[14]}</td></tr>`;
+  table.insertAdjacentHTML('beforeend', rowText);
 }
 
 var sheetData = [];
@@ -105,7 +110,7 @@ function getData() {
   });
 }
 
-async function appendData(quoteBook, quoteStartChapter, quoteStartVerse, quoteEndChapter, quoteEndVerse, sourceBook, sourceStartChapter, sourceStartVerse, sourceEndChapter, sourceEndVerse, notes) {
+async function appendData(quoteBook, quoteStartChapter, quoteStartVerse, quoteEndChapter, quoteEndVerse, quoteVersion, quoteText, sourceBook, sourceStartChapter, sourceStartVerse, sourceEndChapter, sourceEndVerse, sourceVersion, sourceText, notes) {
   let appendResp = await gapi.client.sheets.spreadsheets.values.append({
     spreadsheetId: '1Br9L7s8RTBEz5fPw2novkTX14e_2u8s41xCCn_J-bgY',
     range: 'Data',
@@ -113,11 +118,11 @@ async function appendData(quoteBook, quoteStartChapter, quoteStartVerse, quoteEn
     insertDataOption: 'INSERT_ROWS',
     resource: {
       "majorDimension": "ROWS",
-      "values": [[quoteBook, quoteStartChapter, quoteStartVerse, quoteEndChapter, quoteEndVerse, sourceBook, sourceStartChapter, sourceStartVerse, sourceEndChapter, sourceEndVerse, notes]]
+      "values": [[quoteBook, quoteStartChapter, quoteStartVerse, quoteEndChapter, quoteEndVerse, quoteVersion, quoteText, sourceBook, sourceStartChapter, sourceStartVerse, sourceEndChapter, sourceEndVerse, sourceVersion, sourceText, notes]]
     },
   })
 
-  sheetData.push([quoteBook, quoteStartChapter, quoteStartVerse, quoteEndChapter, quoteEndVerse, sourceBook, sourceStartChapter, sourceStartVerse, sourceEndChapter, sourceEndVerse, notes]);
+  sheetData.push([quoteBook, quoteStartChapter, quoteStartVerse, quoteEndChapter, quoteEndVerse, quoteVersion, quoteText, sourceBook, sourceStartChapter, sourceStartVerse, sourceEndChapter, sourceEndVerse, sourceVersion, sourceText, notes]);
   updateDisplay();
 }
 
