@@ -24,21 +24,34 @@ https://bible.com/bible/314/gal.5.13-14.TLV
 
     console.log({ quote, source, notes });
 
-    let passageLoc;
-    let passageText;
-    let passageLink;
+    let quoteLoc;
+    let quoteText;
+    let quoteLink;
+
+    let sourceLoc;
+    let sourceText;
+    let sourceLink;
 
     try {
-      passageLoc = quote.split(/\n/)[0].trim();
-      passageText = quote.split(/\n/)[1].trim();
-      passageLink = quote.split(/\n/)[3].trim();
+      quoteLoc = quote.split(/\n/)[0].trim();
+      quoteText = quote.split(/\n/)[1].trim();
+      quoteLink = quote.split(/\n/)[3].trim();
     } catch (e) {
       alert("Quote value invalid");
       console.error(e);
       throw new Error("Invalid value for Quote");
     }
 
-    console.log({ passageLoc, passageText, passageLink });
+    try {
+      sourceLoc = source.split(/\n/)[0].trim();
+      sourceText = source.split(/\n/)[1].trim();
+      sourceLink = source.split(/\n/)[3].trim();
+    } catch (e) {
+      alert("Source value invalid");
+      console.error(e);
+      throw new Error("Invalid value for Source");
+    }
+    console.log({ quoteLoc, quoteText, quoteLink, sourceLoc, sourceText, sourceLink });
 
     let quoteBook;
     let quoteStartChapter;
@@ -48,7 +61,7 @@ https://bible.com/bible/314/gal.5.13-14.TLV
     let quoteVersion;
 
     try {
-      let parsedQuote = parseScriptureInput(passageLoc);
+      let parsedQuote = parseScriptureInput(quoteLoc);
       console.log(parsedQuote)
       quoteBook = parsedQuote.book;
       quoteStartChapter = parsedQuote.startChapter;
@@ -70,7 +83,7 @@ https://bible.com/bible/314/gal.5.13-14.TLV
     let sourceVersion;
 
     try {
-      let parsedSource = parseScriptureInput(passageLoc);
+      let parsedSource = parseScriptureInput(sourceLoc);
       console.log(parsedSource)
       sourceBook = parsedSource.book;
       sourceStartChapter = parsedSource.startChapter;
@@ -116,7 +129,8 @@ https://bible.com/bible/314/gal.5.13-14.TLV
       const verses = target.textContent.split(' - ');
       const book = verses[0].split(' ')[0];
       const start = verses[0].split(' ')[1];
-      const end = verses[1];
+      const end = verses[1].split(' ')[0];
+      // TODO: Use version?
       getVerses(target, book, start, end);
     }
   });
