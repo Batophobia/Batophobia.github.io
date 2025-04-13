@@ -88,7 +88,7 @@ function appendRow(rowData) {
   rowText += `<div class='verseText'>${rowData[6]}</div>`;
   rowText += `</td><td class='source'><div class='verseLink'>${rowData[7]} ${rowData[8]}:${rowData[9]} - ${rowData[10]}:${rowData[11]} (${rowData[12]})</div>`;
   rowText += `<div class='verseText'>${rowData[13]}</div>`;
-  rowText += `</td><td class='notes'>${rowData[14]}</td></tr>`;
+  rowText += `</td><td class='notes'><div class='noteText'>${rowData[14]}</div></td></tr>`;
   table.insertAdjacentHTML('beforeend', rowText);
 }
 
