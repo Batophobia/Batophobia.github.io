@@ -90,12 +90,16 @@ https://bible.com/bible/314/gal.5.13-14.TLV
       quoteStartVerse,
       quoteEndChapter,
       quoteEndVerse,
+      quoteVersion,
+      quoteText,
 
       sourceBook,
       sourceStartChapter,
       sourceStartVerse,
       sourceEndChapter,
       sourceEndVerse,
+      sourceVersion,
+      sourceText,
 
       notes
     )
@@ -177,6 +181,6 @@ function getVerses(elem, book, start, end) {
   $.get(`https://bible-api.com/${book}+${start}-${end}?translation=asv`)
     .done(function (data) {
       console.log({ data })
-      $(elem).parent().append(data.text);
+      $(elem).parent().find(".verseText").text(data.text);
     });
 }
