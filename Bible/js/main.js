@@ -151,9 +151,12 @@ https://bible.com/bible/314/jhn.17.22-23.TLV
   let endVerse;
   let version;
 
+  // TODO: Handle spaces in book name (i.e. 2 Kings)
   book = inpt.split(/\d/)[0].trim();
   startChapter = inpt.split(":")[0].replace(/\D/g, '');
   startVerse = inpt.split(":")[1].split('-')[0].trim();
+
+  // TODO: Remove version off end verse
 
   endChapter = startChapter;
   endVerse = startVerse;

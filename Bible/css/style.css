@@ -20,6 +20,11 @@ body {
   margin: 5px;
 }
 
+#tableButtons button {
+  width: 100px;
+  height: 50px;
+}
+
 .verseLink {
   color: #99F;
   text-decoration: underline;
