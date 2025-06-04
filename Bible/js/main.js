@@ -172,6 +172,7 @@ https://bible.com/bible/314/jhn.17.22-23.TLV
   } else {
     version = startVerse.split(" ")[1].trim();
     startVerse = startVerse.split(" ")[0].trim();
+    endVerse = startVerse;
   }
 
   return { book, startChapter, startVerse, version, endChapter, endVerse }
