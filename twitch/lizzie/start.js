@@ -1,21 +1,28 @@
 const lights = [
-  { x: 78, y: 7 },
-  { x: 231, y: 83 },
-  { x: 408, y: 95 },
-  { x: 537, y: 48 },
-  { x: 544, y: 110 },
-  { x: 690, y: 53 },
-  { x: 669, y: 122 },
-  { x: 810, y: 44 },
-  { x: 889, y: 144 },
-  { x: 1080, y: 116 },
-  { x: 981, y: 83 },
-  { x: 1293, y: 54 },
-  { x: 1442, y: 35 },
-  { x: 1543, y: 63 },
-  { x: 1722, y: 55 },
-  { x: 1828, y: 65 },
-  { x: 1904, y: 17 }
+  { x: 66, y: 7 },
+  { x: 187, y: 66 },
+  { x: 252, y: 60 },
+  { x: 327, y: 75 },
+  { x: 381, y: 40 },
+  { x: 437, y: 88 },
+  { x: 476, y: 87 },
+  { x: 431, y: 39 },
+  { x: 553, y: 42 },
+  { x: 582, y: 85 },
+  { x: 635, y: 16 },
+  { x: 665, y: 95 },
+  { x: 770, y: 125 },
+  { x: 895, y: 64 },
+  { x: 702, y: 65 },
+  { x: 788, y: 68 },
+  { x: 872, y: 22 },
+  { x: 1036, y: 42 },
+  { x: 1105, y: 27 },
+  { x: 1178, y: 30 },
+  { x: 1302, y: 52 },
+  { x: 1379, y: 45 },
+  { x: 1462, y: 50 },
+  { x: 1526, y: 13 }
 ];
 
 const canvas = document.getElementById("jsElems");
@@ -34,6 +41,11 @@ function drawLight(x, y, intensity) {
   ctx.arc(x, y, 20, 0, Math.PI * 2);
   ctx.fill();
 }
+//DEBUG
+// lights.forEach(light => {
+//   const flicker = 0.5 + Math.random() * 0.5;
+//   drawLight(light.x, light.y, flicker);
+// });
 
 function flickerLight() {
   let light = lights[Math.round(Math.random() * (lights.length - 1))]

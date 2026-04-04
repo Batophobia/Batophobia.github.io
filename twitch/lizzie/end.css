@@ -14,7 +14,7 @@ html {
 .bg {
   position: absolute;
   inset: 0;
-  background: url('end.png') top/cover no-repeat;
+  background: url('end.png') left top no-repeat;
   z-index: 1;
 }
 
@@ -28,11 +28,11 @@ html {
 }
 
 .candle1 {
-  background: radial-gradient(circle at 150px 800px, rgb(255, 180, 100), transparent 10%);
+  background: radial-gradient(circle at 123px 675px, rgb(255, 180, 100), transparent 10%);
 }
 
 .candle2 {
-  background: radial-gradient(circle at 60px 880px, rgb(255, 180, 100), transparent 10%);
+  background: radial-gradient(circle at 55px 714px, rgb(255, 180, 100), transparent 10%);
 }
 
 @keyframes glowPulse {
@@ -55,8 +55,8 @@ canvas {
   position: absolute;
   width: 100px;
   height: 250px;
-  top: 600px;
-  left: 600px;
+  top: 410px;
+  left: 480px;
   z-index: 3;
   pointer-events: none;
 }
