@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Bout to BUST</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .sprite {
+      position: absolute;
+      width: 200px;
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    .hidden {
+      visibility: hidden;
+    }
+  </style>
+</head>
+
+<body>
+
+  <script>
+    const delay = ms => new Promise(res => setTimeout(res, ms));
+
+    async function runPage() {
+      const IMAGE_SRC = ["001.png", "002.png", "003.png", "004.png", "005.png"];
+      const spawnDelay = 0;
+      const imgSize = 50;
+      const simulSpawn = 100;
+
+      for (let y = window.innerHeight - imgSize / 2; y > -imgSize / 2; y -= imgSize / 2) {
+        for (let x = window.innerWidth - imgSize / 2; x > -imgSize / 2; x -= imgSize / 2) {
+          // if (y < window.innerHeight / 5 * 2 && x > window.innerWidth / 4 && x < window.innerWidth / 4 * 3)
+          //   continue;
+          const img = document.createElement("img");
+          img.src = `./images/${IMAGE_SRC[batman(0, IMAGE_SRC.length - 1)]}`;
+          img.className = "sprite hidden";
+
+          // Random hue shift
+          const hue = Math.random() * 720;
+          img.style.filter = `hue-rotate(${hue}deg)`;
+
+          document.body.appendChild(img);
+
+          // sprites.push({
+          //   el: img,
+          //   x: x,
+          //   y: y,
+          //   size: 200
+          // });
+
+          img.style.width = `${imgSize}px`;
+          img.style.transform = `translate(${x + batman(-imgSize / 2, imgSize / 2)}px, ${y + batman(-imgSize / 2, imgSize / 2)}px)`;
+        }
+      }
+      // let maxSpawned = 500;
+      // let curSpawn = simulSpawn;
+      while (document.getElementsByClassName("hidden").length > 0 /*&& maxSpawned-- > 0*/) {
+        let numHidden = document.getElementsByClassName("hidden").length;
+        document.getElementsByClassName("hidden")[batman(0, numHidden - 1)].className = "sprite";
+        // if (curSpawn-- < 0) {
+        await delay(spawnDelay);
+        // curSpawn = simulSpawn;
+        // }
+      }
+    }
+    runPage()
+
+    function batman(min, max) {
+      return Math.floor(Math.random() * (max + 1)) + min;
+    }
+  </script>
+
+</body>
+
+</html>
