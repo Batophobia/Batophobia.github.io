@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebSocket Test</title>
+
+  ```
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+    }
+
+    #status {
+      padding: 10px;
+      margin-bottom: 20px;
+      background: #eee;
+      border-radius: 5px;
+    }
+
+    #messages {
+      border: 1px solid #ccc;
+      min-height: 200px;
+      padding: 10px;
+      margin-bottom: 20px;
+      overflow-y: auto;
+    }
+
+    .message {
+      padding: 5px;
+      border-bottom: 1px solid #eee;
+    }
+
+    input {
+      padding: 8px;
+      width: 70%;
+    }
+
+    button {
+      padding: 8px 15px;
+    }
+  </style>
+  ```
+
+</head>
+
+<body>
+
+  ```
+  <h1>WebSocket Test</h1>
+
+  <div id="status">Connecting...</div>
+
+  <div id="messages"></div>
+
+  <input id="messageInput" type="text" placeholder="Message to send">
+  <button id="sendButton">Send</button>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+
+    const serverIP = params.get("ip");
+    const serverPort = params.get("port") || "8765";
+
+    const status = document.getElementById("status");
+    const messages = document.getElementById("messages");
+    const messageInput = document.getElementById("messageInput");
+    const sendButton = document.getElementById("sendButton");
+
+
+    // Make sure an IP was provided.
+    if (!serverIP) {
+      status.textContent = "No server IP provided.";
+      status.style.background = "#fcc";
+
+      addMessage(
+        "SYSTEM: Add ?ip=YOUR_SERVER_IP to the URL."
+      );
+    } else {
+
+      const websocketURL = `ws://${serverIP}:${serverPort}`;
+
+      addMessage("SYSTEM: Connecting to " + websocketURL);
+
+      const socket = new WebSocket(websocketURL);
+
+
+      socket.addEventListener("open", () => {
+        status.textContent = "Connected!";
+        status.style.background = "#cfc";
+
+        addMessage("SYSTEM: Connected to server.");
+      });
+
+
+      socket.addEventListener("message", (event) => {
+        addMessage("RECEIVED: " + event.data);
+      });
+
+
+      socket.addEventListener("close", () => {
+        status.textContent = "Disconnected";
+        status.style.background = "#fcc";
+
+        addMessage("SYSTEM: Connection closed.");
+      });
+
+
+      socket.addEventListener("error", (error) => {
+        status.textContent = "Connection error";
+        status.style.background = "#fcc";
+
+        console.error("WebSocket error:", error);
+
+        addMessage(
+          "SYSTEM: WebSocket error. Check the browser console."
+        );
+      });
+
+
+      function sendMessage() {
+        const message = messageInput.value;
+
+        if (!message) {
+          return;
+        }
+
+        if (socket.readyState !== WebSocket.OPEN) {
+          addMessage("SYSTEM: Not connected.");
+          return;
+        }
+
+        socket.send(message);
+
+        addMessage("SENT: " + message);
+
+        messageInput.value = "";
+        messageInput.focus();
+      }
+
+
+      sendButton.addEventListener("click", sendMessage);
+
+
+      messageInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          sendMessage();
+        }
+      });
+    }
+
+
+    function addMessage(message) {
+      const element = document.createElement("div");
+
+      element.className = "message";
+      element.textContent = message;
+
+      messages.appendChild(element);
+      messages.scrollTop = messages.scrollHeight;
+    }
+  </script>
+  ```
+
+</body>
+
+</html>
